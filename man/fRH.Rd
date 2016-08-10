@@ -20,7 +20,6 @@ Return relative humidity from air temperature (Celsius) and Dew point (Celsius);
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\keyword{@export}
 \keyword{Relative}
 \keyword{humidity}
 

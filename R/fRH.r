@@ -9,11 +9,16 @@
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  Relative humidity 
-#
-
+#' 
+#' @export
+#'
+#'
+#'
+#'
 
 fRH=function(tair,dewp) {
-                        temp=cbind(tair,dewp)
-                        res=apply(temp,1, function(x) ct$call("fRH",x[1],x[2]))
-                        return(res)
+                         ct$assign("t", as.array(tair))
+                         ct$assign("td", as.array(dewp))
+                         ct$eval("var rel=[]; for(var i=0, len=t.length; i < len; i++){ rel[i]=fRH(t[i], td[i])};")
+                         return(ct$get("rel"))
 }

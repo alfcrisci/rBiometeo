@@ -14,5 +14,9 @@ Authors@R: c(
 URL: https://github.com/alfcrisci/rBiometeo
 BugReports: https://github.com/alfcrisci/rBiometeoissues
 LazyData: true
-Imports:V8
+Imports:
+    methods,
+    stats,
+    utils,
+    V8
 RoxygenNote: 5.0.1

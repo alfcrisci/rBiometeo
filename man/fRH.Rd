@@ -7,12 +7,12 @@
 fRH(tair, dewp)
 }
 \arguments{
-\item{numeric}{tair Vector or value of air temperature in Celsius degree.}
+\item{tair}{numeric Vector or value of air temperature in Celsius degree.}
 
-\item{numeric}{dewp Vector or value of dew point temperature in Celsius degree.}
+\item{dewp}{numeric Vector or value of dew point temperature in Celsius degree.}
 }
 \value{
-numeric  - centroid of the input features
+res numeric  relative humidity value
 }
 \description{
 Return relative humidity from air temperature (Celsius) and Dew point (Celsius);
@@ -20,6 +20,7 @@ Return relative humidity from air temperature (Celsius) and Dew point (Celsius);
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
+\keyword{@export}
 \keyword{Relative}
 \keyword{humidity}
 

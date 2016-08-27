@@ -2,8 +2,8 @@
 #'
 #' Return relative humidity from air temperature (Celsius) and Dew point (Celsius);
 #'
-#' @param tair numeric Vector or value of air temperature in Celsius degree.
-#' @param dewp numeric Vector or value of dew point temperature in Celsius degree.
+#' @param t numeric Vector or value of air temperature in Celsius degree.
+#' @param td numeric Vector or value of dew point temperature in Celsius degree.
 #' @return res numeric  relative humidity value
 #'
 #'
@@ -16,9 +16,9 @@
 #'
 #'
 
-fRH=function(tair,dewp) {
-                         ct$assign("t", as.array(tair))
-                         ct$assign("td", as.array(dewp))
-                         ct$eval("var rel=[]; for(var i=0, len=t.length; i < len; i++){ rel[i]=fRH(t[i], td[i])};")
+fRH=function(t,td) {
+                         ct$assign("t", as.array(t))
+                         ct$assign("td", as.array(td))
+                         ct$eval("var rel=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=fRH(t[i], td[i])};")
                          return(ct$get("rel"))
 }

@@ -4,12 +4,12 @@
 \alias{fRH}
 \title{fRH}
 \usage{
-fRH(tair, dewp)
+fRH(t, td)
 }
 \arguments{
-\item{tair}{numeric Vector or value of air temperature in Celsius degree.}
+\item{t}{numeric Vector or value of air temperature in Celsius degree.}
 
-\item{dewp}{numeric Vector or value of dew point temperature in Celsius degree.}
+\item{td}{numeric Vector or value of dew point temperature in Celsius degree.}
 }
 \value{
 res numeric  relative humidity value

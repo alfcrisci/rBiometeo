@@ -2552,12 +2552,26 @@ function wbdt(t,rh)
 
 function wbgt_indoor(t,rh) 
          {
-          var wbdt;
+          var wbgt;
           var tw = wetbulb(t,rh)
-          wbdt = 0.7*tw+0.3*t
-          return mdi;
+          wbgt= 0.7*tw+0.3*t
+          return wbgt;
 }
 
+/**
+ * Given t air temperature (Celsius), rh relative humidity (%)  gives Modified discomfort index (MDI). 
+ * @param {number} t,rh 
+ * @return {number}
+ * @customfunction
+ */
+
+function mdi_index(t,rh)    
+         {
+          var mdi;
+          var tw = wetbulb(t,rh);
+          mdi = 0.7*tw+0.3*t;
+          return mdi;
+}
 
 /**
  * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb globe temperature (WBGT) index indoor. 
@@ -2571,7 +2585,7 @@ function wbgt(t,rh,tg)
           var wbgt;
           var tw = wetbulb(t,rh)
           wbdt = 0.7*tw+0.1*t+0.2*tg;
-          return mdi;
+          return wbgt;
 }
 
 
@@ -2588,7 +2602,7 @@ function thom(t,rh )
           var thom;
           var tw = wetbulb(t,rh);
           thom = 0.4 * (t + tw) + 4.8;
-          return mdi;
+          return thom;
 }
 
 

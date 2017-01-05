@@ -18,7 +18,7 @@
 #'
 
 es=function(ta) {
-                         ct$assign("ta", as.array(t))
+                         ct$assign("ta", as.array(ta))
                          ct$eval("var res=[]; for(var i=0, len=ta.length; i < len; i++){ res[i]=es(ta[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))

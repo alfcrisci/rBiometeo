@@ -1,9 +1,9 @@
 #' THI_kliber
 #'
-#' Calculate Temperature Humidity INdex following Kliber equantions. Adopted by Sardinia ARPA.
+#' Calculate Temperature Humidity Index following Kliber equantions. Adopted by Sardinia ARPA.
 #'
 #' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in %.
+#' @param numeric rh Air Relative humidity in percentage.
 #' @return 
 #'
 #'

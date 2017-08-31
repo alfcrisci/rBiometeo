@@ -2,14 +2,14 @@
 #'
 #' Modified discomfort index MDI 
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
 #' @return mdi_index 
 #'
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  mdi_index 
-#' @references Moran DS, Shitzer A, Pandolf KB (1998) A physiological strain index to evaluate heat stress. Am J Physiol 275, R129–34
+#' @references Moran DS, Shitzer A, Pandolf KB ,1998, A physiological strain index to evaluate heat stress. Am J Physiol 275, R129–34.
 #' @export 
 #'
 #'

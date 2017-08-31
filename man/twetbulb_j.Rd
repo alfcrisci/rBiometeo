@@ -23,4 +23,3 @@ Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet
 \keyword{bulb}
 \keyword{temperature}
 \keyword{wet}
-

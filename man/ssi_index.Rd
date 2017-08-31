@@ -21,4 +21,3 @@ Calculate Summer Simmer index developed in Canada.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{SSI}
-

@@ -19,4 +19,3 @@ Logical if the year indicated is a leap year.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{isLeapYear}
-

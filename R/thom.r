@@ -3,13 +3,13 @@
 #' Calculate Thom discomfort index by using wet bulb temperature estimation.
 #'
 #' @param numeric t Air temperature in Celsius degree.
-#' @param numeric rh Air Relative humidity in %.
+#' @param numeric rh Air Relative humidity in percentage.
 #' @return Thom index.
 #'
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
-#' @keywords  thom, sultryness  discomfort index
-#' @references Thom, E.C. (1959): The discomfort index. Weatherwise, 12: 57–60
+#' @keywords  thom, sultryness,  discomfort index
+#' @references Thom, E.C. 1959: The discomfort index. Weatherwise, 12: 57–60
 #' @export
 #'
 #'

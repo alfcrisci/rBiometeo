@@ -1,13 +1,13 @@
 #' Tglob_sphere
 #'
-#' Calculate the globe temperature having diamter. The author of procedure is James C. Liljegren Decision and Information Sciences Division Argonne National Laboratory.
+#' Calculate the globe temperature having sphere diameter. The author of procedure is James C. Liljegren Decision and Information Sciences Division Argonne National Laboratory.
 #' 
 #'
-#' @param numeric t Air temperature in Celsius Degrees.a
-#' @param numeric rh Air Relative humidity in %.
-#' @param numeric speed Mean Wind speed in meter per seconds [m/s].
-#' @param numeric pair Air pressure in millibar [hPa].
-#' @param numeric solar Global solar radionatino in W/mq.
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
+#' @param numeric speed Mean Wind speed in meter per second.
+#' @param numeric pair Air pressure in millibar or hPa.
+#' @param numeric solar Global solar radiation in Watt per mq.
 #' @param numeric diam Diameter of the sphere in meters. Input example 0.05 = 50 mm.
 #' @param numeric fdir Fraction on 1 of direct solar respect to global.
 #' @param numeric zenith Zenith angle.
@@ -15,7 +15,7 @@
 #' @return 
 #' 
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
-#' @references Liljegren J, Carhart R, Lawday P, Tschopp S, Sharp R (2008)  "Modeling Wet Bulb Globe Temperature using Standard Meteorological Measurements" Journal of Occupational and Environmental Hygiene 5: 645-655 \link{www.climatechimp.org}. 
+#' @references Liljegren J, Carhart R, Lawday P, Tschopp S, Sharp R,2008, "Modeling Wet Bulb Globe Temperature using Standard Meteorological Measurements" Journal of Occupational and Environmental Hygiene 5, 645-655. 
 #' @keywords Globometric temperature, sphere.
 #' 
 #' @export

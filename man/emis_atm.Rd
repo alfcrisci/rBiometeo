@@ -7,9 +7,9 @@
 emis_atm(ta, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees}
+\item{numeric}{t Air temperature in Celsius degrees}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
 
@@ -21,4 +21,3 @@ Calculate air emissivity.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{emis_atm}
-

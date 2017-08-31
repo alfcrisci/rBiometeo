@@ -17,14 +17,13 @@ twetbulb_s(t, rh)
 \description{
 Estimate wet bulb temperature by using STULL's empirical equation.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 Wet-Bulb Temperature from Relative Humidity and Air Temperature Ronald Stull \link{http://journals.ametsoc.org/doi/pdf/10.1175/JAMC-D-11-0143.1}
+}
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{bulb}
 \keyword{stull,}
 \keyword{temperature,}
 \keyword{wet}
-

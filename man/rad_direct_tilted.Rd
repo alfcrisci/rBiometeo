@@ -28,4 +28,3 @@ Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet
 }
 \keyword{Tilted}
 \keyword{radiation.}
-

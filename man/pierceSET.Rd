@@ -30,15 +30,14 @@ pierce SET in celsius degree.
 Calculates standard effective temperature of Pierce. The calculation procedure is taken from CBE Thermal Comfort Tool js library. 
 The Original paper of idex Gagge, A.P., Fobelets, A.P., Berglund, L. G., “A Standard Predictive Index of Human Response to the Thermal Environment”, ASHRAE Trans., Vol.92, Pt 2, 1986.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 Hoyt Tyler, Schiavon Stefano, Piccioli Alberto, Moon Dustin, and Steinfeld Kyle, 2013, CBE Thermal Comfort Tool.
 Center for the Built Environment, University of California Berkeley, \link{http://cbe.berkeley.edu/comforttool/}. Code is licenced CC-BY-NC.
+}
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{Comfort}
 \keyword{Thermal}
 \keyword{Tool.}
 \keyword{pierceSET,CBE}
-

@@ -7,9 +7,9 @@
 mdi_index(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
 mdi_index
@@ -17,11 +17,10 @@ mdi_index
 \description{
 Modified discomfort index MDI
 }
+\references{
+Moran DS, Shitzer A, Pandolf KB ,1998, A physiological strain index to evaluate heat stress. Am J Physiol 275, R129–34.
+}
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\references{
-Moran DS, Shitzer A, Pandolf KB (1998) A physiological strain index to evaluate heat stress. Am J Physiol 275, R129–34
-}
 \keyword{mdi_index}
-

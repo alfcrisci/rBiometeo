@@ -23,4 +23,3 @@ Calculated the mean radiant temperature from the solar radiation.  Modified base
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{fMRT}
-

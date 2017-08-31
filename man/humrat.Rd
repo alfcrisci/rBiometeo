@@ -21,4 +21,3 @@ Calculates humidity ratio in vapor-air mixture.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{humrat}
-

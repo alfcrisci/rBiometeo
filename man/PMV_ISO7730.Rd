@@ -9,15 +9,15 @@ PMV_ISO7730(t, rh, wind, tr, M, W, clo)
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{wind Windspeed in meter per second [m/s].}
+\item{numeric}{wind Windspeed in meter per second.}
 
 \item{numeric}{tr Air temperature in Celsius degrees.}
 
-\item{numeric}{M Metabolic rate of subject [W/mq].}
+\item{numeric}{M Metabolic rate of subject in Watt per mq.}
 
-\item{numeric}{W Work rate of subject [W/mq].}
+\item{numeric}{W Work rate of subject in Watt per mq.}
 
 \item{numeric}{clo Clothing insulation level in clo.}
 }
@@ -31,4 +31,3 @@ Calculate Predicted Mean Vote (PMV) following ISO 7730.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{PMV_ISO7730}
-

@@ -23,4 +23,3 @@ DESCRIPTION
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{p_local}
-

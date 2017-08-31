@@ -19,4 +19,3 @@ Conversion the radians of an angle in decimal degrees.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{radToDeg}
-

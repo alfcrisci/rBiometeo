@@ -19,4 +19,3 @@ Conversion speed in feet per second to kilometer per hour.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{fts2kmh}
-

@@ -4,26 +4,26 @@
 \alias{RT}
 \title{RT}
 \usage{
-RT(Ta, rh, v, Tr, M, W, Icl, p, w)
+RT(t, rh, v, Tr, M, W, Icl, p, w)
 }
 \arguments{
 \item{numeric}{Ta Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{v Windspeed in meter per second [m/s].}
+\item{numeric}{v Windspeed in meter per second.}
 
 \item{numeric}{tr Mean radiant temperature in Celsius degree.}
 
-\item{numeric}{M Metabolic work in W/mq of the subject.}
+\item{numeric}{M Metabolic work in Watt per mq of the subject.}
 
-\item{numeric}{W Mechanical work rate in W/mq of the subject.}
+\item{numeric}{W Mechanical work rate in Watt per mq of the subject.}
 
-\item{numeric}{Icl Available basic clothing insulation [clo]}
+\item{numeric}{Icl Available basic clothing insulation in clo.}
 
-\item{numeric}{p  Air permeability of clothing ensemble [lt/m2s]}
+\item{numeric}{p  Air permeability of clothing ensemble lt on meter per second.}
 
-\item{numeric}{w  Walking speed in meter per seconds.}
+\item{numeric}{w  Walking speed in meter per second.}
 }
 \value{
 RT
@@ -31,14 +31,13 @@ RT
 \description{
 Computes the value of Required Recovery Time following scheme adopted in ISO 11079.Valid under 10 Celsius degree.
 }
-\author{
-Ingvar Holmer. R adaptation Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 ISO 11079, 2007-12-15, ERGONOMICS OF THE THERMAL ENVIRONMENT - DETERMINATION AND INTERPRETATION OF COLD STRESS WHEN USING REQUIRED CLOTHING INSULATION (IREQ) AND LOCAL COOLING EFFECTS.
+}
+\author{
+Ingvar Holmer. R adaptation Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{Cold}
 \keyword{Recovery}
 \keyword{Time,}
 \keyword{environements.}
-

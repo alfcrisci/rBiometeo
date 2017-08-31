@@ -3,7 +3,7 @@
 #' Calculate web bulb globe index for indoor environments. 
 #'
 #' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
+#' @param numeric rh Air Relative humidity in percentage.
 #' @return 
 #'
 #'

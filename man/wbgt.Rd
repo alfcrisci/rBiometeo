@@ -7,11 +7,11 @@
 wbgt(t, rh, tg)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{tg Globe temperature in Celsius Degrees.}
+\item{numeric}{tg Globe temperature in Celsius degrees.}
 }
 \value{
 
@@ -23,4 +23,3 @@ Calculate wet bulb globe temperature index for outdoor environements.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{wbgt}
-

@@ -23,4 +23,3 @@ Gets the specific volume of air/water vapor mixture [m^3/kg].
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{spvol}
-

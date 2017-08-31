@@ -19,4 +19,3 @@ Parse date in ISO8601 format.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{parseISO8601String}
-

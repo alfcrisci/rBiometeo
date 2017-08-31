@@ -21,4 +21,3 @@ Calculate the thermal balance of the body in W/m.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{balancePMV7730}
-

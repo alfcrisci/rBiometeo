@@ -3,16 +3,15 @@
 #' DESCRIPTION
 #'
 #' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in %.
-#' @param numeric pa  Air pressure in hPa [millibar].
-#' @param numeric rh Air Relative humidity in %.
+#' @param numeric rh Air Relative humidity in percentage.
+#' @param numeric pa  Air pressure in hPa or millibar.
 #' @param Wet bulb temperature in Celsius degrees.
 #' @return 
 #'
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  wetbulb 
-#' @references Brice T, Hall T (2009) Wet-bulb calculator	\link{http://www.srh.noaa.gov/epz/?n=wxcalc}.
+#' @references Brice T, Hall T,2009, Wet-bulb calculator.
 #' @export
 #'
 #'

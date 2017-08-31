@@ -7,15 +7,15 @@
 Tglob_sphere(t, rh, speed, solar, diam, fdir, zenith, albedo)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.a}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{speed Mean Wind speed in meter per seconds [m/s].}
+\item{numeric}{speed Mean Wind speed in meter per second.}
 
-\item{numeric}{pair Air pressure in millibar [hPa].}
+\item{numeric}{pair Air pressure in millibar or hPa.}
 
-\item{numeric}{solar Global solar radionatino in W/mq.}
+\item{numeric}{solar Global solar radiation in Watt per mq.}
 
 \item{numeric}{diam Diameter of the sphere in meters. Input example 0.05 = 50 mm.}
 
@@ -29,15 +29,14 @@ Tglob_sphere(t, rh, speed, solar, diam, fdir, zenith, albedo)
 
 }
 \description{
-Calculate the globe temperature having diamter. The author of procedure is James C. Liljegren Decision and Information Sciences Division Argonne National Laboratory.
+Calculate the globe temperature having sphere diameter. The author of procedure is James C. Liljegren Decision and Information Sciences Division Argonne National Laboratory.
+}
+\references{
+Liljegren J, Carhart R, Lawday P, Tschopp S, Sharp R,2008, "Modeling Wet Bulb Globe Temperature using Standard Meteorological Measurements" Journal of Occupational and Environmental Hygiene 5, 645-655.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\references{
-Liljegren J, Carhart R, Lawday P, Tschopp S, Sharp R (2008)  "Modeling Wet Bulb Globe Temperature using Standard Meteorological Measurements" Journal of Occupational and Environmental Hygiene 5: 645-655 \link{www.climatechimp.org}.
-}
 \keyword{Globometric}
 \keyword{sphere.}
 \keyword{temperature,}
-

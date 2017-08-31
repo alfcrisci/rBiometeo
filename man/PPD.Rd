@@ -15,11 +15,10 @@ PPD(PMV)
 \description{
 Predicted Percentage of Dissatisfied (PPD) predicts the percentage of occupants that will be dissatisfied with the thermal conditions.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 UNI EN ISO 7730.
 }
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{PPD}
-

@@ -19,4 +19,3 @@ Get julian day number of date.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{getDOY}
-

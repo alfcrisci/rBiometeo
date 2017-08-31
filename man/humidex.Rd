@@ -7,9 +7,9 @@
 humidex(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
 
@@ -17,11 +17,11 @@ humidex(t, rh)
 \description{
 Computes canadian Humidex index.
 }
+\references{
+Masterson, J. et Richardson, F. A., Humidex, A Method of Quantifying Human Discomfort Due to Excessive Heat and Humidity, Downsview, Ontario, Environnement Canada, 1979, 45.
+}
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\references{
-https://en.wikipedia.org/wiki/Humidex Masterson, J. et Richardson, F. A., Humidex, A Method of Quantifying Human Discomfort Due to Excessive Heat and Humidity, Downsview, Ontario, Environnement Canada, 1979, 45 p.
-}
-\keyword{humidex,canada}
-
+\keyword{canada}
+\keyword{humidex,}

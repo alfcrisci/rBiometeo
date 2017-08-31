@@ -19,4 +19,3 @@ Conversion from feet per second to meter per second.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{knots2ms}
-

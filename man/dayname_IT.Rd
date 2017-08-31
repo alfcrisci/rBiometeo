@@ -22,4 +22,3 @@ Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet
 \keyword{italian}
 \keyword{name}
 \keyword{of}
-

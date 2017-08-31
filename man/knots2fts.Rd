@@ -19,4 +19,3 @@ Conversion from knot per second to feet per second.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{knots2fts}
-

@@ -15,11 +15,10 @@ Saturaion vapor pressure in hPa
 \description{
 Broad range formula to estimate saturation vapor pressure.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 Hardy B, 1998,"ITS-90 Formulations for Vapor Pressure, Frostpoint Temperature,Dewpoint Temperature, and Enhancement Factors in the Range 100 to +100 C".Proceedings of the Third International Symposium on Humidity & Moisture",Teddington, London, England, April 1998.
 }
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{PVS}
-

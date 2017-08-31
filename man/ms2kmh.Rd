@@ -19,4 +19,3 @@ Conversion speed meter per second  in km per hours.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{ms2kmh}
-

@@ -19,4 +19,3 @@ Conversion from Millibar [hPa] to inches HG.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{mbtoinHG}
-

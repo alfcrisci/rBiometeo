@@ -19,4 +19,3 @@ Conversion speed in  miles per hour to feet per second.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{mph2fts}
-

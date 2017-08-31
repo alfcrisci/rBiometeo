@@ -17,11 +17,10 @@ hi_index(t, rh)
 \description{
 Given air temperature (Celsius), relative humidity (%) give a heat stress index in Celsius degree for primates animals.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 Hill et al (2004), Indices of environmental temperatures for primates in open habitats. Websource \link(https://community.dur.ac.uk/r.a.hill/Hill%20et%20al%202004.pdf)
 }
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{hi_index}
-

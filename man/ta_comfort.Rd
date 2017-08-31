@@ -23,11 +23,10 @@ ta_comfort(rh, wind, M, iclo, H)
 \description{
 Calculate the temperature of thermal comfort requireed given other parameters and timing in hours.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 Huizenga
 }
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{ta_comfort}
-

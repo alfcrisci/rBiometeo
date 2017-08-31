@@ -9,31 +9,30 @@ HSI_index(t, rh, wind, tr, M, W, clo, param = "HSI")
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in }
+\item{numeric}{rh Air Relative humidity .}
 
-\item{numeric}{wind Windspeed in meter per second m/s.}
+\item{numeric}{wind Windspeed in meter per second.}
 
 \item{numeric}{tr Mean radiant temperature in Celsius degrees.}
 
-\item{numeric}{M Metabolic rate of subject W/mq.}
+\item{numeric}{M Metabolic rate of subject Watt on mq.}
 
-\item{numeric}{W Work rate of subject W/mq.}
+\item{numeric}{W Work rate of subject Watt on mq.}
 
 \item{numeric}{clo Clothing insulation level in clo.}
 
-\item{character}{param index requested HSI (HSI value) AET (Allowable exposure time in minutes).}
+\item{character}{param index requested HSI or AET Allowable exposure time in minutes.}
 }
 \value{
 HSI
 }
 \description{
-Computes the Heat Strain Index. HSI is the ratio of the demand for sweat evaporation to capacity of evaporation (Ereq / Emax) .This denotes also the percent of skin wettedness, which is a good predictor of warm discomfort.
+Computes the Heat Strain Index. HSI is the ratio of the demand for sweat evaporation to capacity of evaporation (Ereq/Emax). This denotes also the percent of skin wettedness, which is a good predictor of warm discomfort.
+}
+\references{
+Belding HS, Hatch TF, 1955. Index for evaluating heat stress in terms of resulting physiological strain. Heat Pip Air Condit 27, 129–36.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\references{
-Belding HS, Hatch TF, (1955). Index for evaluating heat stress in terms of resulting physiological strain. Heat Pip Air Condit 27, 129–36.
-}
 \keyword{HSI}
-

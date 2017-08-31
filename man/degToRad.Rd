@@ -19,4 +19,3 @@ Conversion of decimal degrees to radians.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{degToRad}
-

@@ -1,14 +1,14 @@
 #' THI
 #'
-#' Given air temperature (Celsius), relative humidity (%)  gives Temperature Humidity Index discomfort. Giles (1990). Is a linearized form.
+#' Given air temperature (Celsius), relative humidity  gives Temperature Humidity Index discomfort. Giles (1990). Is a linearized form.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
 #' @return Temperature Humidity Index value.
 #'
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
-#' @keywords  THI,Temperature Humidity Index 
+#' @keywords  THI, Temperature Humidity Index 
 #' 
 #' @export
 #'

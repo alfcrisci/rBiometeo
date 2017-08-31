@@ -21,4 +21,3 @@ Computes Steadman's apparent temperature for indoor conditions where air movemen
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{steadman_indoor}
-

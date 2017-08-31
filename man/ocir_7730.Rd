@@ -29,4 +29,3 @@ Calculate ocir index consisting in range of clothing insulation in moderate ther
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{ocir}
-

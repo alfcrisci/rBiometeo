@@ -17,11 +17,10 @@ sharlau_index_delta(t, rh)
 \description{
 Computes the critical sharlau delta in Celsius degrees.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 Scharlau, K., 1950, Einführung eines Schwülemasstabes und Abgrenzung von Schwülezonen durch Isohygrothermen, Erdkunde, 4, 188-201.
 }
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{sharlau_index_delta}
-

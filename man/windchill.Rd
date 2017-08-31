@@ -17,12 +17,11 @@ Windchill
 \description{
 Calculates the NWS Windchill Temperature (WCT) to estimate the perceived temperature with wind in cold environemnt.Assumes no impact from the sun and having own face model.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 New Windchill NOAA calculator \link{http://www.srh.noaa.gov/epz/?n=wxcalc_windchill}
 }
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{WCT}
 \keyword{windchill,}
-

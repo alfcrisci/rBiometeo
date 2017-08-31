@@ -19,4 +19,3 @@ Conversion speed in meters per second to miles per hour.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{ms2mph}
-

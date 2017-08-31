@@ -3,14 +3,14 @@
 #' Computes the value of Required Recovery Time following scheme adopted in ISO 11079.Valid under 10 Celsius degree.
 #'
 #' @param numeric Ta Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in %.
-#' @param numeric v Windspeed in meter per second [m/s].
+#' @param numeric rh Air Relative humidity in percentage.
+#' @param numeric v Windspeed in meter per second.
 #' @param numeric tr Mean radiant temperature in Celsius degree.
-#' @param numeric M Metabolic work in W/mq of the subject.
-#' @param numeric W Mechanical work rate in W/mq of the subject.
-#' @param numeric Icl Available basic clothing insulation [clo]
-#' @param numeric p  Air permeability of clothing ensemble [lt/m2s]
-#' @param numeric w  Walking speed in meter per seconds.
+#' @param numeric M Metabolic work in Watt per mq of the subject.
+#' @param numeric W Mechanical work rate in Watt per mq of the subject.
+#' @param numeric Icl Available basic clothing insulation in clo.
+#' @param numeric p  Air permeability of clothing ensemble lt on meter per second.
+#' @param numeric w  Walking speed in meter per second.
 #' @return RT
 #'
 #'
@@ -24,8 +24,8 @@
 #'
 #'
 
-RT=function(Ta,rh,v,Tr,M,W,Icl,p,w) {
-                         ct$assign("Ta", as.array(Ta))
+RT=function(t,rh,v,Tr,M,W,Icl,p,w) {
+                         ct$assign("Ta", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("v", as.array(v))
                          ct$assign("Tr", as.array(Tr))

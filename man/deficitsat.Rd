@@ -7,9 +7,9 @@
 deficitsat(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
 
@@ -22,4 +22,3 @@ Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet
 }
 \keyword{deficit}
 \keyword{saturation}
-

@@ -9,9 +9,9 @@ net_index(t, rh, wind)
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{wind Windspeed in meter per second [m/s].}
+\item{numeric}{wind Windspeed in meter per second.}
 }
 \value{
 
@@ -19,11 +19,10 @@ net_index(t, rh, wind)
 \description{
 Net effective temperature (NET) incorporates ambient temperature, wind speed, and relative humidity and is used in both hot and cold situations.
 }
+\references{
+Cho KLA, Margaret Loughnan M, and Tapper T,2013, An Exploration of Temperature Metrics for Further Developing the Heat-Health Weather Warning System in Hong Kong.
+}
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\references{
-Cho KLA, Margaret Loughnan M, and Tapper T,(2013), An Exploration of Temperature Metrics for Further Developing the Heat-Health Weather Warning System in Hong Kong
-}
 \keyword{net_index}
-

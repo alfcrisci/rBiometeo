@@ -7,21 +7,20 @@
 discomfort_index(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
 
 }
 \description{
-Given t air temperature (Celsius), rh relative humidity (%) and gives  Discomfort index (DI). It belongs to direct indexes class.
+Given t air temperature (Celsius), rh relative humidity and gives  Discomfort index (DI). It belongs to direct indexes class.
+}
+\references{
+Thom, E.C.,1959,The discomfort index. Weather wise, 12, 57–60.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\references{
-Thom, E.C. (1959): The discomfort index. Weather wise, 12: 57–60
-}
 \keyword{discomfort_index}
-

@@ -9,7 +9,7 @@ wbgt_indoor(t, rh)
 \arguments{
 \item{numeric}{t Air temperature in Celsius Degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
 
@@ -21,4 +21,3 @@ Calculate web bulb globe index for indoor environments.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{wbgt_indoor}
-

@@ -1,15 +1,15 @@
 #' discomfort_index
 #'
-#' Given t air temperature (Celsius), rh relative humidity (%) and gives  Discomfort index (DI). It belongs to direct indexes class.
+#' Given t air temperature (Celsius), rh relative humidity and gives  Discomfort index (DI). It belongs to direct indexes class.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
 #' @return 
 #'
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  discomfort_index 
-#' @references Thom, E.C. (1959): The discomfort index. Weather wise, 12: 57–60
+#' @references Thom, E.C.,1959,The discomfort index. Weather wise, 12, 57–60.
 #' @export
 #'
 #'

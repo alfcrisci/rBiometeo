@@ -1,4 +1,5 @@
-// Define constants for functions.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Define global constants for functions.
 
 var    Patm = 101325.0; // pascal
 var    CpAir= 1004.0;
@@ -16,30 +17,27 @@ var    PI   = Math.PI,
        J1970 = 2440588,
        J2000 = 2451545;
 
-var stefanb = 0.000000056696
-var diamWick = 0.007
-var lenWick = 0.0254
-var propDirect = 0.8  // Assume a proportion of direct radiation = direct/(diffuse + direct)
-var ZenithAngle = 0  // Angle of sun from directly above
-var MinWindSpeed = 0.1   // 0 wind speed upsets log function
-var AtmPressure = 101  // Atmospheric pressure in kPa
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Notation related functions.
+// Format  functions.
 
 function OneDec(c) 
 {
-    return Math.round(10 * c) / 10
+    return Math.round(10 * c) / 10;
 }
 
 function TwoDec(c) 
 {
-    return Math.round(100 * c) / 100
+    return Math.round(100 * c) / 100;
 }
 
 function ThreeDec(c) 
 {
     return Math.round(1000 * c) / 1000
+}
+
+function FourDec(c) 
+{
+    return Math.round(10000 * c) / 10000
 }
 
 function scientificNotation(c,e)
@@ -63,6 +61,25 @@ function degToRad(angleDeg)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Date related functions.
+
+function ExcelDateToJSDate(serial) {
+   var utc_days  = Math.floor(serial - 25569);
+   var utc_value = utc_days * 86400;                                        
+   var date_info = new Date(utc_value * 1000);
+
+   var fractional_day = serial - Math.floor(serial) + 0.0000001;
+
+   var total_seconds = Math.floor(86400 * fractional_day);
+
+   var seconds = total_seconds % 60;
+
+   total_seconds -= seconds;
+
+   var hours = Math.floor(total_seconds / (60 * 60));
+   var minutes = Math.floor(total_seconds / 60) % 60;
+
+   return new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds);
+}
 
 Date.prototype.getJulian = function() 
 {
@@ -175,8 +192,9 @@ function dayname_IT(date)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Sun related  functions.
 
-function sun_data(datetime,lat,lon,parameter) 
+function sun_data(serial,lat,lon,parameter) 
    {
+	var datetime=ExcelDateToJSDate(serial);   
     udtTimedHours = datetime.getHours() - 0;
     udtTimedMinutes =datetime.getMinutes() - 0;
     udtTimedSeconds = datetime.getSeconds() - 0;
@@ -238,8 +256,9 @@ function sun_data(datetime,lat,lon,parameter)
      
 }
 
-function radtheoric(param,datetime,lat,lon,albedo)
-{  
+function radtheoric(serial,lat,lon,albedo,param)
+{ 
+  var datetime=ExcelDateToJSDate(serial); 
   if( albedo === undefined ) { albedo = 0.3;};
   var radcalcteoric;
   var elev=sun_data(datetime,lat,lon,"elevation");
@@ -251,23 +270,24 @@ function radtheoric(param,datetime,lat,lon,albedo)
   var air_mass = 1/Math.sin(elev*2*pi/360); 
   var IB = I0*Math.exp(-opt_depth*air_mass); //  Direct Beam 
   var IDH = IB*(0.095 + 0.04*Math.sin((jddate-100)*2*pi/365)); // Diffuse radiation 
-  var ID = IDH*(1+Math.cos(pi-elev*2*pi/360))/2; 
+  var ID = IDH*(1+Math.cos(pi-elev*2*pi/360))/2; // Diffuse radiation
   var IBH = IB*Math.sin(elev*2*pi/360);
   var IR =  albedo*(IBH+IDH)*(1+Math.cos(pi-elev*2*pi/360))/2; // reflected
   var ITot = IB+ID+IR; //  total
+  
   if ( ITot <0) {ITot=0;IB=0;IR=0;};
   
   if (param == "global") {return(ITot)}
   else if (param == "direct") {return(IB)}
   else if (param == "diffuse") {return(ID)}
   else if (param == "reflected") {return(IR)}
-  else  {return("Not Available")}    
+  else  {return(-9999)}    
 
 }
 
-function rad_direct_tilted (datetime,lat,lon,planezen,planeaz) 
+function rad_direct_tilted  (serial,lat,lon,planezen,planeaz) 
 {
-
+                            var datetime=ExcelDateToJSDate(serial); 
                             var az=sun_data(datetime,lat,lon,"elevation");
                             var elev=sun_data(datetime,lat,lon,"elevation");
                             planezen=planezen/rad;
@@ -282,20 +302,208 @@ function rad_direct_tilted (datetime,lat,lon,planezen,planeaz)
 
 function proj(sunelev)
 {
-          if (sunelev < 0.0)
-          {return 0.0};
- return 0.308 * Math.cos(rads * (sunelev* (0.998- (Math.pow(sunelev, 2.0) / 50000.0))));
+          if (sunelev < 0.0) {return 0.0};
+          return 0.308 * Math.cos(rads * (sunelev* (0.998- (Math.pow(sunelev, 2.0) / 50000.0))));
 }
 
-//Calculated the mean radiant temperature from the solar radiation.  Modified based on direct && diffuse.  Gives values too small;
-//Assumes a uniform surround temperature of Ta && short wave solar radiation only;
 
-function fMRTmod (Ta, solar,frad)
+
+/**
+ * Given a temperature in Celsius, return Fahrenheit value.
+ * @param {number} C
+ * @return {number}
+ * @customfunction
+ */
+
+function C2F(C) 
 {
-         var solardirect,solardiffuse; 
+  if (typeof C !== 'number') {
+                              throw TypeError('Celsius value must be a number');
+                              }
+  return (Math.round((C * 9) / 5 + 32,2));
+}
+
+/**
+ * Given a temperature in Fahrenheit, return  Celsius value.
+ * @param {number} F
+ * @return {number}
+ * @customfunction
+ */
+
+function F2C(F) 
+{
+  if (typeof F !== 'number') {
+                             throw TypeError('Value must be a number');
+                             }
+ return(Math.round((5/9) * (F - 32),3));
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Wind functions
+
+
+
+
+function compass_16(direction) 
+ {
+  var dir = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE",
+             "SSE", "S", "SSW", "SW", "WSW", "W", "WNW",
+            "NW", "NNW"];
+  var dirint=(((direction+11.25)/22.5));							   
+  return(dir[parseInt(dirint % 16)]);
+}
+
+
+
+function compass_8(direction) 
+{ var dir = ["N",  "NE", "E",  "SE",
+             "S",  "SW", "W", "NW"];
+  var dirint=(((direction+22.5)/45));							   
+  return(dir[parseInt(dirint % 8)]);
+}
+  
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Radiant temperature  functions.
+
+
+
+/**
+ * Given air temperature (Celsius), rh relative humidity (%), rshort direct beam short-wavelength radiation (W/mq), rdiffuse  undireted short-wavelength radiation (W/mq), sunelev sun elevation and albedo.
+
+    angle (degrees) gives Mean Radiant Temperature.
+ *
+ * @param {number} t,rh,wind,rshort,sunelev
+ * @return {number}
+ * @customfunction
+ */
+
+
+
+function mrt_solar(t,rh,solar,sunelev,albedo,emis_sfc,fdir)
+{
+  if( albedo === undefined ) { albedo = 0.3;};
+  if( emis_sfc === undefined ) { emis_sfc = 0.97;};
+  if( fdir === undefined ) { fdir = 0.8;};
+  if( sunelev === undefined ) { sunelev = 90;};
+ 
+  var rad = Math.PI / 180;
+  var rshort=solar*fdir;
+  var rdiffuse=solar-rshort;
+  var temprad,emiair,tsk;
+  var sig = 5.67e-8;
+  emiair = emis_atm(t,rh);
+  tsk = t + 273.15;
+  var ratio=0.0429*Math.sin(sunelev*rad)+0.345*Math.cos(sunelev*rad);
+  var proj=0.308 * Math.cos(rad *(sunelev* (0.998-(Math.pow(sunelev, 2.0) / 50000.0))));
+  
+  temprad= Math.pow(emis_sfc*Math.pow(tsk,4) + ((1-albedo)*rdiffuse) /(sig*emis_sfc)+(1-albedo) * proj * ratio * (rshort/(sig*emis_sfc)),0.25)- 273.15
+  return  TwoDec(temprad);
+}
+
+/**
+ * Given air temperature (Celsius), Tg Globe Temeperature, ws wind speed in m/s and diameter mean radiant temperature is done according ISO 7726 1998.
+ *
+ * @param {number} Ta Air temperature ,Tg Globe Temeperature, ws wind speed in m/s . 
+ * @return {number}
+ * @customfunction
+ */
+
+
+function mrt_thorsson(t,tg,wind,diam)
+{        if ( diam === undefined) {diam=0.15;} ;
+         var emis_globe = 0.97;
+         var stefanb = 0.0000000567;
+         return Math.pow(Math.pow(tg + 273.15, 4) + ((1.335 * Math.pow(10,8) * Math.pow(wind,0.71)) /(emis_globe*Math.pow(diam,0.4))) * (tg - t), 0.25) - 273.15;
+}
+
+/**
+ * Given air temperature (Celsius), Tg Globe Temeperature, ws wind speed in m/s and diameter mean radiant temperature is done according ISO 7726 1998.
+ *
+ * @param {number} Ta Air temperature ,Tg Globe Temeperature, ws wind speed in m/s . 
+ * @return {number}
+ * @customfunction
+ */
+
+
+function mrt_globe (t,tg,wind,diam)
+{        if ( diam === undefined) {diam=0.15;} ;
+         var emis_globe = 0.97;
+         var stefanb = 0.0000000567;
+         return Math.pow(Math.pow(tg + 273.15, 4) + ((1.1 * Math.pow(10,8) * Math.pow(wind,0.6)) /(emis_globe*Math.pow(diam,0.4))) * (tg - t), 0.25) - 273.15;
+}
+
+/**
+ * Given air temperature (Celsius), Tg Globe Temeperature, ws wind speed in m/s and diameter mean radiant temperature is done according ISO 7726 1998.
+ *
+ * @param {number} Ta Air temperature ,Tg Globe Temeperature, ws wind speed in m/s . 
+ * @return {number}
+ * @customfunction
+ */
+
+function mrt_bernard(t,tg,wind)
+{
+         var WF;
+         var WF1 = 0.4 * Math.pow(Math.abs(tg - t),0.25);
+         var WF2 = 2.5 * Math.pow(wind,0.6);
+         if (WF1 > WF2 ) {WF = WF1} else {WF = WF2};
+         return 100 * Math.pow((Math.pow((tg + 273.15)/100, 4) + WF * (tg - t)), 0.25) - 273.15
+}
+
+function Tglob_sphere(t,rh,wind,solar,diam,alb_sfc,fdir,zenith)
+                        {
+                        if(fdir === undefined ) { fdir = 0.8;}; 
+                        if(zenith === undefined ) {zenith = 0;};
+                        var converge,cza,dT,Tref,h,Tglobe;
+                        var emis_air=emis_atm(t,rh);
+                        var windmin = 0.1;  
+                        var pair = 101*10; 
+                        var alb_globe = 0.05;
+                        var emis_globe = 0.95;
+                        var emis_sfc = 0.999;
+                        var stefanb = 0.0000000567;
+                        var Tair = t + 273.15;
+                        var Tsfc = t + 273.15;
+                        var Tglobe_prev = t + 273.15;
+                        zenith=zenith/(Math.PI/ 180);
+                        converge = 0.05;
+                          
+                        if(zenith <= 0 ){ zenith = 0.0000000001;};
+                        if(zenith > 1.57 ){ zenith = 1.57;};
+                          
+                        cza = Math.cos(zenith);
+
+                        var fixfactor=solar/(2 * emis_globe * stefanb) *(1-alb_globe) *(fdir * (1 / (2 * cza) - 1) + 1 + alb_sfc);
+                        var iter=1;
+                          
+                        do {
+                           Tref = 0.5 * (Tglobe_prev + Tair);
+                           h = h_sphere_in_air(Tref, pair, wind, windmin, diam);
+                           Tglobe = Math.pow(0.5*(emis_air*Math.pow(Tair,4)+emis_sfc*Math.pow(Tsfc,4))-h/(emis_globe*stefanb)*(Tglobe_prev - Tair) + fixfactor,0.25);
+                           dT = Tglobe - Tglobe_prev;
+                           if(Math.abs(dT) < converge) { Tglobe = Tglobe - 273.15;break;} else {Tglobe_prev = 0.9 * Tglobe_prev + 0.1 * Tglobe;}
+                            iter=iter+1;
+                           } while ( iter < 1000);
+                          
+                          if ( iter===1000) {Tglobe=-9999}
+                          
+                          return Math.round(100 * Tglobe) / 100;
+                         }
+
+
+function MRTsolar (Ta,solar,albedo,fdir,emis)
+{
+        if ( albedo === undefined) { albedo=0.97}; 
+        if ( fdir === undefined) { fdir=0.8}; 
+        if ( emis === undefined) { emis=0.97}; 
+        
+        var solardirect,solardiffuse,MRT; 
+  
          if(solar > 1000 ){
-                           solardirect = frad * solar;
-                           solardiffuse = (1-frad) * solar;
+                           solardirect = fdir * solar;
+                           solardiffuse = (1-fdir) * solar;
                           }
          else if (solar > 250)
                           {solardiffuse = (-0.001 * solar + 1.25) * solar;
@@ -304,51 +512,143 @@ function fMRTmod (Ta, solar,frad)
          else             {
                           solardirect = 0;
                           solardiffuse = solar;
-                          }
-                          return (0.97 * (Ta + 273.2) ^ 4 + 0.7 * solardiffuse / (0.97 * 0.0000000567) + 0.32 * 0.7 * solardirect / (0.97 * 0.0000000567)) ^ 0.25 - 273.2;
+                          };
+                          
+          MRT = Math.pow(0.97 * Math.pow((Ta + 273.15),4) + (1-albedo) * solardiffuse /(emis * 0.0000000567) + 0.32 *  (1-albedo)* solardirect/(emis * 0.0000000567),0.25) - 273.15;
+          return MRT;
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Psycrometrics related functions.
 
 /**
- * Given air temperature (Celsius), relative humidity rh (%) give globometric temperature .
+ * Given air temperature (Celsius) calculates Saturated Vapor Pressure (Torr) at Temperature T  (C) .
  *
- * @param {number} Ta Air temperature ,Tg Globe Temeperature, ws wind speed in m/s . 
+ * @param {number} T
+ * @return {number}
+ * @customfunction
+ */
+	
+  
+function vpaTorr(t) {
+    
+                     return Math.exp(18.6686 - 4030.183 / (t + 235.0));
+}
+
+
+/**
+ * Given air temperature (Celsius), air pressure (p)  gives a empirical assessement of wet bulb temperature.
+ *
+ * @param {number} t,p 
  * @return {number}
  * @customfunction
  */
 
-
-function fTmrtB (Ta,Tg,ws)
+function twetbulb_j(t,p)
 {
-         var WF;
-         var WF1 = 0.4 * (Math.abs(Tg - Ta)) ^ 0.25;
-         var WF2 = 2.5 * ws ^ 0.6;
-         if (WF1 > WF2 )
-            {WF = WF1}
-         else {WF = WF2};
-         return 100 * (((Tg + 273) / 100) ^ 4 + WF * (Tg - Ta)) ^ 0.25 - 273;
+     var  tw = (t*(0.45+(0.006*t*Math.sqrt(p/1060.0))));  
+     return TwoDec(tw);
 }
 
 
 
+/*
+ * Saturation Vapor Pressure formula for range -100..0 Deg. C.
+ * Hardy B, 1998,"ITS-90 Formulations for Vapor Pressure, Frostpoint Temperature,Dewpoint Temperature, and Enhancement Factors in the Range 100 to +100 C".
+ * Proceedings of the Third International Symposium on Humidity & Moisture",Teddington, London, England, April 1998
+*/
+
+function pvsIce(T) 
+{
+			       var k0 = -5.8666426e3;
+			       var k1 = 2.232870244e1;
+			       var k2 = 1.39387003e-2;
+			       var k3 = -3.4262402e-5;
+			       var k4 = 2.7040955e-8;
+			       var k5 = 6.7063522e-1;
+                   var lnP = k0/T + k1 + (k2 + (k3 + (k4*T))*T)*T + k5*Math.log(T);
+                   return Math.exp(lnP);
+}
+
 
 /**
- * Given a temperature  Celsius value give Vapor Pressure in kPa.
- * Hardy, R.; ITS-90 Formulations for Vapor Pressure, Frostpoint
- * Temperature, Dewpoint Temperature and Enhancement Factors in the
- * Range -100 to 100 degC; 
- * Proceedings of Third International Symposium on Humidity and Moisture;
- * edited by National Physical Laboratory (NPL), London, 1998, pp. 214-221
- * http://www.thunderscientific.com/tech_info/reflibrary/its90formulas.pdf
- *
- * @param {number} ta
+ * Given air temperature T (Celsius)  function gives Saturation Vapor Pressure. Dimension of outcomes in Pascal (kPa)
+ * Saturation Vapor Pressure formula for range 273..678 Deg. K. 
+ * Equation (30) in Section 8.1 "The Saturation-Pressure Equation (Basic Equation),Erlangen, Germany, September 1997.
+ * @param {number} T
  * @return {number}
  * @customfunction
  */
 
-function es(ta)
+function pvsWater(T) 
+{
+  
+                   var n1 = 0.11670521452767e4;
+                   var n6 = 0.14915108613530e2;
+                   var n2 = -0.72421316703206e6;
+                   var n7 = -0.48232657361591e4;
+                   var n3 = -0.17073846940092e2;
+                   var n8 = 0.40511340542057e6;
+                   var n4 = 0.12020824702470e5;
+                   var n9 = -0.23855557567849;
+                   var n5 = -0.32325550322333e7;
+                   var n10 = 0.65017534844798e3;
+
+                   var th = T+n9/(T-n10);
+                   var A = (th+n1)*th+n2;
+                   var B = (n3*th+n4)*th+n5;
+                   var C = (n6*th+n7)*th+n8;
+
+                   var p = 2*C/(-B+Math.sqrt(B*B-4*A*C));
+                   p *= p;
+                   p *= p;
+                   return p*1e6;
+}
+
+/**
+ * Given air temperature T (Celsius)  function gives Saturation Vapor Pressure. Dimension of outcomes in Pascal (hPa)
+ *
+ * @param {number} T
+ * @return {number}
+ * @customfunction
+ */
+
+function PVS(t)
+{
+  t=t+273.16;
+  var minT = 173; // -100 Deg. C.
+  var maxT = 678;
+  var noresp = -9999;
+  var pvsresp;
+  
+  if (t < minT || t> maxT) 
+     {return noresp;}
+  
+  else if (t<273.15)
+       {pvsresp=pvsIce(t)/100;}
+  else
+       {pvsresp=pvsWater(t)/100;}
+  
+  return(TwoDec(pvsresp));
+}
+
+
+
+/**
+ * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) give deficit of saturation in delta hPA
+ *
+ * @param {number} t,rh
+ * @return {number}
+ * @customfunction
+ */
+
+function deficitsat(t,rh) 
+{
+  var pws = PVS(t);
+  var pae=rh/100*pws;
+  return (pws-pae);
+}
+
+function es(t)
 {
   var es_air, tk,i;
   g = new Array(8);
@@ -362,40 +662,125 @@ function es(ta)
   g[7] =2.7150305;
   
 
-  tk = ta+273.15; 
+  tk = t+273.15; 
   
   es_air = g[7]*Math.log(tk);
   
   for ( var i = 0; i < 7; i ++ )
          {es_air = es_air+g[i]*Math.pow(tk,i-2)};
   
-  var es = Math.exp(es_air)*0.01; // convert Pa to hPa
+  var es = Math.exp(es_air)*0.01;
   
   return es;
 }
 
+function wetbulb(t,rh,pa)
+			{  
+              if (pa == undefined) {pa = 1013};
+              var Ewguess,Eguess,wetbulb,cursign;
+              var Twguess = 0;
+			  var incr = 10;
+			  var previoussign = 1;
+			  var Edifference = 1;
+		      var E2 = pvap(t,rh);
 
+			  outerloop:
                
-/**
- * Given a temperature t in Celsius give saturation pressure in kPa.
- * @param {number} t
- * @return {number} 
- * @customfunction
- */
+				while (Math.abs(Edifference) > 0.005) 
+				{
+					Ewguess = 6.112 * Math.exp((17.67 * Twguess) / (Twguess + 243.5));
+					Eguess = Ewguess - (pa) * (t - Twguess) * 0.00066 * (1 + (0.00115 * Twguess));
+					Edifference = E2 - Eguess;
+					
+					if (Edifference == 0)
+					{
+						break outerloop;Code.gs
+
+					} else {
+						if (Edifference < 0)
+						{
+							cursign = -1;
+							if (cursign != previoussign)
+							{
+								previoussign = cursign;
+								incr = incr/10;
+							} else {
+								incr = incr;
+							}
+						} else {
+							cursign = 1;
+							if (cursign != previoussign)
+							{
+								previoussign = cursign;
+								incr = incr/10;
+							} else {
+								incr = incr;
+							}
+						}
+					}
+					
+					Twguess = Twguess + incr * previoussign;
+					
+				}
+				wetbulb = Twguess;
+				return wetbulb;
+			}	
 
 
-function p_sat(t) 
+function pvap(t,rh)
+			{
+				var E;
+				E = es(t) * (rh/100);
+				return E;
+			}
+
+
+//  Purpose: calculate the saturation vapor pressure (mb) over liquid water given the temperature (K).;
+//  Reference Buck's (1981) approximation (eqn 3) of Wexler's (1976) formulae.;
+//  over liquid water;
+            
+function esat (tk) 
 {
-
-  t = t+273.15;
-  if (t > 273.15) {
-                  return (Math.exp(-5800.2206/t+1.3914993-.048640239*t+(.41764768e-4)*Math.pow(t,2.0)-(.14452093e-7)*Math.pow(t, 3.0)+6.5459673*Math.log(t))/1000.0);
-                  }
-  else            {
-                  return (Math.exp(-5674.5359/t+6.3925247-(.9677843e-2)*t+(.62215701e-6)*Math.pow(t, 2.0)+(.20747825e-8)*Math.pow(t, 3.0)-(.9484024e-12)*Math.pow(t, 4.0)+4.1635019*Math.log(t))/1000.0);
-                  }
+                  var esat= 6.1121 * Math.exp(17.502 * (tk - 273.15) / (tk - 32.18));
+                  return 1.004 * esat;  
 }
 
+
+//  Purpose: Compute the viscosity of air, kg/(m s) given temperature, K;
+//  Reference; BSL, page 23.;
+              
+function viscosity(t)
+{
+
+                       var omega = (t / 97 - 2.9) / 0.4 * (-0.034) + 1.048;
+                       return 0.0000026693 * Math.pow((28.97 * t),0.5) / (Math.pow(3.617,2) * omega);
+}
+
+//  Purpose: to calculate the convective heat tranfer coefficient for flow around a sphere.;
+//  Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;
+
+                             
+function h_sphere_in_air(t,pair,wind,windmin,diam)
+    {
+
+                                    var Rair = 8314.34 / 28.97;
+                                    var Pr = 1003.5 / (1003.5 + 1.25 * Rair);
+                                    var thermal_con = (1003.5 + 1.25 * 8314.34 / 28.97) * viscosity(t);
+                                    var density = (pair * 100) / (Rair * t)   // kg/m3;
+                                    if  (wind< windmin ){wind = windmin};
+                                    var Re = (wind * density * diam)/ viscosity(t);
+                                    var Nu = 2 + 0.6 * Math.pow(Re,0.5) * Math.pow(Pr, 0.3333);
+                                    return (Nu * thermal_con) / diam; // W/(m2 K);
+   }
+
+//  Purpose: calculate the air emissivity in function to air temperature and relative humidity;
+ 
+function emis_atm(t,rh)
+{
+                  //  Reference; Oke (2nd edition), page 373.;
+                  var e = (rh*0.01) * esat(t+273.15);
+                  return 0.575 * Math.pow(e,0.143);
+}
 
 
 /**
@@ -416,8 +801,6 @@ function press_dewpoint(t,hpa)
       {dpt=(-35.957)-1.8726*p+1.1689*p*p;}
   return (dpt);
 }
-
-
 
 /**
  * Given a air temperature t (Celsius) and air relative humidity  (RH)  and formula give the Dew point in Celsius degrees.
@@ -493,372 +876,10 @@ function spvol(ta,hum_ratio,pa)
 	t=ta+273.16;
 	y=(287.055*t*(1+1.6078*hum_ratio))/(pa*100.0);
 	return (y);
-}
-
-
-
-
-function pvap(t,rh)
-			{
-				var E;
-				E = es(t) * (rh/100);
-				return E;
-			}
-						
-
-			
-function wetbulb(t,rh,pa)
-			{   
-              var Twguess = 0;
-			  var incr = 10;
-			  var previoussign = 1;
-			  var Edifference = 1;
-		          var E2 = pvap(t,rh);
-
-			  outerloop:
-               
-				while (Math.abs(Edifference) > 0.005) 
-				{
-					Ewguess = 6.112 * Math.exp((17.67 * Twguess) / (Twguess + 243.5));
-					Eguess = Ewguess - (pa) * (t - Twguess) * 0.00066 * (1 + (0.00115 * Twguess));
-					Edifference = E2 - Eguess;
-					
-					if (Edifference == 0)
-					{
-						break outerloop;
-					} else {
-						if (Edifference < 0)
-						{
-							cursign = -1;
-							if (cursign != previoussign)
-							{
-								previoussign = cursign;
-								incr = incr/10;
-							} else {
-								incr = incr;
-							}
-						} else {
-							cursign = 1;
-							if (cursign != previoussign)
-							{
-								previoussign = cursign;
-								incr = incr/10;
-							} else {
-								incr = incr;
-							}
-						}
-					}
-					
-					Twguess = Twguess + incr * previoussign;
-					
-				}
-				wetbulb = Twguess;
-				return wetbulb;
-			}	
-
-
-
-
-
-
-
-function diffusivity (Tair,Pair)
-{
-
-                     //  Purpose compute the diffusivity of water vapor in air, m2/s;
-                     //  Reference; BSL, page 505.;
-                     var pcrit13 = Math.pow((36.4 * 218), (1/ 3));
-                     var tcrit512 = Math.pow((132 * 647.3), (5 / 12));
-                     var Tcrit12 = Math.pow((132 * 647.3), 0.5);
-                     var Mmix = Math.pow((1 / 28.97 + 1 / 18.015),0.5);
-                     return 0.000364 * (Tair / Tcrit12) ^ 2.334 * pcrit13 * tcrit512 * Mmix / (Pair / 1013.25) * 0.0001;
-}
-
-
-
-
-
-function emis_atm (ta,rh)
-{
-                  //  Reference; Oke (2nd edition), page 373.;
-                  var e = RH * esat(Ta);
-                  return 0.575 * Math.pow(e,0.143);
-}
-
-function esat (Tk)
-{
-
-              //  Purpose: calculate the saturation vapor pressure (mb) over liquid water given the temperature (K).;
-              //  Reference Buck's (1981) approximation (eqn 3) of Wexler's (1976) formulae.;
-              //  over liquid water;
-              //  correction for moist air, if pressure is ! available; for pressure > 800 mb;
-                  var esat= 6.1121 * Exp(17.502 * (Tk - 273.15) / (Tk - 32.18));
-                  return 1.004 * esat;  
-}
-
-function viscosity (Tair)
-{
-
-                   //  Purpose: Compute the viscosity of air, kg/(m s) given temperature, K;
-                   //  Reference; BSL, page 23.;
-                       var omega = (Tair / 97 - 2.9) / 0.4 * (-0.034) + 1.048;
-                       return 0.0000026693 * (28.97 * Tair) ^ 0.5 / (3.617 ^ 2 * omega);
-}
-
-
-function h_sphere_in_air (Tair,Pair,speed,speedMin,diam)
-    {
-
-                                    //  Purpose: to calculate the convective heat tranfer coefficient for flow around a sphere.;
-                                    //  Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;
-                                    var Rair = 8314.34 / 28.97;
-                                    var Pr = 1003.5 / (1003.5 + 1.25 * Rair);
-                                    var thermal_con = (1003.5 + 1.25 * 8314.34 / 28.97) * viscosity(Tair);
-                                    var density = Pair * 100 / (Rair * Tair)   // kg/m3;
-                                    if(speed < speedMin ){speed = speedMin};
-                                    var Re = speed * density * diam / viscosity(Tair);
-                                    var Nu = 2 + 0.6 * Re ^ 0.5 * Pr ^ 0.3333;
-                                    return Nu * thermal_con / diam; // W/(m2 K);
-   }
-
-function h_cylinder_in_air (Tair,Pair,speed,speedMin,diamWick)
-{
-
-          //  Purpose to calculate the convective heat transfer coefficient for a long cylinder in cross flow.;
-          //  Reference Bedingfield && Drew, eqn 32;
-          //  Author James C. Liljegren;
-          //  Decision && Information Sciences Division;
-          //  Argonne National Laboratory;
-
-          var Pr = 1003.5 / (1003.5 + 1.25 * 8314.34 / 28.97);
-          var thermal_con = (1003.5 + 1.25 * 8314.34 / 28.97) * viscosity(Tair);
-          var density = (Pair * 100) / (8314.34 / 28.97 * Tair);
-          if(speed < speedMin ){
-                    speed = speedMin;
-          }
-          var Re = speed * density * diamWick / viscosity(Tair);
-          var Nu = 0.281 * Re ^ 0.6 * Pr ^ 0.44;
-          return Nu * thermal_con / diamWick;  // W/(m2 K);
-}
-
-function Tglob_sphere  (ta,rh,speed,pair,solar,fdir,zenith,diam,alb_sfc)
-                        {
-                        if( fdir === undefined ) { fdir = 0.8;}; //Assume a proportion of direct radiation = direct/(diffuse + direct);
-                        if(zenith === undefined ) {zenith = 0;}; //Assume a proportion of direct radiation = direct/(diffuse + direct);
-                        zenith=zenith/rad;
-                        var converge,alb_sfc,cza;
-                        var speedMin = 0.1   //0 wind speed upsets log function;
-                        var Pair = 101; // in hpa
-                        var alb_globe = 0.05;
-                        var emis_globe = 0.95;
-                        var emis_sfc = 0.999;
-                        var Tair = Ta + 273.15;
-                        var RH = rh * 0.01;
-                        var Tsfc = Tair;
-                        var Tglobe_prev = Tair;
-                        converge = 0.05;
-                        Pair = pair;
-                        if(zenith <= 0 ){ zenith = 0.0000000001;};
-                        if(zenith > 1.57 ){ zenith = 1.57;}
-                        cza = Math.cos(zenith);
-                        var iter=1;
-                        do {
-                           var Tref = 0.5 * (Tglobe_prev + Tair) // Evaluate properties at the average temperature;
-                           var h = h_sphere_in_air_withdiam(Tref, Pair, speed, speedMin, diam);
-                           var Tglobe = Math.pow(Math.pow((0.5 * (emis_atm(Tair, RH) * Tair, 4) + emis_sfc * Math.pow(Tsfc , 4) - h / (emis_globe * stefanb) * (Tglobe_prev - Tair) + solar / (2 * emis_globe * stefanb) * (1 - alb_globe) * (fdir * (1 / (2 * cza) - 1) + 1 + alb_sfc))), 0.25);
-                           var dT = Tglobe - Tglobe_prev;
-                           if((Math.abs(dT) < converge) ) { Tglobe = Tglobe - 273.15;break;}
-                           iter=iter+1;
-                           } while ( iter < 500);  
-                        
-                          if ( iter === 499) {
-                             Tglobe_prev = (0.9 * Tglobe_prev + 0.1 * Tglobe);
-                          }
-                        return Tglobe;
-}
-
-function Tglob_cylinder (ta,rh,speed,pair,solar,fdir,zenith,diam,alb_sfc)
-                        {
-                        if( fdir === undefined ) { fdir = 0.8;}; //Assume a proportion of direct radiation = direct/(diffuse + direct);
-                        if(zenith === undefined ) {zenith = 0;}; 
-                        zenith=zenith/rad;
-                        var converge,alb_sfc,cza;
-                        var speedMin = 0.1   //0 wind speed upsets log function;
-                        var alb_globe = 0.05;
-                        var emis_globe = 0.95;
-                        var emis_sfc = 0.999;
-                        var Tair = Ta + 273.15;
-                        var RH = rh * 0.01;
-                        var Tsfc = Tair;
-                        var Tglobe_prev = Tair;
-                        converge = 0.05;
-                        Pair = pair;
-                        if(zenith <= 0 ){ zenith = 0.0000000001;};
-                        if(zenith > 1.57 ){ zenith = 1.57;}
-                        cza = Math.cos(zenith);
-                        var iter=1;
-                        do {
-                           var Tref = 0.5 * (Tglobe_prev + Tair) // Evaluate properties at the average temperature;
-                           var h = h_cylinder_in_air(Tref, Pair, speed, speedMin, diam);
-                           var Tglobe = Math.pow(Math.pow((0.5 * (emis_atm(Tair, RH) * Tair, 4) + emis_sfc * Math.pow(Tsfc , 4) - h / (emis_globe * stefanb) * (Tglobe_prev - Tair) + solar / (2 * emis_globe * stefanb) * (1 - alb_globe) * (fdir * (1 / (2 * cza) - 1) + 1 + alb_sfc))), 0.25);
-                           var dT = Tglobe - Tglobe_prev;
-                           if((Math.abs(dT) < converge) ) { Tglobe = Tglobe - 273.15;break;}
-                           iter=iter+1;
-                           } while ( iter < 500);  
-                        
-                          if ( iter === 499) {
-                             Tglobe_prev = (0.9 * Tglobe_prev + 0.1 * Tglobe);
-                          }
-                        return Tglobe;
-}
-
-/**
- * Given air temperature (Celsius) calculates Saturated Vapor Pressure (Torr) at Temperature T  (C) .
- *
- * @param {number} T
- * @return {number}
- * @customfunction
- */
-	
-  
-function vpaTorr(T) {
-    
-                     return Math.exp(18.6686 - 4030.183 / (T + 235.0));
-}
-
-
-
-
-/*
- * Saturation Vapor Pressure formula for range -100..0 Deg. C.
- * Hardy B, 1998,"ITS-90 Formulations for Vapor Pressure, Frostpoint Temperature,Dewpoint Temperature, and Enhancement Factors in the Range 100 to +100 C".
- * Proceedings of the Third International Symposium on Humidity & Moisture",Teddington, London, England, April 1998
-*/
-
-function pvsIce(T) 
-{
-			       var k0 = -5.8666426e3;
-			       var k1 = 2.232870244e1;
-			       var k2 = 1.39387003e-2;
-			       var k3 = -3.4262402e-5;
-			       var k4 = 2.7040955e-8;
-			       var k5 = 6.7063522e-1;
-                   var lnP = k0/T + k1 + (k2 + (k3 + (k4*T))*T)*T + k5*Math.log(T);
-                   return Math.exp(lnP);
-}
-
-
-/**
- * Given air temperature T (Celsius)  function gives Saturation Vapor Pressure. Dimension of outcomes in Pascal (kPa)
- * Saturation Vapor Pressure formula for range 273..678 Deg. K. 
- * Equation (30) in Section 8.1 "The Saturation-Pressure Equation (Basic Equation),Erlangen, Germany, September 1997.
- * @param {number} T
- * @return {number}
- * @customfunction
- */
-
-function pvsWater(T) 
-{
-  
-                   var n1 = 0.11670521452767e4;
-                   var n6 = 0.14915108613530e2;
-                   var n2 = -0.72421316703206e6;
-                   var n7 = -0.48232657361591e4;
-                   var n3 = -0.17073846940092e2;
-                   var n8 = 0.40511340542057e6;
-                   var n4 = 0.12020824702470e5;
-                   var n9 = -0.23855557567849;
-                   var n5 = -0.32325550322333e7;
-                   var n10 = 0.65017534844798e3;
-
-                   var th = T+n9/(T-n10);
-                   var A = (th+n1)*th+n2;
-                   var B = (n3*th+n4)*th+n5;
-                   var C = (n6*th+n7)*th+n8;
-
-                   var p = 2*C/(-B+Math.sqrt(B*B-4*A*C));
-                   p *= p;
-                   p *= p;
-                   return p*1e6;
-}
-
-/**
- * Given air temperature T (Celsius)  function gives Saturation Vapor Pressure. Dimension of outcomes in Pascal (hPa)
- *
- * @param {number} T
- * @return {number}
- * @customfunction
- */
-
-function PVS(T)
-{
-  T=T+273.16;
-  var minT = 173; // -100 Deg. C.
-  var maxT = 678;
-  var noresp = 9999;
-  
-  if (T < minT || T> maxT) 
-     {return noresp;}
-  
-  else if (T<273.15)
-           {return(pvsIce(T)/100);}
-  else
-           {return(pvsWater(T)/100);}
-}
-
-
-
-/**
- * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) give deficit of saturation in delta hPA
- *
- * @param {number} t,rh
- * @return {number}
- * @customfunction
- */
-
-function deficitsat(t,rh) 
-{
-  var pws = PVS(t);
-  var pae=rh/100*pws;
-  return (pws-pae);
-}
-
-/**
- * Given a temperature in Celsius, return Fahrenheit value.
- * @param {number} C
- * @return {number}
- * @customfunction
- */
-
-function C2F(C) 
-{
-  if (typeof C !== 'number') {
-                              throw TypeError('Celsius value must be a number');
-                              }
-  return (Math.round((C * 9) / 5 + 32,2));
-}
-
-/**
- * Given a temperature in Fahrenheit, return  Celsius value.
- * @param {number} F
- * @return {number}
- * @customfunction
- */
-
-function F2C(F) 
-{
-  if (typeof F !== 'number') {
-                             throw TypeError('Value must be a number');
-                             }
- return(Math.round((5/9) * (F - 32),3));
-}
-
-
-
-
+}v77
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Metabolic  related functions. 
+// Metabolic section
 
 /**
  * Given a temperature t (Celsius) and return the metabolism useful for pmv_hoppe_iso function.
@@ -872,349 +893,23 @@ function metabolism(t)
   return (-3.0909 * t + 203.64); 
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Comfort related functions. 
-
-/**
- * Given Ambient Air Temperature (< +10 Celsius), relative humidity rh (%), Relative air velocity wind ( 0.4 to 18 m/s)
- * Mean radiant temperature (Celsius),Metabolic energy production M (58 to 400 W/m2), Rate of mechanical work W( normally 0 W/m2),
- * AVAILABLE basic clothing insulation ICL ( clo = 0.155 W/m2K), Air clothing permeability p (low < 5, medium 50, high > 100 l/m2s) 
- * give a Insulation required IREQ Index ISO 11079. 
- * Reference: http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
- * @param {number} Ta,rh,v,Tr,M,W,Icl,p,w
- * @customfunction
- */
-
-
-function IREQ(Ta,rh,v,Tr,M,W,Icl,p,w,param) 
-   {
-    
-    
-   var Tsk,wetness,Tex,Pex,
-	Psks,fcl,vp,Icl,Iclr,Pa,Tcl,hc,hr,
-	IREQ,Ia,Rt,factor,Balance,R,C,Hres,calculation,ICL_ISO11079,
-	E,S,DLE,ArAdu,IclCorr,slask,worktype,ICLminimal,ICLneutral,
-	IREQneutral,IREQminimal,DLEneutral,DLEminimal = 1;
-  
-   /*  
-    * Ta (C), Ambient air temperature (< +10 C)
-    * rh (%), Relative humidity
-    * v (m/s), Relative air velocity (0.4 to 18 m/s)
-    * Tr (C), Mean radiant temperature (often close to ambient air temperature)
-    * M (W/m2), Metabolic energy production (58 to 400 W/m2)
-    * W (W/m2), Rate of mechanical work, (normally 0)
-    * Icl (clo), AVAILABLE basic clothing insulation (1 clo = 0.155 W/m2K) 
-    * p (l/m2s), Air permeability (low < 5, medium 50, high > 100 l/m2s)
-    * w (m/s), Walking speed (or calculated work created air movements) 
-  */  
-  
-   // Parameter adjustements to induce stationarity.
-  
-	if (M <= 58)  { M = 58 }; // minimum metabolic rate 
-  
-	if (M >= 400) { M = 400};
-  
-	if (Ta>10) {return(9999)}
- 
-	if (w<=0.0052*(M-58)) { w=0.0052*(M-58);};	
-	
-    if (w>=1.2) {w=1.2;};
-	
-    if (v<=0.4) {v=0.4;}
-	
-    if (v>=18){v=4;}; 
-
-    // Calculation clothing insulation parameters.
-  
-	Icl=Icl*0.155;
-	
-    Ia=0.092*Math.exp(-0.15*v-0.22*w)-0.0045;
-	
-    calculation=0;
-    
-	do {
-		
-        calculation=calculation+1;
-		
-        // Calculation of Tsk (C) and wetness (%) 
-		
-        if (calculation==1) 
-           {
-			
-        // For IREQminimal, DLEminimal ! 
-          
-			Tsk=33.34-0.0354*M;
-			wetness=0.06;
-		}
-         	else	{
-			
-        // For IREQneutral, DLEneutral ! 
-              
-			Tsk=35.7-0.0285*M;
-			wetness=0.001*M;
-	 	}
-		
-        // Calculation of Tex (C) and Pex,Psks,Pa (Pa) 
-      
-		Tex=29+0.2*Ta;                     
-		Pex=0.1333*Math.exp(18.6686-4030.183/(Tex+235));
-		Psks=0.1333*Math.exp(18.6686-4030.183/(Tsk+235)); 
-		Pa=(rh/100)*0.1333*Math.exp(18.6686-4030.183/(Ta+235));
-      
-		// Calculation of IREQ (m2C/W),Rt (m2kPa/W),fcl (n.d.),hr W/m2C with stepwise iteration 
-      
-		IREQ=0.5; hr=3; ArAdu=0.77; factor=0.5; // Initial values ! 
-        
-        do {
-			fcl=1+1.197*IREQ;        
-			Rt=(0.06/0.38)*(Ia+IREQ);
-			E=wetness*(Psks-Pa)/Rt;
-			Hres=1.73E-2*M*(Pex-Pa)+1.4E-3*M*(Tex-Ta);      
-			Tcl=Tsk-IREQ*(M-W-E-Hres);
-			hr=5.67E-8*0.95*ArAdu*(Math.exp(4*Math.log(273+Tcl))-Math.exp(4*Math.log(273+Tr)))/(Tcl-Tr);
-			hc=1/Ia-hr;
-			R=fcl*hr*(Tcl-Tr);
-			C=fcl*hc*(Tcl-Ta);
-			Balance=M-W-E-Hres-R-C;
-			if (Balance>0) 
-               {
-				IREQ=IREQ-factor;
-				factor=factor/2;
-			    }
-			else 
-                {
-				IREQ=IREQ+factor;         
-			    }
-
-		} while (Math.abs(Balance) > 0.01); 
-		
-         IREQ=(Tsk-Tcl)/(R+C);
-
-		// *** Calculation of Dlimneutral and Dlimminimal *** 
-	
-       // Calculation of S (W/m2), Rt (m2kPa/W), fcl (n.d.), hr W/m2C with stepwise iteration 
-      
-      
-		Tcl=Ta; hr=3; S=-40; ArAdu=0.77; factor=500; Iclr=Icl; // Initial values !
-		
-        do {
-			fcl=1+1.197*Iclr;
-			Iclr=((Icl+0.085/fcl)*(0.54*Math.exp(-0.15*v-0.22*w)*Math.pow(p,0.075)-0.06*Math.log(p)+0.5)-(0.092*Math.exp(-0.15*v-0.22*w)-0.0045)/fcl);
-			Rt=(0.06/0.38)*(Ia+Iclr);
-			E=wetness*(Psks-Pa)/Rt;
-			Hres=1.73E-2*M*(Pex-Pa)+1.4E-3*M*(Tex-Ta);
-			Tcl=Tsk-Iclr*(M-W-E-Hres-S);      
-			hr=5.67E-8*0.95*ArAdu*(Math.exp(4*Math.log(273+Tcl))-Math.exp(4*Math.log(273+Tr)))/(Tcl-Tr);
-			hc=1/Ia-hr;
-			R=fcl*hr*(Tcl-Tr);
-			C=fcl*hc*(Tcl-Ta);
-			Balance=M-W-E-Hres-R-C-S;  
-			if (Balance>0)  {
-				S=S+factor;
-				factor=factor/2;
-			}
-			else {
-				S=S-factor;
-			}     
-		} while (Math.abs(Balance) > 0.01);
-		
-        DLE=-40/S;
-		
-        
-        if (calculation==1) 
-            {
-			
-            IREQminimal =Math.round((IREQ/0.155)*10)/10;
-			
-            ICLminimal =Math.round((((IREQ+Ia/fcl)/(0.54*Math.exp(-0.15*v-0.22*w)*Math.pow(p,0.075)-0.06*Math.log(p)+0.5))-0.085/fcl)/0.155*10)/10;
-			
-            if (S>-8)
-             
-              { DLEminimal=8}
-			
-            else
-              {
-                DLEminimal=Math.round(DLE*10)/10;
-		      }
-            }
-		 
-        else	
-            {
-			    IREQneutral=Math.round((IREQ/0.155)*10)/10;
-			    ICLneutral=Math.round((((IREQ+Ia/fcl)/(0.54*Math.exp(-0.15*v-0.22*w)*Math.pow(p,0.075)-0.06*Math.log(p)+0.5))-0.085/fcl)/0.155*10)/10;
-			    
-                if (S>-8)
-                    { DLEneutral=8}
-			    
-                else
-                    { DLEneutral=Math.round(DLE*10)/10}
-			
-           if (Icl/0.155>ICLneutral)
-             
-              {ICL_ISO11079="AVAILABLE > REQUIRED MINIMAL & NEUTRAL basic clothing insulation"}
-           
-           else  
-			   {ICL_ISO11079="NOT AVAILABLE < REQUIRED MINIMAL & NEUTRAL basic clothing insulation"}	
-		    }
-	} while (calculation < 2);
-    
-    if (param == "IREQ_neutral") {return(IREQneutral)}
-    else if (param == "IREQ_min") {return(IREQminimal)}
-    else if (param == "ICL_neutral") {return(ICLneutral)}
-    else if (param == "ICL_min") {return(ICLminimal)}
-    else if (param == "DLE_neutral") {return(DLEneutral)}
-    else if (param == "DLE_min") {return(DLEminimal)}
-    else if (param == "ICL_ISO11079") {return(ICL_ISO11079)}
-    else  {return("Not Available")}    
-}
-
-
-/**
- * Given Ambient Air Temperature (< +10 Celsius), relative humidity rh (%), Relative air velocity wind ( 0.4 to 18 m/s)
- * Mean radiant temperature (Celsius),Metabolic energy production M (58 to 400 W/m2), Rate of mechanical work W( normally 0 W/m2),
- * AVAILABLE basic clothing insulation ICL ( clo = 0.155 W/m2K), Air clothing permeability p (low < 5, medium 50, high > 100 l/m2s) 
- * give a Recovery Time Index in hours ISO 11079. 
- * Reference: http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
- * @param {number} Ta,rh,v,Tr,M,W,Icl,p,w
- * @return {number}
- * @customfunction
- */
-
-
-function RT(Ta,rh,v,Tr,M,W,Icl,p,w) 
-    {
-	
-    if(w === undefined) { w = 0;};
-    
-    var Tsk,wetness,Tex,Pex,
-	Psks,fcl,vp,Icl,Iclr,Pa,Tcl,hc,hr,
-	IREQ,Ia,Rt,factor,Balance,R,C,Hres,calculation,RTneutral,
-	E,S,ArAdu,IclCorr,slask,worktype,DLE = 1;
-  
-   /*  
-    * Ta (C), Ambient air temperature (< +10 C)
-    * rh (%), Relative humidity
-    * v (m/s), Relative air velocity (0.4 to 18 m/s)
-    * Tr (C), Mean radiant temperature (often close to ambient air temperature)
-    * M (W/m2), Metabolic energy production (58 to 400 W/m2)
-    * W (W/m2), Rate of mechanical work, (normally 0)
-    * Icl (clo), AVAILABLE basic clothing insulation (1 clo = 0.155 W/m2K) 
-    * p (l/m2s), Air permeability (low < 5, medium 50, high > 100 l/m2s)
-    * w (m/s), Walking speed (or calculated work created air movements) 
-  */  
-  
-   // Parameter adjustements to induce stationarity.
-  
-	if (M <= 58)  { M = 58 }; // minimum metabolic rate 
-  
-	if (M >= 400) { M = 400};
-  
-	if (Ta>10) {return(9999)}
-  
-	if (w<=0.0052*(M-58)) { w=0.0052*(M-58);};	
-	
-    if (w>=1.2) {w=1.2;};
-	
-    if (v<=0.4) {v=0.4;}
-	
-    if (v>=18){v=4;}; 
-
-    // Calculation clothing insulation parameters.
-  
-	Icl=Icl*0.155;
-	
-    Ia=0.092*Math.exp(-0.15*v-0.22*w)-0.0045;
-	
-   
-	      // Calculation of Tsk (C) and wetness (%) 
-		// For RTneutral! 
-		
-        Tsk=35.7-0.0285*M;
-		wetness=0.001*M;
-		
-        // Calculation of Tex (C) and Pex,Psks,Pa (Pa) 
-		
-        Tex=29+0.2*Ta;                     
-		Pex=0.1333*Math.exp(18.6686-4030.183/(Tex+235));
-		Psks=0.1333*Math.exp(18.6686-4030.183/(Tsk+235)); 
-		Pa=(rh/100)*0.1333*Math.exp(18.6686-4030.183/(Ta+235));  
-		
-        // Calculation of S (W/m2), Rt (m2kPa/W), fcl (n.d.), hr W/m2C with stepwise iteration 
-		
-        Tcl=Ta; hr=3; S=-40; ArAdu=0.77; factor=100; Iclr=Icl;// Initial values !          
-		do {
-			fcl=1+1.97*Iclr;
-			Iclr=((Icl+0.085/fcl)*(0.54*Math.exp(-0.15*v-0.22*w)*Math.pow(p,0.075)-0.06*Math.log(p)+0.5)-
-			(0.092*Math.exp(-0.15*v-0.22*w)-0.0045)/fcl);
-			Rt=(0.06/0.38)*(Ia+Iclr);
-			E=wetness*(Psks-Pa)/Rt;
-			Hres=1.73E-2*M*(Pex-Pa)+1.4E-3*M*(Tex-Ta);
-			Tcl=Tsk-Iclr*(M-W-E-Hres-S);      
-			hr=5.67E-8*0.95*ArAdu*(Math.exp(4*Math.log(273+Tcl))-Math.exp(4*Math.log(273+Tr)))/(Tcl-Tr);
-			hc=1/Ia-hr;
-			R=fcl*hr*(Tcl-Tr);
-			C=fcl*hc*(Tcl-Ta);
-			Balance=M-W-E-Hres-R-C-S;  
-			if (Balance>0)  {
-				S=S+factor;
-				factor=factor/2;
-			}
-			else {
-				S=S-factor;         
-			}     
-		} while (Math.abs(Balance) > 0.01);
-		
-        DLE=-40/S;
-      
-		if (DLE>=0)
-            {RTneutral="Negative body storage."}
-        else
-        {RTneutral=Math.round(Math.abs(DLE)*10)/10};
-  
-         
-       return(RTneutral);
-  
-}
-
-/**
- * Given Ambient Air Temperature (< +10 Celsius) and relative air velocity wind ( 0.4 to 18 m/s)
- * give a windchill index - ISO11079. 
- * Reference: http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
- * @param {number} Ta,v
- * @return {number}
- * @customfunction
- */
-
-function windchill_new(t,v) 
-        {
-	var v,Tawci,WCI,twc = 1;
-	v = v*1.0
-	Tawci = t;
-	twc = 13.12+0.6215*Tawci-11.37*Math.pow(v,0.16)+0.3965*Tawci* Math.pow(v,0.16);
-	return(TwoDec(twc));
-        }
-
-
-
-
-
-
+// Thermal Confort index section
 
 
 
 /**
- * Given PMV value and Metabolic energy production M (58 to 400 W/m2) return the balance follwing PMV  Index ISO 7730. 
+ * Given PMV value and Metabolic energy production M (58 to 400 W/m2) return the PPD Index ISO 7730. 
  * @param {number} PMW
  * @return {number}
  * @customfunction
  */
 
 function PPD(PMV) 
-         {
+            {
                    var PPD=100-95*Math.exp(-0.03353*Math.pow(PMV,4)-0.2179*Math.pow(PMV,2))
                    return(Math.round((PPD)*10)/10);
-                   }
+            }
   
 
 
@@ -1233,236 +928,30 @@ function balancePMV7730(pmv,M)
                        return(balance);
                        } 
   
+// Person global metabolic request for a day Harris Benedict Equation (cal/day) -> kJ and divided for daily seconds Watt but already normalized for Adu.
   
-
-/**
- * Given air temperature (Celsius), relative humidity (%) give a heat index in Celsius degree. References:[1] http://www.wpc.ncep.noaa.gov/html/heatindex.shtml [2] https://en.wikipedia.org/wiki/Heat_index [3] http://www.srh.noaa.gov/images/ffc/pdf/ta_htindx.PDF
- * 
- * @param {number} t,rh
- * @return {number}
- * @customfunction
- */
-
-function heatindex(t,rh)
-{
-  var tf, tf2, ur2, hif;
-  tf = C2F(t);
-  tf2 = Math.pow(tf, 2.0);
-  ur2 = Math.pow(rh, 2.0);
-  hif = -42.379 + 2.04901523 * tf + 10.1433127 * rh - 0.22475541 *tf * rh
-        - 6.83783 * 0.001* tf2 - 5.481717 * 0.01* ur2 +1.22874 * 0.001* tf2* rh
-        + 8.5282 * 0.0001* tf * ur2 -1.99 * 0.000001* tf2* ur2;  
-  
-  if (t < 44 & t > 27 & rh < 13 )
-           {
-        return (TwoDec(F2C(hif-((13-rh)/4)*Math.sqrt((17-Mat.abs(tf-95.))/17))));
-      }
-  
-  else if (t < 31 & t > 27 & rh > 85 ) {
-        return (TwoDec(F2C(hif-((rh-85)/10) * ((87-tf)/5))));
-      }
-  
-
-  if (t > 27)
-      {
-        return (TwoDec(F2C(hif)));
-      }
-     
-  else
-      
-      {return(TwoDec(F2C(0.5 * (tf + 61.0 + ((tf-68.0) *1.2) + (rh*0.094) ))))};
-  
-}
-
-
-
-/**
- * Given air temperature (Celsius), relative humidity (%) give a heat index in Celsius degree for primates animals https://community.dur.ac.uk/r.a.hill/Hill%20et%20al%202004.pdf
- *
- * @param {number} t,rh
- * @return {number}
- * @customfunction
- */
-
-function hi_index(t,rh)
-{
-    var hi = 9999;
-    if (rh > 100.1 || rh < 0.0)
-       {return 9999}
-    else if (t > 100.0 || t < -100.0)
-       {return 9999}
-    else
-    {hi = -8.784695+(1.61139411*t)+
-                (2.338549*rh)-
-                (0.14611605*t*rh)-(1.2308094*Math.pow(10,-2)*Math.pow(t,2))
-               -(1.6424828*Math.pow(10,-2)*Math.pow(rh,2))
-               +(2.211732*Math.pow(10,-3)*Math.pow(t,2)*rh)
-               +(7.2546*Math.pow(10,-4)*t*Math.pow(rh,2))
-               -(3.582*Math.pow(10,-6)*Math.pow(rh,2));
-     }
-  
-  return TwoDec(hi);
-}
-
-/**
- * Given air temperature (Celsius), relative humidity (%),wind ( m/sec) give a Net Effective Index index in Celsius degree.
- *
- * @param {number} t,rh
- * @return {number}
- * @customfunction
- */
-
-function net_index(t,rh,wind)
-{
-    var net = 9999;
-    if (rh > 100.1 || rh < 0.0)
-       {return 9999}
-    else if (wind > 130.0 || wind < 0.0)
-       {return 9999}
-    else if (t > 100.0 || t < -100.0)
-       {return 9999}
-    else
-       {net = 37-((37-t)/(0.68-(0.0014*rh)+(1/(1.76+(1.4*(Math.pow(wind,0.75)))))))-(0.29*t*(1.0-(0.01*rh)))}
-    return TwoDec(net);
-}
+function bmr_met(mbody,age,ht,gender) 
+         { 
+          var bmr; 
+          var adu = 0.203 * Math.pow(mbody, 0.425) * Math.pow(ht, 0.725);
+   
+          if ( gender == 'female') {
+ 		          // Female
+	              bmr = 655.0955+(9.5634*(mbody))+(1.8496*(ht*100))-(4.6756*(age));
+ 	              } 
+              else {
+ 		         // Male
+	              bmr = 66.4730+(13.7516*(mbody))+(5.0033*(ht*100))-(6.7550*(age));
+ 	               }
+           var metb =((bmr* 4.1868 * 1000)/(24*60*60)); // in Watt
+           return metb/adu;
+         }
 
 
 
 
-/**
- * Given air temperature (Celsius), relative humidity (%) give Summer Simmer Index  in Celsius degree.
- *
- * @param {number} t,rh
- * @return {number}
- * @customfunction
- */
 
-function ssi_index(t,rh)
-{  
-    var ssi = 9999;
-    if (rh > 100.1 || rh < 0.0)
-       {return ssi}
-    else if (t > 100.0 || t < -100.0)
-       {return ssi}
-    else
-       {ssi = ((1.98*((((9.0/5.0)*t)+32.0)-(0.55-0.0055*rh)*((((9.0/5.0)*t)+32.0)-58.0))-56.83)-32.0)/1.8}
-    return  TwoDec(ssi);
-}
-
-
-/**
- * Given a temperature t (Celsius) and wind ( m/sec) frost time following Wind chill chart.
- * @param {number} t
- * @return {number} 
- * @customfunction
- */
-
-function frostime(t,wind)
-{
-var ft;
-
-if (wind> 100.1|| wind < 0.0)
-    return 9999;
-else if (t > -10.0 || t < -60.0)
-    return 9999;
-else{  
-     ft=(((-24.5*((0.667*wind)+4.8)+2111)*(Math.pow((-t-4.8),-1.668)))/60);
-    }
-return OneDec(ft*60);
-}
-
-
-
-
-/**
- * Given a temperature t (Celsius), relative humidity rh (%), wind ( m/sec), mean radiant temperature mtrad ( Celsius) and clothing insulation (clo) 
- * gives PMV following Hoppe scheme for a customized person.
- * @param {number} ta
- * @return {number} 
- * @customfunction
- */
-
-
-function PMV_custom(t,rh,wind,mtrad,iclo,age,mbody,ht,gender)
-{
-  var eta = 0.01; // Mechanical efficiency
-  var tcl = 30.005;
-  var MAX_LOOP = 200;
-  var MAX_LOOP_HALF = MAX_LOOP / 2;
-  var tcl_eps = 0.05;
-  var eps = 0.97;
-  var sigm = 5.67e-8;
-  var vpa, fcl, metm, metf, metb, h, aef, p1, tcl1, tcl2;
-  var hc, diff, abhc, abtcl, difhc, tsk, esw, rsum, csum;
-  var erel, eres, ed, load, ts,bmr,icl;
-
-  var adu = 0.203 * Math.pow(mbody, 0.425) * Math.pow(ht, 0.725);
-  
-  if ( gender == 'female') {
- 		// Female
-	   bmr = 655.0955+(9.5634*(mbody))+(1.8496*(ht*100))-(4.6756*(age));
- 	} else {
- 		// Male
-	   bmr = 66.4730+(13.7516*(mbody))+(5.0033*(ht*100))-(6.7550*(age));
- 	}
- 
-  var metb =((bmr* 4.1868 * 1000)/(24*60*60)); // Person global metabolic request for a day Harris Benedict Equation (cal/day) -> kJ and divided for daily seconds Watt but already normalized for Adu.
-  
-  vpa = (rh / 100) * 6.105 * Math.pow(2.718281828, ( 17.27*t / ( 237.7 + t ) ));
-  
-  icl = iclo * 0.155;
-  
-  if (icl <= 0.078) 
-     {fcl = 1 + (1.29 * icl)}
-  else {fcl = 1.05 + (0.645 * icl)};
-  
-  h = metb*adu ;
- 
-  aef = 0.71 * fcl * adu;
-
-  var tcl_guess = 35.7 - 0.032 * (metb /adu); // Initial clothing temperature
-
-  tcl1 = tcl;
-  for (var i = 0; i < MAX_LOOP; i ++)
-  {
-    if (i < MAX_LOOP_HALF)
-    {
-      hc = 12.06 * Math.sqrt(wind);
-      abhc = 0.0;
-    }
-    else
-    {
-      hc = 2.38 * Math.pow(Math.abs(tcl1 - t), 4.0);
-      abhc = 0.6 * Math.abs(Math.pow((tcl1 - t), -0.75));
-    }
-    tcl2 = tcl_guess - 0.155 * iclo * (3.94 * 0.00000001* fcl *(Math.pow((tcl1 + 273.2),4.0)- Math.pow((mtrad + 273.2), 4.0))+fcl * hc* (tcl1 - t));
-    diff = Math.abs(tcl1 - tcl2);
-    if (diff < tcl_eps)
-      break;
-    abtcl = -0.155 * iclo * (4.0 * 3.94* 0.00000001* fcl *Math.pow((tcl1+ 273.2),3.0) + fcl * hc- fcl *(tcl1 - t)* abhc)- 1.0;
-    tcl1 = tcl1 - (tcl2 - tcl1) / abtcl;
-    difhc = (12.06 * Math.sqrt(wind)) - (2.38 * (Math.pow(Math.abs(t - tcl1), 0.25)));
-    if (difhc > 0.0 && i == MAX_LOOP_HALF)
-      break;
-  }
-  tsk = 35.7 - (0.028 * h/adu); // Initial tskin temperature
-  esw = 0.42 * adu * (h / adu - 58.08);
-  esw = esw < 0.0 ? 0.0 : esw;
-  rsum = aef * eps * sigm * (Math.pow((tcl1 + 273.2), 4.0) - Math.pow((mtrad + 273.2),4.0));
-  csum = adu * fcl * hc * (tcl1 - t);
-  erel = 0.0023 * metb * (44.0 - 0.75 * vpa);
-  eres = 0.0014 * metb * (34.0 - t);
-  ed = 0.406 * adu * (1.92 * tsk - 25.3- 0.75 * vpa);
-  load = (h - ed - erel - eres - esw - rsum - csum) / adu;
-  ts = (0.303 * Math.exp(-0.036 * (h / adu)) + 0.028);
-  var pmv=ts * load;
-  return TwoDec(pmv);
-  
-  
-}
-
-
-function perceived_temperature(ta,rh,vel,tr,M,W,clo) 
+function perceived_temperature(t,rh,wind,trad,M,W,clo) 
 {
   var age = 35.0; // Age
   var mbody = 75.0; // Weigth in kg
@@ -1479,16 +968,16 @@ function perceived_temperature(ta,rh,vel,tr,M,W,clo)
 
   var adu = 0.203 * Math.pow(mbody, 0.425) * Math.pow(ht, 0.725);
   vpa = (rh / 100) * 6.105 * Math.pow(2.718281828, ( 17.27*t / ( 237.7 + t ) ));
-  icl = iclo * 0.155;
+  icl = clo * 0.155;
   if (icl <= 0.078) 
      {fcl = 1 + (1.29 * icl)}
   else {fcl = 1.05 + (0.645 * icl)};
   
-   h = M*adu;
+  h = M*adu;
  
   aef = 0.71 * fcl * adu;
 
- var tcl_guess = 35.7 - 0.032 * (M); // Initial clothing temperature
+  var tcl_guess = 35.7 - 0.032 * (M); // Initial clothing temperature
 
   tcl1 = tcl;
    for (var i = 0; i < MAX_LOOP; i ++)
@@ -1503,11 +992,11 @@ function perceived_temperature(ta,rh,vel,tr,M,W,clo)
       hc = 2.38 * Math.pow(Math.abs(tcl1 - t), 4.0);
       abhc = 0.6 * Math.abs(Math.pow((tcl1 - t), -0.75));
     }
-    tcl2 = tcl_guess - 0.155 * iclo * (3.94 * 0.00000001* fcl *(Math.pow((tcl1 + 273.2),4.0)- Math.pow((mtrad + 273.2), 4.0))+fcl * hc* (tcl1 - t));
+    tcl2 = tcl_guess - 0.155 * icl * (3.94 * 0.00000001* fcl *(Math.pow((tcl1 + 273.15),4.0)- Math.pow((trad + 273.15), 4.0))+fcl * hc* (tcl1 - t));
     diff = Math.abs(tcl1 - tcl2);
     if (diff < tcl_eps)
       break;
-    abtcl = -0.155 * iclo * (4.0 * 3.94* 0.00000001* fcl *Math.pow((tcl1+ 273.2),3.0) + fcl * hc- fcl *(tcl1 - t)* abhc)- 1.0;
+    abtcl = -0.155 * icl * (4.0 * 3.94* 0.00000001* fcl *Math.pow((tcl1+ 273.15),3.0) + fcl * hc- fcl *(tcl1 - t)* abhc)- 1.0;
     tcl1 = tcl1 - (tcl2 - tcl1) / abtcl;
     difhc = (12.06 * Math.sqrt(wind)) - (2.38 * (Math.pow(Math.abs(t - tcl1), 0.25)));
     if (difhc > 0.0 && i == MAX_LOOP_HALF)
@@ -1518,16 +1007,18 @@ function perceived_temperature(ta,rh,vel,tr,M,W,clo)
   
 }
 
-function PMV_ISO7730(ta,rh,vel,tr,M,W,clo) 
-    {
+
     
-    // ta, air temperature (Â°C)
-    // tr, mean radiant temperature ( °C)
-    // vel, relative air velocity (m/s)
+  
+function PMV_ISO7730(ta,rh,wind,trad,M,W,clo) 
+    {
+     // t, air temperature (Â°C)
     // rh, relative humidity (%) Used only this way to input humidity level
-    // met, metabolic rate (met)
+    // wind, relative air velocity (m/s)
+    // trad, mean radiant temperature ( °C)
+    // M, metabolic rate (met)
+    // W, external work, normally around 0 (met)
     // clo, clothing (clo)
-    // wme, external work, normally around 0 (met)
 
     var pa, icl, mw, fcl, hcf, taa, tra, tcla, p1, p2, p3, p4,
     p5, xn, xf, eps, hcn, hc, tcl, hl1, hl2, hl3, hl4, hl5, hl6,
@@ -1544,9 +1035,9 @@ function PMV_ISO7730(ta,rh,vel,tr,M,W,clo)
 
     //heat transf. coeff. by forced convection
   
-    hcf = 12.1 * Math.sqrt(vel);
+    hcf = 12.1 * Math.sqrt(wind);
     taa = ta + 273;
-    tra = tr + 273;
+    tra = trad + 273;
     tcla = taa + (35.5 - ta) / (3.5 * icl + 0.1);
 
     p1 = icl * fcl;
@@ -1601,25 +1092,27 @@ function PMV_ISO7730(ta,rh,vel,tr,M,W,clo)
 }
 
 
+// Introduction to Human Factors and Ergonomics for EngineersDi Mark R. Lehto,Steven J. Landry,Jim Buck
+   
 
-function HSI_index(ta,rh,vel,tr,M,W,clo,param) 
+function HSI_index(t,rh,wind,trad,M,W,clo,param) 
     {
     
     if( param === undefined ) { param = "HSI";};
  
-    // ta, air temperature ( °C)
-    // tr, mean radiant temperature ( °C)
-    // vel, relative air velocity (m/s)
+    // t, air temperature ( °C)
+    // trad, mean radiant temperature ( °C)
+    // wind, relative air velocity (m/s)
     // rh, relative humidity (%) Used only this way to input humidity level
     // met, metabolic rate (met)
+    // W, external work, normally around 0 (met)  
     // clo, clothing (clo)
-    // wme, external work, normally around 0 (met)
-
+    
     var pa, icl, mw, fcl, hcf, taa, tra, tcla, p1, p2, p3, p4,
     p5, xn, xf, eps, hcn, hc, tcl, hl1, hl2, hl3, hl4, hl5, hl6,
     ts, pmv, ppd, n;
 
-    pa = rh * 10 * Math.exp(16.6536 - 4030.183 / (ta + 235));
+    pa = rh * 10 * Math.exp(16.6536 - 4030.183 / (t + 235));
 
     icl = 0.155 * clo; //thermal insulation of the clothing in M2K/W
     mw = M - W; //internal heat production in the human body
@@ -1630,10 +1123,10 @@ function HSI_index(ta,rh,vel,tr,M,W,clo,param)
 
     //heat transf. coeff. by forced convection
   
-    hcf = 12.1 * Math.sqrt(vel);
-    taa = ta + 273;
-    tra = tr + 273;
-    tcla = taa + (35.5 - ta) / (3.5 * icl + 0.1);
+    hcf = 12.1 * Math.sqrt(wind);
+    taa = t + 273.15;
+    tra = trad + 273.15;
+    tcla = taa + (35.5 - t) / (3.5 * icl + 0.1);
 
     p1 = icl * fcl;
     p2 = p1 * 3.96;
@@ -1654,108 +1147,83 @@ function HSI_index(ta,rh,vel,tr,M,W,clo,param)
         xn = (p5 + p4 * hc - p2 * Math.pow(xf, 4)) / (100 + p3 * hc);
         ++n;
         if (n > 150) {
-              return('Max iterations exceeded');
+              return(-9999);
         }
     }
 
-    tcl = 100 * xn - 273;
-
+    tcl = 100 * xn - 273.15;
     // heat loss diff. through skin 
     hl1 = 3.05 * 0.001 * (5733 - (6.99 * mw) - pa);
     // heat loss by sweating
-    
     if (mw > 58.15) {hl2 = 0.42 * (mw - 58.15)}
-    
-    else 
+     else 
     {hl2 = 0};
     
     // latent respiration heat loss 
     hl3 = 1.7 * 0.00001 * M * (5867 - pa);
     // dry respiration heat loss
-    hl4 = 0.0014 * M * (34 - ta);
+    hl4 = 0.0014 * M * (34 - t);
     // heat loss by radiation  R
     hl5 = 3.96 * fcl * (Math.pow(xn, 4) - Math.pow(tra / 100, 4));
     // heat loss by convection C
-    hl6 = fcl * hc * (tcl - ta);
+    hl6 = fcl * hc * (tcl - t);
 
   
     var eres = mw  - hl3 - hl4 - hl5 - hl6;
+    var sweat=1
+    if (eres<0) { sweat=0}
   
-    if (eres<0) { "No sweating"}
-  
-    var emax = 2.0 * Math.pow(vel,0.6) *(42 -(rh/100)*mbtommHG(es(ta)*10));; //Introduction to Human Factors and Ergonomics for EngineersDi Mark R. Lehto,Steven J. Landry,Jim Buck
-        
+    var emax = 2.0 * Math.pow(wind,0.6) *(42 -(rh/100)*mbtommHG(es(t)));; 
+         
     if ( param  == "HSI") {return(TwoDec((eres/emax)*100))}
     else if ( param  == "AET") {return(Math.abs(2440*(eres-emax)))}
-    else { return("Check data!")};
+    else if ( param  == "Sweat") {return(sweat)}
+    else { return(-9999)};
 }
 
 
-
-function ocir_custom(t,rh,wind,mtrad,age,mbody,ht,gender)
+        
+function clomax_7730(t,rh,wind,trad,M,W) 
 {
- if( gender === undefined ) { gender = "male";};
- 
- var MAX_ITER = 50;
+ if( typeof M === undefined ) { M = 58.15;};
+ if( typeof W === undefined ) { W = 0;};
  var PMV_GOOD_sup = 0.5;
- var PMV_GOOD_inf = 0.5;
+ var pmv; 
+ var clo=0.1;
+    
+    do {
+      pmv = PMV_ISO7730(t,rh,wind,trad, M,W,clo);
+      clo= clo+0.1;
+    } while (pmv < PMV_GOOD_sup);
 
- var pmv = -1.0; 
- var clo;
- 
- var clomin;
- var clomax;
- var clorange;
-   
-  for (var j = 0; j < MAX_ITER; j ++)
-    {
-      pmv = PMV_custom(t,rh,wind,mtrad,clo,age,mbody,ht,gender);
-      
-      if (pmv > PMV_GOOD_inf) { clomin=clo};
-      if (pmv > PMV_GOOD_sup) { clomin=clo;break;};
-      
-      clo+= 0.1;
-    }
-  
-  clorange= OneDec(clomin) +" - "+OneDec(clomax);
-  
- if ( parameter == "ocir") {return(ocir)}
-    else if ( parameter == "clomax") {return(OneDec(clomax))}
-    else if ( parameter == "clomin") {return(OneDec(clomin))}
-    else { return("Parameter not indicated!")};
+ return(OneDec(clo));
 }
 
-function ocir_7730(outcome,ta,rh,vel,tr,M) 
+/**
+ * Minimal clothing level for   air temperature t (Celsius), rh,rh,wind, tr,  M, W, clo, patm
+ *
+ * @param {number} t,td
+ * @return {number}
+ * @customfunction
+ */
+
+function clomin_7730(t,rh,wind,trad,M,W) 
 {
- if( M === undefined ) { M = 58.15;};
+ if( typeof M === undefined ) { M = 58.15;};
+ if( typeof W === undefined ) { W = 0;};
   
- var MAX_ITER = 50;
- var PMV_GOOD_sup = 0.5;
- var PMV_GOOD_inf = 0.5;
+ var PMV_GOOD_inf = -0.5;
+ var pmv,clomin; 
+ var clo=0.1;
+  
+   do {
+      pmv=PMV_ISO7730(t,rh,wind,trad, M,W,clo);
+      clo= clo+0.1;
+    } while (pmv < PMV_GOOD_inf);
 
- var pmv = -1.0; 
- var clo;
- 
- var clomin;
- var clomax;
- var clorange;
-   
-  for (var j = 0; j < MAX_ITER; j ++)
-    {
-      pmv = PMV_ISO7730(ta,rh,vel,tr, M,0,clo)
-      if (pmv > PMV_GOOD_inf) { clomin=clo};
-      if (pmv > PMV_GOOD_sup) { clomin=clo;break;};
-      
-      clo+= 0.1;
-    }
-  
-  clorange= OneDec(clomin) +" - "+OneDec(clomax);
-  
- if ( parameter == "ocir") {return(ocir)}
-    else if ( parameter == "clomax") {return(OneDec(clomax))}
-    else if ( parameter == "clomin") {return(OneDec(clomin))}
-    else { return("Parameter not indicated!")};
+ return(OneDec(clo));
 }
+
 
 
 /**
@@ -1767,7 +1235,7 @@ function ocir_7730(outcome,ta,rh,vel,tr,M)
  */
 
 
-function pierceSET (ta,rh,vel,tr,M,W,clo,patm) 
+function pierceSET (t,rh,wind,trad,M,W,clo,patm) 
     {
   
      if( patm === undefined ) { patm = 1013.25;};
@@ -1780,8 +1248,8 @@ function pierceSET (ta,rh,vel,tr,M,W,clo,patm)
     X, X_OLD, CHCS, TIM, STORE, HSK, RN, ECOMF, EREQ, HD, HE, W, PSSK, CHRS, CTCS,
     RCLOS, RCLS, FACLS, FCLS, IMS, ICLS, RAS, REAS, RECLS, HD_S, HE_S;
 
-    var VaporPressure = rh * vpaTorr(ta) / 100;
-    var AirVelocity = Math.max(vel, 0.1);
+    var VaporPressure = rh * vpaTorr(t) / 100;
+    var AirVelocity = Math.max(wind, 0.1);
     var KCLO = 0.25;
     var BODYWEIGHT = 75;
     var BODYSURFACEAREA = 1.8258;
@@ -1838,7 +1306,7 @@ function pierceSET (ta,rh,vel,tr,M,W,clo,patm)
     CHR = 4.7;
     CTC = CHR + CHC;
     RA = 1.0 / (FACL * CTC); //resistance of air layer to dry heat transfer
-    TOP = (CHR * tr + CHC * ta) / CTC;
+    TOP = (CHR * trad + CHC * t) / CTC;
     TCL = TOP + (TempSkin - TOP) / (CTC * (RA + RCL));
 
     // ========================  BEGIN ITERATION
@@ -1853,10 +1321,10 @@ function pierceSET (ta,rh,vel,tr,M,W,clo,patm)
         do {
             if (flag) {
                 TCL_OLD = TCL;
-                CHR = 4.0 * SBC * Math.pow(((TCL + tr) / 2.0 + 273.15), 3.0) * 0.72;
+                CHR = 4.0 * SBC * Math.pow(((TCL + trad) / 2.0 + 273.15), 3.0) * 0.72;
                 CTC = CHR + CHC;
                 RA = 1.0 / (FACL * CTC); //resistance of air layer to dry heat transfer
-                TOP = (CHR * tr + CHC * ta) / CTC;
+                TOP = (CHR * trad + CHC * t) / CTC;
             }
             TCL = (RA * TempSkin + RCL * TOP) / (RA + RCL);
             flag = true;
@@ -1865,7 +1333,7 @@ function pierceSET (ta,rh,vel,tr,M,W,clo,patm)
         DRY = (TempSkin - TOP) / (RA + RCL);
         HFCS = (TempCore - TempSkin) * (5.28 + 1.163 * SkinBloodFlow);
         ERES = 0.0023 * M * (44.0 - VaporPressure);
-        CRES = 0.0014 * M * (34.0 - ta);
+        CRES = 0.0014 * M * (34.0 - t);
         SCR = M - HFCS - ERES - CRES - W;
         SSK = HFCS - DRY - ESK;
         TCSK = 0.97 * ALFA * BODYWEIGHT;
@@ -1981,7 +1449,362 @@ function pierceSET (ta,rh,vel,tr,M,W,clo,patm)
     return (TwoDec(X));
 }
 
+/**
+ * Given rh relative humidity (%), wind speed (m/s) , Metabolism ( W/mq), iclo mean clothing value and timing H  gives environemnt temperature of comfort.
+ *
+ * @param {number} t,rh 
+ * @return {number}
+ * @customfunction
+ */
+
+
+function ta_comfort(rh, wind, M,clo,H)
+{
+           var  t = 40.0;
+           var balance,i,C,hr,hc,Rst,WS,Rdyn,Fcl,Psk,Pa,Im,Retdyn,w,E,mres,Tex,Cres,R;
+           var  Ra = 1/9;
+           var fcl = 1+0.31 * iclo;
+           var Tsk =35.7 - .0285 * M - 3;
+           if (H == -999.0) {Tsk = 35.7 - 0.0285 * M};
+
+           Rst = clo * .155 + Ra / fcl;
+           WS = .0052 * (M - 58);
+           if  (WS > 0.7) { WS = 0.7};
+           var corr = Math.exp(0.043 - 0.398 * wind + 0.066 * wind * wind- 0.378 * WS +0.094 * WS * WS);
+           Rdyn = Rst * corr;
+           for(i=1; i<1000; i++)
+              {
+              t=t-0.1;
+ 
+              // Calculation of Convective heat loss from the skin
+              
+              C = (Tsk - t) / Rdyn;
+
+              // Calculation of radiation heat exchange
+
+              hr = 5.67E-08 * 0.97 * 0.77 * (Math.exp(4 * Math.log(Tsk +273.15)) - Math.exp(4 * Math.log(t + 273.15))) / (Tsk - t);
+              hc = 8.7 * Math.exp (0.6 * Math.log(wind));
+              if (wind < 1 ){ hc = 3.5+5.2 * wind};
+              Fcl = 1 /((hc + hr) * iclo * 0.155 + 1/fcl);
+              R = hr * Fcl * (Tsk - t);
+
+              // Calculation of Evaporative Heat Loss from the Skin
+
+              Psk = .1333 * Math.exp(18.6686 - 4030.183 / (Tsk + 235));
+              Pa = rh * .1333 * Math.exp(18.6686 - 4030.183 / (t +235)) / 100;
+              Im = .38 * (4.9 - 6.5 * corr + 2.6 * corr * corr);
+              if (Im > 0.9){Im = 0.9};  
+              Retdyn = (Rdyn / Im )/ 16.65;
+              w = .001 * M;
+              E = w * (Psk - Pa) / Retdyn;
+
+              // Calculation of Convective Heat Loss from Respiration
+
+              mres = 2.58 * .000001 * M;
+              Tex = 29 +.2 * t;
+              Cres = 1007 * mres * (Tex - t) / 1.8;
+
+              // Calculation of Evaporative Heat Loss from Respiration
+
+              var Wa = .622 * Pa / (101.325 - Pa);
+              var Pex = .1333 * Math.exp(18.6686 - 4030.183 / (Tex + 235));
+              var Wex = .622 * Pex / (101.325 - Pex);
+              var Eres = 2423000 * mres * (Wex - Wa) / 1.8;
+
+              // Calculation of heat debt or heat storage
+              var S =1;
+              if (H == -999.0) { S = 0;} else {S = 40 / H;};
+              balance = M - C - R - E - Cres - Eres - S;
+              if( balance < 0)
+              break;
+              i=i+1;
+           }
+
+           return t-0.1;
+
+}
+           
+/**   Given calculate IREQ  ISO/CD 11079
+    * t (C), Ambient air temperature (< +10 C)
+    * rh (%), Relative humidity
+    * wind (m/s), Relative air velocity (0.4 to 18 m/s)
+    * trad (C), Mean radiant temperature (often close to ambient air temperature)
+    * M (W/m2), Metabolic energy production (58 to 400 W/m2)
+    * W (W/m2), Rate of mechanical work, (normally 0)
+    * clo (clo), AVAILABLE basic clothing insulation (1 clo = 0.155 W/m2K) 
+    * param 
+    * p (l/m2s), Air permeability (low < 5, medium 50, high > 100 l/m2s)
+    * w (m/s), Walking speed (or calculated work created air movements)
+    * 	Developed by Ingvar Holmer and Hakan O. Nilsson, 1990.
+    * Altered by Hakan O. Nilsson and Ingvar Holmer, 1992.
+    * Javascript original by Tomas Morales & Pilar Armenderiz, 1998.
+    * Modified content and code by Hakan O. Nilsson and Ingvar Holmer, 2000-2002.
+  */  
+
+
+function IREQ(t,rh,wind,trad,M,W,clo,param,p,w) 
+   {
+    
+   if (typeof p === undefined) {p == 50};
+   if (typeof w === undefined) {w == 0};
+    
+   var Tsk,wetness,Tex,Pex,Ta,v,Tr,Icl,
+	Psks,fcl,vp,Icl,Iclr,Pa,Tcl,hc,hr,
+	IREQ,Ia,Rt,factor,Balance,R,C,Hres,calculation,ICL_ISO11079,
+	E,S,DLE,ArAdu,IclCorr,slask,worktype,ICLminimal,ICLneutral,
+	IREQneutral,IREQminimal,DLEneutral,DLEminimal = 1;
+     
+   
+   // Parameter adjustements to induce stationarity.
+     
+   Ta=t;v=wind;Tr=trad;Icl=clo;
+   
+	if (M <= 58)  { M = 58 };  // minimum metabolic rate 1 met
   
+	if (M >= 400) { M = 400};
+  
+	if (Ta>10) {return(-9999)};
+ 
+	if (w <=0.0052*(M-58)) { w=0.0052*(M-58)};	
+	
+    if (w>=1.2) {w=1.2};
+	
+    if (v<=0.4) {v=0.4};
+	
+    if (v>=18){v=18}; 
+
+    // Calculation clothing insulation parameters.
+  
+	Icl=Icl*0.155;
+	
+    Ia=0.092*Math.exp(-0.15*v-0.22*w)-0.0045;
+	
+    calculation=0;
+    
+	do {  calculation=calculation+1;
+		
+        if (calculation==1) 
+           {
+	       
+			Tsk=33.34-0.0354*M;
+			wetness=0.06;
+		}
+         	else	{
+			
+    		Tsk=35.7-0.0285*M;
+			wetness=0.001*M;
+	 	}
+		
+        // Calculation of Tex (C) and Pex,Psks,Pa (Pa) 
+      
+		Tex=29+0.2*Ta;                     
+		Pex=0.1333*Math.exp(18.6686-4030.183/(Tex+235));
+		Psks=0.1333*Math.exp(18.6686-4030.183/(Tsk+235)); 
+		Pa=(rh/100)*0.1333*Math.exp(18.6686-4030.183/(Ta+235));
+      
+		// Calculation of IREQ (m2C/W),Rt (m2kPa/W),fcl (n.d.),hr W/m2C with stepwise iteration 
+     	IREQ=1; hr=3; ArAdu=0.77; factor=1; // Initial values ! 
+        
+        do {
+			fcl=1+1.197*IREQ;        
+			Rt=(0.06/0.38)*(Ia+IREQ);
+			E=wetness*(Psks-Pa)/Rt;
+			Hres=1.73E-2*M*(Pex-Pa)+1.4E-3*M*(Tex-Ta);      
+			Tcl=Tsk-IREQ*(M-W-E-Hres);
+			hr=5.67E-8*0.95*ArAdu*(Math.exp(4*Math.log(273+Tcl))-Math.exp(4*Math.log(273+Tr)))/(Tcl-Tr);
+			hc=1/Ia-hr;
+			R=fcl*hr*(Tcl-Tr);
+			C=fcl*hc*(Tcl-Ta);
+			Balance=M-W-E-Hres-R-C;
+			if (Balance>0) 
+               {
+				IREQ=IREQ-factor;
+				factor=factor/2;
+			    }
+			else 
+                {
+				IREQ=IREQ+factor;         
+			    }
+
+		} while (Math.abs(Balance) > 0.01); 
+		
+         IREQ=(Tsk-Tcl)/(R+C);
+
+		Tcl=Ta; hr=3; S=-40; ArAdu=0.77; factor=500; Iclr=Icl; // Initial values !
+		
+        do {
+			fcl=1+1.197*Iclr;
+			Iclr=((Icl+0.085/fcl)*(0.54*Math.exp(-0.15*v-0.22*w)*Math.pow(p,0.075)-0.06*Math.log(p)+0.5)-(0.092*Math.exp(-0.15*v-0.22*w)-0.0045)/fcl);
+			Rt=(0.06/0.38)*(Ia+Iclr);
+			E=wetness*(Psks-Pa)/Rt;
+			Hres=1.73E-2*M*(Pex-Pa)+1.4E-3*M*(Tex-Ta);
+			Tcl=Tsk-Iclr*(M-W-E-Hres-S);      
+			hr=5.67E-8*0.95*ArAdu*(Math.exp(4*Math.log(273+Tcl))-Math.exp(4*Math.log(273+Tr)))/(Tcl-Tr);
+			hc=1/Ia-hr;
+			R=fcl*hr*(Tcl-Tr);
+			C=fcl*hc*(Tcl-Ta);
+			Balance=M-W-E-Hres-R-C-S;  
+			if (Balance>0)  {
+				S=S+factor;
+				factor=factor/2;
+			}
+			else {
+				S=S-factor;
+			}     
+		} while (Math.abs(Balance) > 0.01);
+		
+        DLE=-40/S;
+		
+        
+        if (calculation==1) 
+            {
+			
+            IREQminimal =Math.round((IREQ/0.155)*100)/100;
+		    ICLminimal =Math.round((((IREQ+Ia/fcl)/(0.54*Math.exp(-0.15*v-0.22*w)*Math.pow(p,0.075)-0.06*Math.log(p)+0.5))-0.085/fcl)/0.155*100)/100;
+		    if (param == "ICL_min") {return(ICLminimal)}
+            if (S>-8)
+             
+              { DLEminimal=8*60}
+			
+            else
+              {
+                DLEminimal=Math.round(DLE*100)/100*60;
+		      }
+            }
+		 
+        else	
+            {
+			    IREQneutral=Math.round((IREQ/0.155)*100)/100;
+			    ICLneutral=Math.round((((IREQ+Ia/fcl)/(0.54*Math.exp(-0.15*v-0.22*w)*Math.pow(p,0.075)-0.06*Math.log(p)+0.5))-0.085/fcl)/0.155*100)/100;
+			    if (param == "ICL_neutral") {return(ICLneutral)}
+                if (param == "IREQ_neutral") {return(IREQneutral)}
+                if (S>-8)
+                    { DLEneutral=8}
+			    
+                else
+                    { DLEneutral=Math.round(DLE*100)/100*60}
+			
+           if (Icl/0.155 > ICLneutral)
+             
+              {ICL_ISO11079=1} // "AVAILABLE > REQUIRED MINIMAL & NEUTRAL basic clothing insulation"
+           
+           else  
+			   {ICL_ISO11079=0}	// "NOT AVAILABLE < REQUIRED MINIMAL & NEUTRAL basic clothing insulation"
+		    }
+	} while (calculation < 2);
+    
+    if (param == "IREQ_neutral") {return(IREQneutral)}
+    else if (param == "IREQ_min") {return(IREQminimal)}
+    else if (param == "ICL_neutral") {return(ICLneutral)}
+    else if (param == "ICL_min") {return(ICLminimal)}
+    else if (param == "DLE_neutral") {return(DLEneutral)}
+    else if (param == "DLE_min") {return(DLEminimal)}
+    else if (param == "ICL_ISO11079") {return(ICL_ISO11079)}
+    else  {return(-9999)}    
+}
+
+
+/**
+ * Given Ambient Air Temperature (< +10 Celsius deg ), relative humidity rh (%), Relative air velocity wind ( 0.4 to 18 m/s)
+ * Mean radiant temperature (Celsius Deg), Metabolic energy production M (58 to 400 W/m2), Rate of mechanical work W ( normally 0 W/m2),
+ * AVAILABLE basic clothing insulation clo ( clo = 0.155 W/m2K), Air clothing ensemble permeability p (low < 5, medium 50, high > 100 l/m2s) 
+ * give a Recovery Time Index in mimutes ISO 11079. 
+ * Reference: http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
+ * @param {number} t,rh,wind,trad,M,W,clo,p,w
+ * @return {number}
+ * @customfunction
+ */
+
+
+function recovery_time(t,rh,wind,trad,M,W,clo,p,w) 
+   {
+    
+    if (typeof p === undefined) {p == 50};
+    if (typeof w === undefined) {w == 0};
+    
+    var Tsk,wetness,Tex,Pex,Ta,v,Tr,Icl,
+	Psks,fcl,vp,Icl,Iclr,Pa,Tcl,hc,hr,
+	IREQ,Ia,Rt,factor,Balance,R,C,Hres,calculation,RTneutral,
+	E,S,DLE,ArAdu,IclCorr,slask,worktype,ICLneutral,
+	IREQneutral,DLEneutral = 1;
+     
+   
+    // Parameter adjustements to induce stationarity.
+    Ta=t;v=wind;Tr=trad;Icl=clo;
+   
+	if (M <= 58)  { M = 58 };  // minimum metabolic rate 1 met
+  
+	if (M >= 400) { M = 400};
+ 
+	if (w <=0.0052*(M-58)) { w=0.0052*(M-58)};	
+	
+    if (w>=1.2) {w=1.2};
+	
+    if (v<=0.4) {v=0.4};
+	
+    if (v>=18){v=18}; 
+
+    // Calculation clothing insulation parameters.
+  
+	Icl=Icl*0.155;
+	
+    Ia=0.092*Math.exp(-0.15*v-0.22*w)-0.0045;
+  
+    // Calculation of Tsk (C) and wetness (%) for RTneutral! 
+		
+    Tsk=35.7-0.0285*M;
+	wetness=0.001*M;
+		
+     // Calculation of Tex (C) and Pex,Psks,Pa (Pa) 
+		
+     Tex=29+0.2*Ta;                     
+	 Pex=0.1333*Math.exp(18.6686-4030.183/(Tex+235));
+	 Psks=0.1333*Math.exp(18.6686-4030.183/(Tsk+235)); 
+	 Pa=(rh/100)*0.1333*Math.exp(18.6686-4030.183/(Ta+235));  
+		
+        // Calculation of S (W/m2), Rt (m2kPa/W), fcl (n.d.), hr W/m2C with stepwise iteration 
+		
+     Tcl=Ta; hr=3; S=-40; ArAdu=0.77; factor=100; Iclr=Icl; // Initial values !          
+	 do {
+			fcl=1+1.97*Iclr;
+			Iclr=((Icl+0.085/fcl)*(0.54*Math.exp(-0.15*v-0.22*w)*Math.pow(p,0.075)-0.06*Math.log(p)+0.5)-
+			(0.092*Math.exp(-0.15*v-0.22*w)-0.0045)/fcl);
+			Rt=(0.06/0.38)*(Ia+Iclr);
+			E=wetness*(Psks-Pa)/Rt;
+			Hres=1.73E-2*M*(Pex-Pa)+1.4E-3*M*(Tex-Ta);
+			Tcl=Tsk-Iclr*(M-W-E-Hres-S);      
+			hr=5.67E-8*0.95*ArAdu*(Math.exp(4*Math.log(273+Tcl))-Math.exp(4*Math.log(273+Tr)))/(Tcl-Tr);
+			hc=1/Ia-hr;
+			R=fcl*hr*(Tcl-Tr);
+			C=fcl*hc*(Tcl-Ta);
+			Balance=M-W-E-Hres-R-C-S;  
+			if (Balance>0)  {
+				S=S+factor;
+				factor=factor/2;
+			}
+			else {
+				S=S-factor;         
+			}     
+		} while (Math.abs(Balance) > 0.01);
+		
+        DLE=-40/S;
+        
+        // Negative body storage.
+     
+        if (DLE>=0)
+          
+            {RTneutral=-1} 
+        
+        else
+        
+            {RTneutral=(Math.abs(DLE)*100)/100*60};
+  
+         
+       return(RTneutral);
+  
+}
+
+
 /**
  * Given air temperature (Celsius), relative humidity (%), wind velocity (m/sec) and mean radiant temperature ( tmrt in Celsius degree) gives the Universal Thermal Climate Index in Celsius.
  *
@@ -1991,14 +1814,7 @@ function pierceSET (ta,rh,vel,tr,M,W,clo,patm)
  */
 
 function UTCI(ta,rh,wind,tmrt)  
-                     {     if (!(typeof ta === 'number' &&
-                                 typeof rh === 'number'  &&
-                                 typeof wind === 'number'  &&
-                                 typeof tmrt === 'number')  
-                              )
-                                                      {
-                                                       throw TypeError('Value must be a number');
-                                                      }
+                 {    
                   
                   var ta,pa,va, e, dtm,i;
                   e = es(ta)/10; // use vapour pressure in kPa 
@@ -2006,7 +1822,7 @@ function UTCI(ta,rh,wind,tmrt)
                   va = wind;
                   dtm = tmrt - ta;
     
-                  utci = new Array(210)
+                  utci = new Array(210);
                   
                   utci[0]=ta;
                   utci[1]=6.07562052E-01;
@@ -2225,7 +2041,7 @@ function UTCI(ta,rh,wind,tmrt)
                   for (i = 0, n = utci.length; i < n; ++i)
                       {
                            total = total+utci[i];
-                      }
+                      };
 
                   if (  ta < -50.0 || ta > 50.0 ) {total=9999};
                   if ( (tmrt < ta-30.0) || (tmrt > ta+70.0 )) {total=9999};
@@ -2235,26 +2051,130 @@ function UTCI(ta,rh,wind,tmrt)
 }
 
 /**
- * Given air temperature t (Celsius), relative humidity rh (%), wind velocity v (m/sec) and mean radiant temperature ( tr in Celsius degree) gives a simplified form Universal Thermal Climate Index in Celsius.
- *
- * @param {number} t,rh,wind,tmrt
+ * Given air temperature (Celsius), relative humidity (%) give a heat index in Celsius degree. References:[1] http://www.wpc.ncep.noaa.gov/html/heatindex.shtml [2] https://en.wikipedia.org/wiki/Heat_index [3] http://www.srh.noaa.gov/images/ffc/pdf/ta_htindx.PDF
+ * 
+ * @param {number} t,rh
  * @return {number}
  * @customfunction
  */
 
-function utci_simplified(t,rh,v,tr) 
-         {
+function heatindex(t,rh)
+{
+  var tf, tf2, ur2, hif;
+  tf = C2F(t);
+  tf2 = Math.pow(tf, 2.0);
+  ur2 = Math.pow(rh, 2.0);
+  hif = -42.379 + 2.04901523 * tf + 10.1433127 * rh - 0.22475541 *tf * rh
+        - 6.83783 * 0.001* tf2 - 5.481717 * 0.01* ur2 +1.22874 * 0.001* tf2* rh
+        + 8.5282 * 0.0001* tf * ur2 -1.99 * 0.000001* tf2* ur2;  
   
-         return(3.21 + 0.872 * t + 0.2459 * tr - 2.5078 * v - 0.0176 * rh);
-         } 
+  if (t < 44 & t > 27 & rh < 13 )
+           {
+        return (TwoDec(F2C(hif-((13-rh)/4)*Math.sqrt((17-Mat.abs(tf-95.))/17))));
+      }
+  
+  else if (t < 31 & t > 27 & rh > 85 ) {
+        return (TwoDec(F2C(hif-((rh-85)/10) * ((87-tf)/5))));
+      }
+  
+
+  if (t > 27)
+      {
+        return (TwoDec(F2C(hif)));
+      }
+     
+  else
+      
+      {return(TwoDec(F2C(0.5 * (tf + 61.0 + ((tf-68.0) *1.2) + (rh*0.094) ))))};
+  
+}
 
 
-function utci_class(t,rh,wind,tmrt) 
+
+
+/**
+ * Given air temperature (Celsius), relative humidity (%), wind velocity (m/sec), direct beam short-wavelength radiation (W/mq) and sunelev sun elevation angle (degrees) gives Steadman outdoor sun index.
+ *
+ * @param {number} t,rh,wind,rshort,sunelev
+ * @return {number}
+ * @customfunction
+ */
+
+function steadman_outdoor(t,rh,wind,rad,sunelev)
+{    
+  var steadman_outdoor_sun=-9999;
+  if (rh > 100.1 || rh < 0.0) {return -9999}
+  else if (t > 100.0 || t < -100.0) {return -9999} 
+  else {
+    var ee = (rh/1000.0)*(6.105*Math.exp((t*17.27)/(237.7+t)));
+    var q_glob = 0.56*(0.386-(0.0032*sunelev))*rad + 0.224*(0.1*rad)+ 0.028*rad- 150.0*(0.38-0.16*(Math.pow(ee,0.5))); 
+    if (q_glob > 0.0) {steadman_outdoor_sun = t+3.48*(ee)-0.7*wind +0.7*q_glob/(wind+10.0)-4.25};
+    };  
+  return TwoDec(steadman_outdoor_sun);
+}
+
+/**
+ * Given air temperature (Celsius), rh relative humidity (%), wind velocity (m/sec)  gives Steadman outdoor shade index.
+ *
+ * @param {number} t,rh,wind
+ * @return {number}
+ * @customfunction
+ */
+
+function steadman_outdoor_shade(t,rh,wind)
+{
+    var steadman_outdoor_shade,e;
+    
+    steadman_outdoor_shade = -9999;
+    
+    if (rh > 100.1 || rh < 0.0)
+        {return -9999}
+    else if (wind > 130.0 || wind < 0.0)
+        {return 9999}
+    else if (t > 100.0 || t < -100.0)
+         {return -9999}
+    else
+    {
+       e = (rh/100.0)*(6.105*Math.exp((t*17.27)/(237.7+t)));
+       steadman_outdoor_shade = t+(0.33*e)-(0.7*wind)-4.0;
+    };
+
+  
+  return TwoDec(steadman_outdoor_shade);
+}
+
+/**
+ * Given air temperature (Celsius), relative humidity (%)  gives Steadman indoor index.
+ *
+ * @param {number} t,rh 
+ * @return {number}
+ * @customfunction
+ */
+
+function steadman_indoor(t,rh)
+{ 
+    var steadman_indoor,e;
+
+    steadman_indoor = -9999;
+  
+    if (rh > 100.1 || rh < 0.0) {return -9999}
+    else if (t > 100.0 || t < -100.0) {return -9999}
+    else
+    {
+      e = (rh/100.0)*(6.105*Math.exp((t*17.27)/(237.7+t)));
+      steadman_indoor = -2.56+(0.89*t)+(0.382*e);  
+    };
+
+  return TwoDec(steadman_indoor);
+}
+
+
+function utci_class(t,rh,wind,trad) 
   {
 	
   var  utci_v,utci_c;
  
-  utci_v=UTCI(t,rh,wind,tmrt);
+  utci_v=UTCI(t,rh,wind,trad);
   
   if ( utci_v > 46.0)
    {utci_c=10.0;}
@@ -2282,12 +2202,12 @@ function utci_class(t,rh,wind,tmrt)
   return utci_c;
 }
 
-function utci_class7(t,rh, wind,tmrt) 
+function utci_class7(t,rh, wind,trad) 
 {
 	
   var  utci_v,utci_c;
  
-  utci_v=UTCI(t,rh,wind,tmrt);
+  utci_v=UTCI(t,rh,wind,trad);
   
   if ( utci_v > 46.0)
    {utci_c=7.0;}
@@ -2316,18 +2236,18 @@ function utci_class7(t,rh, wind,tmrt)
 }
     
 /**
- * Given t air temperature (Celsius), rh relative humidity (%)  gives steadman index apparant index.
+ * Given t air temperature (Celsius), rh relative humidity (%)  and wind velocity (m/s) gives steadman shade index apparant index.
  *
  * @param {number} t,rh,wind 
  * @return {number}
  * @customfunction
  */
 
-function sto_shade_class(t,rh,wind) 
+function steadman_class(t,rh,wind) 
   {
   var  stoshade_v,stoshade_c;
  
-  steadman_outdoor_shade_v=steadman_outdoor_shade(t,rh,wind);   
+  stoshade_v=steadman_outdoor_shade(t,rh,wind);   
                              
  
   if ( stoshade_v > 40.0)
@@ -2348,8 +2268,8 @@ function sto_shade_class(t,rh,wind)
     {stoshade_c=2.0;}	
   else if (stoshade_v <= -5.0)
     {stoshade_c=1.0;}
-  else if (stoshade_v == 9999)
-  {stoshade_c=9999};
+  else if (stoshade_v == -9999)
+  {stoshade_c=-9999};
 
   return stoshade_c;
   }
@@ -2427,7 +2347,7 @@ function sharlau_index_delta(t,rh)
 
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%)  gives  RSI index (RSI).
+ * Given t air temperature (Celsius), rh relative humidity (%)  gives  RSI Relative strain index  (RSI).
  *
  * @param {number} t,rh 
  * @return {number}
@@ -2436,8 +2356,7 @@ function sharlau_index_delta(t,rh)
 
 function RSI_index(t,rh) 
          {
-                           var es_vap=es(t);
-                           var vap= rh/100*es_vap;
+                           var vap= pvap(t,rh);
                            var RSI = (t-21)/(58-vap*10);
                            return TwoDec(RSI);
 
@@ -2456,9 +2375,9 @@ function humidex(t,rh)
 {
   
   var humidex,e;
-    humidex = 9999;
+      humidex = -9999;
   
-  if (rh > 100.1 || rh < 0.0) { return 9999}
+  if (rh > 100.1 || rh < 0.0) { return -9999}
   
     
   else if (t > 100.0 || t < -100.0)
@@ -2539,22 +2458,79 @@ function wbdt(t,rh)
           var wbdt;
           var tw = wetbulb(t,rh);
           wbdt = 0.4*tw+0.6*t;
-          return mdi;
+          return wbdt;
 }
 
 
+
 /**
- * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb globe temperature (WBGT) index indoor. 
+ * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature (WBGT) index indoor. 
  * @param {number} t,rh 
  * @return {number}
  * @customfunction
  */
 
-function wbgt_indoor(t,rh) 
+function wbgt_i(t,rh,wind,solar,press,elev) 
+         {
+          var wbgt;
+		  var pair=pheight(press,elev);
+          var tw = wetbulb(t,rh,pair);
+		  var tg = Tglob_sphere(t,rh,wind,solar,0.05,0.97,0.8,0);
+          wbgt = 0.7*tw+0.2*tg+0.1*t;
+          return wbgt;
+}
+
+/**
+ * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb globe temperature (WBGT) index indoor. Bernard Integration for wind. 
+ * @param {number} t,rh 
+ * Bernard TE, Pourmoghani M (1999)  "Prediction of Workplace Wet Bulb Global Temperature."  Applied Occupational and Environmental Hygiene 14: 126-134
+ * Ramsey JD, Bernard TE (2000) Heat Stress in R Harris (ed) Patty's Industrial Hygiene and Toxicology vol 2 New York: John Wiley & Sons 
+ * @return {number}
+ * @customfunction
+ */
+
+function wbgt_indoor(t,rh,wind,press,elev) 
+         {
+          if ( wind === undefined) {wind=0.1};
+          var wbgt;
+          var pair=pheight(press,elev);
+          var tw = wetbulb(t,rh,pair);
+		  wbgt= 0.67*tw+0.33*t-0.048 *Math.log(wind)*(t-tw);
+          /*if ( wind < 1.1) { wbgt= 0.04*t + 0.96*tw};*/
+          return wbgt;
+}
+
+/**
+ * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature (WBGT) index indoor. 
+ * @param {number} t,rh 
+ * @return {number}
+ * @customfunction
+ */
+
+function wbgt_nop(t,rh,tg) 
          {
           var wbgt;
           var tw = wetbulb(t,rh)
-          wbgt= 0.7*tw+0.3*t
+          wbgt = 0.7*tw+0.2*tg+0.1*t;
+          return wbgt;
+}
+
+/**
+ * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb globe temperature (WBGT) index indoor. Bernard Integration for wind. 
+ * @param {number} t,rh 
+ * Bernard TE, Pourmoghani M (1999)  "Prediction of Workplace Wet Bulb Global Temperature."  Applied Occupational and Environmental Hygiene 14: 126-134
+ * Ramsey JD, Bernard TE (2000) Heat Stress in R Harris (ed) Patty's Industrial Hygiene and Toxicology vol 2 New York: John Wiley & Sons 
+ * @return {number}
+ * @customfunction
+ */
+
+function wbgt_indoor_nop(t,rh,wind) 
+         {
+          if ( wind === undefined) {wind=1};
+          var wbgt;
+          var tw = wetbulb(t,rh)
+          wbgt= 0.67*tw+0.33*t-0.048 *Math.log(wind)*(t-tw);
+          /*if ( wind < 1.1) { wbgt= 0.04*t + 0.96*tw};*/
           return wbgt;
 }
 
@@ -2573,20 +2549,7 @@ function mdi_index(t,rh)
           return mdi;
 }
 
-/**
- * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb globe temperature (WBGT) index indoor. 
- * @param {number} t,rh 
- * @return {number}
- * @customfunction
- */
 
-function wbgt(t,rh,tg) 
-         {
-          var wbgt;
-          var tw = wetbulb(t,rh)
-          wbdt = 0.7*tw+0.1*t+0.2*tg;
-          return wbgt;
-}
 
 
 /**
@@ -2597,7 +2560,7 @@ function wbgt(t,rh,tg)
  */
 
 
-function thom(t,rh ) 
+function thom(t,rh) 
          {
           var thom;
           var tw = wetbulb(t,rh);
@@ -2605,245 +2568,104 @@ function thom(t,rh )
           return thom;
 }
 
-
 /**
- * Given air temperature (Celsius), relative humidity (%)  gives Temperature Humidity Index discomfort index. Giles (1990)
- *
- * @param {number} t,rh,wind
+ * Given Ambient Air Temperature (< +10 Celsius) and relative air velocity wind ( 0.4 to 18 m/s)
+ * give a windchill index - ISO11079. 
+ * Reference: http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
+ * @param {number} Ta,v
  * @return {number}
  * @customfunction
  */
 
-function THI(t,rh) 
-         {
-          var thi;
-          thi = t-0.55*(1-0.01*rh)*(t-14.5);
-          return thi;
-}
+function windchill(t,wind) 
+        { var Tawci,twc = 1;
+	      if (wind < 1.3) ( wind=1.3);
+	      Tawci = t;
+          wind=(3.6)*wind;
+	      twc = 13.12 + 0.6215 * Tawci-11.37 * Math.pow(wind,0.16) +0.3965 * Tawci* Math.pow(wind,0.16);
+	      return(TwoDec(twc));
+        }
+
+
+
+function wc_watt2mq (t, wind)
+			{
+				var Watts;
+                                wind=(3.6)*wind;
+				Watts = (12.1452 + 11.6222*Math.sqrt(wind) - 1.16222 * wind)*(33 - t);
+				return Watts;
+
+			}
 
 
 /**
- * Given air temperature (Celsius), relative humidity (%)  gives Temperature Humidity Index discomfort index. kliber (1964) Kliber H. H., 1964. Environmental physiology and shelter engineering. LXVII. 
- * Thermal effects of various temperature-humidity combinations on Holstein cattle as measured by physiological responses. Res. Bull. Missouri Agric. Exp. Station: 862.
- *
- * @param {number} t,rh,wind
- * @return {number}
+ * Given a temperature t (Celsius) and wind ( m/sec) frost time following Wind chill chart.
+ * @param {number} t
+ * @return {number} 
  * @customfunction
  */
 
-function THI_kliber(t,rh) 
-         {
-          var thi;
-          thi = (1.8*t-(1-0.01*rh)*(t-14.3))+32;
-          return thi;
-}
-
-
-
-
-/**
- * Given air temperature (Celsius), relative humidity (%), wind velocity (m/sec), direct beam short-wavelength radiation (W/mq) and sunelev sun elevation angle (degrees) gives Steadman outdoor sun index.
- *
- * @param {number} t,rh,wind,rshort,sunelev
- * @return {number}
- * @customfunction
- */
-
-function steadman_outdoor_sun(t,rh,wind,rshort,sunelev)
+function frostime(t,wind)
 {
-   var steadman_outdoor_sun=9999;
-   var ee = (rh/1000.0)*(6.105*exp((t*17.27)/(237.7+t)));
-   var q_glob = 0.56*(0.386-(0.0032*sunelev))*rshort + 0.224*(0.1*rshort)+ 0.028*rshort - 150.0*(0.38-0.16*(pow(ee,0.5))); 
-  
+var ft;
+
+if (wind> 100.1|| wind < 0.0)
+    return 9999;
+else if (t > -10.0 || t < -60.0)
+    return 9999;
+else{  
+     ft=(((-24.5*((0.667*wind)+4.8)+2111)*(Math.pow((-t-4.8),-1.668)))/60);
+    }
+return OneDec(ft*60);
+}
+
+/**
+ * Given air temperature (Celsius), relative humidity (%) and wind (m/s) velocity give Net effective Index  in Celsius degree.
+ *
+ * @param {number} t,rh
+ * @return {number}
+ * @customfunction
+ */
+
+
+function net_index(t,rh,wind)
+{
+    var net = 9999;
     if (rh > 100.1 || rh < 0.0)
        {return 9999}
-    else if (t > 100.0 || t < -100.0)
-    {return 9999}; 
-    
-  if (q_glob > 0.0)
-     {steadman_outdoor_sun = t+3.48*(ee)-0.7*wind +0.7*q_glob/(wind+10.0)-4.25};
-  return steadman_outdoor_sun;
-}
-
-/**
- * Given air temperature (Celsius), rh relative humidity (%), wind velocity (m/sec)  gives Steadman outdoor shade index.
- *
- * @param {number} t,rh,wind
- * @return {number}
- * @customfunction
- */
-
-function steadman_outdoor_shade(t,rh,wind)
-{
-    var steadman_outdoor_shade,e;
-    
-    steadman_outdoor_shade = 9999;
-    
-    if (rh > 100.1 || rh < 0.0)
-        {return 9999}
     else if (wind > 130.0 || wind < 0.0)
-        {return 9999}
+       {return 9999}
     else if (t > 100.0 || t < -100.0)
-         {return 9999}
+       {return 9999}
     else
-    {
-       e = (rh/100.0)*(6.105*Math.exp((t*17.27)/(237.7+t)));
-       steadman_outdoor_shade = t+(0.33*e)-(0.7*wind)-4.0;
-    };
-
-  
-  return TwoDec(steadman_outdoor_shade);
+       {net = 37-((37-t)/(0.68-(0.0014*rh)+(1/(1.76+(1.4*(Math.pow(wind,0.75)))))))-(0.29*t*(1.0-(0.01*rh)))}
+    return TwoDec(net);
 }
 
+
+
+
 /**
- * Given air temperature (Celsius), relative humidity (%)  gives Steadman indoor index.
+ * Given air temperature (Celsius), relative humidity (%) give Summer Simmer Index  in Celsius degree.
  *
- * @param {number} t,rh 
+ * @param {number} t,rh
  * @return {number}
  * @customfunction
  */
 
-function steadman_indoor(t,rh)
-{ 
-    var steadman_indoor,e;
-
-    steadman_indoor = 9999;
-  
+function ssi_index(t,rh)
+{  
+    var ssi = -9999;
     if (rh > 100.1 || rh < 0.0)
-       {return 9999}
+       {return ssi}
     else if (t > 100.0 || t < -100.0)
-       {return 9999}
+       {return ssi}
     else
-    {
-      e = (rh/100.0)*(6.105*Math.exp((t*17.27)/(237.7+t)));
-      steadman_indoor = -2.56+(0.89*t)+(0.382*e);  
-    };
-
-  return TwoDec(steadman_indoor);
-}
-
-/**
- * Given air temperature (Celsius), air pressure (p)  gives a empirical assessement of wet bulb temperature.
- *
- * @param {number} t,p 
- * @return {number}
- * @customfunction
- */
-
-function twetbulb_j(t,p)
-{
-     var  tw = (t*(0.45+(0.006*t*sqrt(p/1060.0))));  
-     return TwoDec(tw);
+       {ssi = ((1.98*((((9.0/5.0)*t)+32.0)-(0.55-0.0055*rh)*((((9.0/5.0)*t)+32.0)-58.0))-56.83)-32.0)/1.8}
+    return  TwoDec(ssi);
 }
 
 
-/**
- * Given air temperature (Celsius), rh relative humidity (%), rshort direct beam short-wavelength radiation (W/mq), rdiffuse  undireted short-wavelength radiation (W/mq), sunelev sun elevation and albedo.
-
-    angle (degrees) gives Mean Radiant Temperature.
- *
- * @param {number} t,rh,wind,rshort,sunelev
- * @return {number}
- * @customfunction
- */
-
-
-
-function temprad(t,rh,rshort,rdiffuse,sunelev,albedo)
-{
-  if( albedo === undefined ) { albedo = 0.3;};
-  
-  var temprad;
-  var emiair;
-  var tsk;
-  
-  var e = (rh/100.0)*(6.105*Math.exp((t*17.27)/(237.7+t)));
-  var sig = 5.67e-8;
-  emiair = 0.66 + 0.039 * Math.sqrt(e);
-  tsk = t + 273.12;
-  var ratio=0.0429*Math.sin(sunelev*rad)+0.345*Math.cos(sunelev*rad);
-  var proj=0.308 * Math.cos(rad * (sunelev* (0.998- (Math.pow(sunelev, 2.0) / 50000.0))));
-  temprad= Math.pow(273.16 - (emiair * Math.pow(tsk, 4) + (1-albedo) * (rdiffuse) / (sig* 0.97)+(1-albedo) * proj * ratio* ((rshort-rdiffuse)/(sig*0.97))),0.25)- 273.16;
-  return temprad;
-}
-
-
-
-/**
- * Given rh relative humidity (%), wind speed (m/s) , Metabolism ( W/mq), iclo mean clothing value and timing H  gives environemnt temperature of comfort.
- *
- * @param {number} t,rh 
- * @return {number}
- * @customfunction
- */
-
-function ta_comfort(rh, wind, M,iclo,H)
-
-{
-           var  t = 40.0,
-                balance,i,C,hr,hc,Rst,WS,Rdyn,Fcl,Psk,pa,Im,Retdyn,w,E,mres,Tex,Cres,
-                Ra = 1/9,
-                fcl = 1+0.31 * iclo,
-                Tsk =35.7 - .0285 * M - 3;
-           if (H == -999.0)
-                 {Tsk = 35.7 - 0.0285 * M};
-
-           Rst = iclo * .155 + Ra / fcl;
-           WS = .0052 * (M - 58);
-           if  (WS > 0.7) { WS = 0.7};
-           corr = Math.exp(0.043 - 0.398 * wind + 0.066 * wind * wind- 0.378 * WS +0.094 * WS * WS);
-           Rdyn = Rst * corr;
-           for(i=1; i<1000; i++)
-              {
-              t=t-0.1;
- 
-              // Calculation of Convective heat loss from the skin
-              
-              C = (Tsk - t) / Rdyn;
-
-              // Calculation of radiation heat exchange
-
-              hr = 5.67E-08 * 0.97 * 0.77 * (Math.exp(4 * Math.log(Tsk +273.15)) - Math.exp(4 * Math.log(t + 273.15))) / (Tsk - t);
-              hc = 8.7 * Math.exp (0.6 * Math.log(wind));
-              if (wind < 1 ){ hc = 3.5+5.2 * wind};
-              Fcl = 1 /((hc + hr) * iclo * 0.155 + 1/fcl);
-              R = hr * Fcl * (Tsk - t);
-
-              // Calculation of Evaporative Heat Loss from the Skin
-
-              Psk = .1333 * exp(18.6686 - 4030.183 / (Tsk + 235));
-              Pa = rh * .1333 * exp(18.6686 - 4030.183 / (t +235)) / 100;
-              Im = .38 * (4.9 - 6.5 * corr + 2.6 * corr * corr);
-              if (Im > 0.9){Im = 0.9};  
-              Retdyn = (Rdyn / Im )/ 16.65;
-              w = .001 * M;
-              E = w * (Psk - Pa) / Retdyn;
-
-              // Calculation of Convective Heat Loss from Respiration
-
-              mres = 2.58 * .000001 * M;
-              Tex = 29 +.2 * t;
-              Cres = 1007 * mres * (Tex - t) / 1.8;
-
-              // Calculation of Evaporative Heat Loss from Respiration
-
-              var Wa = .622 * Pa / (101.325 - Pa);
-              var Pex = .1333 * exp(18.6686 - 4030.183 / (Tex + 235));
-              var Wex = .622 * Pex / (101.325 - Pex);
-              var Eres = 2423000 * mres * (Wex - Wa) / 1.8;
-
-              // Calculation of heat debt or heat storage
-              var S =1;
-              if (H == -999.0) { S = 0;} else {S = 40 / H;};
-              balance = M - C - R - E - Cres - Eres - S;
-              if( balance < 0)
-              break;
-              i=i+1;
-           }
-
-           return t-0.1;
-
-}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2858,16 +2680,25 @@ function ta_comfort(rh, wind, M,iclo,H)
 
 function p_local(press,topo,temp)
 
-{
-     var temp=temp+273; // Formula isometrica di Laplace
+{    var T0;
+      if ( temp === undefined) { temp= 15.0};
+     var temp=temp+273.15; // Formula isometrica di Laplace
      var L=-0.0065; // temperature lapse rate L = -0.0065 K/m
      var R_cost=287.05 ;//gas constant for dry air, J/(kg*degK) = 287.05
      var T0=temp-(L/2)*topo;// sea level standard temperature T0 = 288.15 K
-     var p_local= press*exp(-topo*9.81/(R_cost*T0));
+     var p_local= press*Math.exp(-topo*9.81/(R_cost*T0));
      return p_local; 
  
  }
 
+
+function pheight(press,topo)
+
+{
+  var pressalt;
+  pressalt= press * Math.pow(1-(2.25577*(0.00001)*topo),5.25588);
+  return(pressalt);
+}
 
 /**
  * Given t air temperature, rh relative humidity (%), p local air pressure give partial pressure of oxygen.
@@ -2881,36 +2712,24 @@ function poda(t,rh,p)
  {
   
   var poda;
-  var  vpa = (rh / 100) * 6.105 * pow(2.718281828, ( 17.27*t / ( 237.7 + t ) ));
+  var  vpa = (rh / 100) * 6.105 * Math.pow(2.718281828, ( 17.27*t / ( 237.7 + t ) ));
   poda = 80.51 * p / (t + 273.15) * (1.0 - vpa / p);
   return poda;
 }
 
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Conversion related functions.
 
-function compass_16(direction) 
- {
-  var dir = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE",
-             "SSE", "S", "SSW", "SW", "WSW", "W", "WNW",
-            "NW", "NNW"];
-  var dirint=(((direction+11.25)/22.5));							   
-  return(dir[parseInt(dirint % 16)])
-}
+
+function mbtommHG(mb)
+			{
+				var mmHG;
+				mmHG = 0.750062*mb;
+				return mmHG;
+			}
 
 
 
-function compass_8(direction) 
-{
-  var dir = ["N",  "NE", "E",  "SE",
-             "S",  "SW", "W", "NW"];
-  var dirint=(((direction+22.5)/45));							   
-  return(dir[parseInt(dirint % 8)])
-}
-  
 
 function torr2p(vp,vpunits)
 {
@@ -2956,13 +2775,7 @@ function mbtoinHG(mb)
 				return inHG;
 			}
 			
-function mbtommHG(mb)
-			{
-				var mmHG;
-				mmHG = 0.750062*mb;
-				return mmHG;
-			}
-			
+
 function mbtokPA(mb)
 			{
 				var kPA;

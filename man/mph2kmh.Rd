@@ -19,4 +19,3 @@ Conversion speed in  miles per hour to kilometers per hour.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{mph2kmh}
-

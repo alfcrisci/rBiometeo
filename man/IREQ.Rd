@@ -7,21 +7,21 @@
 IREQ(t, rh, v, tr, M, W, Icl, p, w, param = "IREQ_neutral")
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{v  Relative air velocity in meter per seconds.}
+\item{numeric}{v  Relative air velocity in meter per second.}
 
 \item{numeric}{tr Mean radiant temperature in Celsius degree.}
 
-\item{numeric}{M  Metabolic energy production [W/mq].}
+\item{numeric}{M  Metabolic energy production in Watt per mq.}
 
-\item{numeric}{W Rate of mechanical work [W/mq].}
+\item{numeric}{W Rate of mechanical work in Watt per mq.}
 
-\item{numeric}{Icl Available basic clothing insulation [clo]}
+\item{numeric}{Icl Available basic clothing insulation in clo.}
 
-\item{numeric}{p  Air permeability of clothing ensemble [lt/m2s]}
+\item{numeric}{p  Air permeability of clothing ensemble liters on meter per second,}
 
 \item{numeric}{w  Walking speed in meter per seconds.}
 
@@ -31,13 +31,12 @@ IREQ(t, rh, v, tr, M, W, Icl, p, w, param = "IREQ_neutral")
 IREQ value
 }
 \description{
-Calculation of Required Clothing Insulation (IREQ) following elaboration of http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
-}
-\author{
-Ingvar Holmer \link{http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.htm}. R adaptation Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Calculation of Required Clothing Insulation IREQ.
 }
 \references{
 ISO 11079, 2007-12-15, ERGONOMICS OF THE THERMAL ENVIRONMENT - DETERMINATION AND INTERPRETATION OF COLD STRESS WHEN USING REQUIRED CLOTHING INSULATION (IREQ) AND LOCAL COOLING EFFECTS.
 }
+\author{
+Ingvar Holmer \link{http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.htm}. R adaptation Istituto di Biometeorologia Firenze Italy.  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{IREQ}
-

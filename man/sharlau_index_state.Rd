@@ -17,12 +17,11 @@ Sharlau State.
 \description{
 State of comfort indicated by Sharlau Index.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 Scharlau, K., 1950, Einführung eines Schwülemasstabes und Abgrenzung von Schwülezonen durch Isohygrothermen, Erdkunde, 4, 188-201.
 }
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{Sharlau}
 \keyword{index}
-

@@ -19,4 +19,3 @@ Conversion from knot per second to kilometer per hour.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{knots2kmh}
-

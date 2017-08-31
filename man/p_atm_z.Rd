@@ -21,4 +21,3 @@ Calculate local air ressure as function of elevation/altitude in meters and sea-
 \references{
 2005 ASHRAE Handbook - Fundamentals (SI) ch.6 (3)
 }
-

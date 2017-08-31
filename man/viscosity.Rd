@@ -15,11 +15,10 @@ viscosity
 \description{
 Calculates  the viscosity of air [kg/(m s)] given air temperature in Kelvin degrees.
 }
-\author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
-}
 \references{
 Oke T R, Boundary Layer Climate,Routledge Atmosphere, Weather and Climate, 2th edition, p.373.
 }
+\author{
+Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+}
 \keyword{viscosity}
-

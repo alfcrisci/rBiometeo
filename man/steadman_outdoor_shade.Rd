@@ -24,4 +24,3 @@ Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet
 }
 \keyword{Steadman,outdoor,shade,Apparent}
 \keyword{Temeperature.}
-

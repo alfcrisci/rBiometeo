@@ -7,9 +7,9 @@
 fits_index(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
 
@@ -17,16 +17,16 @@ fits_index(t, rh)
 \description{
 Calculate Fighter Index of Thermal Stress
 }
+\references{
+Nunneley SH, Stribley F,1979, Fighter index of thermal stress FITS: guidance for hot-weather aircraft operations.Aviat Space Environ Med 50, 639–42.
+}
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\references{
-Nunneley SH, Stribley F (1979) Fighter index of thermal stress (FITS): guidance for hot-weather aircraft operations.Aviat Space Environ Med 50, 639–42
-}
-\keyword{,Fighter}
+\keyword{,}
+\keyword{Fighter}
 \keyword{Index}
 \keyword{Stress}
 \keyword{Thermal}
 \keyword{fits_index}
 \keyword{of}
-

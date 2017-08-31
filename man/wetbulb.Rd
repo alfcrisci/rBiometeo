@@ -9,11 +9,9 @@ wetbulb(t, rh, pa)
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{pa  Air pressure in hPa [millibar].}
-
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{pa  Air pressure in hPa or millibar.}
 
 \item{Wet}{bulb temperature in Celsius degrees.}
 }
@@ -23,11 +21,10 @@ wetbulb(t, rh, pa)
 \description{
 DESCRIPTION
 }
+\references{
+Brice T, Hall T,2009, Wet-bulb calculator.
+}
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\references{
-Brice T, Hall T (2009) Wet-bulb calculator	\link{http://www.srh.noaa.gov/epz/?n=wxcalc}.
-}
 \keyword{wetbulb}
-

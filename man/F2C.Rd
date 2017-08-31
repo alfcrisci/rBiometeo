@@ -19,4 +19,3 @@ Convert temperature from Fahrenheit degree to  Celsius degree.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{F2C}
-

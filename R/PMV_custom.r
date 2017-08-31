@@ -3,11 +3,11 @@
 #'  Calculate Predicted Mean Vote (PMV) following ISO 7730 customizing some individual features.
 #'
 #' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in %.
-#' @param numeric wind Windspeed in meter per second [m/s].
+#' @param numeric rh Air Relative humidity in percentage.
+#' @param numeric wind Windspeed in meter per second.
 #' @param numeric tr Air temperature in Celsius degrees.
-#' @param numeric M Metabolic rate of subject [W/mq].
-#' @param numeric W Work rate of subject [W/mq].
+#' @param numeric M Metabolic rate of subject Watt per mq.
+#' @param numeric W Work rate of subject in Watt per mq.
 #' @param numeric clo Clothing insulation level in clo.
 #' @param numeric age Age in years.
 #' @param numeric mbody Body Mass in kg. 

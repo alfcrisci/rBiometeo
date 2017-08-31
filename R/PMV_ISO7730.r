@@ -3,11 +3,11 @@
 #' Calculate Predicted Mean Vote (PMV) following ISO 7730.
 #'
 #' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in %.
-#' @param numeric wind Windspeed in meter per second [m/s].
+#' @param numeric rh Air Relative humidity in percentage.
+#' @param numeric wind Windspeed in meter per second.
 #' @param numeric tr Air temperature in Celsius degrees.
-#' @param numeric M Metabolic rate of subject [W/mq].
-#' @param numeric W Work rate of subject [W/mq].
+#' @param numeric M Metabolic rate of subject in Watt per mq.
+#' @param numeric W Work rate of subject in Watt per mq.
 #' @param numeric clo Clothing insulation level in clo.
 #' @return 
 #'
@@ -22,7 +22,7 @@
 #'
 
 PMV_ISO7730=function(t,rh,wind,tr,M,W,clo) {
-                         ct$assign("ta", as.array(ta))
+                         ct$assign("ta", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("vel", as.array(wind))
                          ct$assign("tr", as.array(tr))

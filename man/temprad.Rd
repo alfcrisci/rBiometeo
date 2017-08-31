@@ -29,4 +29,3 @@ Calculate approximate mean radiant temperature.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{temprad}
-

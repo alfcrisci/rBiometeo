@@ -1,9 +1,9 @@
 #' wbdt
 #'
-#' Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb dry temperature (WBDT). 
+#' Given t air temperature (Celsius), rh relative humidity (percentage)  gives  Wet-bulb dry temperature (WBDT). 
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
 #' @return 
 #'
 #'

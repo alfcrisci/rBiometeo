@@ -21,4 +21,3 @@ Calculates the enthalpy of air/water vapor mixture [kJ/kg]. Inputs are dry-bulb 
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{enthalpy}
-

@@ -19,4 +19,3 @@ Calculate water vapor pressure in torr.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{vpaTorr}
-

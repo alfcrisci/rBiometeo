@@ -19,4 +19,3 @@ Calculate thewind sector (16 partition)  of its provenience.
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{compass_16}
-

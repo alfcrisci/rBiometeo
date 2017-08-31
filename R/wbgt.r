@@ -2,9 +2,9 @@
 #'
 #' Calculate wet bulb globe temperature index for outdoor environements.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
-#' @param numeric tg Globe temperature in Celsius Degrees.
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
+#' @param numeric tg Globe temperature in Celsius degrees.
 #' @return 
 #'
 #'

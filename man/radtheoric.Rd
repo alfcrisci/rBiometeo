@@ -27,4 +27,3 @@ Computes different theoretical radiation in W/mq for a location and a time : Glo
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
 \keyword{radtheoric}
-

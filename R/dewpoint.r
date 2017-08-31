@@ -2,9 +2,9 @@
 #'
 #' Computes Dewpoint temperature in Celsius degree following differentschemes.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
-#' @param character formula Type of formula used for saturation pressure : "NOAA","Sonntag","Paroscientific".Default is "NOAA".
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
+#' @param character formula Type of formula used for saturation pressure : "NOAA","Sonntag","Paroscientific". Default is "NOAA".
 #' @return 
 #'
 #'

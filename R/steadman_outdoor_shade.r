@@ -1,15 +1,13 @@
 #' steadman_outdoor_shade
 #'
-#' Computes Steadman's apparent temperature under shade outdoor conditions.
+#' Computes Steadman's apparent temperature under shaded outdoor conditions.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
-#' @param numeric  wind Wind speed in meteronseconds ms
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
+#' @param numeric  wind Wind speed in meter persecond.
 #' @return Apparent temperature index.
-#'
-#'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
-#' @keywords  Steadman,outdoor,shade,Apparent Temeperature.
+#' @keywords  Steadman, outdoor, shade, apparent temperature.
 #' 
 #' @export
 #'

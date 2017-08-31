@@ -2,13 +2,12 @@
 #'
 #' Computes Steadman's apparent temperature for indoor conditions where air movements are negligible.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
-#' @return 
-#'
-#'
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
+#' @return steadman_indoor
+#' 
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
-#' @keywords  steadman_indoor 
+#' @keywords  steadman, apparent temperature,indoor 
 #' 
 #' @export
 #'

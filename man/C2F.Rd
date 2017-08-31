@@ -10,7 +10,7 @@ C2F(C)
 \item{numeric}{C Temperature in Celsius degrees.}
 }
 \value{
-temperature in Fahrenheit degrees.
+
 }
 \description{
 Convert temperature from Celsius degree to Fahrenheit degree.
@@ -18,4 +18,4 @@ Convert temperature from Celsius degree to Fahrenheit degree.
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\keyword{Temperature}
+\keyword{temperature}

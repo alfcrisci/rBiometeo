@@ -9,9 +9,9 @@ ocir_custom(t, rh, wind, mtrad, age, mbody, ht, gender = "male")
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{wind Wind speed in meter per seconds [m/s].}
+\item{numeric}{wind Wind speed in meter per second.}
 
 \item{numeric}{tr Mean radiant temperature in Celsius degrees.}
 

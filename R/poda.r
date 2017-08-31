@@ -1,12 +1,11 @@
 #' poda
 #'
-#' Calculate partial pressure of oxygen in function of altitude.
+#' Calculate the partial pressure of oxygen in function of altitude.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
-#' @param p Local air pressure in hPa [millibar].
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
+#' @param p Local air pressure in hPa or millibar.
 #' @return 
-#'
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  poda, oxygen, altitude.

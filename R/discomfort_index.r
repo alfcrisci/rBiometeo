@@ -1,6 +1,6 @@
 #' discomfort_index
 #'
-#' Given t air temperature (Celsius), rh relative humidity and gives  Discomfort index (DI). It belongs to direct indexes class.
+#' Given t air temperature (Celsius), rh relative humidity gives  Discomfort index (DI). It belongs to direct indexes class.
 #'
 #' @param numeric t Air temperature in Celsius degrees.
 #' @param numeric rh Air Relative humidity in percentage.

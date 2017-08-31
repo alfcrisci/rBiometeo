@@ -7,17 +7,17 @@
 poda(t, rh, p)
 }
 \arguments{
-\item{p}{Local air pressure in hPa [millibar].}
+\item{p}{Local air pressure in hPa or millibar.}
 
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
 
 }
 \description{
-Calculate partial pressure of oxygen in function of altitude.
+Calculate the partial pressure of oxygen in function of altitude.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

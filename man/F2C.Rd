@@ -10,7 +10,7 @@ F2C(F)
 \item{numeric}{F Temperature in Fahrenheit degrees}
 }
 \value{
-umeric  Temperature in Celsius degrees.
+
 }
 \description{
 Convert temperature from Fahrenheit degree to  Celsius degree.

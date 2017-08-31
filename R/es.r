@@ -10,7 +10,7 @@
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  es 
-#' @references Proceedings of Third International Symposium on Humidity and Moisture. National Physical Laboratory (NPL), London, 1998, pp. 214-221 \link{http://www.thunderscientific.com/tech_info/reflibrary/its90formulas.pdf}
+#' @references Proceedings of Third International Symposium on Humidity and Moisture. National Physical Laboratory (NPL), London, 1998, pp. 214-221 \url{http://www.thunderscientific.com/tech_info/reflibrary/its90formulas.pdf}
 #' @export
 #'
 #'

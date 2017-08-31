@@ -17,7 +17,7 @@ dewpoint(t, rh, formula = "NOAA")
 
 }
 \description{
-Computes Dewpoint temperature in Celsius degree following differentschemes.
+Computes the dewpoint temperature in Celsius degree following different schemes.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

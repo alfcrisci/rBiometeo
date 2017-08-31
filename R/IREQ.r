@@ -14,7 +14,7 @@
 #' @param character param  Parameter of IREQ ISO 11079: "IREQ_neutral","IREQ_min","ICL_neutral","ICL_min","DLE_neutral","DLE_min","ICL_ISO11079"
 #' @return IREQ value
 #' @references ISO 11079, 2007-12-15, ERGONOMICS OF THE THERMAL ENVIRONMENT - DETERMINATION AND INTERPRETATION OF COLD STRESS WHEN USING REQUIRED CLOTHING INSULATION (IREQ) AND LOCAL COOLING EFFECTS.
-#' @author  Ingvar Holmer \link{http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.htm}. R adaptation Istituto di Biometeorologia Firenze Italy.  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Ingvar Holmer \url{http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.htm}. R adaptation Istituto di Biometeorologia Firenze Italy.  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords IREQ 
 #' @export 
 #'

@@ -15,7 +15,7 @@ discomfort_index(t, rh)
 
 }
 \description{
-Given t air temperature (Celsius), rh relative humidity and gives  Discomfort index (DI). It belongs to direct indexes class.
+Given t air temperature (Celsius), rh relative humidity gives  Discomfort index (DI). It belongs to direct indexes class.
 }
 \references{
 Thom, E.C.,1959,The discomfort index. Weather wise, 12, 57–60.

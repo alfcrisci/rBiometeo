@@ -5,7 +5,7 @@
 #' @param numeric t Air temperature in Celsius degrees.
 #' @param numeric windspeed Windspeed in meter per seconds [m/s].
 #' @return Windchill
-#' @references New Windchill NOAA calculator \link{http://www.srh.noaa.gov/epz/?n=wxcalc_windchill}
+#' @references New Windchill NOAA calculator \url{http://www.srh.noaa.gov/epz/?n=wxcalc_windchill}
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  windchill, WCT

@@ -1,15 +1,15 @@
 #' oxford_index
 #'
-#' Computes  oxford index WD index of discomfort. 
+#' Computes  the oxford index index of discomfort. 
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
 #' @return 
 #'
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  oxford_index 
-#' @references  Lind AR, Hallon RF (1957) Assessment of physiologic severity of hot climate. J Appl Physiol 11, 35–40.
+#' @references  Lind AR, Hallon RF,1957, Assessment of physiologic severity of hot climate. J Appl Physiol 11, 35–40.
 #' @export
 #'
 #'

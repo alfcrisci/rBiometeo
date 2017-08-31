@@ -3,9 +3,10 @@
 #' Convert temperature from Celsius degree to Fahrenheit degree.
 #'
 #' @param numeric C Temperature in Celsius degrees.
-#' @return temperature in Fahrenheit degrees.
+#' @return 
+#' 
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
-#' @keywords  Temperature 
+#' @keywords  temperature 
 #' 
 #' @export
 #'

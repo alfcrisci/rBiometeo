@@ -9,7 +9,7 @@ HSI_index(t, rh, wind, tr, M, W, clo, param = "HSI")
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity .}
+\item{numeric}{rh Air Relative humidity.}
 
 \item{numeric}{wind Windspeed in meter per second.}
 
@@ -24,10 +24,10 @@ HSI_index(t, rh, wind, tr, M, W, clo, param = "HSI")
 \item{character}{param index requested HSI or AET Allowable exposure time in minutes.}
 }
 \value{
-HSI
+
 }
 \description{
-Computes the Heat Strain Index. HSI is the ratio of the demand for sweat evaporation to capacity of evaporation (Ereq/Emax). This denotes also the percent of skin wettedness, which is a good predictor of warm discomfort.
+Computes the Heat Strain Index. HSI is the ratio of the demand for sweat evaporation to capacity of evaporation (Ereq on Emax). This denotes also the percent of skin wettedness, which is a good predictor of warm discomfort.
 }
 \references{
 Belding HS, Hatch TF, 1955. Index for evaluating heat stress in terms of resulting physiological strain. Heat Pip Air Condit 27, 129–36.

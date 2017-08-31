@@ -20,7 +20,7 @@ fTmrt(t, Tg, wind)
 Calculate the mean radiant temperature by using Thorrson scheme.
 }
 \references{
-Different methods for estimating the mean radiant temperature in an outdoor urban setting \link{http://onlinelibrary.wiley.com/doi/10.1002/joc.1537/full}
+Different methods for estimating the mean radiant temperature in an outdoor urban setting \url{http://onlinelibrary.wiley.com/doi/10.1002/joc.1537/full}
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

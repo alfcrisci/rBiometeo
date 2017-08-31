@@ -7,15 +7,15 @@
 ta_comfort(rh, wind, M, iclo, H)
 }
 \arguments{
-\item{M}{Metabolic rate of the subject in W/mq.}
+\item{M}{Metabolic rate of the subject in Watt per mq.}
 
 \item{iclo}{Clothing level of subject in clo unit.}
 
 \item{H}{Timimg in hours.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{wind Wind speed in meter per seconds [m/s].}
+\item{numeric}{wind Wind speed in meter per second.}
 }
 \value{
 

@@ -2,8 +2,8 @@
 #'
 #' Calculate Summer Simmer index developed in Canada.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
 #' @return 
 #'
 #'

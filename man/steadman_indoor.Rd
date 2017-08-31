@@ -7,12 +7,12 @@
 steadman_indoor(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
-
+steadman_indoor
 }
 \description{
 Computes Steadman's apparent temperature for indoor conditions where air movements are negligible.
@@ -20,4 +20,6 @@ Computes Steadman's apparent temperature for indoor conditions where air movemen
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\keyword{steadman_indoor}
+\keyword{apparent}
+\keyword{steadman,}
+\keyword{temperature,indoor}

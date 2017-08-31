@@ -7,18 +7,18 @@
 hi_index(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
 
 }
 \description{
-Given air temperature (Celsius), relative humidity (%) give a heat stress index in Celsius degree for primates animals.
+Given air temperature (Celsius), relative humidity  gives a heat stress index in Celsius degree for primates animals.
 }
 \references{
-Hill et al (2004), Indices of environmental temperatures for primates in open habitats. Websource \link(https://community.dur.ac.uk/r.a.hill/Hill%20et%20al%202004.pdf)
+Hill et al,2004, Indices of environmental temperatures for primates in open habitats.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

@@ -4,8 +4,7 @@
 #'
 #' @param numeric t Air temperature in Celsius degrees.
 #' @param numeric rh Air Relative humidity in percentage.
-#' @return Temperature Humidity Index value.
-#'
+#' @return 
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  THI, Temperature Humidity Index 

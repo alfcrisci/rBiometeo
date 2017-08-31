@@ -10,7 +10,7 @@
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  fTmrt 
-#' @references Different methods for estimating the mean radiant temperature in an outdoor urban setting \link{http://onlinelibrary.wiley.com/doi/10.1002/joc.1537/full}
+#' @references Different methods for estimating the mean radiant temperature in an outdoor urban setting \url{http://onlinelibrary.wiley.com/doi/10.1002/joc.1537/full}
 #' @export
 #'
 #'

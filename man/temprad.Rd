@@ -7,17 +7,17 @@
 temprad(t, rh, rshort, rdiffuse, sunelev, albedo = 0.3)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{rshort Direct short-wave solar radiation in W/mq.}
+\item{numeric}{rshort Direct short-wave solar radiation in Watt on mq.}
 
-\item{numeric}{rdiffuse Diffuse short-wave solar radiation in W/mq.}
+\item{numeric}{rdiffuse Diffuse short-wave solar radiation in Watt on mq.}
 
-\item{numeric}{sunelev Sun elevation in degrees}
+\item{numeric}{sunelev Sun elevation in degrees.}
 
-\item{numeric}{albedo Surrounding albedo.Default is 0.3.}
+\item{numeric}{albedo Surrounding albedo. Default is 0.3.}
 }
 \value{
 

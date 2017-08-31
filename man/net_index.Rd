@@ -17,7 +17,7 @@ net_index(t, rh, wind)
 
 }
 \description{
-Net effective temperature (NET) incorporates ambient temperature, wind speed, and relative humidity and is used in both hot and cold situations.
+Calculate the Net effective temperature (NET) incorporating ambient temperature, wind speed, and relative humidity and is used in both hot and cold situations.
 }
 \references{
 Cho KLA, Margaret Loughnan M, and Tapper T,2013, An Exploration of Temperature Metrics for Further Developing the Heat-Health Weather Warning System in Hong Kong.

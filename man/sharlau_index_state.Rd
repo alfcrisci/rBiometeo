@@ -7,15 +7,15 @@
 sharlau_index_state(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
 Sharlau State.
 }
 \description{
-State of comfort indicated by Sharlau Index.
+State of comfort indicated by Sharlau Index delta.
 }
 \references{
 Scharlau, K., 1950, Einführung eines Schwülemasstabes und Abgrenzung von Schwülezonen durch Isohygrothermen, Erdkunde, 4, 188-201.

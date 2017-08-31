@@ -1,15 +1,15 @@
 #' sto_shade_class
 #'
-#' Computes Steadman's apparent temperature class in shade conditions.
+#' Computes the correspondent Steadman's apparent temperature class in shaded conditions.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage
 #' @param numeric  wind Wind speed in meter per seconds [m/s]
 #' @return Class of Apparent temperature.
 #'
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
-#' @keywords  class,shade,apparent temperature
+#' @keywords  class, shade, apparent temperature.
 #' 
 #' @export
 #'

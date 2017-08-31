@@ -17,7 +17,7 @@ Given a temperature  Celsius value give Vapor Pressure in hPa. Hardy, R.; ITS-90
 Temperature, Dewpoint Temperature and Enhancement Factors in the Range -100 to 100 degC;
 }
 \references{
-Proceedings of Third International Symposium on Humidity and Moisture. National Physical Laboratory (NPL), London, 1998, pp. 214-221 \link{http://www.thunderscientific.com/tech_info/reflibrary/its90formulas.pdf}
+Proceedings of Third International Symposium on Humidity and Moisture. National Physical Laboratory (NPL), London, 1998, pp. 214-221 \url{http://www.thunderscientific.com/tech_info/reflibrary/its90formulas.pdf}
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

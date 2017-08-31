@@ -12,7 +12,7 @@ THI(t, rh)
 \item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
-Temperature Humidity Index value.
+
 }
 \description{
 Given air temperature (Celsius), relative humidity  gives Temperature Humidity Index discomfort. Giles (1990). Is a linearized form.

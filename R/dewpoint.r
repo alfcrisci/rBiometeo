@@ -1,6 +1,6 @@
 #' dewpoint
 #'
-#' Computes Dewpoint temperature in Celsius degree following differentschemes.
+#' Computes the dewpoint temperature in Celsius degree following different schemes.
 #'
 #' @param numeric t Air temperature in Celsius degrees.
 #' @param numeric rh Air Relative humidity in percentage.

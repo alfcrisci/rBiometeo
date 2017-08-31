@@ -3,10 +3,10 @@
 #' Calculate ocir index consisting in range of clothing insulation in moderate thermal environments based on PMV ISO 7730.
 #'
 #' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in %.
-#' @param numeric wind Wind speed in meter per seconds [m/s].
+#' @param numeric rh Air Relative humidity in percentage.
+#' @param numeric wind Wind speed in meter per second.
 #' @param numeric tr Mean radiant temperature in Celsius degrees.
-#' @param numeric M Metabolic rate of subject in W/mq.
+#' @param numeric M Metabolic rate of subject in Watt per mq.
 #' @param character outcome Type of outcome expected. Two parameters are available "clomax" and "clomin".
 
 #' @return 

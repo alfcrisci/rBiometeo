@@ -7,9 +7,9 @@
 sto_shade_class(t, rh, wind)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage}
 
 \item{numeric}{wind Wind speed in meter per seconds [m/s]}
 }
@@ -17,10 +17,12 @@ sto_shade_class(t, rh, wind)
 Class of Apparent temperature.
 }
 \description{
-Computes Steadman's apparent temperature class in shade conditions.
+Computes the correspondent Steadman's apparent temperature class in shaded conditions.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\keyword{class,shade,apparent}
-\keyword{temperature}
+\keyword{apparent}
+\keyword{class,}
+\keyword{shade,}
+\keyword{temperature.}

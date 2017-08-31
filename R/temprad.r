@@ -2,12 +2,12 @@
 #'
 #' Calculate approximate mean radiant temperature. 
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in %.
-#' @param numeric rshort Direct short-wave solar radiation in W/mq.
-#' @param numeric rdiffuse Diffuse short-wave solar radiation in W/mq.
-#' @param numeric sunelev Sun elevation in degrees
-#' @param numeric albedo Surrounding albedo.Default is 0.3.
+#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric rh Air Relative humidity in percentage.
+#' @param numeric rshort Direct short-wave solar radiation in Watt on mq.
+#' @param numeric rdiffuse Diffuse short-wave solar radiation in Watt on mq.
+#' @param numeric sunelev Sun elevation in degrees.
+#' @param numeric albedo Surrounding albedo. Default is 0.3.
 #' @return 
 #'
 #'

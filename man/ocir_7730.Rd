@@ -9,13 +9,13 @@ ocir_7730(t, rh, wind, tr, M, outcome = "clomin")
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{wind Wind speed in meter per seconds [m/s].}
+\item{numeric}{wind Wind speed in meter per second.}
 
 \item{numeric}{tr Mean radiant temperature in Celsius degrees.}
 
-\item{numeric}{M Metabolic rate of subject in W/mq.}
+\item{numeric}{M Metabolic rate of subject in Watt per mq.}
 
 \item{character}{outcome Type of outcome expected. Two parameters are available "clomax" and "clomin".}
 }

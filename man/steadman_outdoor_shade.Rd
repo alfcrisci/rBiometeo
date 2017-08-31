@@ -7,20 +7,23 @@
 steadman_outdoor_shade(t, rh, wind)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in %.}
+\item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{wind Wind speed in meteronseconds ms}
+\item{numeric}{wind Wind speed in meter persecond.}
 }
 \value{
 Apparent temperature index.
 }
 \description{
-Computes Steadman's apparent temperature under shade outdoor conditions.
+Computes Steadman's apparent temperature under shaded outdoor conditions.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\keyword{Steadman,outdoor,shade,Apparent}
-\keyword{Temeperature.}
+\keyword{Steadman,}
+\keyword{apparent}
+\keyword{outdoor,}
+\keyword{shade,}
+\keyword{temperature.}

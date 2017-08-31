@@ -1,6 +1,6 @@
 #' fits_index
 #'
-#' Calculate Fighter Index of Thermal Stress 
+#' Calculate Fighter Index of Thermal Stress FITS
 #'
 #' @param numeric t Air temperature in Celsius degrees.
 #' @param numeric rh Air Relative humidity in percentage.

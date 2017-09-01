@@ -24,7 +24,7 @@
 ocir_7730=function(t,rh,wind,tr,M,outcome="clomin") {
                          if ( length(outcome)==1) {outcome=rep(outcome,length(t))}
                          ct$assign("outcome", as.array(outcome))
-                         ct$assign("ta", as.array(ta))
+                         ct$assign("ta", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("vel", as.array(wind))
                          ct$assign("tr", as.array(tr))

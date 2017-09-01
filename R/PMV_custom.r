@@ -36,7 +36,7 @@ PMV_custom=function(t,rh,wind,tr,iclo,age,mbody,ht,gender="male") {
                          ct$assign("mbody", as.array(mbody))
                          ct$assign("ht", as.array(ht))
                          ct$assign("gender", as.array(gender))
-                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=PMV_custom(t[i],rh[i],wind[i],mtrad[i],iclo[i],age[i],mbody[i],ht[i],gender[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=PMV_custom(t[i],rh[i],wind[i],mtrad[i],iclo[0],age[0],mbody[0],ht[0],gender[0])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

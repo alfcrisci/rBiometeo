@@ -194,7 +194,7 @@ function dayname_IT(date)
 
 function sun_data(serial,lat,lon,parameter) 
    {
-	var datetime=ExcelDateToJSDate(serial);   
+	var datetime=parseISO8601String(serial);   
     udtTimedHours = datetime.getHours() - 0;
     udtTimedMinutes =datetime.getMinutes() - 0;
     udtTimedSeconds = datetime.getSeconds() - 0;
@@ -258,7 +258,7 @@ function sun_data(serial,lat,lon,parameter)
 
 function radtheoric(serial,lat,lon,albedo,param)
 { 
-  var datetime=ExcelDateToJSDate(serial); 
+  var datetime=parseISO8601String(serial); 
   if( albedo === undefined ) { albedo = 0.3;};
   var radcalcteoric;
   var elev=sun_data(datetime,lat,lon,"elevation");
@@ -287,7 +287,7 @@ function radtheoric(serial,lat,lon,albedo,param)
 
 function rad_direct_tilted  (serial,lat,lon,planezen,planeaz) 
 {
-                            var datetime=ExcelDateToJSDate(serial); 
+                            var datetime=parseISO8601String(serial); 
                             var az=sun_data(datetime,lat,lon,"elevation");
                             var elev=sun_data(datetime,lat,lon,"elevation");
                             planezen=planezen/rad;

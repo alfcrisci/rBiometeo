@@ -1,8 +1,8 @@
 #' RSI_index
 #'
-#' Calculates Relative strain index.
+#' Calculates Relative Strain Index.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
+#' @param numeric t Air temperature in Celsius degrees.
 #' @param numeric rh Air Relative humidity in percentage.
 #' @return 
 #'

@@ -19,7 +19,7 @@
 pvap=function(t,rh) {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
-                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ rel[i]=pvap(t[i],rh[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=pvap(t[i],rh[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

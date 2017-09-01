@@ -4,7 +4,7 @@
 \alias{PMV_custom}
 \title{PMV_custom}
 \usage{
-PMV_custom(t, rh, wind, tr, iclo, age, mbody, ht, gender = "male")
+PMV_custom(t, rh, wind, tr, clo, age, mbody, ht, gender = "male")
 }
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}

@@ -9,7 +9,7 @@ windchill(t, v)
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
 
-\item{numeric}{windspeed Windspeed in meter per seconds [m/s].}
+\item{numeric}{v Windspeed in meter per second.}
 }
 \value{
 Windchill

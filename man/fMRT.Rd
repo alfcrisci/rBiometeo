@@ -4,7 +4,7 @@
 \alias{fMRT}
 \title{fMRT}
 \usage{
-fMRT(t, solar)
+fMRT(t, rad, frad)
 }
 \arguments{
 \item{numeric}{t Air temperature in Celsius Degrees.}

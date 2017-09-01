@@ -16,8 +16,6 @@ clomax_7730(t, rh, wind, tr, M)
 \item{numeric}{tr Mean radiant temperature in Celsius degrees.}
 
 \item{numeric}{M Metabolic rate of subject in Watt per mq.}
-
-\item{character}{outcome Type of outcome expected. Two parameters are available "clomax" and "clomin".}
 }
 \value{
 

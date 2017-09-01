@@ -25,7 +25,7 @@
 #'
 
 Tglob_sphere=function(t,rh,speed,solar,diam,fdir,zenith,albedo) {
-                         ct$assign("ta", as.array(ta))
+                         ct$assign("ta", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("speed", as.array(speed))
                          ct$assign("pair", as.array(speed))

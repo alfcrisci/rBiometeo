@@ -17,7 +17,7 @@
 #'
 #'
 
-fMRT=function(t,solar) {
+fMRT=function(t,rad,frad) {
                          ct$assign("Ta", as.array(t))
                          ct$assign("solar", as.array(rad))
                          ct$assign("frad", as.array(frad))

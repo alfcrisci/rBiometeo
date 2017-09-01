@@ -25,8 +25,7 @@
 #'
 #'
 
-PMV_custom=function(t,rh,wind,tr,iclo,age,mbody,ht,gender="male") {
-                         if ( length(gender)==1) { gender=rep(gender,length(t)) }
+PMV_custom=function(t,rh,wind,tr,clo,age,mbody,ht,gender="male") {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))

@@ -112,13 +112,13 @@ function getDOY(datetime)
 }
 
 function toJulian(date) 
-{ return date.valueOf() / (1000 *60*60 * 24) -0.5 + J1970; };  // è il calcolo JD corretto.
+{ return date.valueOf() / (1000 *60*60 * 24) -0.5 + J1970; }  // è il calcolo JD corretto.
 
 function fromJulian(j)  
-{ return new Date((j + 0.5 - J1970) * (1000 *60*60 * 24)); }; 
+{ return new Date((j + 0.5 - J1970) * (1000 *60*60 * 24)); } 
 
 function toDays(date)  
- { return toJulian(date) - J2000; };
+ { return toJulian(date) - J2000; }
 
 function parseISO8601String(dateString) 
     {
@@ -156,7 +156,7 @@ function parseISO8601String(dateString)
 
 function isLeapYear(yr) 
 {
-  return ((yr % 4 == 0 && yr % 100 != 0) || yr % 400 == 0);
+  return ((yr % 4 === 0 && yr % 100 !== 0) || yr % 400 === 0);
 }
 
 /**
@@ -194,7 +194,8 @@ function dayname_IT(date)
 
 function sun_data(serial,lat,lon,parameter) 
    {
-	var datetime=parseISO8601String(serial);   
+	var datetime=parseISO8601String(serial);
+	var refractionCorrection;
     udtTimedHours = datetime.getHours() - 0;
     udtTimedMinutes =datetime.getMinutes() - 0;
     udtTimedSeconds = datetime.getSeconds() - 0;
@@ -234,14 +235,14 @@ function sun_data(serial,lat,lon,parameter)
     azimuth = udtSunCoordinatesdAzimuth;
     zenith = udtSunCoordinatesdZenithAngle;
     elevation = 90 - udtSunCoordinatesdZenithAngle;
-    if (elevation > 85.0) {var refractionCorrection = 0.0;} 
+    if (elevation > 85.0) {refractionCorrection = 0.0;} 
         else {
         var te = Math.tan (degToRad(elevation));
         if (elevation > 5.0) 
-            {var refractionCorrection = 58.1 / te - 0.07 / (te*te*te) + 0.000086 / (te*te*te*te*te);} 
+            {refractionCorrection = 58.1 / te - 0.07 / (te*te*te) + 0.000086 / (te*te*te*te*te);} 
         else if (elevation > -0.575) 
-               {var refractionCorrection = 1735.0 + elevation * (-518.2 + elevation * (103.4 + elevation * (-12.79 + elevation * 0.711) ) );}  
-        else {var refractionCorrection = -20.774 / te;}
+               {refractionCorrection = 1735.0 + elevation * (-518.2 + elevation * (103.4 + elevation * (-12.79 + elevation * 0.711) ) );}  
+        else {refractionCorrection = -20.774 / te;}
         refractionCorrection = refractionCorrection / 3600.0;
     }
 
@@ -252,9 +253,10 @@ function sun_data(serial,lat,lon,parameter)
     else if ( parameter == "elevation") {return(FourDec(elevation))}
     else if ( parameter == "declination") {return(dDeclination*(180/PI))}
     else if ( parameter == "JD") {return(dJulianDate)}
-    else { return("Parameter not indicated!")};
+    else { return("Parameter not indicated!")}
      
 }
+
 
 function radtheoric(serial,lat,lon,albedo,param)
 { 
@@ -1314,6 +1316,46 @@ function clomin_7730(t,rh,wind,trad,M,W)
  return(OneDec(clo));
 }
 
+function clomax_custom(t,rh,wind,mtrad,age,mbody,ht,gender) 
+{
+ if( typeof M === undefined ) { M = 58.15;};
+ if( typeof W === undefined ) { W = 0;};
+ var PMV_GOOD_sup = 0.5;
+ var pmv; 
+ var clo=5;
+    
+    do {
+      pmv = PMV_custom(t,rh,wind,mtrad,clo,age,mbody,ht,gender);
+      clo= clo+0.1;
+    } while (pmv < PMV_GOOD_sup);
+
+ return(OneDec(clo));
+}
+
+/**
+ * Minimal clothing level for   air temperature t (Celsius), rh,rh,wind, tr,  M, W, clo, patm
+ *
+ * @param {number} t,td
+ * @return {number}
+ * @customfunction
+ */
+
+function clomin_custom(t,rh,wind,mtrad,age,mbody,ht,gender) 
+{
+ if( typeof M === undefined ) { M = 58.15;};
+ if( typeof W === undefined ) { W = 0;};
+  
+ var PMV_GOOD_inf = -0.5;
+ var pmv,clomin; 
+ var clo=0.1;
+  
+   do {
+      pmv=PMV_custom(t,rh,wind,mtrad,clo,age,mbody,ht,gender) ;
+      clo= clo+0.1;
+    } while (pmv > PMV_GOOD_inf);
+
+ return(OneDec(clo));
+}
 
 
 /**

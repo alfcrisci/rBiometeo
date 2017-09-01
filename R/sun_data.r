@@ -19,8 +19,10 @@
 #'
 
 sun_data=function(datetime,lat,lon,parameter="azimuth") {
-                         if ( length(datetime)>1) {parameter=rep(parameter,length(datetime))}
-                         ct$assign("datetime", as.array(datetime))
+                         datetimestring=format(datetime,"%Y-%m-%dT%H:%M:%S") 
+                         if ( length( datetimestring)>1) {parameter=rep(parameter,length(datetimestring))}
+  
+                         ct$assign("datetime", as.array(datetimestring))
                          ct$assign("lat", as.array(lat))
                          ct$assign("lon", as.array(lon))
                          ct$assign("parameter", as.array(parameter))

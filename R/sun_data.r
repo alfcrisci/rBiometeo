@@ -24,7 +24,7 @@ sun_data=function(datetime,lat,lon,parameter="azimuth",tz="GMT") {
                          ct$assign("lat", as.array(lat))
                          ct$assign("lon", as.array(lon))
                          ct$assign("parameter", as.array(parameter))
-                         ct$eval("var res=[]; for(var i=0, len=datetime.length; i < len; i++){ res[i]=sun_data(datetime[i],lat[1],lon[1],parameter[1])};")
+                         ct$eval("var res=[]; for(var i=0, len=datetime.length; i < len; i++){ res[i]=sun_data(datetime[i],lat[0],lon[0],parameter[0])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

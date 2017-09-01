@@ -1,4 +1,4 @@
-#' proj
+#' projman
 #'
 #' Calculate the Human Body Projection Area factor in function to sun elevation. 
 #'
@@ -13,7 +13,7 @@
 #'
 #'
 
-proj=function(sunelev) {
+projman=function(sunelev) {
                          ct$assign("sunelev", as.array(sunelev))
                          ct$eval("var res=[]; for(var i=0, len=sunelev.length; i < len; i++){ rel[i]=proj(sunelev[i])};")
                           res=ct$get("res")

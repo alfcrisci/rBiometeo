@@ -1181,6 +1181,9 @@ function HSI_index(t,rh,wind,trad,M,W,clo,param)
     else { return(-9999)};
 }
 
+        
+
+
 
         
 function clomax_7730(t,rh,wind,trad,M,W) 

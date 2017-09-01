@@ -4,10 +4,10 @@
 \alias{sun_data}
 \title{sun_data}
 \usage{
-sun_data(datetime, lat, lon, parameter = "azimuth")
+sun_data(datetime, lat, lon, parameter = "azimuth", tz = "GMT")
 }
 \arguments{
-\item{datetime}{Datetime in format YYYY-MM-DD HH:MM:SS.}
+\item{datetime}{Datetime as in YYYY-MM-DD HH:MM:SS format}
 
 \item{numeric}{lat Latitude in decimal degrees.}
 
@@ -16,7 +16,7 @@ sun_data(datetime, lat, lon, parameter = "azimuth")
 \item{character}{parameter Six solar parameter are available by name "azimuth","zenith","solarZenith","elevation","declination","JD".}
 }
 \value{
-Parameter indicated in degrees or integer (JD).
+value of parameter indicated.
 }
 \description{
 Calculate solar parameter for a location and a time.
@@ -24,5 +24,5 @@ Calculate solar parameter for a location and a time.
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\keyword{parameter}
+\keyword{parameters}
 \keyword{sun}

@@ -194,8 +194,8 @@ function dayname_IT(date)
 
 function sun_data(serial,lat,lon,parameter) 
    {
-	var datetime=parseISO8601String(serial);
-	var refractionCorrection;
+    var datetime=parseISO8601String(serial);
+    var refractionCorrection;
     udtTimedHours = datetime.getHours() - 0;
     udtTimedMinutes =datetime.getMinutes() - 0;
     udtTimedSeconds = datetime.getSeconds() - 0;
@@ -1285,8 +1285,8 @@ function clomax_7730(t,rh,wind,trad,M,W)
     
     do {
       pmv = PMV_ISO7730(t,rh,wind,trad, M,W,clo);
-      clo= clo+0.1;
-    } while (pmv < PMV_GOOD_sup);
+      clo= clo-0.1;
+    } while (pmv > PMV_GOOD_sup);
 
  return(OneDec(clo));
 }
@@ -1311,7 +1311,7 @@ function clomin_7730(t,rh,wind,trad,M,W)
    do {
       pmv=PMV_ISO7730(t,rh,wind,trad, M,W,clo);
       clo= clo+0.1;
-    } while (pmv > PMV_GOOD_inf);
+    } while (pmv < PMV_GOOD_inf);
 
  return(OneDec(clo));
 }
@@ -1326,8 +1326,8 @@ function clomax_custom(t,rh,wind,mtrad,age,mbody,ht,gender)
     
     do {
       pmv = PMV_custom(t,rh,wind,mtrad,clo,age,mbody,ht,gender);
-      clo= clo+0.1;
-    } while (pmv < PMV_GOOD_sup);
+      clo= clo-0.1;
+    } while (pmv > PMV_GOOD_sup);
 
  return(OneDec(clo));
 }
@@ -1352,7 +1352,7 @@ function clomin_custom(t,rh,wind,mtrad,age,mbody,ht,gender)
    do {
       pmv=PMV_custom(t,rh,wind,mtrad,clo,age,mbody,ht,gender) ;
       clo= clo+0.1;
-    } while (pmv > PMV_GOOD_inf);
+    } while (pmv < PMV_GOOD_inf);
 
  return(OneDec(clo));
 }

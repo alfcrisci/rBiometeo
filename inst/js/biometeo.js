@@ -951,7 +951,95 @@ function bmr_met(mbody,age,ht,gender)
 
 
 
-function perceived_temperature(t,rh,wind,trad,M,W,clo) 
+/**
+ * Given a temperature t (Celsius), relative humidity rh (%), wind ( m/sec), mean radiant temperature mtrad ( Celsius) and clothing insulation (clo) 
+ * gives PMV following Hoppe scheme for a customized person.
+ * @param {number} ta
+ * @return {number} 
+ * @customfunction
+ */
+
+
+function PMV_custom(t,rh,wind,mtrad,iclo,age,mbody,ht,gender)
+{
+  var eta = 0.01; // Mechanical efficiency
+  var tcl = 30.005;
+  var MAX_LOOP = 200;
+  var MAX_LOOP_HALF = MAX_LOOP / 2;
+  var tcl_eps = 0.05;
+  var eps = 0.97;
+  var sigm = 5.67e-8;
+  var vpa, fcl, metm, metf, metb, h, aef, p1, tcl1, tcl2;
+  var hc, diff, abhc, abtcl, difhc, tsk, esw, rsum, csum;
+  var erel, eres, ed, load, ts,bmr,icl;
+
+  var adu = 0.203 * Math.pow(mbody, 0.425) * Math.pow(ht, 0.725);
+  
+  if ( gender == 'female') {
+ 		// Female
+	   bmr = 655.0955+(9.5634*(mbody))+(1.8496*(ht*100))-(4.6756*(age));
+ 	} else {
+ 		// Male
+	   bmr = 66.4730+(13.7516*(mbody))+(5.0033*(ht*100))-(6.7550*(age));
+ 	}
+ 
+  var metb =((bmr* 4.1868 * 1000)/(24*60*60)); // Person global metabolic request for a day Harris Benedict Equation (cal/day) -> kJ and divided for daily seconds Watt but already normalized for Adu.
+  
+  vpa = (rh / 100) * 6.105 * Math.pow(2.718281828, ( 17.27*t / ( 237.7 + t ) ));
+  
+  icl = iclo * 0.155;
+  
+  if (icl <= 0.078) 
+     {fcl = 1 + (1.29 * icl)}
+  else {fcl = 1.05 + (0.645 * icl)};
+  
+  h = metb*adu ;
+ 
+  aef = 0.71 * fcl * adu;
+
+  var tcl_guess = 35.7 - 0.032 * (metb /adu); // Initial clothing temperature
+
+  tcl1 = tcl;
+  for (var i = 0; i < MAX_LOOP; i ++)
+  {
+    if (i < MAX_LOOP_HALF)
+    {
+      hc = 12.06 * Math.sqrt(wind);
+      abhc = 0.0;
+    }
+    else
+    {
+      hc = 2.38 * Math.pow(Math.abs(tcl1 - t), 4.0);
+      abhc = 0.6 * Math.abs(Math.pow((tcl1 - t), -0.75));
+    }
+    tcl2 = tcl_guess - 0.155 * iclo * (3.94 * 0.00000001* fcl *(Math.pow((tcl1 + 273.2),4.0)- Math.pow((mtrad + 273.2), 4.0))+fcl * hc* (tcl1 - t));
+    diff = Math.abs(tcl1 - tcl2);
+    if (diff < tcl_eps)
+      break;
+    abtcl = -0.155 * iclo * (4.0 * 3.94* 0.00000001* fcl *Math.pow((tcl1+ 273.2),3.0) + fcl * hc- fcl *(tcl1 - t)* abhc)- 1.0;
+    tcl1 = tcl1 - (tcl2 - tcl1) / abtcl;
+    difhc = (12.06 * Math.sqrt(wind)) - (2.38 * (Math.pow(Math.abs(t - tcl1), 0.25)));
+    if (difhc > 0.0 && i == MAX_LOOP_HALF)
+      break;
+  }
+  tsk = 35.7 - (0.028 * h/adu); // Initial tskin temperature
+  esw = 0.42 * adu * (h / adu - 58.08);
+  esw = esw < 0.0 ? 0.0 : esw;
+  rsum = aef * eps * sigm * (Math.pow((tcl1 + 273.2), 4.0) - Math.pow((mtrad + 273.2),4.0));
+  csum = adu * fcl * hc * (tcl1 - t);
+  erel = 0.0023 * metb * (44.0 - 0.75 * vpa);
+  eres = 0.0014 * metb * (34.0 - t);
+  ed = 0.406 * adu * (1.92 * tsk - 25.3- 0.75 * vpa);
+  load = (h - ed - erel - eres - esw - rsum - csum) / adu;
+  ts = (0.303 * Math.exp(-0.036 * (h / adu)) + 0.028);
+  var pmv=ts * load;
+  return TwoDec(pmv);
+  
+  
+}
+
+
+function perceived_temperature(ta,rh,vel,tr,M,W,clo) 
 {
   var age = 35.0; // Age
   var mbody = 75.0; // Weigth in kg
@@ -968,16 +1056,16 @@ function perceived_temperature(t,rh,wind,trad,M,W,clo)
 
   var adu = 0.203 * Math.pow(mbody, 0.425) * Math.pow(ht, 0.725);
   vpa = (rh / 100) * 6.105 * Math.pow(2.718281828, ( 17.27*t / ( 237.7 + t ) ));
-  icl = clo * 0.155;
+  icl = iclo * 0.155;
   if (icl <= 0.078) 
      {fcl = 1 + (1.29 * icl)}
   else {fcl = 1.05 + (0.645 * icl)};
   
-  h = M*adu;
+   h = M*adu;
  
   aef = 0.71 * fcl * adu;
 
-  var tcl_guess = 35.7 - 0.032 * (M); // Initial clothing temperature
+ var tcl_guess = 35.7 - 0.032 * (M); // Initial clothing temperature
 
   tcl1 = tcl;
    for (var i = 0; i < MAX_LOOP; i ++)
@@ -992,11 +1080,11 @@ function perceived_temperature(t,rh,wind,trad,M,W,clo)
       hc = 2.38 * Math.pow(Math.abs(tcl1 - t), 4.0);
       abhc = 0.6 * Math.abs(Math.pow((tcl1 - t), -0.75));
     }
-    tcl2 = tcl_guess - 0.155 * icl * (3.94 * 0.00000001* fcl *(Math.pow((tcl1 + 273.15),4.0)- Math.pow((trad + 273.15), 4.0))+fcl * hc* (tcl1 - t));
+    tcl2 = tcl_guess - 0.155 * iclo * (3.94 * 0.00000001* fcl *(Math.pow((tcl1 + 273.2),4.0)- Math.pow((mtrad + 273.2), 4.0))+fcl * hc* (tcl1 - t));
     diff = Math.abs(tcl1 - tcl2);
     if (diff < tcl_eps)
       break;
-    abtcl = -0.155 * icl * (4.0 * 3.94* 0.00000001* fcl *Math.pow((tcl1+ 273.15),3.0) + fcl * hc- fcl *(tcl1 - t)* abhc)- 1.0;
+    abtcl = -0.155 * iclo * (4.0 * 3.94* 0.00000001* fcl *Math.pow((tcl1+ 273.2),3.0) + fcl * hc- fcl *(tcl1 - t)* abhc)- 1.0;
     tcl1 = tcl1 - (tcl2 - tcl1) / abtcl;
     difhc = (12.06 * Math.sqrt(wind)) - (2.38 * (Math.pow(Math.abs(t - tcl1), 0.25)));
     if (difhc > 0.0 && i == MAX_LOOP_HALF)
@@ -1006,7 +1094,6 @@ function perceived_temperature(t,rh,wind,trad,M,W,clo)
   
   
 }
-
 
     
   
@@ -1192,7 +1279,7 @@ function clomax_7730(t,rh,wind,trad,M,W)
  if( typeof W === undefined ) { W = 0;};
  var PMV_GOOD_sup = 0.5;
  var pmv; 
- var clo=0.1;
+ var clo=5;
     
     do {
       pmv = PMV_ISO7730(t,rh,wind,trad, M,W,clo);
@@ -1222,7 +1309,7 @@ function clomin_7730(t,rh,wind,trad,M,W)
    do {
       pmv=PMV_ISO7730(t,rh,wind,trad, M,W,clo);
       clo= clo+0.1;
-    } while (pmv < PMV_GOOD_inf);
+    } while (pmv > PMV_GOOD_inf);
 
  return(OneDec(clo));
 }

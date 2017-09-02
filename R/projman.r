@@ -15,7 +15,7 @@
 
 projman=function(sunelev) {
                          ct$assign("sunelev", as.array(sunelev))
-                         ct$eval("var res=[]; for(var i=0, len=sunelev.length; i < len; i++){ rel[i]=proj(sunelev[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=sunelev.length; i < len; i++){ res[i]=proj(sunelev[i])};")
                           res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

@@ -4,7 +4,7 @@
 \alias{clomin_7730}
 \title{clomin_7730}
 \usage{
-clomin_7730(t, rh, wind, tr, M)
+clomin_7730(t, rh, wind, tr, M, W)
 }
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
@@ -16,6 +16,8 @@ clomin_7730(t, rh, wind, tr, M)
 \item{numeric}{tr Mean radiant temperature in Celsius degrees.}
 
 \item{numeric}{M Metabolic rate of subject in Watt per mq.}
+
+\item{numeric}{W Mechanical work of subject in Watt per mq. Generally 0.}
 }
 \value{
 
@@ -26,4 +28,5 @@ Calculate minimal clothing insulation value needed for thermal comfort in modera
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
 }
-\keyword{ocir}
+\keyword{clothing}
+\keyword{mimimal}

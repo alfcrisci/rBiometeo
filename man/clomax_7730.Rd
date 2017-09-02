@@ -4,7 +4,7 @@
 \alias{clomax_7730}
 \title{clomax_7730}
 \usage{
-clomax_7730(t, rh, wind, tr, M)
+clomax_7730(t, rh, wind, tr, M, W)
 }
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
@@ -16,6 +16,8 @@ clomax_7730(t, rh, wind, tr, M)
 \item{numeric}{tr Mean radiant temperature in Celsius degrees.}
 
 \item{numeric}{M Metabolic rate of subject in Watt per mq.}
+
+\item{numeric}{W Mechanical work of subject in Watt per mq. Generally 0.}
 }
 \value{
 

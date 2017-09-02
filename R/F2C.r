@@ -1,9 +1,9 @@
 #' F2C
 #'
-#' Convert temperature from Fahrenheit degree to  Celsius degree.
+#' Converts temperature from Fahrenheit degree to Celsius degree.
 #'
 #' @param numeric F Temperature in Fahrenheit degrees
-#' @return 
+#' @return Celsius degrees
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  F2C 

@@ -10,10 +10,10 @@ F2C(F)
 \item{numeric}{F Temperature in Fahrenheit degrees}
 }
 \value{
-
+Celsius degrees
 }
 \description{
-Convert temperature from Fahrenheit degree to  Celsius degree.
+Converts temperature from Fahrenheit degree to Celsius degree.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

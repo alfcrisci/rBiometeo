@@ -24,7 +24,7 @@
 #'
 #'
 
-clomax_custom=function(t,rh,wind,tr,age,mbody,ht,gender)  {
+clomax_custom=function(t,rh,wind,tr,age,mbody,ht,gender="male")  {
   ct$assign("t", as.array(t))
   ct$assign("rh", as.array(rh))
   ct$assign("wind", as.array(wind))

@@ -2,7 +2,7 @@
 #'
 #' Calculate solar parameter for a location and a time.
 #'
-#' @param datetime  Datetime as in YYYY-MM-DD HH:MM:SS format
+#' @param datetime  Datetime as in YYYY-MM-DDTHH:MM:SS format IS08601 format.
 #' @param numeric lat Latitude in decimal degrees.
 #' @param numeric lon Longitude in decimal degrees.
 #' @param character parameter Six solar parameter are available by name "azimuth","zenith","solarZenith","elevation","declination","JD".
@@ -19,12 +19,11 @@
 #'
 
 sun_data=function(datetime,lat,lon,parameter="azimuth",tz="GMT") {
-                         datetimestring=format(as.POSIXct(datetime,tz=tz),"%Y-%m-%dT%H:%M:%S") 
-                         ct$assign("datetime", as.array(datetimestring))
+                         ct$assign("datetime", as.array(datetime))
                          ct$assign("lat", as.array(lat))
                          ct$assign("lon", as.array(lon))
                          ct$assign("parameter", as.array(parameter))
-                         ct$eval("var res=[]; for(var i=0, len=datetime.length; i < len; i++){ res[i]=sun_data(datetime[i],lat[0],lon[0],parameter[0])};")
+                         ct$eval("var res=[]; for(var i=0, len=datetime.length; i < len; i++){ res[i]=sun_data(datetime[0],lat[i],lon[i],parameter[0])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

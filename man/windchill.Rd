@@ -12,7 +12,7 @@ windchill(t, v)
 \item{numeric}{v Windspeed in meter per second.}
 }
 \value{
-Windchill
+windchill index
 }
 \description{
 Calculates the NWS Windchill Temperature (WCT) to estimate the perceived temperature with wind in cold environemnt.Assumes no impact from the sun and having own face model.

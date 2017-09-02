@@ -7,7 +7,7 @@
 sun_data(datetime, lat, lon, parameter = "azimuth", tz = "GMT")
 }
 \arguments{
-\item{datetime}{Datetime as in YYYY-MM-DD HH:MM:SS format}
+\item{datetime}{Datetime as in YYYY-MM-DDTHH:MM:SS format IS08601 format.}
 
 \item{numeric}{lat Latitude in decimal degrees.}
 

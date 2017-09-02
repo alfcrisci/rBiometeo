@@ -235,7 +235,7 @@ function rad_direct_tilted  (jddate,az,elev,planezen,planeaz)
 function proj(sunelev)
 {
           if (sunelev < 0.0) {return 0.0};
-          return 0.308 * Math.cos(rads * (sunelev* (0.998- (Math.pow(sunelev, 2.0) / 50000.0))));
+          return 0.308 * Math.cos(rad * (sunelev* (0.998- (Math.pow(sunelev, 2.0) / 50000.0))));
 }
 
 

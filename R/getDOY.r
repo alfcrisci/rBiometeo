@@ -14,11 +14,8 @@
 #'
 #'
 #'
-
-getDOY=function(datetime) {
-                         ct$assign("datetime", as.array(datetime))
-                         ct$eval("var res=[]; for(var i=0, len=datetime.length; i < len; i++){ res[i]=getDOY(datetime[i])};")
-                          res=ct$get("res")
-                         return(ifelse(res==9999,NA,res))
+getDOY=function(date) {
+                         
+                         return(format(as.Date(date),"%j"))
 }
 

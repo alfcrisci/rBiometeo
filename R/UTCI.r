@@ -16,7 +16,7 @@
 #'
 #'
 
-UTCI=function(ta,rh,wind,tr) {
+UTCI=function(t,rh,wind,tr) {
                          ct$assign("ta", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))

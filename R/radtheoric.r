@@ -18,12 +18,13 @@
 #'
 #'
 
-radtheoric=function(jddate,elev,albedo=0.3,param="global") {
-                          ct$assign("param", as.array(param))
+radtheoric=function(jddate,elev,albedo=0.3,param="direct") {
                           ct$assign("jddate", as.array(jddate))
                           ct$assign("elev", as.array(elev))
-                          ct$assign("albedo", as.array(lon))
-                          ct$eval("var res=[]; for(var i=0, len=jddate.length; i < len; i++){ res[i]=radtheoric(jddate[i],elev[i],albedo[0],param[0])};")
+                          ct$assign("albedo", as.array(albedo))
+                          ct$assign("param", as.array(param))
+                          
+                          ct$eval("var res=[]; for(var i=0, len=elev.length; i < len; i++){ res[i]=radtheoric(jddate[0],elev[i],albedo[0],param[0])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

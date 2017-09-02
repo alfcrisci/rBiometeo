@@ -5,10 +5,8 @@
 #' @param timenow time indicat in time format equivalent to "POSIXct" or "POSIXt" object.
 #' @param  lat numeric latitude in decimal degrees
 #' @param lon numeric  longitude in decimal degrees
-#' @references 
-#' Istituto di Biometeorologia Firenze Italy
-#' Centro Interdipartimentale di Bioloclimatologia University of Florence
-#' \url{http://stackoverflow.com/questions/8708048/position-of-the-sun-given-time-of-day-latitude-and-longitude}
+#' @references Mike Birdgeneau 
+#' \url{https://gist.github.com/mikebirdgeneau/e2dbdc8e9c45c1c2b7fc}
 #' @author  Alfonso crisci \email{a.crisci@@ibimet.cnr.it} Marco Morabito \email{m.morabito@@unifi.it} 
 #' 
 #' 
@@ -112,7 +110,13 @@ sunposition <- function(timenow,lat, long) {
 
     el <- el / deg2rad
     az <- az / deg2rad
-    lat <- lat / deg2rad
+    te = tan(degToRad(el));
+    refractionCorrection = 0
+    refractionCorrection=ifelse(el > 85.0,0,58.1 / te - 0.07 / (te*te*te) + 0.000086 / (te*te*te*te*te)) ;
+    if (el < 5.0 && el > -0.575) {refractionCorrection = 1735.0 + el * (-518.2 + el * (103.4 + el * (-12.79 + el * 0.711) ) );}  
+    refractionCorrection = refractionCorrection / 3600.0;
 
-    return(list(elevation=el, azimuth=az))
+    solarZen = (90-el) - refractionCorrection;
+    
+    return(list(elevation=el, azimuth=az,solarzen=solarZen))
 }

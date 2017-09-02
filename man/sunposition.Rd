@@ -17,9 +17,8 @@ sunposition(timenow, lat, long)
 Function to assess sun azimuth and elevation given the time in GMT format.
 }
 \references{
-Istituto di Biometeorologia Firenze Italy
-Centro Interdipartimentale di Bioloclimatologia University of Florence
-\url{http://stackoverflow.com/questions/8708048/position-of-the-sun-given-time-of-day-latitude-and-longitude}
+Mike Birdgeneau 
+\url{https://gist.github.com/mikebirdgeneau/e2dbdc8e9c45c1c2b7fc}
 }
 \author{
 Alfonso crisci \email{a.crisci@ibimet.cnr.it} Marco Morabito \email{m.morabito@unifi.it}

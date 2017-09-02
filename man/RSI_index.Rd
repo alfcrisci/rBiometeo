@@ -7,7 +7,7 @@
 RSI_index(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in Celsius degrees.}
 
 \item{numeric}{rh Air Relative humidity in percentage.}
 }
@@ -15,7 +15,7 @@ RSI_index(t, rh)
 
 }
 \description{
-Calculates Relative strain index.
+Calculates Relative Strain Index.
 }
 \references{
 Lee  DHK  &  Henschel A,1963, Evaluation  of  thermal environment  in  shelters.Rep.  TR–8,  Div.  Occup.  Health,US Dept. Health, Education and Welfare.

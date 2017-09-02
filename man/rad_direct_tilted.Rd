@@ -11,11 +11,11 @@ rad_direct_tilted(datetime, lat, lon, planezen, planeaz)
 
 \item{planeaz}{Azimuthal angles of the plane.}
 
-\item{date}{Date in format YYYY-MM-DD HH:MM:SS}
+\item{jddate}{Date in format DOY day of year.}
 
-\item{numeric}{lat Latitude in decimal degrees.}
+\item{numeric}{az Sun azimuth in decimal degrees.}
 
-\item{numeric}{lon Longitude in decimal degrees.}
+\item{numeric}{elev Sun elevation in decimal degrees.}
 }
 \value{
 

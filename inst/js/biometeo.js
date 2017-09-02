@@ -192,79 +192,11 @@ function dayname_IT(date)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Sun related  functions.
 
-function sun_data(serial,lat,lon,parameter) 
-   {
-    var datetime=parseISO8601String(serial);
-    var refractionCorrection;
-    udtTimedHours = datetime.getHours() - 0;
-    udtTimedMinutes =datetime.getMinutes() - 0;
-    udtTimedSeconds = datetime.getSeconds() - 0;
-    udtLocationdLongitude = lon - 0;
-    udtLocationdLatitude = lat - 0;
-    dEarthMeanRadius = 6371.01;
-    dAstronomicalUnit = 149597890;
-    dDecimalHours = udtTimedHours + (udtTimedMinutes + udtTimedSeconds / 60) / 60;
-    dJulianDate = datetime.valueOf() / (1000 *60*60 * 24) -0.5  + J1970;
-    dElapsedJulianDays = dJulianDate - 2451545;
-    dOmega = 2.1429 - 0.0010394594 * dElapsedJulianDays;
-    dMeanLongitude = 4.895063 + 0.017202791698 * dElapsedJulianDays;
-    dMeanAnomaly = 6.24006 + 0.0172019699 * dElapsedJulianDays;
-    dEclipticLongitude = dMeanLongitude + 0.03341607 * Math.sin(dMeanAnomaly) + 3.4894E-4 * Math.sin(2 * dMeanAnomaly) - 1.134E-4 - 2.03E-5 * Math.sin(dOmega);
-    dEclipticObliquity = 0.4090928 - 6.214E-9 * dElapsedJulianDays + 3.96E-5 * Math.cos(dOmega);
-    dSin_EclipticLongitude = Math.sin(dEclipticLongitude);
-    dY = Math.cos(dEclipticObliquity) * dSin_EclipticLongitude;
-    dX = Math.cos(dEclipticLongitude);
-    dRightAscension = Math.atan2(dY, dX);
-    0 > dRightAscension && (dRightAscension += twopi);
-    dDeclination = Math.asin(Math.sin(dEclipticObliquity) * dSin_EclipticLongitude);
-    dGreenwichMeanSiderealTime = 6.6974243242 + 0.0657098283 * dElapsedJulianDays + dDecimalHours;
-    dLocalMeanSiderealTime = (15 * dGreenwichMeanSiderealTime +udtLocationdLongitude) * rad;
-    dHourAngle = dLocalMeanSiderealTime - dRightAscension;
-    dLatitudeInRadians = udtLocationdLatitude * rad;
-    dCos_Latitude = Math.cos(dLatitudeInRadians);
-    dSin_Latitude = Math.sin(dLatitudeInRadians);
-    dCos_HourAngle = Math.cos(dHourAngle);
-    udtSunCoordinatesdZenithAngle = Math.acos(dCos_Latitude * dCos_HourAngle * Math.cos(dDeclination) + Math.sin(dDeclination) * dSin_Latitude);
-    dY = -Math.sin(dHourAngle);
-    dX = Math.tan(dDeclination) * dCos_Latitude - dSin_Latitude * dCos_HourAngle;
-    udtSunCoordinatesdAzimuth = Math.atan2(dY,dX);
-    0 > udtSunCoordinatesdAzimuth && (udtSunCoordinatesdAzimuth += twopi);
-    udtSunCoordinatesdAzimuth /= rad;
-    dParallax = dEarthMeanRadius / dAstronomicalUnit * Math.sin(udtSunCoordinatesdZenithAngle);
-    udtSunCoordinatesdZenithAngle = (udtSunCoordinatesdZenithAngle + dParallax) / rad;
-    azimuth = udtSunCoordinatesdAzimuth;
-    zenith = udtSunCoordinatesdZenithAngle;
-    elevation = 90 - udtSunCoordinatesdZenithAngle;
-    if (elevation > 85.0) {refractionCorrection = 0.0;} 
-        else {
-        var te = Math.tan (degToRad(elevation));
-        if (elevation > 5.0) 
-            {refractionCorrection = 58.1 / te - 0.07 / (te*te*te) + 0.000086 / (te*te*te*te*te);} 
-        else if (elevation > -0.575) 
-               {refractionCorrection = 1735.0 + elevation * (-518.2 + elevation * (103.4 + elevation * (-12.79 + elevation * 0.711) ) );}  
-        else {refractionCorrection = -20.774 / te;}
-        refractionCorrection = refractionCorrection / 3600.0;
-    }
 
-    var solarZen = zenith - refractionCorrection;
-    if ( parameter == "azimuth") {return(FourDec(azimuth))}
-    else if ( parameter == "zenith") {return(FourDec(zenith))}
-    else if ( parameter == "solarZenith") {return(FourDec(solarZen))}
-    else if ( parameter == "elevation") {return(FourDec(elevation))}
-    else if ( parameter == "declination") {return(dDeclination*(180/PI))}
-    else if ( parameter == "JD") {return(dJulianDate)}
-    else { return("Parameter not indicated!")}
-     
-}
-
-
-function radtheoric(serial,lat,lon,albedo,param)
+function radtheoric(jddate,elev,albedo,param)
 { 
-  var datetime=parseISO8601String(serial); 
   if( albedo === undefined ) { albedo = 0.3;};
   var radcalcteoric;
-  var elev=sun_data(datetime,lat,lon,"elevation");
-  var jddate=datetime.getDOY();
   var SC = 1.361; //  kW/m2   ET solar radition I0 kW/m2 Solar constant
   var I0 = SC*(1+0.034*Math.cos((jddate)*2*pi/365)); //  atmospheric effect
   var A = 1.160 + 0.075 * Math.sin((jddate-274)*2*pi/365);
@@ -287,16 +219,13 @@ function radtheoric(serial,lat,lon,albedo,param)
 
 }
 
-function rad_direct_tilted  (serial,lat,lon,planezen,planeaz) 
+function rad_direct_tilted  (jddate,az,elev,planezen,planeaz) 
 {
-                            var datetime=parseISO8601String(serial); 
-                            var az=sun_data(datetime,lat,lon,"elevation");
-                            var elev=sun_data(datetime,lat,lon,"elevation");
                             planezen=planezen/rad;
                             planeaz=planeaz/rad;
                             elev=elev/rad;
                             az=az/rad;
-                            var rad_dir=radtheoric("direct",datetime,lat,lon);
+                            var rad_dir=radtheoric(jddate,elev,"direct");
                             var radinc=rad_dir *(Math.cos(elev)*Math.sin(planezen)*Math.cos(planeaz-az)+Math.sin(elev)*Math.cos(planezen));
    return(rad_inc);
 }

@@ -4,14 +4,12 @@
 \alias{radtheoric}
 \title{radtheoric}
 \usage{
-radtheoric(datetime, lat, lon, albedo = 0.3, param = "global")
+radtheoric(jddate, elev, albedo = 0.3, param = "global")
 }
 \arguments{
-\item{date}{Datetime in format YYYY-MM-DD HH:MM:SS}
+\item{jddate}{Datetime in DOY Day of year.}
 
-\item{numeric}{lat Latitude in decimal degrees.}
-
-\item{numeric}{lon Longitude in decimal degrees.}
+\item{numeric}{elev Sun elevation decimal degrees.}
 
 \item{numeric}{albedo Surronding albedo value. Default is 0.3.}
 

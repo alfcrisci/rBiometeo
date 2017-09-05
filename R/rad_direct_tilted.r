@@ -19,7 +19,7 @@
 #'
 #'
 
-rad_direct_tilted=function(datetime,lat,lon,planezen,planeaz) {
+rad_direct_tilted=function(jddate,az,elev,planezen,planeaz) {
                            ct$assign("jddate", as.array(jddate))
                            ct$assign("az", as.array(az))
                            ct$assign("elev", as.array(elev))

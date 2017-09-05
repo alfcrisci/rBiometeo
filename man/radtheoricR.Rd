@@ -14,7 +14,7 @@ radtheoricR(timenow, lat, long, albedo)
 \item{lat}{longitude in decimal degrees.}
 }
 \value{
-theoretical radiation in a location at time.
+List of solar and radiance parameters.
 }
 \description{
 R function to assess raw  solar irradiance parameter.

@@ -18,7 +18,8 @@
 
 radtheoricR <- function(timenow,lat,long,albedo){
  rho=albedo
- elev=sunposition(timenow,lat, long)$elevation
+ sunpar=sunposition(timenow,lat, long)
+ elev=sunpar$elevation
  timeday=as.POSIXlt(timenow, "GMT")
  nday=format(timeday,"%j")
  # Solar constant
@@ -40,5 +41,5 @@ radtheoricR <- function(timenow,lat,long,albedo){
  # total
  IT <- IB+ID+IR
  I <- cbind(IB,ID,IR,IT)
- return(list(I0=I0,A=A,opt.depth=opt.depth, air.mass=air.mass,I=I,jd=nday,elev=elev,azimuth=azimuth))
+ return(list(I0=I0,A=A,opt.depth=opt.depth, air.mass=air.mass,I=I,jd=nday,elev=elev,azimuth=sunpar$azimuth))
 }

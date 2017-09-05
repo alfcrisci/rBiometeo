@@ -2365,44 +2365,7 @@ function utci_class7(t,rh, wind,trad)
   return utci_c;
 }
     
-/**
- * Given t air temperature (Celsius), rh relative humidity (%)  and wind velocity (m/s) gives steadman shade index apparant index.
- *
- * @param {number} t,rh,wind 
- * @return {number}
- * @customfunction
- */
 
-function steadman_class(t,rh,wind) 
-  {
-  var  stoshade_v,stoshade_c;
- 
-  stoshade_v=steadman_outdoor_shade(t,rh,wind);   
-                             
- 
-  if ( stoshade_v > 40.0)
-   {stoshade_c=9.0;}
-  else if (stoshade_v > 35.0 && stoshade_v <= 40.0)
-    {stoshade_c=8.0;}
-  else if (stoshade_v > 30.0 && stoshade_v <= 35.0)
-  {stoshade_c=7.0;}
-  else if (stoshade_v > 27.0 && stoshade_v <= 30.0)
-    {stoshade_c=6.0;}
-  else if (stoshade_v > 10.0 && stoshade_v <= 27.0)
-    {stoshade_c=5.0;}
-  else if (stoshade_v > 5.0 && stoshade_v <= 10.0)
-    {stoshade_c=4.0;}
-  else if (stoshade_v > 0.0 && stoshade_v <= 5.0)
-  {stoshade_c=3.0;}
-  else if (stoshade_v > -5.0 && stoshade_v <= -0.0)
-    {stoshade_c=2.0;}	
-  else if (stoshade_v <= -5.0)
-    {stoshade_c=1.0;}
-  else if (stoshade_v == -9999)
-  {stoshade_c=-9999};
-
-  return stoshade_c;
-  }
 
 /**
  * Given t air temperature (Celsius), rh relative humidity (%)  gives sharlau index state.

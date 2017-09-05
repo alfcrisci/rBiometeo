@@ -13,10 +13,10 @@ radtheoric(jddate, elev, albedo = 0.3, param = "direct")
 
 \item{numeric}{albedo Surronding albedo value. Default is 0.3.}
 
-\item{character}{param Theoretical parameter available for radiation "global","direct","diffuse","reflected".}
+\item{character}{param Theoretical parameter available for radiation "global","direct","diffuse" ( clear sky diffuse),"reflected".}
 }
 \value{
-
+Requested irradinace in KJ on mq
 }
 \description{
 Computes different theoretical radiation in W/mq for a location and a time : Global, Direct Beam radiation,Diffuse Radiation, Reflected radiation based on albedo.

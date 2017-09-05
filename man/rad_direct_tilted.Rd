@@ -4,14 +4,14 @@
 \alias{rad_direct_tilted}
 \title{rad_direct_tilted}
 \usage{
-rad_direct_tilted(datetime, lat, lon, planezen, planeaz)
+rad_direct_tilted(jddate, az, elev, planezen, planeaz)
 }
 \arguments{
+\item{jddate}{Date in format DOY day of year.}
+
 \item{planezen}{Zenital angles of the plane.}
 
 \item{planeaz}{Azimuthal angles of the plane.}
-
-\item{jddate}{Date in format DOY day of year.}
 
 \item{numeric}{az Sun azimuth in decimal degrees.}
 

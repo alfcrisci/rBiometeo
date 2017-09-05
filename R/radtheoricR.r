@@ -5,7 +5,7 @@
 #' @param timenow "POSIXct" or "POSIXt" object.
 #' @param  lat latitude in decimal degrees.
 #' @param lat longitude in decimal degrees.
-#' @return theoretical radiation in a location at time.
+#' @return List of solar and radiance parameters.
 #' 
 #' @references 
 #' Istituto di Biometeorologia Firenze Italy
@@ -18,10 +18,9 @@
 
 radtheoricR <- function(timenow,lat,long,albedo){
  rho=albedo
- res=sunposition(timenow,lat, long)
- elev=res$el
+ elev=sunposition(timenow,lat, long)$elevation
  timeday=as.POSIXlt(timenow, "GMT")
- nday=strptime(as.Date(timeday), "%Y-%m-%d")$yday+1
+ nday=format(timeday,"%j")
  # Solar constant
  SC = 1.361 # kW/m2
  # ET solar radition I0 kW/m2
@@ -41,5 +40,5 @@ radtheoricR <- function(timenow,lat,long,albedo){
  # total
  IT <- IB+ID+IR
  I <- cbind(IB,ID,IR,IT)
- return(list(I0=I0,A=A,opt.depth=opt.depth, air.mass=air.mass,I=I))
+ return(list(I0=I0,A=A,opt.depth=opt.depth, air.mass=air.mass,I=I,jd=nday,elev=elev,azimuth=azimuth))
 }

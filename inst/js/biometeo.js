@@ -2563,12 +2563,13 @@ function wbdt(t,rh)
  * @customfunction
  */
 
-function wbgt_i(t,rh,wind,solar,press,elev) 
+function wbgt_outdoor(t,rh,wind,solar,press,topo) 
          {
           var wbgt;
-		  var pair=pheight(press,elev);
+	  var pair=pheight(press,topo);
           var tw = wetbulb(t,rh,pair);
-		  var tg = Tglob_sphere(t,rh,wind,solar,0.05,0.97,0.8,0);
+	  var tg = Tglob_sphere(t,rh,wind,solar,pair,0.05,0.97,0.8,0);
+
           wbgt = 0.7*tw+0.2*tg+0.1*t;
           return wbgt;
 }
@@ -2600,7 +2601,7 @@ function wbgt_indoor(t,rh,wind,press,elev)
  * @customfunction
  */
 
-function wbgt_nop(t,rh,tg) 
+function wbgt(t,rh,tg) 
          {
           var wbgt;
           var tw = wetbulb(t,rh)

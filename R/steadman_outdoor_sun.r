@@ -25,7 +25,7 @@ steadman_outdoor_sun=function(t,rh,wind,rshort,sunelev) {
                          ct$assign("wind", as.array(wind))
                          ct$assign("rshort", as.array(rshort))
                          ct$assign("sunelev", as.array(sunelev))
-                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=steadman_outdoor_sun(t[i],rh[i],wind[i],rshort[i],sunelev[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=steadman_outdoor(t[i],rh[i],wind[i],rshort[i],sunelev[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

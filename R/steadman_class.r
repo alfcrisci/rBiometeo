@@ -16,7 +16,7 @@
 #'
 
 steadman_class=function(steadman_index) {
-                         res=as.numeric(cut(steadman_index, c(-100,-5,0,5,10,27,30,35,40,100),right=T,label=c(1:9)))
+                         res=as.numeric(cut(steadman_index, c(-100,-5,0,5,10,27,30,35,40,100),left=T,label=c(1:9)))
                          return(res)
 }
 

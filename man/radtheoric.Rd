@@ -4,7 +4,7 @@
 \alias{radtheoric}
 \title{radtheoric}
 \usage{
-radtheoric(jddate, elev, albedo = 0.3, param = "global")
+radtheoric(jddate, elev, albedo = 0.3, param = "direct")
 }
 \arguments{
 \item{jddate}{Datetime in DOY Day of year.}

@@ -4,24 +4,24 @@
 \alias{Tglob_sphere}
 \title{Tglob_sphere}
 \usage{
-Tglob_sphere(t, rh, speed, solar, diam, fdir, zenith, albedo)
+Tglob_sphere(t, rh, wind, solar, pair, diam, fdir, zenith, albedo)
 }
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
 
 \item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{speed Mean Wind speed in meter per second.}
-
-\item{numeric}{pair Air pressure in millibar or hPa.}
+\item{numeric}{wind Mean Wind speed in meter per second.}
 
 \item{numeric}{solar Global solar radiation in Watt per mq.}
 
-\item{numeric}{diam Diameter of the sphere in meters. Input example 0.05 = 50 mm.}
+\item{numeric}{pair Air pressure in millibar or hPa.}
 
 \item{numeric}{fdir Fraction on 1 of direct solar respect to global.}
 
-\item{numeric}{zenith Zenith angle.}
+\item{numeric}{zenith Zenith angle in decimal degrees.}
+
+\item{numeric}{diam Diameter of the sphere in meters. Input example 0.05 = 50 mm.}
 
 \item{numeric}{albedo Mean albedo of surroundings.}
 }

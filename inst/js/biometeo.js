@@ -33,17 +33,17 @@ function TwoDec(c)
 
 function ThreeDec(c) 
 {
-    return Math.round(1000 * c) / 1000
+    return Math.round(1000 * c) / 1000;
 }
 
 function FourDec(c) 
 {
-    return Math.round(10000 * c) / 10000
+    return Math.round(10000 * c) / 10000;
 }
 
 function scientificNotation(c,e)
  {
-    return c.toPrecision(e)
+    return c.toPrecision(e);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -85,14 +85,15 @@ function ExcelDateToJSDate(serial) {
 Date.prototype.getJulian = function() 
 {
     return Math.floor((this / 86400000) - (this.getTimezoneOffset()/1440) + 2440587.5);
-}
+  
+};
 
 
 Date.prototype.isLeapYear = function() 
 {
     var year = this.getFullYear();
-    if((year & 3) != 0) return false;
-    return ((year % 100) != 0 || (year % 400) == 0);
+    if((year & 3) !== 0) return false;
+    return ((year % 100) !== 0 || (year % 400) === 0);
 };
 
 
@@ -105,11 +106,37 @@ Date.prototype.getDOY = function() {
     return dayOfYear;
 };
 
+String.prototype.toDate = function(format)
+{
+  var normalized      = this.replace(/[^a-zA-Z0-9]/g, '-');
+  var normalizedFormat= format.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+  var formatItems     = normalizedFormat.split('-');
+  var dateItems       = normalized.split('-');
+
+  var monthIndex  = formatItems.indexOf("mm");
+  var dayIndex    = formatItems.indexOf("dd");
+  var yearIndex   = formatItems.indexOf("yyyy");
+  var hourIndex     = formatItems.indexOf("hh");
+  var minutesIndex  = formatItems.indexOf("ii");
+  var secondsIndex  = formatItems.indexOf("ss");
+
+  var today = new Date();
+
+  var year  = yearIndex>-1  ? dateItems[yearIndex]    : today.getFullYear();
+  var month = monthIndex>-1 ? dateItems[monthIndex]-1 : today.getMonth()-1;
+  var day   = dayIndex>-1   ? dateItems[dayIndex]     : today.getDate();
+
+  var hour    = hourIndex>-1      ? dateItems[hourIndex]    : today.getHours();
+  var minute  = minutesIndex>-1   ? dateItems[minutesIndex] : today.getMinutes();
+  var second  = secondsIndex>-1   ? dateItems[secondsIndex] : today.getSeconds();
+
+  return new Date(year,month,day,hour,minute,second);
+};
 
 function getDOY(datetime) 
 {
 
-  return(datetime.getDOY())
+  return(datetime.getDOY());
 }
 
 function toJulian(date) 
@@ -192,6 +219,71 @@ function dayname_IT(date)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Sun related  functions.
+
+
+function sun_data(serial,lat,lon,parameter) 
+   {
+    var datetime=serial.toDate("yyyy-mm-dd hh:ii:ss"); 
+    var udtTimedHours=datetime.getHours() - 0;
+    var udtTimedMinutes =datetime.getMinutes() - 0;
+    var udtTimedSeconds = datetime.getSeconds() - 0;
+    var udtLocationdLongitude = lon - 0;
+    var udtLocationdLatitude = lat - 0;
+    var dEarthMeanRadius = 6371.01;
+    var dAstronomicalUnit = 149597890;
+    var dDecimalHours = udtTimedHours + (udtTimedMinutes + udtTimedSeconds / 60) / 60;
+    var dJulianDate = datetime.valueOf() / (1000.0 *60.0*60.0 * 24.0) - 0.5  + J1970;
+    var dElapsedJulianDays = dJulianDate - 2451545;
+    var dOmega = 2.1429 - 0.0010394594 * dElapsedJulianDays;
+    var dMeanLongitude = 4.895063 + 0.017202791698 * dElapsedJulianDays;
+    var dMeanAnomaly = 6.24006 + 0.0172019699 * dElapsedJulianDays;
+    var dEclipticLongitude = dMeanLongitude + 0.03341607 * Math.sin(dMeanAnomaly) + 3.4894E-4 * Math.sin(2 * dMeanAnomaly) - 1.134E-4 - 2.03E-5 * Math.sin(dOmega);
+    var dEclipticObliquity = 0.4090928 - 6.214E-9 * dElapsedJulianDays + 3.96E-5 * Math.cos(dOmega);
+    var dSin_EclipticLongitude = Math.sin(dEclipticLongitude);
+    var dY = Math.cos(dEclipticObliquity) * dSin_EclipticLongitude;
+    var dX = Math.cos(dEclipticLongitude);
+    var dRightAscension = Math.atan2(dY, dX);
+    0 > dRightAscension && (dRightAscension += twopi);
+    var dDeclination = Math.asin(Math.sin(dEclipticObliquity) * dSin_EclipticLongitude);
+    var dGreenwichMeanSiderealTime = 6.6974243242 + 0.0657098283 * dElapsedJulianDays + dDecimalHours;
+    var dLocalMeanSiderealTime = (15 * dGreenwichMeanSiderealTime +udtLocationdLongitude) * rad;
+    var dHourAngle = dLocalMeanSiderealTime - dRightAscension;
+    var dLatitudeInRadians = udtLocationdLatitude * rad;
+    var dCos_Latitude = Math.cos(dLatitudeInRadians);
+    var dSin_Latitude = Math.sin(dLatitudeInRadians);
+    var dCos_HourAngle = Math.cos(dHourAngle);
+    var udtSunCoordinatesdZenithAngle = Math.acos(dCos_Latitude * dCos_HourAngle * Math.cos(dDeclination) + Math.sin(dDeclination) * dSin_Latitude);
+    dY = -Math.sin(dHourAngle);
+    dX = Math.tan(dDeclination) * dCos_Latitude - dSin_Latitude * dCos_HourAngle;
+    var udtSunCoordinatesdAzimuth = Math.atan2(dY,dX);
+    0 > udtSunCoordinatesdAzimuth && (udtSunCoordinatesdAzimuth += twopi);
+    udtSunCoordinatesdAzimuth /= rad;
+    var dParallax = dEarthMeanRadius / dAstronomicalUnit * Math.sin(udtSunCoordinatesdZenithAngle);
+    udtSunCoordinatesdZenithAngle = (udtSunCoordinatesdZenithAngle + dParallax) / rad;
+    var azimuth = udtSunCoordinatesdAzimuth;
+    var zenith = udtSunCoordinatesdZenithAngle;
+    var elevation = 90 - udtSunCoordinatesdZenithAngle;
+    if (elevation > 85.0) {var refractionCorrection = 0.0;} 
+        else {
+        var te = Math.tan (degToRad(elevation));
+        if (elevation > 5.0) 
+            {var refractionCorrection = 58.1 / te - 0.07 / (te*te*te) + 0.000086 / (te*te*te*te*te);} 
+        else if (elevation > -0.575) 
+               {var refractionCorrection = 1735.0 + elevation * (-518.2 + elevation * (103.4 + elevation * (-12.79 + elevation * 0.711) ) );}  
+        else {var refractionCorrection = -20.774 / te;}
+        refractionCorrection = refractionCorrection / 3600.0;
+    }
+
+    var solarZen = zenith - refractionCorrection;
+    if ( parameter == "azimuth") {return(FourDec(azimuth))}
+    else if ( parameter == "zenith") {return(FourDec(zenith))}
+    else if ( parameter == "solarZenith") {return(FourDec(solarZen))}
+    else if ( parameter == "elevation") {return(FourDec(elevation))}
+    else if ( parameter == "declination") {return(dDeclination*(180/PI))}
+    else if ( parameter == "JD") {return(dJulianDate)}
+    else { return("Parameter not indicated!")};
+     
+}
 
 
 function radtheoric(jddate,elev,albedo,param)
@@ -303,36 +395,35 @@ function compass_8(direction)
 
 
 /**
- * Given air temperature (Celsius), rh relative humidity (%), rshort direct beam short-wavelength radiation (W/mq), rdiffuse  undireted short-wavelength radiation (W/mq), sunelev sun elevation and albedo.
-
-    angle (degrees) gives Mean Radiant Temperature.
+ * Given air temperature rh relative humidity, rshort direct beam short-wavelength radiation (W/mq), rdiffuse  isotropic short-wavelength radiation , the sun elevation,albedo gives and surface emissivity provides an assessment of Mean Radiant Temperature.
  *
  * @param {number} t,rh,wind,rshort,sunelev
  * @return {number}
  * @customfunction
  */
 
-
-
-function mrt_solar(t,rh,solar,sunelev,albedo,emis_sfc,fdir)
+function mrt_solar_proj(t,rh,solar,sunelev,albedo,emis_sfc,fdir)
 {
   if( albedo === undefined ) { albedo = 0.3;};
   if( emis_sfc === undefined ) { emis_sfc = 0.97;};
   if( fdir === undefined ) { fdir = 0.8;};
   if( sunelev === undefined ) { sunelev = 90;};
- 
-  var rad = Math.PI / 180;
+  
+  var temprad;
+  var emiair;
+  var tsk;
   var rshort=solar*fdir;
   var rdiffuse=solar-rshort;
-  var temprad,emiair,tsk;
+
   var sig = 5.67e-8;
   emiair = emis_atm(t,rh);
-  tsk = t + 273.15;
+  tsk = t + 273.12;
   var ratio=0.0429*Math.sin(sunelev*rad)+0.345*Math.cos(sunelev*rad);
-  var proj=0.308 * Math.cos(rad *(sunelev* (0.998-(Math.pow(sunelev, 2.0) / 50000.0))));
+  var proj=0.308 * Math.cos(rad * (sunelev* (0.998- (Math.pow(sunelev, 2.0) / 50000.0))));
   
-  temprad= Math.pow(emis_sfc*Math.pow(tsk,4) + ((1-albedo)*rdiffuse) /(sig*emis_sfc)+(1-albedo) * proj * ratio * (rshort/(sig*emis_sfc)),0.25)- 273.15
-  return  TwoDec(temprad);
+  temprad= Math.pow((emiair * Math.pow(tsk, 4) + (1-albedo) * (rdiffuse) / (sig* emis_sfc)+(1-albedo) * proj * ratio* ((rshort-rdiffuse)/(sig*emis_sfc))),0.25)- 273.16;
+  
+  return temprad;
 }
 
 /**
@@ -360,7 +451,7 @@ function mrt_thorsson(t,tg,wind,diam)
  */
 
 
-function mrt_globe (t,tg,wind,diam)
+function mrt_globe(t,tg,wind,diam)
 {        if ( diam === undefined) {diam=0.15;} ;
          var emis_globe = 0.97;
          var stefanb = 0.0000000567;
@@ -384,14 +475,40 @@ function mrt_bernard(t,tg,wind)
          return 100 * Math.pow((Math.pow((tg + 273.15)/100, 4) + WF * (tg - t)), 0.25) - 273.15
 }
 
-function Tglob_sphere(t,rh,wind,solar,diam,alb_sfc,fdir,zenith)
+//  Purpose: to calculate the convective heat tranfer coefficient for flow around a sphere.;
+//  Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;
+
+                             
+function h_sphere_in_air(t,pair,speed,speedmin,diam)
+    {
+
+                                    var Rair = 8314.34 / 28.97;
+                                    var Pr = 1003.5 / (1003.5 + 1.25 * Rair);
+                                    var thermal_con = (1003.5 + 1.25 * 8314.34 / 28.97) * viscosity(t);
+                                    var density = (pair * 100) / (Rair * t)   // kg/m3;
+                                    if(speed < speedmin ){speed = speedmin};
+                                    var Re = (speed * density * diam)/ viscosity(t);
+                                    var Nu = 2 + 0.6 * Math.pow(Re,0.5) * Math.pow(Pr, 0.3333);
+                                    return (Nu * thermal_con) / diam; // W/(m2 K);
+   }
+
+//  Purpose: calculate the air emissivity in function to air temperature and relative humidity;
+ 
+
+function emis_atm(ta,rh)
+{
+                  //  Reference; Oke (2nd edition), page 373.;
+                  var e = (rh*0.01) * esat(ta+273.15);
+                  return 0.575 * Math.pow(e,0.143);
+}
+
+function Tglob_sphere(t,rh,speed,solar,pair,diam,alb_sfc,fdir,zenith)
                         {
                         if(fdir === undefined ) { fdir = 0.8;}; 
                         if(zenith === undefined ) {zenith = 0;};
                         var converge,cza,dT,Tref,h,Tglobe;
                         var emis_air=emis_atm(t,rh);
-                        var windmin = 0.1;  
-                        var pair = 101*10; 
+                        var speedMin = 0.1;  
                         var alb_globe = 0.05;
                         var emis_globe = 0.95;
                         var emis_sfc = 0.999;
@@ -412,43 +529,19 @@ function Tglob_sphere(t,rh,wind,solar,diam,alb_sfc,fdir,zenith)
                           
                         do {
                            Tref = 0.5 * (Tglobe_prev + Tair);
-                           h = h_sphere_in_air(Tref, pair, wind, windmin, diam);
+                           h = h_sphere_in_air(Tref, pair, speed, speedMin, diam);
                            Tglobe = Math.pow(0.5*(emis_air*Math.pow(Tair,4)+emis_sfc*Math.pow(Tsfc,4))-h/(emis_globe*stefanb)*(Tglobe_prev - Tair) + fixfactor,0.25);
                            dT = Tglobe - Tglobe_prev;
                            if(Math.abs(dT) < converge) { Tglobe = Tglobe - 273.15;break;} else {Tglobe_prev = 0.9 * Tglobe_prev + 0.1 * Tglobe;}
                             iter=iter+1;
                            } while ( iter < 1000);
                           
-                          if ( iter===1000) {Tglobe=-9999}
+                          if ( iter===1000) {Tglobe=9999}
                           
-                          return Math.round(100 * Tglobe) / 100;
+                          return Tglobe;
                          }
 
 
-function MRTsolar (Ta,solar,albedo,fdir,emis)
-{
-        if ( albedo === undefined) { albedo=0.97}; 
-        if ( fdir === undefined) { fdir=0.8}; 
-        if ( emis === undefined) { emis=0.97}; 
-        
-        var solardirect,solardiffuse,MRT; 
-  
-         if(solar > 1000 ){
-                           solardirect = fdir * solar;
-                           solardiffuse = (1-fdir) * solar;
-                          }
-         else if (solar > 250)
-                          {solardiffuse = (-0.001 * solar + 1.25) * solar;
-                           solardirect = (0.001 * solar - 0.25) * solar;
-                          }
-         else             {
-                          solardirect = 0;
-                          solardiffuse = solar;
-                          };
-                          
-          MRT = Math.pow(0.97 * Math.pow((Ta + 273.15),4) + (1-albedo) * solardiffuse /(emis * 0.0000000567) + 0.32 *  (1-albedo)* solardirect/(emis * 0.0000000567),0.25) - 273.15;
-          return MRT;
-}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Psycrometrics related functions.
 
@@ -688,31 +781,6 @@ function viscosity(t)
                        return 0.0000026693 * Math.pow((28.97 * t),0.5) / (Math.pow(3.617,2) * omega);
 }
 
-//  Purpose: to calculate the convective heat tranfer coefficient for flow around a sphere.;
-//  Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;
-
-                             
-function h_sphere_in_air(t,pair,wind,windmin,diam)
-    {
-
-                                    var Rair = 8314.34 / 28.97;
-                                    var Pr = 1003.5 / (1003.5 + 1.25 * Rair);
-                                    var thermal_con = (1003.5 + 1.25 * 8314.34 / 28.97) * viscosity(t);
-                                    var density = (pair * 100) / (Rair * t)   // kg/m3;
-                                    if  (wind< windmin ){wind = windmin};
-                                    var Re = (wind * density * diam)/ viscosity(t);
-                                    var Nu = 2 + 0.6 * Math.pow(Re,0.5) * Math.pow(Pr, 0.3333);
-                                    return (Nu * thermal_con) / diam; // W/(m2 K);
-   }
-
-//  Purpose: calculate the air emissivity in function to air temperature and relative humidity;
- 
-function emis_atm(t,rh)
-{
-                  //  Reference; Oke (2nd edition), page 373.;
-                  var e = (rh*0.01) * esat(t+273.15);
-                  return 0.575 * Math.pow(e,0.143);
-}
 
 
 /**

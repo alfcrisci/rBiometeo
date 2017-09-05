@@ -4,7 +4,7 @@
 \alias{UTCI}
 \title{UTCI}
 \usage{
-UTCI(ta, rh, wind, tr)
+UTCI(t, rh, wind, tr)
 }
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}

@@ -4,7 +4,7 @@
 \alias{getDOY}
 \title{getDOY}
 \usage{
-getDOY(datetime)
+getDOY(date)
 }
 \arguments{
 \item{date}{Date in format YYYY-MM-DD.}

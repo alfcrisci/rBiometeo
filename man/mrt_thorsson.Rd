@@ -13,7 +13,7 @@ mrt_thorsson(t, tg, wind, diam)
 
 \item{numeric}{wind windspeed in meter per second.}
 
-\item{numeric}{diam diameter of the sphere in meters. Input example 0.05 = 50 mm.}
+\item{numeric}{diam diameter of the sphere in millimeter. Input example  50 mm.}
 }
 \value{
 Mean Radiant temperature.

@@ -427,9 +427,9 @@ function mrt_solar_proj(t,rh,solar,sunelev,albedo,emis_sfc,fdir)
 }
 
 /**
- * Given air temperature (Celsius), Tg Globe Temeperature, ws wind speed in m/s and diameter mean radiant temperature is done according ISO 7726 1998.
+ * Given mean radiant temperature t air temperature (Celsius), g Globe Temeperature, wind  wind speed in m/s and diameter.
  *
- * @param {number} Ta Air temperature ,Tg Globe Temeperature, ws wind speed in m/s . 
+ * @param {number} t Air temperature ,tg Globe Temeperature, wind wind speed and diameter. 
  * @return {number}
  * @customfunction
  */
@@ -443,7 +443,7 @@ function mrt_thorsson(t,tg,wind,diam)
 }
 
 /**
- * Given air temperature (Celsius), Tg Globe Temeperature, ws wind speed in m/s and diameter mean radiant temperature is done according ISO 7726 1998.
+ * Given mean radiant temperature t air temperature (Celsius), tg Globe Temeperature, wind wind speed in m/s and diameter in millimeter .
  *
  * @param {number} Ta Air temperature ,Tg Globe Temeperature, ws wind speed in m/s . 
  * @return {number}
@@ -452,28 +452,13 @@ function mrt_thorsson(t,tg,wind,diam)
 
 
 function mrt_globe(t,tg,wind,diam)
-{        if ( diam === undefined) {diam=0.15;} ;
+{        if ( diam === undefined) {diam=0.05;} ;
          var emis_globe = 0.97;
          var stefanb = 0.0000000567;
-         return Math.pow(Math.pow(tg + 273.15, 4) + ((1.1 * Math.pow(10,8) * Math.pow(wind,0.6)) /(emis_globe*Math.pow(diam,0.4))) * (tg - t), 0.25) - 273.15;
+         return Math.pow((Math.pow(tg + 273.15, 4) + ((1.1 * Math.pow(10,8) * Math.pow(wind,0.6)) /(emis_globe*Math.pow(diam,0.4))) * (tg - t)), 0.25)- 273.15;
 }
 
-/**
- * Given air temperature (Celsius), Tg Globe Temeperature, ws wind speed in m/s and diameter mean radiant temperature is done according ISO 7726 1998.
- *
- * @param {number} Ta Air temperature ,Tg Globe Temeperature, ws wind speed in m/s . 
- * @return {number}
- * @customfunction
- */
 
-function mrt_bernard(t,tg,wind)
-{
-         var WF;
-         var WF1 = 0.4 * Math.pow(Math.abs(tg - t),0.25);
-         var WF2 = 2.5 * Math.pow(wind,0.6);
-         if (WF1 > WF2 ) {WF = WF1} else {WF = WF2};
-         return 100 * Math.pow((Math.pow((tg + 273.15)/100, 4) + WF * (tg - t)), 0.25) - 273.15
-}
 
 //  Purpose: to calculate the convective heat tranfer coefficient for flow around a sphere.;
 //  Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;

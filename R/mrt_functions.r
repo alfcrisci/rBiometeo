@@ -5,7 +5,7 @@
 #' @param numeric t air temperature in Celsius degrees.
 #' @param numeric tg global short solar irradiance in Watt on mq.
 #' @param numeric wind windspeed in meter per second.
-#' @param numeric diam diameter of the sphere in meters. Input example 0.05 = 50 mm.
+#' @param numeric diam diameter of the sphere in millimeter. Input example  50 mm.
 #' @return Mean Radiant temperature.
 #'
 #'
@@ -36,7 +36,7 @@ mrt_thorsson=function(t,tg,wind,diam) {
 #' @param numeric t Air temperature in Celsius degrees.
 #' @param numeric tg Global short solar irradiance in Watt on mq.
 #' @param numeric wind Windspeed in meter per second.
-#' @param numeric diam Diameter of the sphere in meters. Input example 0.05 = 50 mm.
+#' @param numeric diam diameter of the sphere in millimeter. Input example  50 mm.
 #' @return Mean Radiant temperature.
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
@@ -59,32 +59,6 @@ mrt_globe=function(t,tg,wind,diam) {
 }
 
 
-#' mrt_bernard
-#'
-#' Calculated the mean radiant temperature from the solar radiation by using the bernard scheme.  
-#'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric tg Global short solar irradiance in W on mq.
-#' @param numeric wind Fraction related to direct solar beam 0-1.
-#' @return Mean Radiant temperature.
-#'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
-#' @keywords  MRT 
-#' 
-#' @export
-#'
-#'
-#'
-#'
-
-mrt_bernard=function(t,tg,wind,diam) {
-                         ct$assign("t", as.array(t))
-                         ct$assign("tg", as.array(tg))
-                         ct$assign("wind", as.array(wind))
-                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=mrt_bernard(t[i],tg[i],wind[i])};")
-                         res=ct$get("res")
-                         return(ifelse(res==9999,NA,res))
-}
 
 #' mrt_solar_proj
 #'

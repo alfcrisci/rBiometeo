@@ -34,7 +34,7 @@ Tglob_sphere=function(t,rh,wind,solar,pair,diam,fdir,zenith,albedo) {
                          ct$assign("zenith", as.array(zenith))
                          ct$assign("diam", as.array(diam))
                          ct$assign("alb_sfc", as.array(albedo))
-                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=Tglob_sphere(t[i],rh[i],speed[i],solar[i],pair[i],alb_sfc[0],diam[0],fdir[0],zenith[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=Tglob_sphere(t[i],rh[i],speed[i],solar[i],pair[i],alb_sfc[i],diam[0],fdir[0],zenith[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

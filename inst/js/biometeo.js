@@ -516,7 +516,7 @@ function Tglob_sphere(t,rh,speed,solar,pair,diam,alb_sfc,fdir,zenith)
                         var Tair = t + 273.15;
                         var Tsfc = t + 273.15;
                         var Tglobe_prev = t + 273.15;
-                        zenith=zenith/(Math.PI/ 180);
+                        zenith=zenith/(180/Math.PI);
                         converge = 0.05;
                           
                         if(zenith <= 0 ){ zenith = 0.0000000001;};

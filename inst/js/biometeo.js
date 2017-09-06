@@ -2217,9 +2217,9 @@ function heatindex(t,rh)
 
 function steadman_outdoor(t,rh,wind,rad,sunelev)
 {    
-  var steadman_outdoor_sun=-9999;
-  if (rh > 100.1 || rh < 0.0) {return -9999}
-  else if (t > 100.0 || t < -100.0) {return -9999} 
+  var steadman_outdoor_sun=9999;
+  if (rh > 100.1 || rh < 0.0) {return 9999}
+  else if (t > 100.0 || t < -100.0) {return 9999} 
   else {
     var ee = (rh/1000.0)*(6.105*Math.exp((t*17.27)/(237.7+t)));
     var q_glob = 0.56*(0.386-(0.0032*sunelev))*rad + 0.224*(0.1*rad)+ 0.028*rad- 150.0*(0.38-0.16*(Math.pow(ee,0.5))); 

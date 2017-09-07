@@ -489,7 +489,7 @@ function emis_atm(ta,rh)
 
 function Tglob_sphere(t,rh,speed,solar,pair,diam,alb_sfc,fdir,zenith)
                         {
-                        if(solar <== 5 ) { return t};   
+                        if( solar < 5 ) { return(t)};   
                         if(fdir === undefined ) { fdir = 0.8;}; 
                         if(zenith === undefined ) {zenith = 0;};
                         var converge,cza,dT,Tref,h,Tglobe;

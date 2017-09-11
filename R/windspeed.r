@@ -14,5 +14,5 @@
 #' @export
 
 windspeed <- function(u, v) {
-                    sqrt(u^2+v^2)
+                    return(sqrt(u^2+v^2))
 }

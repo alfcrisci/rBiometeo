@@ -19,7 +19,7 @@ steadman_class=function(steadman_index) {
                          
                          res=ifelse(is.na(steadman_index),
                                     NA,
-                                    as.numeric(cut(steadman_index, c(-100-5,0,5,10,27,30,35,40,100),left=T,label=c(1:9))))
+                                    as.numeric(cut(steadman_index, c(-100,-5,0,5,10,27,30,35,40,100),left=T,label=c(1:9))))
                          return(res)
 }
 

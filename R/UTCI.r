@@ -23,6 +23,7 @@ UTCI=function(t,rh,wind,tr) {
                          ct$assign("tmrt", as.array(tr))
                          ct$eval("var res=[]; for(var i=0, len=ta.length; i < len; i++){ res[i]=UTCI(ta[i],rh[i],wind[i],tmrt[i])};")
                          res=ct$get("res")
+                         res=ifelse(is.na(t),NA,res)
                          return(ifelse(res==9999,NA,res))
 }
 

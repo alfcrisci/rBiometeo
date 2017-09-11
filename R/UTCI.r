@@ -17,6 +17,7 @@
 #'
 
 UTCI=function(t,rh,wind,tr) {
+                         tr=ifelse(is.na(tr),t,tr) 
                          ct$assign("ta", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))

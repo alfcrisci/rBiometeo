@@ -19,8 +19,7 @@
 #'
 
 utci_class7=function(t,rh,wind,tmrt) {
-                         if ( is.na(t) || is.na(rh)) {res=NA;return(res);}  
-                         if (is.na(tmrt)) {tmrt=t};
+                         tmrt=ifelse(is.na(tmrt),t,tmrt)
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))

@@ -18,14 +18,11 @@
 #'
 #'
 
-utci_class7=function(t,rh,wind,tmrt) {
-                         tmrt=ifelse(is.na(tmrt),t,tmrt)
-                         ct$assign("t", as.array(t))
-                         ct$assign("rh", as.array(rh))
-                         ct$assign("wind", as.array(wind))
-                         ct$assign("tmrt", as.array(tmrt))
-                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=utci_class7(t[i],rh[i],wind[i],tmrt[i])};")
-                         res=ct$get("res")
-                         return(ifelse(res==9999,NA,res))
+utci_class7==function(t,rh,wind,tmrt) {
+ {
+                         utci_index=UTCI(t,rh,wind,tmrt);
+                         res=ifelse(is.na(utci_index),
+                                    NA,
+                                    as.numeric(cut(utci_index, c(-100,-40,-26.99,-12.99,0.01,16.01,32.01,100),right=T,label=c(1:7))))
+                         return(res)
 }
-

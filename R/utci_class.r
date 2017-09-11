@@ -19,14 +19,13 @@
 #'
 
 utci_class=function(t,rh,wind,tmrt) {
-                         if ( is.na(t) || is.na(rh)) {res=NA;return(res);}  
-                         if (is.na(tmrt)) {tmrt=t};
+                         tmrt=ifelse(is.na(tmrt),t,tmrt)
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))
                          ct$assign("tmrt", as.array(tmrt))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=utci_class(t[i],rh[i],wind[i],tmrt[i])};")
-                         res=ct$get("res")
+                         res=ct$get("res")                        
                          return(ifelse(res==9999,NA,res))
 }
 

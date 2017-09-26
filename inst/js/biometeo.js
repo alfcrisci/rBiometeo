@@ -1936,6 +1936,9 @@ function UTCI(ta,rh,wind,tmrt)
                   e = es(ta)/10; // use vapour pressure in kPa 
                   pa = (e*rh/100.0); 
                   va = wind;
+	          if (  va < 0.51) {va=0.5;};
+	          if (  va > 17) {va=17;};
+				 
                   dtm = tmrt - ta;
     
                   utci = new Array(210);

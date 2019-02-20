@@ -18,7 +18,8 @@
 #'
 #'
 
-wetbulb=function(t,rh,pa) {
+wetbulb=function(t,rh,pa=NULL) {
+                         if (is.null(pa)) {pa=101.3}
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("pa", as.array(pa))

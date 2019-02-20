@@ -19,10 +19,10 @@ mrt_thorsson(t, tg, wind, diam)
 Mean Radiant temperature.
 }
 \description{
-Calculated the mean radiant temperature from the solar radiation.  Modified based on direct && diffuse ratio. Assumes a uniform surround temperature of Ta && short wave solar radiation only;
+Calculated the mean radiant temperature from the solar radiation.  Modified based on direct and diffuse ratio. Assumes a uniform surround temperature of Ta && short wave solar radiation only;
 }
 \references{
-Thorsson et al, Different methods for estimating the mean radiant temperature in an outdoor urban setting, Int. J. Climatol.27: 1983 – 1993 (2007)
+Thorsson et al, Different methods for estimating the mean radiant temperature in an outdoor urban setting, Int. J. Climatol.27  1983   1993 (2007)
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

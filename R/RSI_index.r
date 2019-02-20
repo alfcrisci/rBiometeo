@@ -9,7 +9,7 @@
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  RSI_index 
-#' @references  Lee  DHK  &  Henschel A,1963, Evaluation  of  thermal environment  in  shelters.Rep.  TR–8,  Div.  Occup.  Health,US Dept. Health, Education and Welfare.
+#' @references  Lee  DHK  &  Henschel A,1963, Evaluation  of  thermal environment  in  shelters.Rep.  TR 8,  Div.  Occup.  Health,US Dept. Health, Education and Welfare.
 #' @export 
 #'
 #'

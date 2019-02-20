@@ -4,7 +4,7 @@
 \alias{wetbulb}
 \title{wetbulb}
 \usage{
-wetbulb(t, rh, pa)
+wetbulb(t, rh, pa = NULL)
 }
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}

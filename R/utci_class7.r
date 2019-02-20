@@ -11,14 +11,14 @@
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  UTCI 
-#' @references Bröde P,Jendritzky G,Fiala D and Havenith G, 2011,The Universal Thermal Climate Index UTCI in Operational Use".International Journal of Biometeorology.
+#' @references Brode P,Jendritzky G,Fiala D and Havenith G, 2011,The Universal Thermal Climate Index UTCI in Operational Use".International Journal of Biometeorology.
+#' 
+#'
+#'
 #' @export
 #'
-#'
-#'
-#'
 
-utci_class7=function(t,rh,wind,tmrt) {
+utci_class7<-function(t,rh,wind,tmrt) {
 
                          utci_index=UTCI(t,rh,wind,tmrt);
                          res=ifelse(is.na(utci_index),

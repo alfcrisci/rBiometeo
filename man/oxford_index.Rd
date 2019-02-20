@@ -18,7 +18,7 @@ oxford_index(t, rh)
 Computes  the oxford index index of discomfort.
 }
 \references{
-Lind AR, Hallon RF,1957, Assessment of physiologic severity of hot climate. J Appl Physiol 11, 35–40.
+Lind AR, Hallon RF,1957, Assessment of physiologic severity of hot climate. J Appl Physiol 11, 35 40.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

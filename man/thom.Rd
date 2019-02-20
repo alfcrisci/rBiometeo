@@ -12,13 +12,13 @@ thom(t, rh)
 \item{numeric}{rh Air Relative humidity in percentage.}
 }
 \value{
-Thom index.
+Thom index
 }
 \description{
 Calculate Thom discomfort index by using wet bulb temperature estimation.
 }
 \references{
-Thom, E.C. 1959: The discomfort index. Weatherwise, 12: 57–60
+Thom, E.C. 1959 The discomfort index. Weatherwise, 12, 57,60
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

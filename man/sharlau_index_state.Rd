@@ -18,7 +18,7 @@ Sharlau State.
 State of comfort indicated by Sharlau Index delta.
 }
 \references{
-Scharlau, K., 1950, Einführung eines Schwülemasstabes und Abgrenzung von Schwülezonen durch Isohygrothermen, Erdkunde, 4, 188-201.
+Scharlau, K., 1950, Einfuhrung eines Schwulemasstabes und Abgrenzung von Schwulezonen durch Isohygrothermen, Erdkunde, 4, 188 201.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

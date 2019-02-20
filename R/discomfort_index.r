@@ -9,7 +9,7 @@
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  discomfort_index 
-#' @references Thom, E.C.,1959,The discomfort index. Weather wise, 12, 57–60.
+#' @references Thom, E.C., 1959, The discomfort index. Weather wise, 12, 57 60.
 #' @export
 #'
 #'

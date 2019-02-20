@@ -16,7 +16,7 @@ Projection factor
 Calculate the Human Body Projection Area factor in function to sun elevation.
 }
 \references{
-Jendritzky G (1990) Bioklimatische Bewertungsgrundlage der Räume am Beispiel von. 27 mesoskaligen Bioklimakarten.
+Jendritzky G (1990) Bioklimatische Bewertungsgrundlage der Raume am Beispiel von. 27 mesoskaligen Bioklimakarten.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

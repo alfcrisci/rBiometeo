@@ -18,7 +18,7 @@ mdi_index
 Modified discomfort index MDI
 }
 \references{
-Moran DS, Shitzer A, Pandolf KB ,1998, A physiological strain index to evaluate heat stress. Am J Physiol 275, R129–34.
+Moran DS, Shitzer A, Pandolf KB , 1998, A physiological strain index to evaluate heat stress. Am J Physiol 275, R 129 34.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

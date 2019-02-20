@@ -18,7 +18,7 @@ sharlau_index_delta(t, rh)
 Computes the critical sharlau delta in Celsius degrees.
 }
 \references{
-Scharlau, K., 1950, Einführung eines Schwülemasstabes und Abgrenzung von Schwülezonen durch Isohygrothermen, Erdkunde, 4, 188-201.
+Scharlau, K., 1950, Einfuhrung eines Schwulemasstabes und Abgrenzung von Schwulezonen durch Isohygrothermen, Erdkunde, 4, 188 201.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

@@ -18,7 +18,7 @@ discomfort_index(t, rh)
 Given t air temperature (Celsius), rh relative humidity gives  Discomfort index (DI). It belongs to direct indexes class.
 }
 \references{
-Thom, E.C.,1959,The discomfort index. Weather wise, 12, 57–60.
+Thom, E.C., 1959, The discomfort index. Weather wise, 12, 57 60.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

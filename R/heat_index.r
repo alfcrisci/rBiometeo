@@ -9,7 +9,7 @@
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  NOAA heat index 
-#' @references NOAA index from George Winterling based on SteadMan's work "The Assessment of Sultriness. Part I: A Temperature-Humidity Index Based on Human Physiology and Clothing Science, R. G. Steadman, Journal of Applied Meteorology, July 1979, Vol 18 No7, pp861–873. 
+#' @references NOAA index from George Winterling based on SteadMan's work "The Assessment of Sultriness. Part I: A Temperature-Humidity Index Based on Human Physiology and Clothing Science, R. G. Steadman, Journal of Applied Meteorology, July 1979, Vol 18 No7, pp 861 873. 
 #' @export
 #'
 #'

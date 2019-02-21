@@ -2556,7 +2556,7 @@ function wbgt_outdoor(t,rh,wind,solar,press,topo)
          {
           var wbgt;
           if ( wind === undefined) {wind=0.1};
-          if ( press === undefined) {press=101.3};
+          if ( press === undefined) {press=1013};
           if ( topo === undefined) {topo=0.0};
          
 	  var pair=pheight(press,topo);

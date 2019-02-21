@@ -687,7 +687,7 @@ function es(t)
 
 function wetbulb(t,rh,pa)
 			{  
-              if (pa == undefined) {pa = 1013};
+              if (pa == undefined) {pa = 101.3};
               var Ewguess,Eguess,wetbulb,cursign;
               var Twguess = 0;
 			  var incr = 10;
@@ -2556,8 +2556,8 @@ function wbgt_outdoor(t,rh,wind,solar,press,topo)
          {
           var wbgt;
           if ( wind === undefined) {wind=0.1};
-          if ( press === undefined) {press=1013};
-          if ( topo === undefined) {topo=0};
+          if ( press === undefined) {press=101.3};
+          if ( topo === undefined) {topo=0.0};
          
 	  var pair=pheight(press,topo);
           var tw = wetbulb(t,rh,pair);

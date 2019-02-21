@@ -687,7 +687,7 @@ function es(t)
 
 function wetbulb(t,rh,pa)
 			{  
-              if (pa == undefined) {pa = 101.3};
+              if (pa == undefined) {pa = 1013};
               var Ewguess,Eguess,wetbulb,cursign;
               var Twguess = 0;
 			  var incr = 10;
@@ -2538,7 +2538,7 @@ function fits_index(t,rh)
 function wbdt(t,rh) 
          {
           var wbdt;
-          var tw = wetbulb(t,rh);
+          var tw = wetbulb(t,rh,1013);
           wbdt = 0.4*tw+0.6*t;
           return wbdt;
 }
@@ -2579,7 +2579,7 @@ function wbgt_outdoor(t,rh,wind,solar,press,topo)
 function wbgt_indoor(t,rh,wind,press,elev) 
          {
           if ( wind === undefined) {wind=0.1};
-          if ( press === undefined) {press=101.3};
+          if ( press === undefined) {press=1013};
           if ( elev === undefined) {elev=0};
           
           var wbgt;
@@ -2600,7 +2600,7 @@ function wbgt_indoor(t,rh,wind,press,elev)
 function wbgt(t,rh,tg) 
          {
           var wbgt;
-          var tw = wetbulb(t,rh,101.3)
+          var tw = wetbulb(t,rh,1013)
           wbgt = 0.7*tw+0.2*tg+0.1*t;
           return wbgt;
 }
@@ -2618,7 +2618,7 @@ function wbgt_indoor_nop(t,rh,wind)
          {
           if ( wind === undefined) {wind=1};
           var wbgt;
-          var tw = wetbulb(t,rh)
+          var tw = wetbulb(t,rh,1013)
           wbgt= 0.67*tw+0.33*t-0.048 *Math.log(wind)*(t-tw);
           /*if ( wind < 1.1) { wbgt= 0.04*t + 0.96*tw};*/
           return wbgt;
@@ -2634,7 +2634,7 @@ function wbgt_indoor_nop(t,rh,wind)
 function mdi_index(t,rh)    
          {
           var mdi;
-          var tw = wetbulb(t,rh);
+          var tw = wetbulb(t,rh,1013);
           mdi = 0.7*tw+0.3*t;
           return mdi;
 }
@@ -2653,7 +2653,7 @@ function mdi_index(t,rh)
 function thom(t,rh) 
          {
           var thom;
-          var tw = wetbulb(t,rh);
+          var tw = wetbulb(t,rh,1013);
           thom = 0.4 * (t + tw) + 4.8;
           return thom;
 }

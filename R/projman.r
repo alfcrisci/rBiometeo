@@ -2,7 +2,7 @@
 #'
 #' Calculate the Human Body Projection Area factor in function to sun elevation. 
 #'
-#' @param numeric sunelev SUn elevation in degrees.
+#' @param numeric sunelev Sun elevation in degrees.
 #' @return Projection factor
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  Area projection factor. 

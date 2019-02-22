@@ -4,7 +4,7 @@
 \alias{wbgt_indoor}
 \title{wbgt_indoor}
 \usage{
-wbgt_indoor(t, rh, wind = 0.1, press = 101.3, elev = 0)
+wbgt_indoor(t, rh, wind = 0.1, press = NULL, topo = NULL)
 }
 \arguments{
 \item{numeric}{t Air temperature in Celsius Degrees.}
@@ -13,9 +13,9 @@ wbgt_indoor(t, rh, wind = 0.1, press = 101.3, elev = 0)
 
 \item{numeric}{wind Air wind wind velocity in meter per second. Default is 0.1.}
 
-\item{numeric}{press Air Pressure in hPa. Default is 101.3.}
+\item{numeric}{press Air Pressure at sea level in hPa. Default is 1013.25 hPa.}
 
-\item{numeric}{elev Elevation in meters on sea level. Default is 0.}
+\item{numeric}{topo Elevation in meters on sea level. Default is 0.}
 }
 \value{
 

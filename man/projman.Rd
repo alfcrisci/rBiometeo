@@ -7,7 +7,7 @@
 projman(sunelev)
 }
 \arguments{
-\item{numeric}{sunelev SUn elevation in degrees.}
+\item{numeric}{sunelev Sun elevation in degrees.}
 }
 \value{
 Projection factor

@@ -4,7 +4,7 @@
 \alias{wbgt}
 \title{wbgt}
 \usage{
-wbgt(t, rh, tg)
+wbgt(t, rh, tg = NULL)
 }
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
@@ -14,10 +14,10 @@ wbgt(t, rh, tg)
 \item{numeric}{tg Globe temperature in Celsius degrees.}
 }
 \value{
-
+numeric wbgt wet bulb globe temperature index
 }
 \description{
-Calculate wet bulb globe temperature index for outdoor environements.
+Calculate wet bulb globe temperature index for outdoor environements by using globe temperature.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

@@ -4,7 +4,7 @@
 \alias{wbgt_outdoor}
 \title{wbgt_outdoor}
 \usage{
-wbgt_outdoor(t, rh, wind, solar, press, topo)
+wbgt_outdoor(t, rh, wind, solar, press = NULL, topo = NULL)
 }
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
@@ -15,15 +15,16 @@ wbgt_outdoor(t, rh, wind, solar, press, topo)
 
 \item{numeric}{solar Solar Radiation Radiance in watt on square meter.}
 
-\item{numeric}{press Air Pressure in hPa. Default is 101.3.}
+\item{numeric}{press Air Pressure in hPa. Default is 1013.25.}
 
-\item{numeric}{elev Elevation in meters on sea level. Default is 0.}
+\item{numeric}{topo Elevation in meters on sea level. Default is 0.}
 }
 \value{
 
 }
 \description{
 Calculate wet bulb globe temperature index for outdoor environements by using solar radiation.
+Pressure correction follow
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

@@ -18,11 +18,10 @@
 #'
 
 dewpoint=function(t,rh,formula="NOAA") {
-                         if (length(t) > 1) {formula=as.array(rep(formula,length(t)))}
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("formula", as.array(formula))
-                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=dewpoint(t[i],rh[i],formula[i]);")
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=dewpoint(t[i],rh[i],formula[0])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

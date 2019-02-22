@@ -4,25 +4,23 @@
 \alias{wetbulb}
 \title{wetbulb}
 \usage{
-wetbulb(t, rh, pa = NULL)
+wetbulb(t, rh, press = NULL)
 }
 \arguments{
 \item{numeric}{t Air temperature in Celsius degrees.}
 
 \item{numeric}{rh Air Relative humidity in percentage.}
 
-\item{numeric}{pa  Air pressure in hPa or millibar.}
-
-\item{Wet}{bulb temperature in Celsius degrees.}
+\item{numeric}{press  Air pressure in hPa or millibar.}
 }
 \value{
-
+Wet bulb temperature in Celsius degrees.
 }
 \description{
 DESCRIPTION
 }
 \references{
-Brice T, Hall T,2009, Wet-bulb calculator.
+Brice, T., and T. Hall, 2013: The weather calculator. Available online at \url{www.srh.noaa.gov/epz/?n=wxcalc}.
 }
 \author{
 Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}

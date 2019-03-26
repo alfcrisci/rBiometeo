@@ -532,6 +532,23 @@ function Tglob_sphere(t,rh,speed,solar,pair,diam,alb_sfc,fdir,zenith)
 // Psycrometrics related functions.
 
 /**
+ * Given air temperature (Celsius) and dewpoint(Celsius) gives relative huidity .
+ *
+ * @param {number} t,dp
+ * @return {number}
+ * @customfunction
+ */
+
+function fRH(t,dp)
+			{
+				var rh;
+				E = 100*(es(dp)/ es(t));
+				return rh;
+			}
+
+
+
+/**
  * Given air temperature (Celsius) calculates Saturated Vapor Pressure (Torr) at Temperature T  (C) .
  *
  * @param {number} T

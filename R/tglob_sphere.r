@@ -7,7 +7,7 @@
 #' @param numeric rh Air Relative humidity in percentage.
 #' @param numeric wind Mean Wind speed in meter per second.
 #' @param numeric solar Global solar radiation in Watt per mq.
-#' @param numeric pair Air pressure in millibar or hPa.
+#' @param numeric pair Air pressure in millibar or hPa.Default 1013
 #' @param numeric fdir Fraction on 1 of direct solar respect to global.
 #' @param numeric zenith Zenith angle in decimal degrees.
 #' @param numeric diam Diameter of the sphere in meters. Input example 0.05 = 50 mm.
@@ -22,9 +22,9 @@
 #'
 #'
 #'
-#'
+#
 
-Tglob_sphere=function(t,rh,wind,solar,pair,diam,fdir,zenith,albedo) {
+Tglob_sphere=function(t,rh,wind,solar,pair=1013,diam=0.05,fdir=0.8,zenith=0,albedo=0.3) {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("speed", as.array(wind))

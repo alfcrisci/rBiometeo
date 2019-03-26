@@ -542,7 +542,7 @@ function Tglob_sphere(t,rh,speed,solar,pair,diam,alb_sfc,fdir,zenith)
 function fRH(t,dp)
 			{
 				var rh;
-				E = 100*(es(dp)/ es(t));
+				rh = 100*(es(dp)/ es(t));
 				return rh;
 			}
 

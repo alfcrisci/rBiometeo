@@ -1417,7 +1417,7 @@ function pierceSET (t,rh,wind,trad,M,W,clo,patm)
     CHCV = 8.600001 * Math.pow((AirVelocity * PressureInAtmospheres), 0.53);
     CHC = Math.max(CHC, CHCV);
 
-    //initial estimate of Tcl
+    // initial estimate of Tcl
   
     CHR = 4.7;
     CTC = CHR + CHC;
@@ -2244,14 +2244,14 @@ function steadman_outdoor_shade(t,rh,wind)
 {
     var steadman_outdoor_shade,e;
     
-    steadman_outdoor_shade = -9999;
+    steadman_outdoor_shade = 9999;
     
     if (rh > 100.1 || rh < 0.0)
-        {return -9999}
+        {return 9999}
     else if (wind > 130.0 || wind < 0.0)
         {return 9999}
     else if (t > 100.0 || t < -100.0)
-         {return -9999}
+         {return 9999}
     else
     {
        e = (rh/100.0)*(6.105*Math.exp((t*17.27)/(237.7+t)));
@@ -2557,9 +2557,9 @@ function wbgt_outdoor(t,rh,wind,solar,press,topo)
           var wbgt;
           if ( wind === undefined) {wind=0.1};
           
-	        var pair=pheight(press,topo);
+	  var pair=pheight(press,topo);
           var tw = wetbulb(t,rh,pair);
-	        var tg = Tglob_sphere(t,rh,wind,solar,pair,0.05,0.97,0.8,0);
+	  var tg = Tglob_sphere(t,rh,wind,solar,pair,0.05,0.97,0.8,0);
 
           wbgt = 0.7*tw+0.2*tg+0.1*t;
           return wbgt;
@@ -2631,7 +2631,7 @@ function mdi_index(t,rh)
          {
           var mdi;
           var tw = wetbulb(t,rh,1013.25);
-          mdi = 0.7*tw+0.3*t;
+          mdi = 0.7 * tw + 0.3 * t;
           return mdi;
 }
 
@@ -2767,11 +2767,11 @@ function ssi_index(t,rh)
 function p_local(press,topo,temp)
 
 {    var T0;
-      if ( temp === undefined) { temp= 15.0};
-     var temp=temp+273.15; // Formula isometrica di Laplace
-     var L=-0.0065; // temperature lapse rate L = -0.0065 K/m
-     var R_cost=287.05 ;//gas constant for dry air, J/(kg*degK) = 287.05
-     var T0=temp-(L/2)*topo;// sea level standard temperature T0 = 288.15 K
+     if ( temp === undefined) { temp= 15.0};
+     var temp=temp+273.15;        // Formula isometrica di Laplace
+     var L=-0.0065;               // temperature lapse rate L = -0.0065 K/m
+     var R_cost=287.05 ;          // gas constant for dry air, J/(kg*degK) = 287.05
+     var T0=temp-(L/2)*topo;      // sea level standard temperature T0 = 288.15 K
      var p_local= press*Math.exp(-topo*9.81/(R_cost*T0));
      return p_local; 
  
@@ -2789,7 +2789,7 @@ function pheight(press,topo)
 /**
  * Given t air temperature, rh relative humidity (%), p local air pressure give partial pressure of oxygen.
  *
- * @param {number} t,rh 
+ * @param {number} t,rh,g
  * @return {number}
  * @customfunction
  */

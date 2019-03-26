@@ -19,6 +19,6 @@
 fRH=function(t,td) {
                          ct$assign("t", as.array(t))
                          ct$assign("td", as.array(td))
-                         ct$eval("var rel=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=fRH(t[i], td[i])};")
-                         return(ct$get("rel"))
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=fRH(t[i], td[i])};")
+                         return(ct$get("res"))
 }

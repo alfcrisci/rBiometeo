@@ -2494,6 +2494,37 @@ function humidex(t,rh)
 }
 
 
+/**
+ * Given air temperature (Celsius), relative humidity (%)  gives Temperature Humidity Index discomfort index. Giles (1990)
+ *
+ * @param {number} t,rh,wind
+ * @return {number}
+ * @customfunction
+ */
+
+function THI(t,rh) 
+         {
+          var thi;
+          thi = t-0.55*(1-0.01*rh)*(t-14.5);
+          return thi;
+}
+
+
+/**
+ * Given air temperature (Celsius), relative humidity (%)  gives Temperature Humidity Index discomfort index. kliber (1964) Kliber H. H., 1964. Environmental physiology and shelter engineering. LXVII. 
+ * Thermal effects of various temperature-humidity combinations on Holstein cattle as measured by physiological responses. Res. Bull. Missouri Agric. Exp. Station: 862.
+ *
+ * @param {number} t,rh,wind
+ * @return {number}
+ * @customfunction
+ */
+
+function THI_kliber(t,rh) 
+         {
+          var thi;
+          thi = (1.8*t-(1-0.01*rh)*(t-14.3))+32;
+          return thi;
+}
 
 
 /**

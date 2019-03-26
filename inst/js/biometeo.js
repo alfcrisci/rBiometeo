@@ -780,7 +780,7 @@ function esat (tk)
 function viscosity(t)
 {
 
-                       var omega = (t / 97 - 2.9) / 0.4 * (-0.034) + 1.048;
+                       var omega = ((t+273.15) / 97 - 2.9) / 0.4 * (-0.034) + 1.048;
                        return 0.0000026693 * Math.pow((28.97 * t),0.5) / (Math.pow(3.617,2) * omega);
 }
 

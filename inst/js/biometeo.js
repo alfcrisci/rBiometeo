@@ -460,7 +460,7 @@ function mrt_globe(t,tg,wind,diam)
 
 
 
-//  Purpose: to calculate the convective heat tranfer coefficient for flow around a sphere.;
+//  Purpose: to calculate the convective heat tranfer coefficient for flow around a sphere.; t in K
 //  Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;
 
                              
@@ -469,10 +469,10 @@ function h_sphere_in_air(t,pair,speed,speedmin,diam)
 
                                     var Rair = 8314.34 / 28.97;
                                     var Pr = 1003.5 / (1003.5 + 1.25 * Rair);
-                                    var thermal_con = (1003.5 + 1.25 * 8314.34 / 28.97) * viscosity(t);
+                                    var thermal_con = (1003.5 + 1.25 * 8314.34 / 28.97) * viscosity(t-273.15);
                                     var density = (pair * 100) / (Rair * t)   // kg/m3;
                                     if(speed < speedmin ){speed = speedmin};
-                                    var Re = (speed * density * diam)/ viscosity(t);
+                                    var Re = (speed * density * diam)/ viscosity(t-273.15);
                                     var Nu = 2 + 0.6 * Math.pow(Re,0.5) * Math.pow(Pr, 0.3333);
                                     return (Nu * thermal_con) / diam; // W/(m2 K);
    }

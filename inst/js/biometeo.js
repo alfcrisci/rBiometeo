@@ -534,15 +534,15 @@ function Tglob_sphere(t,rh,speed,solar,pair,diam,alb_sfc,fdir,zenith)
 /**
  * Given air temperature (Celsius) and dewpoint(Celsius) gives relative huidity .
  *
- * @param {number} t,dp
+ * @param {number} t,td
  * @return {number}
  * @customfunction
  */
 
-function fRH(t,dp)
+function fRH(t,td)
 			{
 				var rh;
-				rh = 100*(es(dp)/ es(t));
+				rh = 100*(es(td)/ es(t));
 				return rh;
 			}
 

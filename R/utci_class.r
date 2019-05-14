@@ -19,7 +19,7 @@
 #'
 
 utci_class<-function(t,rh,wind,tmrt) {
-                         utci_index=UTCI(t,rh,wind,tmrt);
+                         utci_index=utci(t,rh,wind,tmrt);
                          res=ifelse(is.na(utci_index),
                                     NA,
                                     as.numeric(cut(utci_index, c(-100,-40,-26.99,-12.99,0.01,9.01,26.01,32.01,38.01,46.01,100),right=T,label=c(1:10)))

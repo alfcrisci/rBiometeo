@@ -10,7 +10,7 @@
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  wetbulb 
-#' @references  Brice, T., and T. Hall, 2013: The weather calculator. Available online at \url{www.srh.noaa.gov/epz/?n=wxcalc}.
+#' @references  Brice, T., and T. Hall, 2013: The weather calculator. Available online at \url{https://www.weather.gov/epz/wxcalc}.
 #' @export
 #'
 #'

@@ -676,6 +676,15 @@ function deficitsat(t,rh)
   return (pws-pae);
 }
 
+
+/**
+ * Given air temperature (Celsius) gives  saturation  pressure in hPA
+ *
+ * @param {number} t,rh
+ * @return {number}
+ * @customfunction
+ */
+
 function es(t)
 {
   var es_air, tk,i;
@@ -712,13 +721,14 @@ function es(t)
 
 function wetbulb_s(t,rh) 
 {
-    var c<- [0.151977,8.313659,1.676331,0.00391838,0.023101,4.686035
+    var c<- [0.151977,8.313659,1.676331,0.00391838,0.023101,4.686035];
     var wetbulb <- t * Math.atan(c[0] * Math.sqrt(rh + c[1])) + Math.atan(t + rh) - Math.atan(rh - c[2]) + c[3] * (Math.pow(rh,3/2)) * Math.atan(c[4] * rh) - c[5]
     return(wetbulb)
 }
 
 /**
- * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) gives natural wetbulb in degrees-
+ * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) gives natural wetbulb in Ceslius degrees.
+ * Brice and HALL vapor pressure https://www.weather.gov/epz/wxcalc_rh
  *
  * @param {number} t, rh, pa
  * @return {number}
@@ -778,7 +788,7 @@ function wetbulb(t,rh,pa)
 			}	
 
 /**
- * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) give deficit of saturation in delta hPA
+ * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) gives saturation vapor pressure in hPa
  *
  * @param {number} t,rh
  * @return {number}

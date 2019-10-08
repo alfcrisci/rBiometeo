@@ -716,20 +716,30 @@ function es(t)
  * Formulation from Stull 2011, Journal of Applied Meteorology and Climatology.
  * @param {number} t,rh
  * @return {number}
- * @customfunction
+ * @customfunction 
  */
 
-function wetbulb_s(t,rh) 
+function wetbulb_stull(t,rh) 
 {
-    var c<- [0.151977,8.313659,1.676331,0.00391838,0.023101,4.686035];
-    var wetbulb <- t * Math.atan(c[0] * Math.sqrt(rh + c[1])) + Math.atan(t + rh) - Math.atan(rh - c[2]) + c[3] * (Math.pow(rh,3/2)) * Math.atan(c[4] * rh) - c[5]
+     c = new Array(6);
+     c[0] =0.151977;
+     c[1] =8.313659;
+     c[2] =1.676331;
+     c[3] =0.00391838;
+     c[4] =0.023101;
+     c[5] =4.686035;
+
+  
+  
+    var wetbulb = t * Math.atan(c[0] * Math.sqrt(rh + c[1])) 
+                     + Math.atan(t + rh) - Math.atan(rh - c[2]) 
+                     + c[3] * (Math.pow(rh,3/2)) * Math.atan(c[4] * rh) - c[5];
     return(wetbulb)
 }
 
 /**
  * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) gives natural wetbulb in Ceslius degrees.
  * Brice and HALL vapor pressure https://www.weather.gov/epz/wxcalc_rh
- *
  * @param {number} t, rh, pa
  * @return {number}
  * @customfunction
@@ -737,13 +747,13 @@ function wetbulb_s(t,rh)
 
 function wetbulb(t,rh,pa)
 			{  
-              if (pa == undefined) {pa = 1013.25};
-              var Ewguess,Eguess,wetbulb,cursign;
-              var Twguess = 0;
+			  if (pa == undefined) {pa = 1013.25};
+			  var Ewguess,Eguess,wetbulb,cursign;
+			  var Twguess = 0;
 			  var incr = 10;
 			  var previoussign = 1;
 			  var Edifference = 1;
-	      var E2 = pvap(t,rh);
+			  var E2 = pvap(t,rh);
 
 			  outerloop:
                
@@ -755,7 +765,7 @@ function wetbulb(t,rh,pa)
 					
 					if (Edifference == 0)
 					{
-						break outerloop;Code.gs
+						break outerloop;
 
 					} else {
 						if (Edifference < 0)
@@ -785,7 +795,7 @@ function wetbulb(t,rh,pa)
 				}
 				wetbulb = Twguess;
 				return wetbulb;
-			}	
+			}
 
 /**
  * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) gives saturation vapor pressure in hPa

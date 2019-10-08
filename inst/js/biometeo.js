@@ -2685,8 +2685,27 @@ function wbgt_indoor(t,rh,wind,press,elev)
 }
 
 /**
+ * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives and Air Pressure in millibar ( hPa). 
+ * Wet-bulb globe temperature (WBGT) index indoor. 
+ * @param {number} t,rh,tg,pa 
+ * @return {number}
+ * @customfunction
+ */
+
+
+function wbgt_full (t,rh,tg,pa) 
+         {
+          var wbgt;
+          if( pa=== undefined ) { pa = 1013.25;};
+  
+          var tw = wetbulb(t,rh,pa)
+          wbgt = 0.7*tw+0.2*tg+0.1*t;
+          return wbgt;
+}
+
+/**
  * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature (WBGT) index indoor. 
- * @param {number} t,rh 
+ * @param {number} t,rh,tg,pa 
  * @return {number}
  * @customfunction
  */
@@ -2698,7 +2717,6 @@ function wbgt(t,rh,tg)
           wbgt = 0.7*tw+0.2*tg+0.1*t;
           return wbgt;
 }
-
 
 /**
  * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb globe temperature (WBGT) index indoor. Bernard Integration for wind. 

@@ -702,6 +702,29 @@ function es(t)
   return es;
 }
 
+/**
+ * Given air temperature (Celsius), relative humidity (%)  gives natural wetbulb in degrees
+ * Formulation from Stull 2011, Journal of Applied Meteorology and Climatology.
+ * @param {number} t,rh
+ * @return {number}
+ * @customfunction
+ */
+
+function wetbulb_s(t,rh) 
+{
+    var c<- [0.151977,8.313659,1.676331,0.00391838,0.023101,4.686035
+    var wetbulb <- t * Math.atan(c[0] * Math.sqrt(rh + c[1])) + Math.atan(t + rh) - Math.atan(rh - c[2]) + c[3] * (Math.pow(rh,3/2)) * Math.atan(c[4] * rh) - c[5]
+    return(wetbulb)
+}
+
+/**
+ * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) gives natural wetbulb in degrees-
+ *
+ * @param {number} t, rh, pa
+ * @return {number}
+ * @customfunction
+ */
+
 function wetbulb(t,rh,pa)
 			{  
               if (pa == undefined) {pa = 1013.25};
@@ -710,7 +733,7 @@ function wetbulb(t,rh,pa)
 			  var incr = 10;
 			  var previoussign = 1;
 			  var Edifference = 1;
-		      var E2 = pvap(t,rh);
+	      var E2 = pvap(t,rh);
 
 			  outerloop:
                
@@ -754,6 +777,13 @@ function wetbulb(t,rh,pa)
 				return wetbulb;
 			}	
 
+/**
+ * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) give deficit of saturation in delta hPA
+ *
+ * @param {number} t,rh
+ * @return {number}
+ * @customfunction
+ */
 
 function pvap(t,rh)
 			{

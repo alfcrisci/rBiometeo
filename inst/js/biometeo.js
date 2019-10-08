@@ -2694,10 +2694,11 @@ function wbgt_indoor(t,rh,wind,press,elev)
 function wbgt(t,rh,tg) 
          {
           var wbgt;
-          var tw = wetbulb(t,rh,1013.25)
+          var tw = wetbulb_stull(t,rh)
           wbgt = 0.7*tw+0.2*tg+0.1*t;
           return wbgt;
 }
+
 
 /**
  * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb globe temperature (WBGT) index indoor. Bernard Integration for wind. 

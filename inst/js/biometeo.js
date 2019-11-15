@@ -58,6 +58,26 @@ function degToRad(angleDeg)
   return (Math.PI * angleDeg / 180.0);
 }
 
+function arrayMinIndex (array) {
+  return array.indexOf(Math.min.apply(null, array));
+};
+
+
+function arrayMaxIndex (array) {
+  return array.indexOf(Math.max.apply(null, array));
+};
+
+
+function linspace(x0, xN, dx){
+  
+    var n = Math.floor((xN - x0)/(dx));
+    var x = [];
+    for(var i =0; i < n; ++i){
+        x.push(x0 + i*dx);
+    }
+   return x;
+}
+
 
 /** * @(#)pnorm.js and qnorm.js 
   * * Copyright (c) 2000 by Sundar Dorai-Raj
@@ -735,7 +755,7 @@ function fglob_sphere(Tglobe_prev,Tair,rh,speed,solar,zenith,pair,alb_sfc,fdir,d
                         }
 
 /**
- * Given  tg globometric of sphere . 
+ * Given  tg globometric temperature in degC of sphere bounded respect air temperature. 
  * @param {number} t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam
  * @return {number}
  * @customfunction
@@ -762,25 +782,6 @@ function Tglob_sphere(t,rh,speed,solar,zenith,pair,maxair,minair,alb_sfc,fdir,di
                          }
 
 
-function arrayMinIndex (array) {
-  return array.indexOf(Math.min.apply(null, array));
-};
-
-
-function arrayMaxIndex (array) {
-  return array.indexOf(Math.max.apply(null, array));
-};
-
-
-function linspace(x0, xN, dx){
-  
-    var n = Math.floor((xN - x0)/(dx));
-    var x = [];
-    for(var i =0; i < n; ++i){
-        x.push(x0 + i*dx);
-    }
-   return x;
-}
 
 
 

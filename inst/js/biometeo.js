@@ -1616,11 +1616,9 @@ function deficitsat(t,rh)
 
 
 /**
- * Given air temperature (Celsius) gives  saturation  pressure in hPA
- *
- * @param {number} t,rh
- * @return {number}
- * @customfunction
+ * Given air temperature (Celsius) gives  saturation  pressure in hPa.
+ *  @param {number} t,rh
+ * @return {number
  */
 
 function es(t)
@@ -1677,38 +1675,8 @@ function pvap(t,rh)
 			}
 
 
-//  Purpose: calculate the saturation vapor pressure (mb) over liquid water given the temperature (K).;
-//  Reference Buck's (1981) approximation (eqn 3) of Wexler's (1976) formulae.;
-//  over liquid water;
-            
-function esat (tk) 
-{
-                  var esat= 6.1121 * Math.exp(17.502 * (tk - 273.15) / (tk - 32.18));
-                  return 1.004 * esat;  
-}
 
 
-
-
-
-/**
- * Given a air temperature t (Celsius) and air pressure hpa (hPa)  give Dew Point in Celsius degrees.
- *
- * @param {number} t,hpa
- * @return {number}
- * @customfunction
- */
-
-function press_dewpoint(t,hpa) 
-{
-  var p, dpt;
-  p= Math.log(100.0*hpa);
-  if (t >= 0.0)
-      {dpt=(-60.45)+7.0322*p+.37*p*p;}
-  else
-      {dpt=(-35.957)-1.8726*p+1.1689*p*p;}
-  return (dpt);
-}
 
 /**
  * Given a air temperature t (Celsius) and air relative humidity  (RH)  and formula give the Dew point in Celsius degrees.
@@ -1833,7 +1801,8 @@ function balancePMV7730(pmv,M)
                        return(balance);
                        } 
   
-// Person global metabolic request for a day Harris Benedict Equation (cal/day) -> kJ and divided for daily seconds Watt but already normalized for Adu.
+// Person global metabolic request for a day Harris Benedict Equation (cal/day) -> 
+// kJ and divided for daily seconds Watt but already normalized for Adu.
   
 function bmr_met(mbody,age,ht,gender) 
          { 
@@ -1857,13 +1826,12 @@ function bmr_met(mbody,age,ht,gender)
 
 
 /**
- * Given a temperature t (Celsius), relative humidity rh (%), wind ( m/sec), mean radiant temperature mtrad ( Celsius) and clothing insulation (clo) 
+ * Given a temperature t (degC), relative humidity rh (%), wind ( m/sec), mean radiant temperature mtrad ( degC) 
+ * and clothing insulation (clo) 
  * gives PMV following Hoppe scheme for a customized person.
  * @param {number} ta
  * @return {number} 
- * @customfunction
  */
-
 
 function PMV_custom(t,rh,wind,mtrad,iclo,age,mbody,ht,gender)
 {
@@ -3651,22 +3619,27 @@ function windchill(t,wind)
         }
 
 
+/**
+ * Given Ambient Air Temperature (< +10 Celsius) and relative air velocity wind ( 0.4 to 18 m/s)
+ * give a windchill index - ISO11079 in watt on mq. 
+ * Reference: http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
+ * @param {number} Ta,wind
+ * @return {number}
+ */
 
 function wc_watt2mq (t, wind)
 			{
-				var Watts;
-                                wind=(3.6)*wind;
-				Watts = (12.1452 + 11.6222*Math.sqrt(wind) - 1.16222 * wind)*(33 - t);
+				
+                                var Watts = (12.1452 + 11.6222*Math.sqrt(wind) - 1.16222 * wind)*(33 - t);
 				return Watts;
 
 			}
 
 
 /**
- * Given a temperature t (Celsius) and wind ( m/sec) frost time following Wind chill chart.
+ * Given a temperature t (degC ) and wind ( m/sec) frost time following Wind chill chart.
  * @param {number} t
  * @return {number} 
- * @customfunction
  */
 
 function frostime(t,wind)
@@ -3684,13 +3657,10 @@ return OneDec(ft*60);
 }
 
 /**
- * Given air temperature (Celsius), relative humidity (%) and wind (m/s) velocity give Net effective Index  in Celsius degree.
- *
- * @param {number} t,rh
+ * Given air temperature (degC), relative humidity (%) and wind (m/s) velocity give Net effective Index  in degC.
+@param {number} t,rh
  * @return {number}
- * @customfunction
  */
-
 
 function net_index(t,rh,wind)
 {
@@ -3710,11 +3680,10 @@ function net_index(t,rh,wind)
 
 
 /**
- * Given air temperature (Celsius), relative humidity (%) give Summer Simmer Index  in Celsius degree.
+ * Given air temperature (Celsius), relative humidity (%) give Summer Simmer Index  in degC.
  *
  * @param {number} t,rh
  * @return {number}
- * @customfunction
  */
 
 function ssi_index(t,rh)
@@ -3730,17 +3699,15 @@ function ssi_index(t,rh)
 }
 
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Pressure related functions.
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Pressure 
 
 /**
- * Given press air pressure in millibar, topo is altitude in meters and mean temperature of the air column calculate the local value of pressure
+ * Given press air pressure in millibar, topo is altitude in meters 
+ * and mean temperature of the air column calculate the local value of pressure
  * @param {number} t,rh 
  * @return {number}
- * @customfunction
- */
+ * @customfunction */
 
 function p_local(press,topo,temp)
 

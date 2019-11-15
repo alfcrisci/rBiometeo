@@ -60,6 +60,155 @@ function degToRad(angleDeg)
 }
 
 
+/** * @(#)pnorm.js and qnorm.js 
+  * * Copyright (c) 2000 by Sundar Dorai-Raj
+  * * @author Sundar Dorai-Raj
+  * * Email: sdoraira@vt.edu
+  * * This program is free software; you can redistribute it and/or
+  * * modify it under the terms of the GNU General Public License 
+  * * as published by the Free Software Foundation; either version 2 
+  * * of the License, or (at your option) any later version, 
+  * * provided that any use properly credits the author. 
+  * * This program is distributed in the hope that it will be useful,
+  * * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  * * GNU General Public License for more details at http://www.gnu.org * * */
+
+  // "Applied Statistics Algorithms" (1985)
+  //  P. Griffiths and I. D. Hill, editor
+
+function pnorm(z,tail) {
+    
+    // Algorithm AS66 Applied Statistics (1973) vol 22 no.3
+    // Computes P(Z<z)
+    
+    if( tail === undefined ) { tail = false;};
+    
+    z=parseFloat(z);
+    var ltone= 7.0;
+    var utzero= 18.66;
+    con= 1.28;
+    a1 = 0.398942280444;
+    a2 = 0.399903438504;
+    a3 = 5.75885480458;
+    a4 = 29.8213557808;
+    a5 = 2.62433121679;
+    a6 = 48.6959930692;
+    a7 = 5.92885724438;
+    b1 = 0.398942280385;
+    b2 = 3.8052e-8;
+    b3 = 1.00000615302;
+    b4 = 3.98064794e-4;
+    b5 = 1.986153813664;
+    b6 = 0.151679116635;
+    b7 = 5.29330324926;
+    b8 = 4.8385912808;
+    b9 = 15.1508972451;
+    b10= 0.742380924027;
+    b11= 30.789933034;
+    b12= 3.99019417011;
+
+    
+   if(z<0) {
+      tail=!tail;
+      z=-z;
+    }
+    if(z<=ltone || tail && z<=utzero) {
+      y=0.5*z*z;
+      if(z>con) {
+        alnorm=b1*Math.exp(-y)/(z-b2+b3/(z+b4+b5/(z-b6+b7/(z+b8-b9/(z+b10+b11/(z+b12))))));
+      }
+      else {
+        alnorm=0.5-z*(a1-a2*y/(y+a3-a4/(y+a5+a6/(y+a7))));
+      }
+    }
+    else {
+      alnorm=0;
+    }
+    if(!tail) alnorm=1-alnorm;
+      return(alnorm);
+  }
+
+function qnorm(p) {
+    
+    // ALGORITHM AS 111, APPL.STATIST., VOL.26, 118-121, 1977.
+    // Computes z=invNorm(p)
+    
+    p=parseFloat(p);
+    split=0.42;
+    a0=  2.50662823884;
+    a1=-18.61500062529;
+    a2= 41.39119773534;
+    a3=-25.44106049637;
+    b1= -8.47351093090;
+    b2= 23.08336743743;
+    b3=-21.06224101826;
+    b4=  3.13082909833;
+    c0= -2.78718931138;
+    c1= -2.29796479134;
+    c2=  4.85014127135;
+    c3=  2.32121276858;
+    d1=  3.54388924762;
+    d2=  1.63706781897;
+    q=p-0.5;
+    
+    if(Math.abs(q)<=split) {
+      r=q*q;
+      ppnd=q*(((a3*r+a2)*r+a1)*r+a0)/((((b4*r+b3)*r+b2)*r+b1)*r+1);
+    }
+    else {
+      r=p;
+      if(q>0) r=1-p;
+      if(r>0) {
+        r=Math.sqrt(-Math.log(r));
+        ppnd=(((c3*r+c2)*r+c1)*r+c0)/((d2*r+d1)*r+1);
+        if(q<0) ppnd=-ppnd;
+      }
+      else {
+        ppnd=0;
+      }
+    } 
+    return(ppnd);
+  }
+/**
+ * Wind reduction at boundary layer. 
+ * @param {number} x, ref, fin
+ * @return {number}
+ * 
+ */
+
+function reducewind(x,ref,fin) {  
+                                        if( ref === undefined ) { tresh = 10;};
+                                        if( fin === undefined ) { fin = 2;};
+                                        return(x*1/(Math.log(ref/0.01)/Math.log(fin/0.01)));
+                                    
+                               }
+
+/**
+ * error function
+ *
+ * @param {number} x
+ * @return {number}
+ * 
+ */
+
+function erf(x) {x=parseFloat(x); 
+                 return(2 * pnorm(x * Math.sqrt(2)) - 1);}
+
+
+/**
+ * Wind reduction at boundary layer. 
+ * @param {number} x, ref, fin
+ * @return {number}
+ * 
+ */
+
+function reducewind(x,ref,fin) {  
+                                        if( ref === undefined ) { tresh = 10;};
+                                        if( fin === undefined ) { fin = 2;};
+                                        return(x*1/(Math.log(ref/0.01)/Math.log(fin/0.01)));
+                                    
+                               }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Date related functions.
 
@@ -459,33 +608,846 @@ function mrt_globe(t,tg,wind,diam)
 }
 
 
+/**
+ * Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, global solar radiation in  Watt on square meter,
+ * tg globometric temperature gives, solar zenith in radians,  pair Air Pressure in millibar (hPa), 
+ * alb_sfc mean albedo surface, fdir is the ratio between diffuse and directed radiation, irad if radiation is computed and finally the diameter of heat globe.
+ * 
+ * Wet-bulb globe temperature (WBGT) index following Liljegren scheme . 
+ * @param {number} t, rh, wind, solar, zenith, pair, alb_sfc, fdir, irad.
+ * @return {number} 
+ * @customfunction
+ */
+
+function wbgt_liljegren(t,rh,wind,solar,zenith,pair,tg,alb_sfc,fdir,irad,diam_globe) 
+         {
+          var wbgt;
+          if( pair === undefined ) {pair = 1010;};
+          if( alb_sfc === undefined ) {alb_sfc = 0.4;};
+          if( fdir === undefined ) { fdir = 0.8;}; 
+          if( irad === undefined ) {irad = 1;};
+          if( diam_globe === undefined ) {diam_globe=0.05;};
+                
+          if( tg === undefined ) { tg = t};
+            
+          var tg= Tglob_sphere(t,rh,wind,solar,zenith,pair,10,2,alb_sfc,fdir,diam_globe);
+                     
+          var tw = natural_wetbulb(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad);
+           
+          wbgt = 0.7*tw+0.2*tg+0.1*t;
+          return wbgt;
+}
+
+/**
+ * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature (WBGT) index indoor. 
+ * @param {number} t,rh,tg,pa 
+ * @return {number}
+ * @customfunction
+ */
+
+function wbgt_stull(t,rh,tg) 
+              {
+              var wbgt;
+              var tw = wetbulb_stull(t,rh)
+              wbgt = 0.7*tw+0.2*tg+0.1*t;
+              return wbgt;
+           }
+
+
+/**
+ * Given  tg globometric of sphere unbound. 
+ * @param {number} t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam
+ * @return {number}
+ * @customfunction
+ */
+
+function Tglob_sphere_unbound(t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam)
+                        {
+                        if(zenith === undefined )   {zenith = 0.0000000001;};
+                        if(zenith <= 0 )            { zenith = 0.0000000001;};
+                        if(zenith > 1.57 )          { zenith = 1.57;};
+                        
+                        if(pair === undefined )     { pair =1013.25;};
+                        if(alb_sfc === undefined )  { alb_sfc = 0.4;};
+                        if(fdir === undefined )     { fdir = 0.8;}; 
+                        if(diam === undefined )     { diam = 0.05;}; 
+                          
+                       
+                        var converge,cza,dT,Tref,h,Tglobe;
+                        var speedmin = 0.13;  
+                        var alb_globe = 0.05;
+                        var emis_globe = 0.95;
+                        var emis_sfc = 0.999;
+                        var stefanb = 0.000000056696;
+                        var Tair = t + 273.15;
+                        var Tsfc = Tair;
+                        var Tglobe_prev = Tair;
+                        var RH=rh*0.01;  
+                        var emis_air;
+                        converge = 0.05;
+                        
+                        cza = Math.cos(zenith);
+                         
+                        var iter=1;
+                          
+                        do {
+                           Tref = 0.5 * (Tglobe_prev + Tair);
+                          
+                           h = h_sphere_in_air(Tref, speed, pair);
+                          
+                           Tglobe= Math.pow(0.5 * (emis_atm(Tair,RH) * Math.pow( Tair,4) + emis_sfc * Math.pow(Tsfc,4)) 
+                                      - h / (emis_globe * stefanb) * (Tglobe_prev - Tair) 
+                                      + solar / (2 * emis_globe * stefanb) * (1 - alb_globe) * (fdir * (1 / (2 * cza) - 1) + 1 + alb_sfc),0.25); 
+
+                           dT = Tglobe - Tglobe_prev;
+                           
+                           if(Math.abs(dT) < converge) { Tglobe = Tglobe ;break;} else { Tglobe_prev = Tglobe_prev + 0.05 };
+                                                         iter=iter+1;
+                           } while ( iter < 1000);
+                           
+
+                         return(Tglobe_prev-273.15);
+                         }
+  
+
+
+
+
+
+function fglob_sphere(Tglobe_prev,Tair,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam)
+                        {
+                        if(zenith === undefined )   {zenith = 0.0000000001;};
+                        if(zenith <= 0 )            { zenith = 0.0000000001;};
+                        if(zenith > 1.57 )          { zenith = 1.57;};
+                        if(pair === undefined )     { pair =1013.25;};
+                        if(alb_sfc === undefined )  { alb_sfc = 0.4;};
+                        if(fdir === undefined )     { fdir = 0.8;}; 
+                        if(diam === undefined )     { diam = 0.05;}; 
+                       
+                        var cza,dT,Tref,h,Tglobe;
+                        var speedmin = 0.13;  
+                        var alb_globe = 0.05;
+                        var emis_globe = 0.95;
+                        var emis_sfc = 0.999;
+                        var stefanb = 0.000000056696;
+                        var Tsfc = Tair;
+                        var RH=rh*0.01;  
+                        var emis_air;
+                        converge = 0.05;
+                        
+                        cza = Math.cos(zenith);
+                         
+                        Tref = 0.5 * (Tglobe_prev + Tair);
+                          
+                        h = h_sphere_in_air(Tref, speed, pair);
+                          
+                        Tglobe= Math.pow(0.5 * (emis_atm(Tair,RH) * Math.pow( Tair,4) + emis_sfc * Math.pow(Tsfc,4)) 
+                                      - h / (emis_globe * stefanb) * (Tglobe_prev - Tair) 
+                                      + solar / (2 * emis_globe * stefanb) * (1 - alb_globe) * (fdir * (1 / (2 * cza) - 1) + 1 + alb_sfc),0.25); 
+
+                         dT = Math.abs(Tglobe - Tglobe_prev);
+                     
+                         return(dT);
+                        }
+
+/**
+ * Given  tg globometric of sphere . 
+ * @param {number} t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam
+ * @return {number}
+ * @customfunction
+ */
+
+function Tglob_sphere(t,rh,speed,solar,zenith,pair,maxair,minair,alb_sfc,fdir,diam,prec){
+  
+                         if(pair === undefined )     { pair =1013.25;};
+                         if(alb_sfc === undefined )  { alb_sfc = 0.4;};
+                         if(fdir === undefined )     { fdir = 0.8;}; 
+                         if(diam === undefined )     { diam = 0.05;}; 
+                         if(minair === undefined )     { minair = 2;}; 
+                         if(maxair === undefined )     { maxair = 10;}; 
+                         if(prec === undefined )     { prec = 0.01;}; 
+  
+                          //     If solar > 15 And zenith > 1.54 Then zenith = 1.54
+                          //     If solar > 900 And zenith > 1.52 Then zenith = 1.52
+  
+                         var Tair = t + 273.15;
+                         var map1=[];
+                         var array1 = linspace(Tair-minair,Tair+maxair,prec);
+                         for (var i = 0; i < array1.length; i++) {map1[i]=fglob_sphere(array1[i],Tair,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam)}
+                         return(array1[arrayMinIndex(map1)]-273.15);
+                         }
+
+
+function arrayMinIndex (array) {
+  return array.indexOf(Math.min.apply(null, array));
+};
+
+
+function arrayMaxIndex (array) {
+  return array.indexOf(Math.max.apply(null, array));
+};
+
+
+function linspace(x0, xN, dx){
+  
+    var n = Math.floor((xN - x0)/(dx));
+    var x = [];
+    for(var i =0; i < n; ++i){
+        x.push(x0 + i*dx);
+    }
+   return x;
+}
+
+
+
+
+/**
+ * Given air temperature (Celsius), relative humidity (%)  gives natural wetbulb in celsius degrees.
+ * Formulation from Stull 2011, Journal of Applied Meteorology and Climatology.
+ * @param {number} t,rh
+ * @return {number}
+ * @customfunction 
+ */
+
+function wetbulb_stull(t,rh) 
+{
+     c = new Array(6);
+     c[0] =0.151977;
+     c[1] =8.313659;
+     c[2] =1.676331;
+     c[3] =0.00391838;
+     c[4] =0.023101;
+     c[5] =4.686035;
+
+  
+  
+    var wetbulb = t * Math.atan(c[0] * Math.sqrt(rh + c[1])) 
+                     + Math.atan(t + rh) - Math.atan(rh - c[2]) 
+                     + c[3] * (Math.pow(rh,3/2)) * Math.atan(c[4] * rh) - c[5];
+    return(wetbulb)
+}
+
+/**
+ * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) gives natural wetbulb in Ceslius degrees.
+ * Brice and HALL vapor pressure https://www.weather.gov/epz/wxcalc_rh
+ * @param {number} t, rh, pair
+ * @return {number}
+ * @customfunction
+ */
+
+function wetbulb_brice_hall(t,rh,pair)
+			{  
+              if (pair == undefined) {pair = 1013.25};
+              var Ewguess,Eguess,wetbulb,cursign;
+              var Twguess = 0;
+			  var incr = 1;
+			  var previoussign = 1;
+			  var Edifference = 1;
+	          var E2 = pvap(t,rh);
+
+			  outerloop:
+               
+				while (Math.abs(Edifference) > 0.005) 
+				{
+					Ewguess = 6.112 * Math.exp((17.67 * Twguess) / (Twguess + 243.5));
+					Eguess = Ewguess - (pair) * (t - Twguess) * 0.00066 * (1 + (0.00115 * Twguess));
+					Edifference = E2 - Eguess;
+					
+					if (Edifference == 0)
+					{
+						break outerloop;
+
+					} else {
+						if (Edifference < 0)
+						{
+							cursign = -1;
+							if (cursign != previoussign)
+							{
+								previoussign = cursign;
+								incr = incr/10;
+							} else {
+								incr = incr;
+							}
+						} else {
+							cursign = 1;
+							if (cursign != previoussign)
+							{
+								previoussign = cursign;
+								incr = incr/10;
+							} else {
+								incr = incr;
+							}
+						}
+					}
+					
+					Twguess = Twguess + incr * previoussign;
+					
+				}
+				wetbulb = Twguess;
+				return wetbulb;
+			}	
+
+
+/**
+ * Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second,
+ * global solar radiation in watt on square meters, solar zenith in radians, pair Air Pressure in millibar (hPa), 
+ * alb_sfc mean albedo surface, ratio diffuse and  directed solar radiation and irad if radiation is computed in 
+ * in heat globe realease the function computes
+ * natural wet-bulb temperature index following Liljegren scheme . 
+ * @param {number} t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad
+ * @return {number}
+ * @customfunction
+ */
+
+
+function natural_wetbulb_unbound(t,rh,speed,solar,zenith,pair,alb_sfc,fdir,irad)
+                        {
+                      
+                        if( zenith === undefined ) {zenith = 0.0000000001;};
+                        if( zenith <= 0 ){ zenith = 0.0000000001;};
+                        if( zenith > 1.57 ){ zenith = 1.57;};
+                        if( solar === undefined ) { solar = 0};
+                        var speedmin = 0.13;  
+                        if( speed === undefined ) { speed = speedmin};
+                      
+                        if( pair === undefined ) {pair = 1010;};
+                        if( alb_sfc === undefined ) {alb_sfc = 0.4;};
+                        if( fdir === undefined ) { fdir = 0.8;}; 
+                        if( irad === undefined ) {irad = 1;};
+                           
+                        var converge,dT,Tref,h,Twb,Fatm,density,eair;
+                        var emis_sfc = 0.999;
+                        var stefanb= 0.000000056696;
+                           
+                        /* heat capaticy of dry air at constant pressure */
+                        
+                        var cp=1003.5;
+                        var m_air=28.97;
+                        var m_h2o=18.015;
+                        var r_gas=8314.34;
+                        var r_air=r_gas / m_air;
+                        var ratio=cp * m_air/ m_h2o;
+                        var Pr=cp / (cp + (1.25 * r_air));
+  
+                        // Wick constants
+                        
+                        var emis_wick = 0.95;   // emissivity
+                        var alb_wick = 0.4;    // albedo
+                        var diam_wick = 0.007; // diameter (in m)
+                        var len_wick = 0.0254; // length (in m)
+  
+                        // Globe constants
+                        
+                    
+                        var Tair = t + 273.15;
+                        var Tsfc = t + 273.15;
+                        var Twb_prev = dewpoint(t,rh) + 273.15;
+                        var RH=rh * 0.01;  
+                        var emis_air= emis_atm(Tair,RH);
+                            eair = RH * esat(Tair);   
+                         
+                        var iter=1;
+                            converge = 0.5;
+                        
+                        do {
+                           
+                            Tref = 0.5 * (Twb_prev + Tair);
+                          
+                            // Radiative heating term	
+                          
+                            Fatm = stefanb * emis_wick * (0.5 * (emis_air * Math.pow(Tair, 4) 
+                                   + emis_sfc * Math.pow(Tsfc, 4))  - Math.pow(Twb_prev, 4)) 
+                                   + (1 - alb_wick) * solar * ((1 - fdir) * (1 + 0.25 * diam_wick / len_wick) 
+                                   + ((Math.tan(zenith) / 3.1416) + 0.25 * diam_wick / len_wick) * fdir + alb_sfc);
+    
+                           // Schmidt number
+                           
+                           density = (pair * 100) / (Tair * r_air);
+                       
+                           var Sc = viscosity(Tair) / (density * diffusivity(Tref, pair));
+                           
+                           // Calculate the convective heat transfer coefficient for a long cylinder in cross flow
+                          
+                            h = h_cylinder_in_air(Twb_prev, speed, pair,speedmin, diam_wick);    
+                          
+                           // Calculate the saturation vapor pressure (hPa) over liquid water
+                          
+                            var ewick = esat(Twb_prev);
+                           
+                         
+                           // Calculate the heat of evaporation, J/(kg K)
+                            
+                           var evap = h_evap(Twb_prev); 
+                              
+                          
+                           Twb = Tair - (evap/ratio) * ((ewick - eair) / (pair - ewick)) * Math.pow((Pr / Sc),0.56) + Fatm / h * irad;
+                           
+                           dT = Twb - Twb_prev;
+                          
+                           if (Math.abs(dT) < converge) { Twb = Twb - 273.15; break; } else {Twb_prev=Twb_prev + 0.1;};
+                           iter=iter+1;
+                                                       
+                           } while ( iter < 2000);
+                            return(Twb_prev-273.15);
+                         }
+
+
+
+
+
+function fnatural_wetbulb(Twb_prev,Tair,rh,wspeed,solar,zenith,pair,alb_sfc,fdir,irad)
+                        {
+                       
+                         if( alb_sfc === undefined ) {alb_sfc = 0.4;};
+                         if( fdir === undefined ) { fdir = 0.8;}; 
+                         if( irad === undefined ) {irad = 1;};
+                              
+                         var dT,Tref,h,Twb,Fatm,density,eair;
+                         var speedmin = 0.13;  
+                         var emis_sfc = 0.999;
+                         var stefanb= 0.000000056696;
+                           
+                        /* heat capaticy of dry air at constant pressure */
+                        
+                         var cp=1003.5;
+                         var m_air=28.97;
+                         var m_h2o=18.015;
+                         var r_gas=8314.34;
+                         var r_air=r_gas / m_air;
+                         var ratio=cp * m_air/ m_h2o;
+                         var Pr=cp / (cp + (1.25 * r_air));
+  
+                        // Wick constants
+                        
+                        var emis_wick = 0.95;   // emissivity
+                        var alb_wick = 0.4;    // albedo
+                        var diam_wick = 0.007; // diameter (in m)
+                        var len_wick = 0.0254; // length (in m)
+  
+                        // Globe constants
+                        
+                    
+                        var Tsfc = Tair;
+                        var RH=rh * 0.01;  
+                        var emis_air= emis_atm(Tair,RH);
+                            eair = RH * esat(Tair);   
+                            Tref = 0.5 * (Twb_prev + Tair);
+                          
+                            // Radiative heating term	
+                          
+                            Fatm = stefanb * emis_wick * (0.5 * (emis_air * Math.pow(Tair, 4) 
+                                   + emis_sfc * Math.pow(Tsfc, 4))  - Math.pow(Twb_prev, 4)) 
+                                   + (1 - alb_wick) * solar * ((1 - fdir) * (1 + 0.25 * diam_wick / len_wick) 
+                                   + ((Math.tan(zenith) / 3.1416) + 0.25 * diam_wick / len_wick) * fdir + alb_sfc);
+    
+                           // Schmidt number
+                           
+                           density = (pair * 100) / (Tair * r_air);
+                       
+                           var Sc = viscosity(Tair) / (density * diffusivity(Tref, pair));
+                           
+                           // Calculate the convective heat transfer coefficient for a long cylinder in cross flow
+                          
+                            h = h_cylinder_in_air(Twb_prev, wspeed, pair,speedmin, diam_wick);    
+                          
+                           // Calculate the saturation vapor pressure (hPa) over liquid water
+                          
+                            var ewick = esat(Twb_prev);
+                           
+                         
+                           // Calculate the heat of evaporation, J/(kg K)
+                            
+                           var evap = h_evap(Twb_prev); 
+                              
+                          
+                           Twb = Tair - (evap/ratio) * ((ewick - eair) / (pair - ewick)) * Math.pow((Pr / Sc),0.56) + Fatm / h * irad;
+                           
+                           dT = Twb - Twb_prev;
+                               
+                           return(Math.abs(dT));
+                         }
+                                  
+function natural_wetbulb(t,rh,wspeed,solar,zenith,pair,maxair,minair,alb_sfc,fdir,irad,prec){
+                        
+                         if( zenith === undefined )    { zenith = 0.0000000001;};
+                         if( zenith <= 0 )             { zenith = 0.0000000001;};
+                         if( zenith > 1.57 )           { zenith = 1.57;};
+                        
+                         if ( wspeed === undefined )  { wspeed = 0.13};
+                         if ( solar === undefined )   { solar = 0};
+                         if ( minair === undefined )  { minair = 1;}; 
+                         if ( maxair === undefined )  { maxair = 1;}; 
+                         if ( pair === undefined )    { pair = 1010;};
+                         if ( alb_sfc === undefined)  { alb_sfc = 0.4;};
+                         if ( fdir === undefined )    { fdir = 0.8;}; 
+                         if ( irad === undefined )    { irad = 1;};
+                         if ( prec === undefined )    { prec = 0.1;};
+                       
+                         var Tair = t + 273.15;
+                         var Twb_prev = dewpoint(t,rh) + 273.15;
+                         var map1=[];
+                         var array1 = linspace(Twb_prev-minair,Tair+maxair,prec);
+                         for (var i = 0; i < array1.length; i++) {map1[i]=fnatural_wetbulb(array1[i],Tair,rh,wspeed,solar,zenith,pair)};
+                         return(array1[arrayMinIndex(map1)]-273.15);
+                         }
+
+
+/**
+ * lost_productivity is a function to estimate population heat exposure and impacts on working people
+ * @param {number} wbgt,tresh
+ * @return {number}
+ * Estimating population heat exposure and impacts on working people in conjunction with climate change
+ * Tord Kjellstrom  & Chris Freyberg & Bruno Lemke & Matthias Otto & David Briggs
+ * Int J Biometeorol (2018) 62:291-306 DOI 10.1007/s00484-017-1407-0
+*/
+
+function lost_productivity(wbgt,tresh) {  
+                                        if( tresh === undefined ) { tresh = 33.5;};
+                                        return(0.5*(1+ erf((wbgt-tresh)/(3.75*Math.sqrt(2))))*100)
+}
+
+/**
+ * Given body mass by using antropometric features. 
+ * @param {number} h,w
+ * @return {number}
+ * @customfunction
+ */
+
+function BMW(h,w) 
+         {return(w/(Math.pow((h/100),2)));} 
+
+/**
+ * Given body surface area by using antropometric features. 
+ * @param {number} h,w
+ * @return {number}
+ * @customfunction
+ */
+
+
+function BSA (h,w) 
+         { return( Math.pow(h/100,0.725)*(0.20247*(Math.pow(w,0.425)))); }    
+
+  
+/**
+ * Given met rate level. 
+ * @param {number} BSA, isolevel
+ * @return {number}
+ * @customfunction
+ */
+
+
+function met_rate(BSA, isolevel) {
+  
+   if ( isolevel === undefined) {isolevel = 1 };
+  
+  return(BSA*(isolevel*50));
+}
+
+
+
+/**
+ * Given met and clo level gives acclimated tresholds of wbgt. 
+ * @param {number} met,clolevel
+ * @return {number}
+ * @customfunction
+ */
+
+function rel_acclimatized(met,clolevel) {
+  
+     if ( clolevel === undefined) {isolevel = 1 };
+  
+     return(56.7-(11.5*Math.LN10(met))-clolevel);
+}
+
+
+/**
+ * Given met and clo level gives unacclimated tresholds of wbgt. 
+ * @param {number} met,clolevel
+ * @return {number}
+ * @customfunction
+ */
+
+function ral_unacclimatized(met,clolevel) {
+  
+     if ( clolevel === undefined) {isolevel = 1 };
+  
+     return(59.9-(14.1*Math.LN10(met))-clolevel);
+}
+
+
+
+/*           https://www.rapidtables.com/convert/color/hex-to-rgb.html
+             RISCHIO = 80% NESSUN RISCHIO (GREEN) rgb(0,255,0)
+             80% < RISCHIO = 100% ATTENZIONE (YELLOW) rgb(255,255,0)
+             100% < RISCHIO = 120% ALLARME (ORANGE) rgb(255,165,0)
+             RISCHIO > 120% EMERGENZA (RED) rgb(255,0,0)
+*/            
+            
+          
+/**
+ * Given t air temperature (Celsius), rh relative humidity (%) and tg globometric temperature gives  heat risk level by using WBGT index. 
+ * @param {number} t,rh,tg,tresh
+ * @return {number}
+ * @customfunction
+ */
+
+function heat_risk_text_level(wbgt,tresh)  { 
+                                               if ( tresh === undefined) {tresh = 28.5 };
+                                               var risk =wbgt/tresh;
+                                               var level_list=["NON SIGNIFICATIVO","BASSO","MODERATO","ALTO"];  
+                                               var class;
+                                               if    ( risk <= 0.8)        {  class = 1;} 
+                                                     else if (risk <= 1)   {  class = 2;} 
+                                                     else if (risk <= 1.2) {  class = 3;} 
+                                                     else                  {  class = 4};
+                                              
+                                               return(level_list[class]);           
+                                              }
+
+/**
+ * Given t air temperature (Celsius), rh relative humidity (%) and tg globometric temperature gives  heat risk level by using WBGT index. 
+ * @param {number} t,rh,tg,tresh
+ * @return {number}
+ * @customfunction
+ */
+
+function heat_risk_text_level_eng(wbgt,tresh)  { 
+                                               if ( tresh === undefined) {tresh = 28.5 };
+                                               var risk =wbgt/tresh;
+                                               var level_list=["NOT SIGNIFICANT","LOW","MODERATE","HIGH"];  
+                                               var class;
+                                               if    ( risk <= 0.8)        {  class = 1;} 
+                                                     else if (risk <= 1)   {  class = 2;} 
+                                                     else if (risk <= 1.2) {  class = 3;} 
+                                                     else                  {  class = 4};
+                                              
+                                               return(level_list[class]);           
+                                              }
+
+/**
+ * Given WBGT index and threshold for risk return color code of risk. 
+ * @param {number} wbgt,tresh
+ * @return {text}
+ * @customfunction
+ */
+
+function heat_risk_color_level(wbgt,tresh)  { 
+                                               if ( tresh === undefined) {tresh = 28.5 };
+                                               var risk =wbgt/tresh;
+                                               var colorcode_list=["green","yellow","orange","red"]; 
+                                                  var class;
+                                               if    ( risk <= 0.8)        {  class = 1;} 
+                                                     else if (risk <= 1)   {  class = 2;} 
+                                                     else if (risk <= 1.2) {  class = 3;} 
+                                                     else                  {  class = 4};
+                                               return(colorcode_list[class]);           
+                                              }
+
+/**
+ *  Given WBGT index and threshold for heat risk return the color code relative to risk in hex format. 
+ *  @param {number} wbgt,tresh
+ *  @return {text}
+ *  @customfunction
+ */
+
+function heat_risk_hexrgb_level(wbgt,tresh) { 
+                                               if ( tresh === undefined) {tresh = 28.5 };
+                                               var risk= wbgt/tresh;
+                                               var colorcode_hex=["#00ff00","#ffff00","#ffa500","#ff0000"];
+                                               var class;
+                                   
+                                               if    ( risk <= 0.8)        {  class = 1;} 
+                                                     else if (risk <= 1)   {  class = 2;} 
+                                                     else if (risk <= 1.2) {  class = 3;} 
+                                                     else                  {  class = 4};
+
+
+                                               return(colorcode_hex[class]);           
+                                              }
+
+/**
+ *  Given WBGT index and threshold for risk return risk value. 
+ *  @param {number} wbgt,tresh
+ *  @return {number}
+ *  @customfunction
+ */
+
+function heat_risk_index_level(wbgt,tresh)    { 
+                                               if ( tresh === undefined) {tresh = 28.5 };
+                                               var risk =(wbgt/tresh)*100;
+                                               return(risk);        
+                                              }
+
+
+
+
+/**
+ * Given a air temperature t (Celsius degree), globe temperature (degC), wind speed in m per second and diam of glbe in meters compute the mean radiant temperature (Celsius degrees) ;
+ * @param {number} t, tg, wind, diam_glob
+ * @return {number}
+ * @customfunction
+ */
+
+function mrt_globe(t, tg, wind, diam_globe,emis_globe)
+
+{        if ( diam_globe === undefined) {diam_globe = 0.05;} ; // in meters.
+ 
+         if ( emis_globe === undefined) {emis_globe = 0.97;} ; 
+ 
+         var stefanb = 0.0000000567;
+ 
+         return Math.pow((Math.pow(tg + 273.15, 4) + ((1.1 * Math.pow(10,8) * Math.pow(wind,0.6)) /(emis_globe*Math.pow(diam_globe,0.4))) * (tg - t)), 0.25)- 273.15;
+}
+
 
 //  Purpose: to calculate the convective heat tranfer coefficient for flow around a sphere.; t in K
 //  Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;
 
                              
-function h_sphere_in_air(t,pair,speed,speedmin,diam)
-    {
+/**
+ * Given a air temperature tk (kelvin) calculate the heat of evaporation.
+ *
+ * @param {number} tk
+ * @return {number}
+ * @customfunction
+ */
 
-                                    var Rair = 8314.34 / 28.97;
-                                    var Pr = 1003.5 / (1003.5 + 1.25 * Rair);
-                                    var thermal_con = (1003.5 + 1.25 * 8314.34 / 28.97) * viscosity(t-273.15);
-                                    var density = (pair * 100) / (Rair * t)   // kg/m3;
-                                    if(speed < speedmin ){speed = speedmin};
-                                    var Re = (speed * density * diam)/ viscosity(t-273.15);
-                                    var Nu = 2 + 0.6 * Math.pow(Re,0.5) * Math.pow(Pr, 0.3333);
-                                    return (Nu * thermal_con) / diam; // W/(m2 K);
-   }
+function h_evap(tk){
+   var evap = ((313.15 - tk) / 30 )* (-71100) + 2407300;
+  return(evap);
+}
 
-//  Purpose: calculate the air emissivity in function to air temperature and relative humidity;
- 
 
-function emis_atm(ta,rh)
+function emis_atm(tk,rh)
 {
                   //  Reference; Oke (2nd edition), page 373.;
-                  var e = (rh*0.01) * esat(ta+273.15);
-                  return 0.575 * Math.pow(e,0.143);
+                  var e = rh * esat(tk);
+                  return(0.575 * Math.pow(e,0.143));
+}                             
+ 
+ /**
+ * Calculate the saturation vapor pressure (mb) over liquid water given the temperature (K).;
+ * Reference Buck's (1981) approximation (eqn 3) of Wexler's (1976) formulae.;
+ *
+ * @param {number} t
+ * @return {number}
+ * @customfunction
+ */  
+
+function esat (tk) 
+{
+                  var esat= 1.004 *(6.1121 * Math.exp(17.502 * (tk - 273.15) / (tk - 32.18)));
+                  return(esat);  
 }
+
+/**
+ * Given a air temperature tk (Kelvin) compute the viscosity of air, kg/(m s);
+ * Reference; BSL, page 23.;
+ *
+ * @param {number} tk
+ * @return {number}
+ * @customfunction
+ */
+
+              
+function viscosity(tk)
+{
+
+                       var omega = (tk / 97 - 2.9) / 0.4 * (-0.034) + 1.048;
+                       return 0.0000026693 * Math.pow(28.97 * tk,0.5) / (3.617 * 3.617 * omega );
+}
+
+
+
+/**
+ * Given a air temperature tk (Kelvin) and air pressure in millibar(hPA) compute the heat diffusivity in air;
+ * Reference; BSL, page 23.;
+ *
+ * @param {number} t
+ * @return {number}
+ * @customfunction
+ */
+
+function diffusivity(tk, pair) {
+  
+   if( pair === undefined ) {pair=1013.25;};
+  
+  var pcrit13 = Math.pow(36.4 * 218, 1 / 3);
+  var tcrit512 = Math.pow(132 * 647.3,(5 / 12));
+  var Tcrit12 = Math.pow((132 * 647.3), 0.5);
+  var Mmix = Math.pow((1 / 28.97 + 1 / 18.015),0.5);
+  var diffusivity = 0.000364 * Math.pow((tk / Tcrit12),2.334) * pcrit13 * tcrit512 * Mmix / (pair / 1013.25) * 0.0001;
+ return(diffusivity);
+}
+
+
+/**
+ * Purpose: to calculate the convective h the heat tranfer coefficient for flow around a sphere. tk (Kelvin) 
+ * and air pressure in millibar(hPA)
+ * Reference; BSL, page 23.;
+ *
+ * @param {number} t, speed,pair,speedmin,diam_globe;
+ * @return {number}
+ * @customfunction
+ */
+                             
+function h_sphere_in_air(tk,speed,pair,speedmin,diam_globe)
+    {
+       if( diam_globe === undefined ) {diam_globe=0.05;};
+       if( speedmin === undefined ) {speedmin=0.13;};
+       if( pair === undefined ) {pair=1013.25;};
+       var Rair = 8314.34 / 28.97;
+       var Pr = 1003.5 / (1003.5 + 1.25 * Rair);
+       var thermal_con = (1003.5 + 1.25 * 8314.34 / 28.97) * viscosity(tk);
+       var density = (pair * 100) / (Rair * tk);  // kg/m3;
+       if  (speed < speedmin ) {speed = speedmin};
+       var Re = (speed * density * diam_globe)/ viscosity(tk);
+       var Nu = 2 + 0.6 * Math.pow(Re,0.5) * Math.pow(Pr, 0.3333);
+       return (Nu * thermal_con)/ diam_globe; // W/(m2 K);
+   }
+
+
+   
+    
+//  Purpose: to calculate the convective heat tranfer coefficient for heat flow around a cylinder; t in K
+//  Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;
+
+function h_cylinder_in_air(tk,speed,pair,speedmin,diam_wick){
+   
+   if( diam_wick === undefined ) { diam_wick=0.007;};
+   if( speedmin === undefined )  { speedmin=0.13;};
+   if( pair === undefined )      { pair=1010;};
+           
+   var m_air = 28.97;
+   var r_gas = 8314.34;
+   var r_air = r_gas / m_air;
+   var cp = 1003.5; // heat capaticy at constant pressure of dry air
+   var Pr = cp / (cp + (1.25 * r_air));
+  
+  // Calculate the thermal conductivity of air, W/(m K)
+  
+  var thermal_con = (cp + 1.25 * r_gas / m_air) * viscosity(tk);
+                                   
+  // Density of the air
+  
+  var density = (pair * 100) / (r_air * tk);
+  
+  if (speed < speedmin) {speed = speedmin};
+  
+  // Reynolds number
+  
+  var Re = speed * density * diam_wick / viscosity(tk);
+  
+  //  Nusselt number
+  
+  var Nu = 0.281 * Math.pow(Re,0.6) * Math.pow(Pr, 0.44);
+  
+  // Convective heat transfer coefficient in W/(m2 K) for a long cylinder in cross flow
+  var h_cylinder_in_air = Nu * thermal_con / diam_wick ; 
+  
+  return(h_cylinder_in_air);
+}
+
 
 function Tglob_sphere(t,rh,speed,solar,pair,diam,alb_sfc,fdir,zenith)
                         {

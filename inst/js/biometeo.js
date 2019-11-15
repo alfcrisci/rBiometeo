@@ -352,7 +352,7 @@ function dayname_IT(date)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Sun related  functions.
+// sun related  
 
 
 function sun_data(strtime,lat,lon,parameter) 
@@ -423,6 +423,8 @@ function sun_data(strtime,lat,lon,parameter)
 function radtheoric(jddate,elev,albedo,param)
 { 
   if( albedo === undefined ) { albedo = 0.3;};
+  if( param === undefined ) { param  = "global";};
+	
   var radcalcteoric;
   var SC = 1.361; //  kW/m2   ET solar radition I0 kW/m2 Solar constant
   var I0 = SC*(1+0.034*Math.cos((jddate)*2*pi/365)); //  atmospheric effect
@@ -457,13 +459,17 @@ function rad_direct_tilted  (jddate,az,elev,planezen,planeaz)
    return(rad_inc);
 }
 
+/**
+ * Given sun elevation in degrees ggive projection factor.
+ * @param {number} suneleve
+ * @return {number}
+ */
 
 function proj(sunelev)
 {
           if (sunelev < 0.0) {return 0.0};
           return 0.308 * Math.cos(rad * (sunelev* (0.998- (Math.pow(sunelev, 2.0) / 50000.0))));
 }
-
 
 
 /**
@@ -523,7 +529,7 @@ function compass_8(direction)
 // radiant temperature 
 
 /**
- * Given air temperature rh relative humidity, rshort direct beam short-wavelength radiation (W/mq), rdiffuse  
+ * Given t air temperature in degC, rh relative humidity (%), shoortwave  directed beam won mq, short-wavelength radiation (W/mq), rdiffuse  
  * isotropic short-wavelength radiation , the sun elevation,albedo gives and surface emissivity provides 
  * an assessment of Mean Radiant Temperature.
  *

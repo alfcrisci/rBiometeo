@@ -1,6 +1,5 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////
-// Define global constants for functions.
+// Define global constants 
 
 var    Patm = 101325.0; // pascal
 var    CpAir= 1004.0;
@@ -18,8 +17,8 @@ var    PI   = Math.PI,
        J1970 = 2440588,
        J2000 = 2451545;
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Format  functions.
+///////////////////////////////////////////////////////////////////////////////////////////
+// format  
 
 function OneDec(c) 
 {
@@ -46,8 +45,8 @@ function scientificNotation(c,e)
     return c.toPrecision(e);
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Math & Trigonometric functions.
+////////////////////////////////////////////////////////////////////////////////////////////
+// math & trigonometric 
 
 function radToDeg(angleRad) 
 {
@@ -74,17 +73,15 @@ function degToRad(angleDeg)
   * * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   * * GNU General Public License for more details at http://www.gnu.org * * */
 
-  // "Applied Statistics Algorithms" (1985)
-  //  P. Griffiths and I. D. Hill, editor
+  // "Applied Statistics Algorithms" (1985) vol 22 no.3 Algorithm AS66 
+  //  P. Griffiths and I. D. Hill, editor 
 
 function pnorm(z,tail) {
-    
-    // Algorithm AS66 Applied Statistics (1973) vol 22 no.3
-    // Computes P(Z<z)
     
     if( tail === undefined ) { tail = false;};
     
     z=parseFloat(z);
+	
     var ltone= 7.0;
     var utzero= 18.66;
     con= 1.28;
@@ -129,10 +126,10 @@ function pnorm(z,tail) {
       return(alnorm);
   }
 
+// ALGORITHM AS 111, APPL.STATIST., VOL.26, 118-121, 1977.
+// Computes z=invNorm(p)
+
 function qnorm(p) {
-    
-    // ALGORITHM AS 111, APPL.STATIST., VOL.26, 118-121, 1977.
-    // Computes z=invNorm(p)
     
     p=parseFloat(p);
     split=0.42;
@@ -170,8 +167,10 @@ function qnorm(p) {
     } 
     return(ppnd);
   }
+
+
 /**
- * Wind reduction at boundary layer. 
+ * Wind reduction at specific height. 
  * @param {number} x, ref, fin
  * @return {number}
  * 
@@ -181,11 +180,10 @@ function reducewind(x,ref,fin) {
                                         if( ref === undefined ) { tresh = 10;};
                                         if( fin === undefined ) { fin = 2;};
                                         return(x*1/(Math.log(ref/0.01)/Math.log(fin/0.01)));
-                                    
                                }
 
 /**
- * error function
+ * Compute error erf
  *
  * @param {number} x
  * @return {number}
@@ -196,19 +194,6 @@ function erf(x) {x=parseFloat(x);
                  return(2 * pnorm(x * Math.sqrt(2)) - 1);}
 
 
-/**
- * Wind reduction at boundary layer. 
- * @param {number} x, ref, fin
- * @return {number}
- * 
- */
-
-function reducewind(x,ref,fin) {  
-                                        if( ref === undefined ) { tresh = 10;};
-                                        if( fin === undefined ) { fin = 2;};
-                                        return(x*1/(Math.log(ref/0.01)/Math.log(fin/0.01)));
-                                    
-                               }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Date related functions.
 
@@ -370,9 +355,9 @@ function dayname_IT(date)
 // Sun related  functions.
 
 
-function sun_data(serial,lat,lon,parameter) 
-   {
-    var datetime=serial.toDate("yyyy-mm-dd hh:ii:ss"); 
+function sun_data(strtime,lat,lon,parameter) 
+   { 
+    var datetime=new Date(strtime); 
     var udtTimedHours=datetime.getHours() - 0;
     var udtTimedMinutes =datetime.getMinutes() - 0;
     var udtTimedSeconds = datetime.getSeconds() - 0;
@@ -482,10 +467,9 @@ function proj(sunelev)
 
 
 /**
- * Given a temperature in Celsius, return Fahrenheit value.
+ * Given a temperature in celsius degree, return the Fahrenheit degree value.
  * @param {number} C
  * @return {number}
- * @customfunction
  */
 
 function C2F(C) 
@@ -497,7 +481,7 @@ function C2F(C)
 }
 
 /**
- * Given a temperature in Fahrenheit, return  Celsius value.
+ * Given a temperature in Fahrenheit degree, return  the celsius degree value.
  * @param {number} F
  * @return {number}
  * @customfunction
@@ -513,11 +497,8 @@ function F2C(F)
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Wind functions
-
-
-
+/////////////////////////////////////////////////////////////////////////////////////////
+// wind  sector direction 
 
 function compass_16(direction) 
  {
@@ -538,17 +519,16 @@ function compass_8(direction)
 }
   
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Radiant temperature  functions.
-
-
+//////////////////////////////////////////////////////////////////
+// radiant temperature 
 
 /**
- * Given air temperature rh relative humidity, rshort direct beam short-wavelength radiation (W/mq), rdiffuse  isotropic short-wavelength radiation , the sun elevation,albedo gives and surface emissivity provides an assessment of Mean Radiant Temperature.
+ * Given air temperature rh relative humidity, rshort direct beam short-wavelength radiation (W/mq), rdiffuse  
+ * isotropic short-wavelength radiation , the sun elevation,albedo gives and surface emissivity provides 
+ * an assessment of Mean Radiant Temperature.
  *
  * @param {number} t,rh,wind,rshort,sunelev
  * @return {number}
- * @customfunction
  */
 
 function mrt_solar_proj(t,rh,solar,sunelev,albedo,emis_sfc,fdir)
@@ -576,15 +556,13 @@ function mrt_solar_proj(t,rh,solar,sunelev,albedo,emis_sfc,fdir)
 }
 
 /**
- * Given mean radiant temperature t air temperature (Celsius), g Globe Temeperature, wind  wind speed in m/s and diameter.
+ * Given mean radiant temperature t air temperature (degC), g Globe Temeperature in degC, wind speed in m/s and diameter in mm.
  *
- * @param {number} t Air temperature ,tg Globe Temeperature, wind wind speed and diameter. 
+ * @param {number} t Air temperature , tg Globe Temeperature, wind speed and diameter. 
  * @return {number}
- * @customfunction
  */
 
-
-function mrt_thorsson(t,tg,wind,diam)
+function mrt_thorsson(t, tg, wind, diam)
 {        if ( diam === undefined) {diam=0.15;} ;
          var emis_globe = 0.97;
          var stefanb = 0.0000000567;
@@ -599,8 +577,7 @@ function mrt_thorsson(t,tg,wind,diam)
  * @customfunction
  */
 
-
-function mrt_globe(t,tg,wind,diam)
+function mrt_globe(t, tg, wind, diam)
 {        if ( diam === undefined) {diam=0.05;} ;
          var emis_globe = 0.97;
          var stefanb = 0.0000000567;
@@ -609,17 +586,18 @@ function mrt_globe(t,tg,wind,diam)
 
 
 /**
- * Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, global solar radiation in  Watt on square meter,
+ * Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, 
+ * global solar radiation in  Watt on square meter,
  * tg globometric temperature gives, solar zenith in radians,  pair Air Pressure in millibar (hPa), 
- * alb_sfc mean albedo surface, fdir is the ratio between diffuse and directed radiation, irad if radiation is computed and finally the diameter of heat globe.
+ * alb_sfc mean albedo surface, fdir is the ratio between diffuse and directed radiation, irad if 
+ * radiation is computed and finally the diameter of heat globe.
  * 
  * Wet-bulb globe temperature (WBGT) index following Liljegren scheme . 
  * @param {number} t, rh, wind, solar, zenith, pair, alb_sfc, fdir, irad.
  * @return {number} 
- * @customfunction
  */
 
-function wbgt_liljegren(t,rh,wind,solar,zenith,pair,tg,alb_sfc,fdir,irad,diam_globe) 
+function wbgt_sun(t,rh,wind,solar,zenith,pair,tg,alb_sfc,fdir,irad,diam_globe) 
          {
           var wbgt;
           if( pair === undefined ) {pair = 1010;};

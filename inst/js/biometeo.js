@@ -606,7 +606,8 @@ function mrt_thorsson(t, tg, wind, diam)
 }
 
 /**
- * Given mean radiant temperature t air temperature (Celsius), tg Globe Temeperature, wind windspeed in m/s and diameter in millimeter .
+ * Given mean radiant temperature t air temperature (Celsius), tg Globe Temeperature, wind windspeed in m/s 
+ * and diameter in millimeter .
  *
  * @param {number} Ta Air temperature ,Tg Globe Temeperature, wind windspeed in m/s . 
  * @return {number}
@@ -672,7 +673,6 @@ function wbgt_shade(t,rh,wind,pair,tg,alb_sfc,fdir,irad,diam_globe)
  * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature (WBGT) index indoor. 
  * @param {number} t,rh,tg,pa 
  * @return {number}
- * @customfunction
  */
 
 function wbgt_stull(t,rh,tg) 
@@ -1284,14 +1284,14 @@ function heat_risk_index_level(wbgt,tresh)    {
 
 
 /**
- * Given a air temperature t (Celsius degree), globe temperature (degC), wind speed in m per second and diam of glbe in meters compute the mean radiant temperature (Celsius degrees) ;
+ * Given a air temperature t (Celsius degree), globe temperature (degC), wind speed in m per second and diam of globe in meters compute the mean radiant temperature (Celsius degrees) ;
  * @param {number} t, tg, wind, diam_glob
  * @return {number}
  */
 
 function mrt_globe(t, tg, wind, diam_globe,emis_globe)
 
-{        if ( diam_globe === undefined) {diam_globe = 0.05;} ; // in meters.
+{        if ( diam_globe === undefined) {diam_globe = 0.05;} ; 
  
          if ( emis_globe === undefined) {emis_globe = 0.97;} ; 
  
@@ -1452,46 +1452,6 @@ function h_cylinder_in_air(tk,speed,pair,speedmin,diam_wick){
   return(h_cylinder_in_air);
 }
 
-
-function Tglob_sphere(t,rh,speed,solar,pair,diam,alb_sfc,fdir,zenith)
-                        {
-                        if( solar < 5 ) { return(t)};   
-                        if(fdir === undefined ) { fdir = 0.8;}; 
-                        if(zenith === undefined ) {zenith = 0;};
-                        var converge,cza,dT,Tref,h,Tglobe;
-                        var emis_air=emis_atm(t,rh);
-                        var speedMin = 0.1;  
-                        var alb_globe = 0.05;
-                        var emis_globe = 0.95;
-                        var emis_sfc = 0.999;
-                        var stefanb = 0.0000000567;
-                        var Tair = t + 273.15;
-                        var Tsfc = t + 273.15;
-                        var Tglobe_prev = t + 273.15;
-                        zenith=zenith/(180/Math.PI);
-                        converge = 0.05;
-                          
-                        if(zenith <= 0 ){ zenith = 0.0000000001;};
-                        if(zenith > 1.57 ){ zenith = 1.57;};
-                          
-                        cza = Math.cos(zenith);
-
-                        var fixfactor=solar/(2 * emis_globe * stefanb) *(1-alb_globe) *(fdir * (1 / (2 * cza) - 1) + 1 + alb_sfc);
-                        var iter=1;
-                          
-                        do {
-                           Tref = 0.5 * (Tglobe_prev + Tair);
-                           h = h_sphere_in_air(Tref, pair, speed, speedMin, diam);
-                           Tglobe = Math.pow(0.5*(emis_air*Math.pow(Tair,4)+emis_sfc*Math.pow(Tsfc,4))-h/(emis_globe*stefanb)*(Tglobe_prev - Tair) + fixfactor,0.25);
-                           dT = Tglobe - Tglobe_prev;
-                           if(Math.abs(dT) < converge) { Tglobe = Tglobe - 273.15;break;} else {Tglobe_prev = 0.9 * Tglobe_prev + 0.1 * Tglobe;}
-                            iter=iter+1;
-                           } while ( iter < 1000);
-                          
-                          if ( iter===1000) {Tglobe=9999}
-                          
-                          return Tglobe;
-                         }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

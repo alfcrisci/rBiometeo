@@ -202,7 +202,7 @@ function reducewind(x,ref,fin) {
                                }
 
 /**
- * Compute error erf
+ * Compute error erf function
  * @param {number} x
  * @return {number}
  * 
@@ -212,7 +212,7 @@ function erf(x) {x=parseFloat(x);
                  return(2 * pnorm(x * Math.sqrt(2)) - 1);}
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 // Date related 
 
 function ExcelDateToJSDate(serial) {
@@ -327,10 +327,8 @@ function parseISO8601String(dateString)
 
 /**
  * Given a year return if is a leap year.
- *
  * @param {number} yr
  * @return {String}
- * @customfunction
  */
 
 
@@ -341,10 +339,8 @@ function isLeapYear(yr)
 
 /**
  * Given a date, return the name of the day for that date.
- *
  * @param {Date} date
  * @return {String}
-
  */
 
 function dayname_IT(date) 
@@ -489,7 +485,7 @@ function rad_direct_tilted  (jddate,az,elev,planezen,planeaz)
 }
 
 /**
- * Given sun elevation in degrees ggive projection factor.
+ * Given sun elevation in degrees give value of projection factor.
  * @param {number} suneleve
  * @return {number}
  */
@@ -502,7 +498,7 @@ function proj(sunelev)
 
 
 /**
- * Given a temperature in celsius degree, return the Fahrenheit degree value.
+ * Given a temperature in celsius degree (degC), return the Fahrenheit degree value (degF).
  * @param {number} C
  * @return {number}
  */
@@ -516,7 +512,7 @@ function C2F(C)
 }
 
 /**
- * Given a temperature in Fahrenheit degree, return  the celsius degree value.
+ * Given a temperature in Fahrenheit degree (degF), return  the celsius degree value (degF).
  * @param {number} F
  * @return {number}
  */
@@ -648,7 +644,7 @@ function wbgt_sun(t,rh,wind,solar,zenith,pair,tg,alb_sfc,fdir,irad,diam_globe,pr
           return wbgt;
 }
 
-function wbgt_shade(t,rh,wind,pair,tg,alb_sfc,fdir,irad,diam_globe) 
+function wbgt_shade(t,rh,wind,pair,tg,alb_sfc,fdir,irad,diam_globe,prec) 
          {
           var wbgt;
           if( pair === undefined ) {pair = 1010;};
@@ -658,15 +654,15 @@ function wbgt_shade(t,rh,wind,pair,tg,alb_sfc,fdir,irad,diam_globe)
           if( diam_globe === undefined ) {diam_globe=0.05;};
                 
                      
-          var tw = natural_wetbulb(t,rh,wind,0.0001,0.0001,pair,alb_sfc,fdir,irad);
+          var tw = natural_wetbulb(t,rh,wind,0.0001,0.0001,pair,alb_sfc,fdir,irad,prec);
            
           wbgt = 0.7*tw+0.3*t;
           return wbgt;
 }
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature (WBGT) index indoor. 
- * @param {number} t,rh,tg,pa 
+ * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature  index (WBGT). 
+ * @param {number} t,rh,tg
  * @return {number}
  */
 
@@ -678,62 +674,6 @@ function wbgt_stull(t,rh,tg)
               return wbgt;
            }
 
-
-/**
- * Given  tg globometric of sphere unbounded. 
- * @param {number} t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam
- * @return {number}
- * @customfunction
- */
-
-function Tglob_sphere_unbound(t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam)
-                        {
-                        if(zenith === undefined )   {zenith = 0.0000000001;};
-                        if(zenith <= 0 )            { zenith = 0.0000000001;};
-                        if(zenith > 1.57 )          { zenith = 1.57;};
-                        
-                        if(pair === undefined )     { pair =1013.25;};
-                        if(alb_sfc === undefined )  { alb_sfc = 0.4;};
-                        if(fdir === undefined )     { fdir = 0.8;}; 
-                        if(diam === undefined )     { diam = 0.05;}; 
-                          
-                       
-                        var converge,cza,dT,Tref,h,Tglobe;
-                        var speedmin = 0.13;  
-                        var alb_globe = 0.05;
-                        var emis_globe = 0.95;
-                        var emis_sfc = 0.999;
-                        var stefanb = 0.000000056696;
-                        var Tair = t + 273.15;
-                        var Tsfc = Tair;
-                        var Tglobe_prev = Tair;
-                        var RH=rh*0.01;  
-                        var emis_air;
-                        converge = 0.05;
-                        
-                        cza = Math.cos(zenith);
-                         
-                        var iter=1;
-                          
-                        do {
-                           Tref = 0.5 * (Tglobe_prev + Tair);
-                          
-                           h = h_sphere_in_air(Tref, speed, pair);
-                          
-                           Tglobe= Math.pow(0.5 * (emis_atm(Tair,RH) * Math.pow( Tair,4) + emis_sfc * Math.pow(Tsfc,4)) 
-                                      - h / (emis_globe * stefanb) * (Tglobe_prev - Tair) 
-                                      + solar / (2 * emis_globe * stefanb) * (1 - alb_globe) * (fdir * (1 / (2 * cza) - 1) + 1 + alb_sfc),0.25); 
-
-                           dT = Tglobe - Tglobe_prev;
-                           
-                           if(Math.abs(dT) < converge) { Tglobe = Tglobe ;break;} else { Tglobe_prev = Tglobe_prev + 0.05 };
-                                                         iter=iter+1;
-                           } while ( iter < 1000);
-                           
-
-                         return(Tglobe_prev-273.15);
-                         }
-  
 
 
 function fglob_sphere(Tglobe_prev,Tair,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam)
@@ -814,176 +754,12 @@ function wetbulb_stull(t,rh)
      c[3] =0.00391838;
      c[4] =0.023101;
      c[5] =4.686035;
-
-  
   
     var wetbulb = t * Math.atan(c[0] * Math.sqrt(rh + c[1])) 
                      + Math.atan(t + rh) - Math.atan(rh - c[2]) 
                      + c[3] * (Math.pow(rh,3/2)) * Math.atan(c[4] * rh) - c[5];
     return(wetbulb)
 }
-
-/**
- * Given air temperature (Celsius), relative humidity (%) and pressure ( pa) gives natural wetbulb in Ceslius degrees.
- * Brice and HALL vapor pressure https://www.weather.gov/epz/wxcalc_rh
- * @param {number} t, rh, pair
- * @return {number}
- */
-
-function wetbulb_brice_hall(t,rh,pair)
-			{  
-              if (pair == undefined) {pair = 1013.25};
-              var Ewguess,Eguess,wetbulb,cursign;
-              var Twguess = 0;
-			  var incr = 1;
-			  var previoussign = 1;
-			  var Edifference = 1;
-	          var E2 = pvap(t,rh);
-
-			  outerloop:
-               
-				while (Math.abs(Edifference) > 0.005) 
-				{
-					Ewguess = 6.112 * Math.exp((17.67 * Twguess) / (Twguess + 243.5));
-					Eguess = Ewguess - (pair) * (t - Twguess) * 0.00066 * (1 + (0.00115 * Twguess));
-					Edifference = E2 - Eguess;
-					
-					if (Edifference == 0)
-					{
-						break outerloop;
-
-					} else {
-						if (Edifference < 0)
-						{
-							cursign = -1;
-							if (cursign != previoussign)
-							{
-								previoussign = cursign;
-								incr = incr/10;
-							} else {
-								incr = incr;
-							}
-						} else {
-							cursign = 1;
-							if (cursign != previoussign)
-							{
-								previoussign = cursign;
-								incr = incr/10;
-							} else {
-								incr = incr;
-							}
-						}
-					}
-					
-					Twguess = Twguess + incr * previoussign;
-					
-				}
-				wetbulb = Twguess;
-				return wetbulb;
-			}	
-
-
-/**
- * Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second,
- * global solar radiation in watt on square meters, solar zenith in radians, pair Air Pressure in millibar (hPa), 
- * alb_sfc mean albedo surface, ratio diffuse and directed solar radiation and irad = 1 if radiation was taken into account for heat
- * release of globe.
- * The natural wet-bulb temperature index is computed following Liljegren scheme. 
- * @param {number} t, rh, wind, solar, zenith, pair, alb_sfc, fdir, irad
- * @return {number}
- */
-
-
-function natural_wetbulb_unbound(t,rh,speed,solar,zenith,pair,alb_sfc,fdir,irad)
-                        {
-                      
-                        if( zenith === undefined ) {zenith = 0.0000000001;};
-                        if( zenith <= 0 ){ zenith = 0.0000000001;};
-                        if( zenith > 1.57 ){ zenith = 1.57;};
-                        if( solar === undefined ) { solar = 0};
-                        var speedmin = 0.13;  
-                        if( speed === undefined ) { speed = speedmin};
-                      
-                        if( pair === undefined ) {pair = 1010;};
-                        if( alb_sfc === undefined ) {alb_sfc = 0.4;};
-                        if( fdir === undefined ) { fdir = 0.8;}; 
-                        if( irad === undefined ) {irad = 1;};
-                           
-                        var converge,dT,Tref,h,Twb,Fatm,density,eair;
-                        var emis_sfc = 0.999;
-                        var stefanb= 0.000000056696;
-                           
-                        /* heat capaticy of dry air at constant pressure */
-                        
-                        var cp=1003.5;
-                        var m_air=28.97;
-                        var m_h2o=18.015;
-                        var r_gas=8314.34;
-                        var r_air=r_gas / m_air;
-                        var ratio=cp * m_air/ m_h2o;
-                        var Pr=cp / (cp + (1.25 * r_air));
-  
-                        // Wick constants
-                        
-                        var emis_wick = 0.95;   // emissivity
-                        var alb_wick = 0.4;    // albedo
-                        var diam_wick = 0.007; // diameter (in m)
-                        var len_wick = 0.0254; // length (in m)
-  
-                        // Globe constants
-                        
-                    
-                        var Tair = t + 273.15;
-                        var Tsfc = t + 273.15;
-                        var Twb_prev = dewpoint(t,rh) + 273.15;
-                        var RH=rh * 0.01;  
-                        var emis_air= emis_atm(Tair,RH);
-                            eair = RH * esat(Tair);   
-                         
-                        var iter=1;
-                            converge = 0.5;
-                        
-                        do {
-                           
-                            Tref = 0.5 * (Twb_prev + Tair);
-                          
-                            // Radiative heating term	
-                          
-                            Fatm = stefanb * emis_wick * (0.5 * (emis_air * Math.pow(Tair, 4) 
-                                   + emis_sfc * Math.pow(Tsfc, 4))  - Math.pow(Twb_prev, 4)) 
-                                   + (1 - alb_wick) * solar * ((1 - fdir) * (1 + 0.25 * diam_wick / len_wick) 
-                                   + ((Math.tan(zenith) / 3.1416) + 0.25 * diam_wick / len_wick) * fdir + alb_sfc);
-    
-                           // Schmidt number
-                           
-                           density = (pair * 100) / (Tair * r_air);
-                       
-                           var Sc = viscosity(Tair) / (density * diffusivity(Tref, pair));
-                           
-                           // Calculate the convective heat transfer coefficient for a long cylinder in cross flow
-                          
-                            h = h_cylinder_in_air(Twb_prev, speed, pair,speedmin, diam_wick);    
-                          
-                           // Calculate the saturation vapor pressure (hPa) over liquid water
-                          
-                            var ewick = esat(Twb_prev);
-                           
-                         
-                           // Calculate the heat of evaporation, J/(kg K)
-                            
-                           var evap = h_evap(Twb_prev); 
-                              
-                          
-                           Twb = Tair - (evap/ratio) * ((ewick - eair) / (pair - ewick)) * Math.pow((Pr / Sc),0.56) + Fatm / h * irad;
-                           
-                           dT = Twb - Twb_prev;
-                          
-                           if (Math.abs(dT) < converge) { Twb = Twb - 273.15; break; } else {Twb_prev=Twb_prev + 0.1;};
-                           iter=iter+1;
-                                                       
-                           } while ( iter < 2000);
-                            return(Twb_prev-273.15);
-                         }
 
 
 
@@ -1634,11 +1410,9 @@ function pvap(t,rh)
 
 
 /**
- * Given a air temperature t (Celsius) and air relative humidity  (RH)  and formula give the Dew point in Celsius degrees.
- *
- * @param {number} t,RH
- * @return {number}
- * @customfunction
+ *  Given a air temperature t (degC) and air relative humidity  (rh)  and formula give the dew-point in degC.
+ *  @param {number} t,rh,formula
+ *  @return {number}
  */
 
 function dewpoint(t,rh,formula) {
@@ -1721,10 +1495,8 @@ function metabolism(t)
   return (-3.0909 * t + 203.64); 
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////
 // Thermal Confort index section
-
-
 
 /**
  * Given PMV value and Metabolic energy production M (58 to 400 W/m2) return the PPD Index ISO 7730. 
@@ -1739,8 +1511,6 @@ function PPD(PMV)
                    return(Math.round((PPD)*10)/10);
             }
   
-
-
 /**
  * Given PMV and metabolic rate the heat body balance is done following ISO 7730 PMV's scheme.
  *
@@ -1756,10 +1526,16 @@ function balancePMV7730(pmv,M)
                        return(balance);
                        } 
   
-// Person global metabolic request for a day Harris Benedict Equation (cal/day) -> 
-// kJ and divided for daily seconds Watt but already normalized for Adu.
-  
-function bmr_met(mbody,age,ht,gender) 
+ 
+/**
+ * Given antropometric features ( body mass,age, height and gender) give custom basal metabolic rate/
+ * request for a day Harris Benedict Equation (cal/day) 
+ * kJ and divided for daily seconds Watt but already normalized for Adu.
+ * @param {number} mbody,age,ht,gender
+ * @return {number}
+ * @customfunction
+ */
+function HB_bmr_met(mbody,age,ht,gender) 
          { 
           var bmr; 
           var adu = 0.203 * Math.pow(mbody, 0.425) * Math.pow(ht, 0.725);
@@ -2019,7 +1795,7 @@ function PMV_ISO7730(t,rh,wind,trad,M,W,clo)
  /**
  * Given a temperature t (Celsius), relative humidity rh (%), wind ( m/sec), mean radiant temperature trad (degC), M metabolism (met) , W external work ( generally 0),
  * and clothing insulation (clo) gives perceived HSI (Heat Strain Index) or AET or Sweat rate indexes.
- * Reference Introduction to Human Factors and Ergonomics for Engineers Di Mark R. Lehto,Steven J. Landry,Jim Buck
+ * Reference Introduction to Human Factors and Ergonomics for Engineers , authors Mark R. Lehto, Steven J. Landry and Jim Buck
  * @param {number} ta
  * @return {number} 
  */
@@ -3442,7 +3218,6 @@ function wbgt_outdoor(t,rh,wind,solar,press,topo)
 	  var pair=pheight(press,topo);
           var tw = wetbulb(t,rh,pair);
 	  var tg = Tglob_sphere(t,rh,wind,solar,pair,0.05,0.97,0.8,0);
-
           wbgt = 0.7*tw+0.2*tg+0.1*t;
           return wbgt;
 }
@@ -3456,73 +3231,24 @@ function wbgt_outdoor(t,rh,wind,solar,press,topo)
  * @customfunction
  */
 
-function wbgt_indoor(t,rh,wind,press,elev) 
+function wbgt_indoor(t,rh,wind,pair,elev) 
          {
           if ( wind === undefined) {wind=0.1};
-           
+          if ( pair === undefined) {pair=1010};
+          if ( elev === undefined) {elev=0};
+          
           var wbgt;
-          var pair=pheight(press,elev);
-          var tw = wetbulb(t,rh,pair);
-		      wbgt= 0.67*tw+0.33*t-0.048 *Math.log(wind)*(t-tw);
+          var pair=pheight(pair,elev);
+          var tw = natural_wetbulb(t,rh,0,0,pair);
+	      wbgt= 0.67*tw+0.33*t-0.048 *Math.log(wind)*(t-tw);
           /*if ( wind < 1.1) { wbgt= 0.04*t + 0.96*tw};*/
           return wbgt;
 }
 
-/**
- * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives and Air Pressure in millibar ( hPa). 
- * Wet-bulb globe temperature (WBGT) index indoor. 
- * @param {number} t,rh,tg,pa 
- * @return {number}
- * @customfunction
- */
 
-
-function wbgt_full (t,rh,tg,pa) 
-         {
-          var wbgt;
-          if( pa=== undefined ) { pa = 1013.25;};
-  
-          var tw = wetbulb(t,rh,pa)
-          wbgt = 0.7*tw+0.2*tg+0.1*t;
-          return wbgt;
-}
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature (WBGT) index indoor. 
- * @param {number} t,rh,tg,pa 
- * @return {number}
- * @customfunction
- */
-
-function wbgt(t,rh,tg) 
-         {
-          var wbgt;
-          var tw = wetbulb_stull(t,rh)
-          wbgt = 0.7*tw+0.2*tg+0.1*t;
-          return wbgt;
-}
-
-/**
- * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb globe temperature (WBGT) index indoor. Bernard Integration for wind. 
- * @param {number} t,rh 
- * Bernard TE, Pourmoghani M (1999)  "Prediction of Workplace Wet Bulb Global Temperature."  Applied Occupational and Environmental Hygiene 14: 126-134
- * Ramsey JD, Bernard TE (2000) Heat Stress in R Harris (ed) Patty's Industrial Hygiene and Toxicology vol 2 New York: John Wiley & Sons 
- * @return {number}
- * @customfunction
- */
-
-function wbgt_indoor_nop(t,rh,wind) 
-         {
-          if ( wind === undefined) {wind=1};
-          var wbgt;
-          var tw = wetbulb(t,rh,1013.25)
-          wbgt= 0.67*tw+0.33*t-0.048 *Math.log(wind)*(t-tw);
-          /*if ( wind < 1.1) { wbgt= 0.04*t + 0.96*tw};*/
-          return wbgt;
-}
-
-/**
- * Given t air temperature (Celsius), rh relative humidity (%)  gives Modified discomfort index (MDI). 
+ * Given t air temperature (Celsius), rh relative humidity (%) gives Modified discomfort index (MDI). 
  * @param {number} t,rh 
  * @return {number}
  * @customfunction
@@ -3533,17 +3259,16 @@ function mdi_index(t,rh)
           var mdi;
           var tw = wetbulb(t,rh,1013.25);
           mdi = 0.7 * tw + 0.3 * t;
-          return mdi;
+          return mdi; 
 }
 
 
 
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%)  gives  thom discomfort index. 
+ * Given t air temperature (degC), rh relative humidity (%)  gives the thom discomfort index. 
  * @param {number} t,rh 
  * @return {number}
- * @customfunction
  */
 
 
@@ -3561,34 +3286,54 @@ function thom(t,rh)
  * Reference: http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
  * @param {number} Ta,v
  * @return {number}
- * @customfunction
  */
 
 function windchill(t,wind) 
         { var Tawci,twc = 1;
 	      if (wind < 1.3) ( wind=1.3);
 	      Tawci = t;
-          wind=(3.6)*wind;
+              wind=(3.6)*wind;
 	      twc = 13.12 + 0.6215 * Tawci-11.37 * Math.pow(wind,0.16) +0.3965 * Tawci* Math.pow(wind,0.16);
 	      return(TwoDec(twc));
         }
 
 
 /**
- * Given Ambient Air Temperature (< +10 Celsius) and relative air velocity wind ( 0.4 to 18 m/s)
+ * Given Ambient Air Temperature t (< +10 Celsius) and relative air velocity wind ( 0.4 to 18 m/s)
  * give a windchill index - ISO11079 in watt on mq. 
  * Reference: http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
- * @param {number} Ta,wind
+ * @param {number} t,wind
  * @return {number}
  */
 
 function wc_watt2mq (t, wind)
 			{
-				
-                                var Watts = (12.1452 + 11.6222*Math.sqrt(wind) - 1.16222 * wind)*(33 - t);
-				return Watts;
+			 if (wind < 0.4) ( wind=0.4);
+	                 var Watts = (12.1452 + 11.6222*Math.sqrt(wind) - 1.16222 * wind)*(33 - t);
+			 return Watts;
 
 			}
+
+
+
+
+/**
+ * Given a temperature t (degC ) and wind ( m/sec) frost time following Wind chill class .
+ * @param {number} t
+ * @return {number} 
+ */
+
+function windchill_cla(t,wind)
+{
+     var wcla;
+     var wcindex=windchill(t,wind);  
+     if (wcindex > 0 ) {return 1;}
+     else if (wcindex > -10.0) {return 2;}
+     else{  
+     return 6;
+    }
+return (ft*60);
+}
 
 
 /**

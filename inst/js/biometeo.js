@@ -91,10 +91,9 @@ function linspace(x0, xN, dx){
   * * This program is distributed in the hope that it will be useful,
   * * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-  * * GNU General Public License for more details at http://www.gnu.org * * */
+  * * "Applied Statistics Algorithms" (1985) vol 22 no.3 Algorithm AS66 P. Griffiths and I. D. Hill, editor 
+*/
 
-  // "Applied Statistics Algorithms" (1985) vol 22 no.3 Algorithm AS66 
-  //  P. Griffiths and I. D. Hill, editor 
 
 function pnorm(z,tail) {
     
@@ -190,7 +189,7 @@ function qnorm(p) {
 
 
 /**
- * Wind reduction at specific height. 
+ * Wind reduction at specific height 
  * @param {number} x, ref, fin
  * @return {number}
  * 
@@ -204,7 +203,6 @@ function reducewind(x,ref,fin) {
 
 /**
  * Compute error erf
- *
  * @param {number} x
  * @return {number}
  * 
@@ -346,7 +344,7 @@ function isLeapYear(yr)
  *
  * @param {Date} date
  * @return {String}
- * @customfunction
+
  */
 
 function dayname_IT(date) 
@@ -371,7 +369,7 @@ function dayname_IT(date)
   return dayName;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 // sun related  
 
 
@@ -555,15 +553,13 @@ function compass_8(direction)
 }
   
 
-//////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // radiant temperature 
 
-/**
- * Given t air temperature in degC, rh relative humidity (%), shoortwave  directed beam won mq, short-wavelength radiation (W/mq), rdiffuse  
- * isotropic short-wavelength radiation , the sun elevation,albedo gives and surface emissivity provides 
+/** 
+ * Given t air temperature in degC, rh relative humidity (%), shortwave  directed beam short-wavelength radiation (W/mq)the sun elevation,albedo gives and surface emissivity provides 
  * an assessment of Mean Radiant Temperature.
- *
- * @param {number} t,rh,wind,rshort,sunelev
+ * @param {number} t, rh, wind, rshort, sunelev
  * @return {number}
  */
 
@@ -593,7 +589,6 @@ function mrt_solar_proj(t,rh,solar,sunelev,albedo,emis_sfc,fdir)
 
 /**
  * Given mean radiant temperature t air temperature (degC), g Globe Temeperature in degC, wind speed in m/s and diameter in mm.
- *
  * @param {number} t Air temperature , tg Globe Temeperature, wind speed and diameter. 
  * @return {number}
  */
@@ -609,9 +604,8 @@ function mrt_thorsson(t, tg, wind, diam)
  * Given mean radiant temperature t air temperature (Celsius), tg Globe Temeperature, wind windspeed in m/s 
  * and diameter in millimeter .
  *
- * @param {number} Ta Air temperature ,Tg Globe Temeperature, wind windspeed in m/s . 
+ * @param {number} t,tg,wind  
  * @return {number}
- * @customfunction
  */
 
 function mrt_globe(t, tg, wind, diam)
@@ -634,7 +628,7 @@ function mrt_globe(t, tg, wind, diam)
  * @return {number} 
  */
 
-function wbgt_sun(t,rh,wind,solar,zenith,pair,tg,alb_sfc,fdir,irad,diam_globe) 
+function wbgt_sun(t,rh,wind,solar,zenith,pair,tg,alb_sfc,fdir,irad,diam_globe,prec) 
          {
           var wbgt;
           if( pair === undefined ) {pair = 1010;};
@@ -642,12 +636,13 @@ function wbgt_sun(t,rh,wind,solar,zenith,pair,tg,alb_sfc,fdir,irad,diam_globe)
           if( fdir === undefined ) { fdir = 0.8;}; 
           if( irad === undefined ) {irad = 1;};
           if( diam_globe === undefined ) {diam_globe=0.05;};
+          if( prec === undefined ) {prec=0.01;};
                 
           if( tg === undefined ) { tg = t};
             
-          var tg= Tglob_sphere(t,rh,wind,solar,zenith,pair,10,2,alb_sfc,fdir,diam_globe);
+          var tg= Tglob_sphere(t,rh,wind,solar,zenith,pair,10,2,alb_sfc,fdir,diam_globe,prec);
                      
-          var tw = natural_wetbulb(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad);
+          var tw = natural_wetbulb(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,prec);
            
           wbgt = 0.7*tw+0.2*tg+0.1*t;
           return wbgt;

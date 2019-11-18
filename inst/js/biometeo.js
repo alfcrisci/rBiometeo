@@ -208,8 +208,9 @@ function reducewind(x,ref,fin) {
  * 
  */
 
-function erf(x) {x=parseFloat(x); 
-                 return(2 * pnorm(x * Math.sqrt(2)) - 1);}
+function erf(x) {  x=parseFloat(x); 
+                   return(2 * pnorm(x * Math.sqrt(2)) - 1);
+		}
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -473,7 +474,7 @@ function radtheoric(jddate,elev,albedo,param)
  * @return {number}
  */
 
-function rad_direct_tilted  (jddate,az,elev,planezen,planeaz) 
+function rad_direct_tilted(jddate,az,elev,planezen,planeaz) 
 {
                             planezen=planezen/rad;
                             planeaz=planeaz/rad;
@@ -481,7 +482,7 @@ function rad_direct_tilted  (jddate,az,elev,planezen,planeaz)
                             az=az/rad;
                             var rad_dir=radtheoric(jddate,elev,"direct");
                             var radinc=rad_dir *(Math.cos(elev)*Math.sin(planezen)*Math.cos(planeaz-az)+Math.sin(elev)*Math.cos(planezen));
-   return(rad_inc);
+                            return(rad_inc);
 }
 
 /**
@@ -528,7 +529,7 @@ function F2C(F)
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
-// wind  sector direction 
+//  wind  sector direction 
 
 function compass_16(direction) 
  {
@@ -624,7 +625,7 @@ function mrt_globe(t, tg, wind, diam)
  * @return {number} 
  */
 
-function wbgt_sun(t,rh,wind,solar,zenith,pair,tg,alb_sfc,fdir,irad,diam_globe,prec) 
+function wbgt_sun(t,rh,wind,solar,zenith,pair,tg,alb_sfc,fdir,irad,diam_globe,maxair,minair,prec) 
          {
           var wbgt;
           if( pair === undefined ) {pair = 1010;};
@@ -632,11 +633,14 @@ function wbgt_sun(t,rh,wind,solar,zenith,pair,tg,alb_sfc,fdir,irad,diam_globe,pr
           if( fdir === undefined ) { fdir = 0.8;}; 
           if( irad === undefined ) {irad = 1;};
           if( diam_globe === undefined ) {diam_globe=0.05;};
+	  if( prec === undefined ) {prec=0.01;};
+          if( prec === undefined ) {prec=0.01;};
+         	 
           if( prec === undefined ) {prec=0.01;};
                 
           if( tg === undefined ) { tg = t};
             
-          var tg= Tglob_sphere(t,rh,wind,solar,zenith,pair,10,2,alb_sfc,fdir,diam_globe,prec);
+          var tg= Tglob_sphere(t,rh,wind,solar,zenith,pair,maxair,minair,alb_sfc,fdir,diam_globe,prec);
                      
           var tw = natural_wetbulb(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,prec);
            
@@ -718,18 +722,19 @@ function fglob_sphere(Tglobe_prev,Tair,rh,speed,solar,zenith,pair,alb_sfc,fdir,d
  * @return {number}
  */
 
-function Tglob_sphere(t,rh,speed,solar,zenith,pair,maxair,minair,alb_sfc,fdir,diam,prec){
+function Tglob_sphere(t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam,maxair,minair,prec){
   
-                         if(pair === undefined )     { pair =1013.25;};
-                         if(alb_sfc === undefined )  { alb_sfc = 0.4;};
-                         if(fdir === undefined )     { fdir = 0.8;}; 
-                         if(diam === undefined )     { diam = 0.05;}; 
-                         if(minair === undefined )     { minair = 2;}; 
-                         if(maxair === undefined )     { maxair = 10;}; 
-                         if(prec === undefined )     { prec = 0.01;}; 
+                         if( pair === undefined )     { pair =1013.25;};
+                         if( alb_sfc === undefined )  { alb_sfc = 0.4;};
+                         if( fdir === undefined )     { fdir = 0.8;}; 
+                         if( diam === undefined )     { diam = 0.05;}; 
+                         if( minair === undefined )     { minair = 2;}; 
+                         if( maxair === undefined )     { maxair = 10;}; 
+                         if( prec === undefined )     { prec = 0.01;}; 
   
-                          //     If solar > 15 And zenith > 1.54 Then zenith = 1.54
-                          //     If solar > 900 And zenith > 1.52 Then zenith = 1.52
+                         if(solar > 15 &&  zenith > 1.54) {zenith = 1.54;}; 
+	                 if(solar > 900 &&  zenith > 1.52) {zenith = 1.52;}; 
+                   
   
                          var Tair = t + 273.15;
                          var map1=[];
@@ -837,7 +842,7 @@ function fnatural_wetbulb(Twb_prev,Tair,rh,wspeed,solar,zenith,pair,alb_sfc,fdir
                            return(Math.abs(dT));
                          }
                                   
-function natural_wetbulb(t,rh,wspeed,solar,zenith,pair,maxair,minair,alb_sfc,fdir,irad,prec){
+function natural_wetbulb(t,rh,wspeed,solar,zenith,pair,alb_sfc,fdir,irad,maxair,minair,prec){
                         
                          if( zenith === undefined )    { zenith = 0.0000000001;};
                          if( zenith <= 0 )             { zenith = 0.0000000001;};
@@ -845,8 +850,8 @@ function natural_wetbulb(t,rh,wspeed,solar,zenith,pair,maxair,minair,alb_sfc,fdi
                         
                          if ( wspeed === undefined )  { wspeed = 0.13};
                          if ( solar === undefined )   { solar = 0};
-                         if ( minair === undefined )  { minair = 1;}; 
-                         if ( maxair === undefined )  { maxair = 1;}; 
+                         if ( minair === undefined )  { minair = 2;}; 
+                         if ( maxair === undefined )  { maxair = 10;}; 
                          if ( pair === undefined )    { pair = 1010;};
                          if ( alb_sfc === undefined)  { alb_sfc = 0.4;};
                          if ( fdir === undefined )    { fdir = 0.8;}; 
@@ -1246,8 +1251,6 @@ function fRH(t,td)
 
 
 
-
-
 /*
  * Saturation Vapor Pressure formula for range -100..0 Deg. C.
  * Hardy B, 1998,"ITS-90 Formulations for Vapor Pressure, Frostpoint Temperature,Dewpoint Temperature, and Enhancement Factors in the Range 100 to +100 C".
@@ -1496,7 +1499,7 @@ function metabolism(t)
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
-// Thermal Confort index section
+// thermal Confort index section
 
 /**
  * Given PMV value and Metabolic energy production M (58 to 400 W/m2) return the PPD Index ISO 7730. 

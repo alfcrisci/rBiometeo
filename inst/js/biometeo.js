@@ -341,7 +341,7 @@ function isLeapYear(yr)
 /**
  * Given a date, return the name of the day for that date.
  * @param {Date} date
- * @return {String}
+ * @return {string}
  */
 
 function dayname_IT(date) 
@@ -887,13 +887,6 @@ function h_cylinder_in_air(tk,speed,pair,speedmin,diam_wick){
 
 
 
-/**
- * Given air temperature (Celsius) and dewpoint(Celsius) gives relative huidity .
- *
- * @param {number} t,td
- * @return {number}
- * @customfunction
- */
 
 
                              
@@ -1207,7 +1200,7 @@ function spvol(ta,hum_ratio,pa)
 	return (y);
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 // Metabolic section
 
 /**
@@ -1372,8 +1365,8 @@ function PMV_custom(t,rh,wind,mtrad,iclo,age,mbody,ht,gender)
 
 /**
  * Given a temperature t (Celsius), relative humidity rh (%), wind ( m/sec), mean radiant temperature tr (degC), M metabolism, W work
- * and clothing insulation (clo) gives perceived_temperature  following PMV scheme .
- * @param {number} ta
+ * and clothing insulation (clo) gives perceived_temperature following the PMV scheme.
+ * @param {number} t,rh,wind,tr,M,W,clo
  * @return {number} 
  * @customfunction
  */
@@ -2219,16 +2212,16 @@ function IREQ(t,rh,wind,trad,M,W,clo,param,p,w)
   
 	Icl=Icl*0.155;
 	
-    Ia=0.092*Math.exp(-0.15*v-0.22*w)-0.0045;
+        Ia=0.092*Math.exp(-0.15*v-0.22*w)-0.0045;
   
     // Calculation of Tsk (C) and wetness (%) for RTneutral! 
 		
-    Tsk=35.7-0.0285*M;
+        Tsk=35.7-0.0285*M;
 	wetness=0.001*M;
 		
      // Calculation of Tex (C) and Pex,Psks,Pa (Pa) 
 		
-     Tex=29+0.2*Ta;                     
+         Tex=29+0.2*Ta;                     
 	 Pex=0.1333*Math.exp(18.6686-4030.183/(Tex+235));
 	 Psks=0.1333*Math.exp(18.6686-4030.183/(Tsk+235)); 
 	 Pa=(rh/100)*0.1333*Math.exp(18.6686-4030.183/(Ta+235));  
@@ -2572,15 +2565,15 @@ function heatindex(t,rh)
  * @customfunction 
  */
 
-function steadman_outdoor(t,rh,wind,rad,sunelev)
+function steadman_outdoor(t,rh,wind,solar,sunelev)
 {    
   var steadman_outdoor_sun=9999;
   if (rh > 100.1 || rh < 0.0) {return 9999};
   if (t > 100.0 || t < -100.0) {return 9999};
-  if (rad < 50) { return(steadman_outdoor_shade(t,rh,wind))}
+  if (solar < 50) { return(steadman_outdoor_shade(t,rh,wind))}
   else {
     var ee = (rh/1000.0)*(6.105*Math.exp((t*17.27)/(237.7+t)));
-    var q_glob = 0.56*(0.386-(0.0032*sunelev))*rad + 0.224*(0.1*rad)+ 0.028*rad- 150.0*(0.38-0.16*(Math.pow(ee,0.5))); 
+    var q_glob = 0.56*(0.386-(0.0032*sunelev))*solar + 0.224*(0.1*solar)+ 0.028*solar- 150.0*(0.38-0.16*(Math.pow(ee,0.5))); 
     if (q_glob > 0.0) {steadman_outdoor_sun = t+3.48*(ee)-0.7*wind +0.7*q_glob/(wind+10.0)-4.25};
     };  
   return TwoDec(steadman_outdoor_sun);
@@ -2872,10 +2865,14 @@ function THI_kliber(t,rh)
  * @customfunction
  */
 
-function oxford_index(t,rh)  
+function oxford_index(t,rh,wind,pair)  
          {
           var ox;
-          var tw = wetbulb(t,rh);
+          if ( pair === undefined) {pair=1010};
+	  if ( wind === undefined) {wind=0.13};
+        
+          var tw = natural_wetbulb(t,rh,wind,0,0,pair);
+          
           ox = 0.85*tw+0.15*t;
           return ox;
 }
@@ -2884,13 +2881,15 @@ function oxford_index(t,rh)
  * Given t air temperature (Celsius), rh relative humidity (%)and gives  Discomfort index (DI). 
  * @param {number} t,rh 
  * @return {number}
- * @customfunction
  */
 
-function discomfort_index(t,rh)   
+function discomfort_index(t,rh,wind,pair)   
          {
           var disc;
-          var tw = wetbulb(t,rh);
+          if ( pair === undefined) {pair=1010};
+	  if ( wind === undefined) {wind=0.13};
+        
+          var tw = natural_wetbulb(t,rh,wind,0,0,pair);
           disc = 0.5*tw+0.5*t;
           return disc;
 }
@@ -2900,13 +2899,16 @@ function discomfort_index(t,rh)
  * Given t air temperature (Celsius), rh relative humidity (%)  gives Fighter index of thermal stress (FITS). 
  * @param {number} t,rh 
  * @return {number}
- * @customfunction
  */
 
-function fits_index(t,rh) 
+function fits_index(t,rh,wind,pair) 
          {
-          var fits;
-          var tw = wetbulb(t,rh)
+          var fits; 
+	  if ( pair === undefined) {pair=1010};
+	  if ( wind === undefined) {wind=0.13};
+        
+          var tw = natural_wetbulb(t,rh,wind,0,0,pair);
+	
           fits = 0.83*tw+0.35*t+5.08
           return fits;
 }
@@ -2952,7 +2954,6 @@ function BSA(h,w)
  * Given met rate level by using clothing iso level and BSA.
  * @param {number} BSA, isolevel
  * @return {number}
- * @customfunction
  */
 
 
@@ -2969,7 +2970,6 @@ function met_rate(BSA, isolevel) {
  * Given met and clo level gives acclimated threshold of risk by using wbgt index. 
  * @param {number} met, clolevel
  * @return {number}
- * @customfunction
  */
 
 function rel_acclimatized(met,clolevel) {
@@ -2984,7 +2984,6 @@ function rel_acclimatized(met,clolevel) {
  * Given met and clo level gives unacclimated threshold of risk by using wbgt index. 
  * @param {number} met,clolevel
  * @return {number}
- * @customfunction
  */
 
 function ral_unacclimatized(met,clolevel) {
@@ -2999,10 +2998,9 @@ function ral_unacclimatized(met,clolevel) {
           
           
 /**
- * Given t air temperature (Celsius), rh relative humidity (%) and tg globometric temperature gives  heat risk level by using WBGT index. 
- * @param {number} t,rh,tg,tresh
+ * Given  WBGT returns heat risk level in italian language by using a treshshold.
+ * @param {number} wbgt,tresh
  * @return {number}
- * @customfunction
  */
 
 function heat_risk_text_level(wbgt,tresh)  { 
@@ -3019,10 +3017,9 @@ function heat_risk_text_level(wbgt,tresh)  {
                                               }
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%) and tg globometric temperature gives  heat risk level by using WBGT index. 
- * @param {number} t,rh,tg,tresh
+ * Given  WBGT returns heat risk level in english language by using a treshshold.
+ * @param {number} wbgt,tresh
  * @return {number}
- * @customfunction
  */
 
 function heat_risk_text_level_eng(wbgt,tresh)  { 
@@ -3039,7 +3036,7 @@ function heat_risk_text_level_eng(wbgt,tresh)  {
                                               }
 
 /**
- * Given WBGT index and threshold for risk return color code of risk. 
+ * Given  WBGT returns heat risk level as color code.
  * https://www.rapidtables.com/convert/color/hex-to-rgb.html
  * RISCHIO = 80% NESSUN RISCHIO (GREEN) rgb(0,255,0)
  * 80% < RISCHIO = 100% ATTENZIONE (YELLOW) rgb(255,255,0)
@@ -3047,7 +3044,6 @@ function heat_risk_text_level_eng(wbgt,tresh)  {
  * RISCHIO > 120% EMERGENZA (RED) rgb(255,0,0)
  * @param {number} wbgt,tresh
  * @return {text}
- * @customfunction
  */
         
   
@@ -3065,14 +3061,13 @@ function heat_risk_color_level(wbgt,tresh)  {
                                               }
 
 /**
- *  Given WBGT index and threshold for heat risk return the color code relative to risk in hex format. 
+ *  Given  WBGT returns heat risk level as color code in hex format. 
  *  @param {number} wbgt,tresh
- *  RISCHIO = 80% NESSUN RISCHIO (GREEN) rgb(0,255,0)
- *  80% < RISCHIO = 100% ATTENZIONE (YELLOW) rgb(255,255,0)
- *  100% < RISCHIO = 120% ALLARME (ORANGE) rgb(255,165,0)
- *  RISCHIO > 120% EMERGENZA (RED) rgb(255,0,0)
+ *  RISCHIO = 80% NESSUN RISCHIO (GREEN) rgb(0,255,0) level 1 
+ *  80% < RISCHIO = 100% ATTENZIONE (YELLOW) rgb(255,255,0) level 2 
+ *  100% < RISCHIO = 120% ALLARME (ORANGE) rgb(255,165,0) level 3 
+ *  RISCHIO > 120% EMERGENZA (RED) rgb(255,0,0) level 4 
  *  @return {text}
- *  @customfunction
  */
 
 function heat_risk_hexrgb_level(wbgt,tresh) { 
@@ -3091,10 +3086,9 @@ function heat_risk_hexrgb_level(wbgt,tresh) {
                                               }
 
 /**
- *  Given WBGT index and threshold for risk return risk value. 
+ *  Given WBGT returns heat risk level value. 
  *  @param {number} wbgt,tresh
  *  @return {number}
- *  @customfunction
  */
 
 function heat_risk_index_level(wbgt,tresh)    { 
@@ -3120,13 +3114,14 @@ function wbdt(t,rh,pair)
 
 
 /**
- * Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, 
- *  solar globalradiation in  Watt/mq, tg globometric temperature gives, solar zenith in radians,  
+ *  Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, 
+ *  solar global radiation in  Watt/mq, tg globometric temperature gives, solar zenith in radians,  
  *  pair Air Pressure in millibar (hPa),alb_sfc mean albedo surface, fdir is the ratio between diffuse and directed radiation, 
- * irad if radiation is computed and finally the diameter of heat globe.
+ *  irad is 1 if the radiation is computed, diam is the diameter of heat globe, maxair and minair are the range respect to air temperature 
+ *  to search solution and prec is the precision.
  * 
  * Wet-bulb globe temperature (WBGT) index following Liljegren scheme . 
- * @param {number} t, rh, wind, solar, zenith, pair, alb_sfc, fdir, irad.
+ * @param {number} t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,diam,maxair,minair,prec
  * @return {number} 
  */
 
@@ -3151,16 +3146,11 @@ function wbgt_sun(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,diam,maxair,mina
           return wbgt;
 }
 
-
 /**
- * Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, 
- * pair Air Pressure in millibar (hPa),tg globometric temperature gives,  
- * alb_sfc mean albedo surface, fdir is the ratio between diffuse and directed radiation, irad if 
- * radiation is computed and finally the diameter of heat globe.
- * 
- * Wet-bulb globe temperature (WBGT) index in shade conditions. 
- * @param {number} t, rh,wind,pair,alb_sfc,fdir,diam,prec
- * @return {number} 
+ *  Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, 
+ *  pair Air Pressure in millibar (hPa),alb_sfc mean albedo surface, fdir is the ratio between diffuse and directed radiation, 
+ *  irad is 1 if the radiation is computed, diam is the diameter of heat globe, maxair and minair are the range respect to air temperature 
+ *  to search solution and prec is the precision.
  */
 
 function wbgt_shade(t,rh,wind,pair,alb_sfc,fdir,diam,prec) 
@@ -3195,19 +3185,19 @@ function wbgt_stull(t,rh,tg)
  * @param {number} t,rh 
  * Bernard TE, Pourmoghani M (1999)  "Prediction of Workplace Wet Bulb Global Temperature."  Applied Occupational and Environmental Hygiene 14: 126-134
  * Ramsey JD, Bernard TE (2000) Heat Stress in R Harris (ed) Patty's Industrial Hygiene and Toxicology vol 2 New York: John Wiley & Sons 
- * @return {number}
+ * @return {number} t,rh,wind,pair,elev
  * @customfunction
  */
 
 function wbgt_indoor(t,rh,wind,pair,elev) 
          {
-          if ( wind === undefined) {wind=0.1};
+          if ( wind === undefined) {wind=0.13};
           if ( pair === undefined) {pair=1010};
           if ( elev === undefined) {elev=0};
           
           var wbgt;
           var pair=pheight(pair,elev);
-          var tw = natural_wetbulb(t,rh,0,0,pair);
+          var tw = natural_wetbulb(t,rh,wind,0,0,pair);
 	      wbgt= 0.67*tw+0.33*t-0.048 *Math.log(wind)*(t-tw);
           if ( wind < 1.1) { wbgt= 0.04*t + 0.96*tw};
           return wbgt;
@@ -3222,11 +3212,13 @@ function wbgt_indoor(t,rh,wind,pair,elev)
  * @customfunction
  */
 
-function mdi_index(t,rh,pair)    
+function mdi_index(t,rh,wind,pair)    
          {
 	  if ( pair === undefined) {pair=1010};
+	  if ( wind === undefined) {wind=0.13};
+       
           var mdi;
-          var tw = natural_wetbulb(t,rh,0,0,pair);
+          var tw = natural_wetbulb(t,rh,wind,0,0,pair);
 	  mdi = 0.7 * tw + 0.3 * t;
           return mdi; 
 }
@@ -3241,12 +3233,12 @@ function mdi_index(t,rh,pair)
  */
 
 
-function thom(t,rh,pair) 
+function thom(t,rh,pair,wind) 
          {
           var thom;
 	  if ( pair === undefined) {pair=1010};
-        
-          var tw = natural_wetbulb(t,rh,0,0,pair);
+          if ( wind === undefined) {wind=0.13};
+          var tw = natural_wetbulb(t,rh,wind,0,0,pair);
           thom = 0.4 * (t + tw) + 4.8;
           return thom;
 }
@@ -3255,15 +3247,15 @@ function thom(t,rh,pair)
  * Given Ambient Air Temperature (< +10 Celsius) and relative air velocity wind ( 0.4 to 18 m/s)
  * give a windchill index - ISO11079. 
  * Reference: http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
- * @param {number} Ta,v
+ * @param {number} t,wind
  * @return {number}
  */
 
 function windchill(t,wind) 
-        { var Tawci,twc = 1;
-	      if (wind < 1.3) ( wind=1.3);
-	      Tawci = t;
-              wind=(3.6)*wind;
+        {     var Tawci,twc = 1;
+	      if (wind === undefined ) ( wind=1.3);
+              if (wind < 1.3) ( wind=1.3);
+	      wind=(3.6)*wind;
 	      twc = 13.12 + 0.6215 * Tawci-11.37 * Math.pow(wind,0.16) +0.3965 * Tawci* Math.pow(wind,0.16);
 	      return(TwoDec(twc));
         }
@@ -3290,27 +3282,23 @@ function wc_watt2mq (t, wind)
 
 /**
  * Given a temperature t (degC ) and wind ( m/sec) frost time following Wind chill class .
- * @param {number} t
+ * @param {number} t,wind
  * @return {number} 
  */
 
 function windchill_cla(t,wind)
-{
+{    if (wind === undefined ) ( wind=1.3);
+     if (wind < 1.3) ( wind=1.3);
+	      
      var wcla;
      var wcindex=windchill(t,wind);  
      if (wcindex > 0 ) {return 1;}
      else if (wcindex > -10.0) {return 2;}
-     else if (wcindex > -10.0) {return 2;}
-    
-     else if (wcindex > -10.0) {return 2;}
-	else if (wcindex > -10.0) {return 2;}
-    else if (wcindex > -10.0) {return 2;}
-    else if (wcindex > -10.0) {return 2;}
-    
-     else{  
-     return 6;
-    }
-return (ft*60);
+     else if (wcindex > -28.0) {return 3;}
+     else if (wcindex > -40.0) {return 4;}
+     else if (wcindex > -48.0) {return 5;}
+     else if (wcindex > -54.0) {return 6;}
+     else { return 7;};
 }
 
 

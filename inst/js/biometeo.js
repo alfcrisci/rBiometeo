@@ -2978,7 +2978,7 @@ function rel_acclimatized(met,clolevel) {
   
      if ( clolevel === undefined) {isolevel = 1 };
   
-     return(56.7-(11.5*Math.log10(met))-clolevel);
+     return(56.7-(11.5*getBaseLog(10,met))-clolevel);
 }
 
 
@@ -2992,7 +2992,7 @@ function ral_unacclimatized(met,clolevel) {
   
      if ( clolevel === undefined) {isolevel = 1 };
   
-     return(59.9-(14.1*Math.log10(met))-clolevel);
+     return(59.9-(14.1*getBaseLog(10,met))-clolevel);
 }
 
 

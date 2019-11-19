@@ -78,7 +78,9 @@ function linspace(x0, xN, dx){
    return x;
 }
 
-
+function getBaseLog(x, y) {
+  return Math.log(y) / Math.log(x);
+}
 /** * @(#)pnorm.js and qnorm.js 
   * * Copyright (c) 2000 by Sundar Dorai-Raj
   * * @author Sundar Dorai-Raj

@@ -3028,7 +3028,7 @@ function ral_unacclimatized(met) {
           
           
 /**
- * Given  WBGT returns heat risk level in italian language by using a treshshold.
+ * Given  WBGT and CAVs ( clothing adjustment values)  returns heat risk level in italian language by using a treshshold.
  * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
  * @param {number} wbgt,tresh
  * @return {number}
@@ -3048,7 +3048,7 @@ function heat_risk_text_level(wbgt,cav,tresh)  {
                                               }
 
 /**
- * Given  WBGT returns heat risk level in english language by using a treshshold.
+ * Given  WBGT and CAVs ( clothing adjustment values) returns heat risk level in english language by using a treshshold.
  * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
  * @param {number} wbgt,tresh
  * @return {number}
@@ -3093,7 +3093,7 @@ function heat_risk_color_level(wbgt,cav,tresh)    {
                                               }
 
 /**
- *  Given  WBGT and CAV returns heat risk level as color code in hex format. 
+ *  Given  WBGT and and CAVs ( clothing adjustment values)  returns heat risk level as color code in hex format. 
  *  @param {number} wbgt,tresh
  *  RISCHIO = 80% NESSUN RISCHIO (GREEN) rgb(0,255,0) level 1 
  *  80% < RISCHIO = 100% ATTENZIONE (YELLOW) rgb(255,255,0) level 2 
@@ -3118,7 +3118,7 @@ function heat_risk_hexrgb_level(wbgt,cav,tresh)    {
                                               }
 
 /**
- *  Given WBGT returns heat risk level value. 
+ *  Given WBGT and CAVs ( clothing adjustment values)  returns heat risk level value. 
  *  Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
  *  @param {number} wbgt,tresh
  *  @return {number}
@@ -3215,8 +3215,8 @@ function wbgt_stull(t,rh,tg)
            }
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb globe temperature (WBGT) index indoor. Bernard Integration for wind. 
- * @param {number} t,rh 
+ * Given t air temperature (degC), rh relative humidity (%) , wind in m/s and pair air pressure (hPa) and elevation in meters gives   gives  Wet-bulb globe temperature (WBGT) index indoor. Bernard Integration for wind. 
+ * @param {number} t,rh,wind,pair,elev
  * Bernard TE, Pourmoghani M (1999)  "Prediction of Workplace Wet Bulb Global Temperature."  Applied Occupational and Environmental Hygiene 14: 126-134
  * Ramsey JD, Bernard TE (2000) Heat Stress in R Harris (ed) Patty's Industrial Hygiene and Toxicology vol 2 New York: John Wiley & Sons 
  * @return {number} t,rh,wind,pair,elev
@@ -3240,7 +3240,7 @@ function wbgt_indoor(t,rh,wind,pair,elev)
 
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%) gives Modified discomfort index (MDI). 
+ * Given t air temperature (degC), rh relative humidity (%) , wind in m/s and pair air pressure (hPa) gives gives Modified discomfort index (MDI). 
  * @param {number} t,rh 
  * @return {number}
  * @customfunction
@@ -3260,8 +3260,8 @@ function mdi_index(t,rh,wind,pair)
 
 
 /**
- * Given t air temperature (degC), rh relative humidity (%) and air pressure  (hPa) gives the thom discomfort index. 
- * @param {number} t,rh 
+ * Given t air temperature (degC), rh relative humidity (%) , wind in m/s and pair air pressure (hPa) gives the thom discomfort index. 
+ * @param {number} t,rh,pair,wind
  * @return {number}
  */
 
@@ -3286,7 +3286,7 @@ function thom(t,rh,pair,wind)
 
 function windchill(t,wind) 
         { if (wind === undefined ) ( wind=1.3);
-          if (wind < 1.3) ( wind=1.3);
+          if (wind < 1.3) ( wind = 1.3);
 	      wind=(3.6)*wind;
 	      var twc = 13.12 + 0.6215 * t-11.37 * Math.pow(wind,0.16) +0.3965 * t* Math.pow(wind,0.16);
 	      return(twc);
@@ -3308,7 +3308,6 @@ function wc_watt2mq (t, wind)
 			 return Watts;
 
 			}
-
 
 
 
@@ -3406,9 +3405,9 @@ function ssi_index(t,rh)
 /**
  * Given press air pressure in millibar, topo is altitude in meters 
  * and mean temperature of the air column calculate the local value of pressure
- * @param {number} t,rh 
+ * @param {number} press,topo,temp
  * @return {number}
- * @customfunction */
+ */
 
 function p_local(press,topo,temp)
 
@@ -3437,7 +3436,6 @@ function pheight(press,topo)
  *
  * @param {number} t,rh,g
  * @return {number}
- * @customfunction
  */
 
 function poda(t,rh,p)

@@ -3008,7 +3008,7 @@ function met_rate(BSA, isolevel) {
 function rel_acclimatized(met) {
   
     
-     return(56.7-(11.5*getBaseLog(10,met))-clolevel);
+     return(56.7-(11.5*getBaseLog(10,met)));
 }
 
 
@@ -3020,7 +3020,7 @@ function rel_acclimatized(met) {
 
 function ral_unacclimatized(met) {
    
-     return(59.9-(14.1*getBaseLog(10,met))-clolevel);
+     return(59.9-(14.1*getBaseLog(10,met)));
 }
 
 

@@ -3141,7 +3141,7 @@ function wbgt_sun(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,diam,maxair,mina
           var tw = natural_wetbulb(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,prec);
 	  	 
           wbgt = 0.7*tw+0.2*tg+0.1*t;
-	  if( solar === undefined  && zenith === === undefined ) {wbgt = 0.7*tw+0.3*t;};
+	  if( solar === undefined  && zenith === undefined ) {wbgt = 0.7*tw+0.3*t;};
           	 
           return wbgt;
 }
@@ -3252,13 +3252,13 @@ function thom(t,rh,pair,wind)
  */
 
 function windchill(t,wind) 
-        {     var Tawci,twc = 1;
-	      if (wind === undefined ) ( wind=1.3);
-              if (wind < 1.3) ( wind=1.3);
+        { if (wind === undefined ) ( wind=1.3);
+          if (wind < 1.3) ( wind=1.3);
 	      wind=(3.6)*wind;
-	      twc = 13.12 + 0.6215 * Tawci-11.37 * Math.pow(wind,0.16) +0.3965 * Tawci* Math.pow(wind,0.16);
-	      return(TwoDec(twc));
+	      var twc = 13.12 + 0.6215 * t-11.37 * Math.pow(wind,0.16) +0.3965 * t* Math.pow(wind,0.16);
+	      return(twc);
         }
+
 
 
 /**

@@ -1,4 +1,29 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+MIT License
+* * Copyright (c)  2019 Alfonso Crisci, Marco Morabito and Alessandro Messeri 
+* * @authors Alfonso Crisci, Marco Morabito and Alessandro Messeri 
+* * Email: a.crisci@ibe.cnr.it
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/ 
+
 // Define global constants 
 
 var    Patm = 101325.0; // pascal
@@ -81,6 +106,7 @@ function linspace(x0, xN, dx){
 function getBaseLog(x, y) {
   return Math.log(y) / Math.log(x);
 }
+
 /** * @(#)pnorm.js and qnorm.js 
   * * Copyright (c) 2000 by Sundar Dorai-Raj
   * * @author Sundar Dorai-Raj
@@ -604,7 +630,6 @@ function mrt_thorsson(t, tg, wind, diam)
 
 
 
-
 function fglob_sphere(Tglobe_prev,Tair,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam)
                         {
                         if(zenith === undefined )   {zenith = 0.0000000001;};
@@ -972,6 +997,14 @@ function diffusivity(tk, pair) {
  return(diffusivity);
 }
 
+
+/**
+ * Given a air temperature t (degC) and td dew-point  (degC) compute the relative humidity.
+ * Reference; BSL, page 23.;
+ * @param {number} t, td
+ * @return {number}
+ */
+
 function fRH(t,td)
 			{
 				var rh;
@@ -983,6 +1016,7 @@ function fRH(t,td)
 
 
 /*
+ * Given air temperature T (Celsius)  function gives Saturation Vapor Pressure for Ice . Dimension of outcomes in Pascal (hPa)
  * Saturation Vapor Pressure formula for range -100..0 Deg. C.
  * Hardy B, 1998,"ITS-90 Formulations for Vapor Pressure, Frostpoint Temperature,Dewpoint Temperature, and Enhancement Factors in the Range 100 to +100 C".
  * Proceedings of the Third International Symposium on Humidity & Moisture",Teddington, London, England, April 1998
@@ -1038,7 +1072,7 @@ function pvsWater(T)
 /**
  * Given air temperature T (Celsius)  function gives Saturation Vapor Pressure. Dimension of outcomes in Pascal (hPa)
  *
- * @param {number} T
+ * @param {number} t
  * @return {number}
  * @customfunction
  */
@@ -1075,14 +1109,14 @@ function PVS(t)
 function deficitsat(t,rh) 
 {
   var pws = PVS(t);
-  var pae=rh/100*pws;
+  var pae = rh/100*pws;
   return (pws-pae);
 }
 
 
 /**
  * Given air temperature (Celsius) gives  saturation  pressure in hPa.
- *  @param {number} t,rh
+ * @param {number} t,rh
  * @return {number
  */
 
@@ -1128,9 +1162,6 @@ function pvap(t,rh)
 			}
 
 
-
-
-
 /**
  *  Given a air temperature t (degC) and air relative humidity  (rh)  and formula give the dew-point in degC.
  *  @param {number} t,rh,formula
@@ -1165,7 +1196,7 @@ function humrat(p,pa)
 {
 	var y;
         pa=pa/10; // convert in hPa 
-        p=p/10; // convert in hPa 
+        p=p/10;   // convert in hPa 
 	y=0.62198*p/(pa-p);
 	return (y);
 }
@@ -2969,29 +3000,26 @@ function met_rate(BSA, isolevel) {
 
 
 /**
- * Given met and clo level gives acclimated threshold of risk by using wbgt index. 
- * @param {number} met, clolevel
+ * Given met gives acclimated threshold of risk by using wbgt index. 
+ * @param {number} met
  * @return {number}
  */
 
-function rel_acclimatized(met,clolevel) {
+function rel_acclimatized(met) {
   
-     if ( clolevel === undefined) {isolevel = 1 };
-  
+    
      return(56.7-(11.5*getBaseLog(10,met))-clolevel);
 }
 
 
 /**
- * Given met and clo level gives unacclimated threshold of risk by using wbgt index. 
- * @param {number} met,clolevel
+ * Given met gives unacclimated threshold of risk by using wbgt index. 
+ * @param {number} met
  * @return {number}
  */
 
-function ral_unacclimatized(met,clolevel) {
-  
-     if ( clolevel === undefined) {isolevel = 1 };
-  
+function ral_unacclimatized(met) {
+   
      return(59.9-(14.1*getBaseLog(10,met))-clolevel);
 }
 
@@ -3001,13 +3029,14 @@ function ral_unacclimatized(met,clolevel) {
           
 /**
  * Given  WBGT returns heat risk level in italian language by using a treshshold.
+ * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
  * @param {number} wbgt,tresh
  * @return {number}
  */
 
-function heat_risk_text_level(wbgt,tresh)  { 
+function heat_risk_text_level(wbgt,cav,tresh)  { 
                                                if ( tresh === undefined) {tresh = 28.5 };
-                                               var risk =wbgt/tresh;
+                                               var risk= (wbgt+cav)/tresh;
                                                var level_list=["NON SIGNIFICATIVO","BASSO","MODERATO","ALTO"];  
                                                var class;
                                                if    ( risk <= 0.8)        {  class = 1;} 
@@ -3020,13 +3049,14 @@ function heat_risk_text_level(wbgt,tresh)  {
 
 /**
  * Given  WBGT returns heat risk level in english language by using a treshshold.
+ * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
  * @param {number} wbgt,tresh
  * @return {number}
  */
 
-function heat_risk_text_level_eng(wbgt,tresh)  { 
-                                               if ( tresh === undefined) {tresh = 28.5 };
-                                               var risk =wbgt/tresh;
+function heat_risk_text_level_eng(wbgt,cav,tresh)  { 
+                                               if ( tresh === undefined) {tresh = 28.5};
+                                               var risk= (wbgt+cav)/tresh;
                                                var level_list=["NOT SIGNIFICANT","LOW","MODERATE","HIGH"];  
                                                var class;
                                                if    ( risk <= 0.8)        {  class = 1;} 
@@ -3050,9 +3080,9 @@ function heat_risk_text_level_eng(wbgt,tresh)  {
         
   
 
-function heat_risk_color_level(wbgt,tresh)  { 
+function heat_risk_color_level(wbgt,cav,tresh)    { 
                                                if ( tresh === undefined) {tresh = 28.5 };
-                                               var risk =wbgt/tresh;
+                                               var risk= (wbgt+cav)/tresh;
                                                var colorcode_list=["green","yellow","orange","red"]; 
                                                   var class;
                                                if    ( risk <= 0.8)        {  class = 1;} 
@@ -3063,7 +3093,7 @@ function heat_risk_color_level(wbgt,tresh)  {
                                               }
 
 /**
- *  Given  WBGT returns heat risk level as color code in hex format. 
+ *  Given  WBGT and CAV returns heat risk level as color code in hex format. 
  *  @param {number} wbgt,tresh
  *  RISCHIO = 80% NESSUN RISCHIO (GREEN) rgb(0,255,0) level 1 
  *  80% < RISCHIO = 100% ATTENZIONE (YELLOW) rgb(255,255,0) level 2 
@@ -3072,9 +3102,9 @@ function heat_risk_color_level(wbgt,tresh)  {
  *  @return {text}
  */
 
-function heat_risk_hexrgb_level(wbgt,tresh) { 
-                                               if ( tresh === undefined) {tresh = 28.5 };
-                                               var risk= wbgt/tresh;
+function heat_risk_hexrgb_level(wbgt,cav,tresh)    { 
+                                               if ( tresh === undefined) {tresh = 28.5};
+                                               var risk= (wbgt+cav)/tresh;
                                                var colorcode_hex=["#00ff00","#ffff00","#ffa500","#ff0000"];
                                                var class;
                                    
@@ -3089,13 +3119,14 @@ function heat_risk_hexrgb_level(wbgt,tresh) {
 
 /**
  *  Given WBGT returns heat risk level value. 
+ *  Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
  *  @param {number} wbgt,tresh
  *  @return {number}
  */
 
-function heat_risk_index_level(wbgt,tresh)    { 
-                                               if ( tresh === undefined) {tresh = 28.5 };
-                                               var risk =(wbgt/tresh)*100;
+function heat_risk_index_value(wbgt,cav,tresh)    { 
+                                               if ( tresh === undefined) {tresh = 28.5};
+                                               var risk =((wbgt+cav)/tresh)*100;
                                                return(risk);        
                                               }
 /**
@@ -3122,28 +3153,29 @@ function wbdt(t,rh,pair)
  *  irad is 1 if the radiation is computed, diam is the diameter of heat globe, maxair and minair are the range respect to air temperature 
  *  to search solution and prec is the precision.
  * 
- * Wet-bulb globe temperature (WBGT) index following Liljegren scheme . 
- * @param {number} t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,diam,maxair,minair,prec
+ *  Wet-bulb globe temperature (WBGT) index following Liljegren scheme . 
+ *  @param {number} t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,diam,maxair,minair,prec
  * @return {number} 
  */
 
 function wbgt_sun(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,diam,maxair,minair,prec) 
          {
           var wbgt;
-          if( pair === undefined ) {pair = 1010;};
-          if( alb_sfc === undefined ) {alb_sfc = 0.4;};
-          if( fdir === undefined ) { fdir = 0.8;}; 
-          if( irad === undefined ) {irad = 1;};
-          if( diam === undefined ) {diam=0.05;};
-	  if( maxair === undefined ) {maxair=10;};
-          if( minair === undefined ) {minair=2;};
-          if( prec === undefined ) {prec=0.01;};
+          if ( pair === undefined ) {pair = 1010;};
+          if ( alb_sfc === undefined ) {alb_sfc = 0.4;};
+          if ( fdir === undefined ) { fdir = 0.8;}; 
+          if ( irad === undefined ) {irad = 1;};
+          if ( diam === undefined ) {diam=0.05;};
+	      if ( maxair === undefined ) {maxair=10;};
+          if ( minair === undefined ) {minair=2;};
+          if(  prec === undefined ) {prec=0.01;};
           
           var tg= tglob_sphere(t,rh,wind,solar,zenith,pair,maxair,minair,alb_sfc,fdir,diam,prec);
           var tw = natural_wetbulb(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,prec);
 	  	 
           wbgt = 0.7*tw+0.2*tg+0.1*t;
-	  if( solar === undefined  && zenith === undefined ) {wbgt = 0.7*tw+0.3*t;};
+           
+	      if ( solar === undefined  && zenith === undefined ) {wbgt = 0.7 * tw +0.3*t;};
           	 
           return wbgt;
 }
@@ -3216,13 +3248,12 @@ function wbgt_indoor(t,rh,wind,pair,elev)
 
 function mdi_index(t,rh,wind,pair)    
          {
-	  if ( pair === undefined) {pair=1010};
-	  if ( wind === undefined) {wind=0.13};
-       
-          var mdi;
-          var tw = natural_wetbulb(t,rh,wind,0,0,pair);
-	  mdi = 0.7 * tw + 0.3 * t;
-          return mdi; 
+	       if ( pair === undefined) {pair=1010};
+	       if ( wind === undefined) {wind=0.13};
+           var mdi;
+           var tw = natural_wetbulb(t,rh,wind,0,0,pair);
+	       mdi = 0.7 * tw + 0.3 * t;
+           return mdi; 
 }
 
 
@@ -3238,7 +3269,7 @@ function mdi_index(t,rh,wind,pair)
 function thom(t,rh,pair,wind) 
          {
           var thom;
-	  if ( pair === undefined) {pair=1010};
+	      if ( pair === undefined) {pair=1010};
           if ( wind === undefined) {wind=0.13};
           var tw = natural_wetbulb(t,rh,wind,0,0,pair);
           thom = 0.4 * (t + tw) + 4.8;
@@ -3262,7 +3293,6 @@ function windchill(t,wind)
         }
 
 
-
 /**
  * Given Ambient Air Temperature t (< +10 Celsius) and relative air velocity wind ( 0.4 to 18 m/s)
  * give a windchill index - ISO11079 in watt on mq. 
@@ -3274,7 +3304,7 @@ function windchill(t,wind)
 function wc_watt2mq (t, wind)
 			{
 			 if (wind < 0.4) ( wind=0.4);
-	                 var Watts = (12.1452 + 11.6222*Math.sqrt(wind) - 1.16222 * wind)*(33 - t);
+	         var Watts = (12.1452 + 11.6222*Math.sqrt(wind) - 1.16222 * wind)*(33 - t);
 			 return Watts;
 
 			}
@@ -3626,4 +3656,3 @@ function kmh2fts(kmh)
   
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-

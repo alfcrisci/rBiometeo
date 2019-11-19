@@ -551,7 +551,7 @@ function compass_8(direction)
   
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// radiant temperature 
+// radiant temperature  
 
 /** 
  * Given t air temperature in degC, rh relative humidity (%), shortwave  directed beam short-wavelength radiation (W/mq)the sun elevation,albedo gives and surface emissivity provides 
@@ -599,70 +599,7 @@ function mrt_thorsson(t, tg, wind, diam)
 
 
 
-/**
- * Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, 
- * global solar radiation in  Watt on square meter,
- * tg globometric temperature gives, solar zenith in radians,  pair Air Pressure in millibar (hPa), 
- * alb_sfc mean albedo surface, fdir is the ratio between diffuse and directed radiation, irad if 
- * radiation is computed and finally the diameter of heat globe.
- * 
- * Wet-bulb globe temperature (WBGT) index following Liljegren scheme . 
- * @param {number} t, rh, wind, solar, zenith, pair, alb_sfc, fdir, irad.
- * @return {number} 
- */
 
-function wbgt_sun(t,rh,wind,solar,zenith,pair,tg,alb_sfc,fdir,irad,diam_globe,maxair,minair,prec) 
-         {
-          var wbgt;
-          if( pair === undefined ) {pair = 1010;};
-          if( alb_sfc === undefined ) {alb_sfc = 0.4;};
-          if( fdir === undefined ) { fdir = 0.8;}; 
-          if( irad === undefined ) {irad = 1;};
-          if( diam_globe === undefined ) {diam_globe=0.05;};
-	  if( prec === undefined ) {prec=0.01;};
-          if( prec === undefined ) {prec=0.01;};
-         	 
-          if( prec === undefined ) {prec=0.01;};
-                
-          if( tg === undefined ) { tg = t};
-            
-          var tg= Tglob_sphere(t,rh,wind,solar,zenith,pair,maxair,minair,alb_sfc,fdir,diam_globe,prec);
-                     
-          var tw = natural_wetbulb(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,prec);
-           
-          wbgt = 0.7*tw+0.2*tg+0.1*t;
-          return wbgt;
-}
-
-function wbgt_shade(t,rh,wind,pair,tg,alb_sfc,fdir,irad,diam_globe,prec) 
-         {
-          var wbgt;
-          if( pair === undefined ) {pair = 1010;};
-          if( alb_sfc === undefined ) {alb_sfc = 0.4;};
-          if( fdir === undefined ) { fdir = 0.8;}; 
-          if( irad === undefined ) {irad = 1;};
-          if( diam_globe === undefined ) {diam_globe=0.05;};
-                
-                     
-          var tw = natural_wetbulb(t,rh,wind,0.0001,0.0001,pair,alb_sfc,fdir,irad,prec);
-           
-          wbgt = 0.7*tw+0.3*t;
-          return wbgt;
-}
-
-/**
- * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature  index (WBGT). 
- * @param {number} t,rh,tg
- * @return {number}
- */
-
-function wbgt_stull(t,rh,tg) 
-              {
-              var wbgt;
-              var tw = wetbulb_stull(t,rh)
-              wbgt = 0.7*tw+0.2*tg+0.1*t;
-              return wbgt;
-           }
 
 
 
@@ -708,7 +645,7 @@ function fglob_sphere(Tglobe_prev,Tair,rh,speed,solar,zenith,pair,alb_sfc,fdir,d
  * @return {number}
  */
 
-function Tglob_sphere(t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam,maxair,minair,prec){
+function tglob_sphere(t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam,maxair,minair,prec){
   
                          if( pair === undefined )     { pair =1013.25;};
                          if( alb_sfc === undefined )  { alb_sfc = 0.4;};
@@ -728,6 +665,31 @@ function Tglob_sphere(t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam,maxair,mina
                          for (var i = 0; i < array1.length; i++) {map1[i]=fglob_sphere(array1[i],Tair,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam)}
                          return(array1[arrayMinIndex(map1)]-273.15);
                          }
+
+
+
+
+/**
+ * Given a air temperature t (Celsius degree), globe temperature (degC), wind speed in m per second and diam of globe in meters compute the mean radiant temperature (Celsius degrees) ;
+ * @param {number} t, tg, wind, diam_glob
+ * @return {number}
+ */
+
+function mrt_globe(t, tg, wind, diam_globe,emis_globe)
+
+{        if ( diam_globe === undefined) {diam_globe = 0.05;} ; 
+ 
+         if ( emis_globe === undefined) {emis_globe = 0.97;} ; 
+ 
+         var stefanb = 0.0000000567;
+ 
+         return Math.pow((Math.pow(tg + 273.15, 4) + ((1.1 * Math.pow(10,8) * Math.pow(wind,0.6)) /(emis_globe*Math.pow(diam_globe,0.4))) * (tg - t)), 0.25)- 273.15;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Psycrometrics related functions.
+
 
 /**
  * Given air temperature (Celsius), relative humidity (%)  gives natural wetbulb in celsius degrees.
@@ -851,31 +813,6 @@ function natural_wetbulb(t,rh,wspeed,solar,zenith,pair,alb_sfc,fdir,irad,maxair,
                          for (var i = 0; i < array1.length; i++) {map1[i]=fnatural_wetbulb(array1[i],Tair,rh,wspeed,solar,zenith,pair)};
                          return(array1[arrayMinIndex(map1)]-273.15);
                          }
-
-
-
-
-
-/**
- * Given a air temperature t (Celsius degree), globe temperature (degC), wind speed in m per second and diam of globe in meters compute the mean radiant temperature (Celsius degrees) ;
- * @param {number} t, tg, wind, diam_glob
- * @return {number}
- */
-
-function mrt_globe(t, tg, wind, diam_globe,emis_globe)
-
-{        if ( diam_globe === undefined) {diam_globe = 0.05;} ; 
- 
-         if ( emis_globe === undefined) {emis_globe = 0.97;} ; 
- 
-         var stefanb = 0.0000000567;
- 
-         return Math.pow((Math.pow(tg + 273.15, 4) + ((1.1 * Math.pow(10,8) * Math.pow(wind,0.6)) /(emis_globe*Math.pow(diam_globe,0.4))) * (tg - t)), 0.25)- 273.15;
-}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Psycrometrics related functions.
 
 
 
@@ -3182,6 +3119,76 @@ function wbdt(t,rh,pair)
 }
 
 
+/**
+ * Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, 
+ *  solar globalradiation in  Watt/mq, tg globometric temperature gives, solar zenith in radians,  
+ *  pair Air Pressure in millibar (hPa),alb_sfc mean albedo surface, fdir is the ratio between diffuse and directed radiation, 
+ * irad if radiation is computed and finally the diameter of heat globe.
+ * 
+ * Wet-bulb globe temperature (WBGT) index following Liljegren scheme . 
+ * @param {number} t, rh, wind, solar, zenith, pair, alb_sfc, fdir, irad.
+ * @return {number} 
+ */
+
+function wbgt_sun(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,diam,maxair,minair,prec) 
+         {
+          var wbgt;
+          if( pair === undefined ) {pair = 1010;};
+          if( alb_sfc === undefined ) {alb_sfc = 0.4;};
+          if( fdir === undefined ) { fdir = 0.8;}; 
+          if( irad === undefined ) {irad = 1;};
+          if( diam === undefined ) {diam=0.05;};
+	  if( maxair === undefined ) {maxair=10;};
+          if( minair === undefined ) {minair=2;};
+          if( prec === undefined ) {prec=0.01;};
+          
+          var tg= tglob_sphere(t,rh,wind,solar,zenith,pair,maxair,minair,alb_sfc,fdir,diam,prec);
+          var tw = natural_wetbulb(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,prec);
+	  	 
+          wbgt = 0.7*tw+0.2*tg+0.1*t;
+	  if( solar === undefined  && zenith === === undefined ) {wbgt = 0.7*tw+0.3*t;};
+          	 
+          return wbgt;
+}
+
+
+/**
+ * Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, 
+ * pair Air Pressure in millibar (hPa),tg globometric temperature gives,  
+ * alb_sfc mean albedo surface, fdir is the ratio between diffuse and directed radiation, irad if 
+ * radiation is computed and finally the diameter of heat globe.
+ * 
+ * Wet-bulb globe temperature (WBGT) index in shade conditions. 
+ * @param {number} t, rh,wind,pair,alb_sfc,fdir,diam,prec
+ * @return {number} 
+ */
+
+function wbgt_shade(t,rh,wind,pair,alb_sfc,fdir,diam,prec) 
+         {
+          var wbgt;
+          if( pair === undefined )    {pair = 1010;};
+          if( alb_sfc === undefined ) {alb_sfc = 0.4;};
+          if( fdir === undefined )    {fdir = 0.8;}; 
+          if( diam === undefined )    {diam=0.05;};
+          if( prec=== undefined )     {diam=0.1;};
+          var tw = natural_wetbulb(t,rh,wind,0.001,0.0001,pair,alb_sfc,fdir,1,prec);
+          wbgt = 0.7*tw+0.3*t;
+          return wbgt;
+}
+
+/**
+ * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature  index (WBGT). 
+ * @param {number} t,rh,tg
+ * @return {number}
+ */
+
+function wbgt_stull(t,rh,tg) 
+              {
+              var wbgt;
+              var tw = wetbulb_stull(t,rh)
+              wbgt = 0.7*tw+0.2*tg+0.1*t;
+              return wbgt;
+           }
 
 /**
  * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb globe temperature (WBGT) index indoor. Bernard Integration for wind. 

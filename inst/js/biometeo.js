@@ -597,20 +597,6 @@ function mrt_thorsson(t, tg, wind, diam)
          return Math.pow(Math.pow(tg + 273.15, 4) + ((1.335 * Math.pow(10,8) * Math.pow(wind,0.71)) /(emis_globe*Math.pow(diam,0.4))) * (tg - t), 0.25) - 273.15;
 }
 
-/**
- * Given mean radiant temperature t air temperature (Celsius), tg Globe Temeperature, wind windspeed in m/s 
- * and diameter in millimeter .
- *
- * @param {number} t,tg,wind  
- * @return {number}
- */
-
-function mrt_globe(t, tg, wind, diam)
-{        if ( diam === undefined) {diam=0.05;} ;
-         var emis_globe = 0.97;
-         var stefanb = 0.0000000567;
-         return Math.pow((Math.pow(tg + 273.15, 4) + ((1.1 * Math.pow(10,8) * Math.pow(wind,0.6)) /(emis_globe*Math.pow(diam,0.4))) * (tg - t)), 0.25)- 273.15;
-}
 
 
 /**
@@ -867,196 +853,7 @@ function natural_wetbulb(t,rh,wspeed,solar,zenith,pair,alb_sfc,fdir,irad,maxair,
                          }
 
 
-/**
- * lost_productivity is a function to estimate population heat exposure and impacts on working people
- * @param {number} wbgt,tresh
- * @return {number}
- * Estimating population heat exposure and impacts on working people in conjunction with climate change
- * Tord Kjellstrom  & Chris Freyberg & Bruno Lemke & Matthias Otto & David Briggs
- * Int J Biometeorol (2018) 62:291-306 DOI 10.1007/s00484-017-1407-0
-*/
 
-function lost_productivity(wbgt,tresh) {  
-                                        if( tresh === undefined ) { tresh = 33.5;};
-                                        return(0.5*(1+ erf((wbgt-tresh)/(3.75*Math.sqrt(2))))*100)
-}
-
-/**
- * Given body mass index  by using antropometric features. 
- * @param {number} h,w
- * @return {number}
- * @customfunction
- */
-
-function BMW(h,w) 
-         {return(w/(Math.pow((h/100),2)));} 
-
-/**
- * Given body surface area by using antropometric features. 
- * @param {number} h,w
- * @return {number}
- * @customfunction
- */
-
-
-function BSA (h,w) 
-         { return( Math.pow(h/100,0.725)*(0.20247*(Math.pow(w,0.425)))); }    
-
-  
-/**
- * Given met rate level by using clothing iso level and BSA.
- * @param {number} BSA, isolevel
- * @return {number}
- * @customfunction
- */
-
-
-function met_rate(BSA, isolevel) {
-  
-   if ( isolevel === undefined) {isolevel = 1 };
-  
-  return(BSA*(isolevel*50));
-}
-
-
-
-/**
- * Given met and clo level gives acclimated threshold of risk by using wbgt index. 
- * @param {number} met, clolevel
- * @return {number}
- * @customfunction
- */
-
-function rel_acclimatized(met,clolevel) {
-  
-     if ( clolevel === undefined) {isolevel = 1 };
-  
-     return(56.7-(11.5*Math.LN10(met))-clolevel);
-}
-
-
-/**
- * Given met and clo level gives unacclimated threshold of risk by using wbgt index. 
- * @param {number} met,clolevel
- * @return {number}
- * @customfunction
- */
-
-function ral_unacclimatized(met,clolevel) {
-  
-     if ( clolevel === undefined) {isolevel = 1 };
-  
-     return(59.9-(14.1*Math.LN10(met))-clolevel);
-}
-
-
-
-          
-          
-/**
- * Given t air temperature (Celsius), rh relative humidity (%) and tg globometric temperature gives  heat risk level by using WBGT index. 
- * @param {number} t,rh,tg,tresh
- * @return {number}
- * @customfunction
- */
-
-function heat_risk_text_level(wbgt,tresh)  { 
-                                               if ( tresh === undefined) {tresh = 28.5 };
-                                               var risk =wbgt/tresh;
-                                               var level_list=["NON SIGNIFICATIVO","BASSO","MODERATO","ALTO"];  
-                                               var class;
-                                               if    ( risk <= 0.8)        {  class = 1;} 
-                                                     else if (risk <= 1)   {  class = 2;} 
-                                                     else if (risk <= 1.2) {  class = 3;} 
-                                                     else                  {  class = 4};
-                                              
-                                               return(level_list[class]);           
-                                              }
-
-/**
- * Given t air temperature (Celsius), rh relative humidity (%) and tg globometric temperature gives  heat risk level by using WBGT index. 
- * @param {number} t,rh,tg,tresh
- * @return {number}
- * @customfunction
- */
-
-function heat_risk_text_level_eng(wbgt,tresh)  { 
-                                               if ( tresh === undefined) {tresh = 28.5 };
-                                               var risk =wbgt/tresh;
-                                               var level_list=["NOT SIGNIFICANT","LOW","MODERATE","HIGH"];  
-                                               var class;
-                                               if    ( risk <= 0.8)        {  class = 1;} 
-                                                     else if (risk <= 1)   {  class = 2;} 
-                                                     else if (risk <= 1.2) {  class = 3;} 
-                                                     else                  {  class = 4};
-                                              
-                                               return(level_list[class]);           
-                                              }
-
-/**
- * Given WBGT index and threshold for risk return color code of risk. 
- * https://www.rapidtables.com/convert/color/hex-to-rgb.html
- * RISCHIO = 80% NESSUN RISCHIO (GREEN) rgb(0,255,0)
- * 80% < RISCHIO = 100% ATTENZIONE (YELLOW) rgb(255,255,0)
- * 100% < RISCHIO = 120% ALLARME (ORANGE) rgb(255,165,0)
- * RISCHIO > 120% EMERGENZA (RED) rgb(255,0,0)
- * @param {number} wbgt,tresh
- * @return {text}
- * @customfunction
- */
-        
-  
-
-function heat_risk_color_level(wbgt,tresh)  { 
-                                               if ( tresh === undefined) {tresh = 28.5 };
-                                               var risk =wbgt/tresh;
-                                               var colorcode_list=["green","yellow","orange","red"]; 
-                                                  var class;
-                                               if    ( risk <= 0.8)        {  class = 1;} 
-                                                     else if (risk <= 1)   {  class = 2;} 
-                                                     else if (risk <= 1.2) {  class = 3;} 
-                                                     else                  {  class = 4};
-                                               return(colorcode_list[class]);           
-                                              }
-
-/**
- *  Given WBGT index and threshold for heat risk return the color code relative to risk in hex format. 
- *  @param {number} wbgt,tresh
- *  RISCHIO = 80% NESSUN RISCHIO (GREEN) rgb(0,255,0)
- *  80% < RISCHIO = 100% ATTENZIONE (YELLOW) rgb(255,255,0)
- *  100% < RISCHIO = 120% ALLARME (ORANGE) rgb(255,165,0)
- *  RISCHIO > 120% EMERGENZA (RED) rgb(255,0,0)
- *  @return {text}
- *  @customfunction
- */
-
-function heat_risk_hexrgb_level(wbgt,tresh) { 
-                                               if ( tresh === undefined) {tresh = 28.5 };
-                                               var risk= wbgt/tresh;
-                                               var colorcode_hex=["#00ff00","#ffff00","#ffa500","#ff0000"];
-                                               var class;
-                                   
-                                               if    ( risk <= 0.8)        {  class = 1;} 
-                                                     else if (risk <= 1)   {  class = 2;} 
-                                                     else if (risk <= 1.2) {  class = 3;} 
-                                                     else                  {  class = 4};
-
-
-                                               return(colorcode_hex[class]);           
-                                              }
-
-/**
- *  Given WBGT index and threshold for risk return risk value. 
- *  @param {number} wbgt,tresh
- *  @return {number}
- *  @customfunction
- */
-
-function heat_risk_index_level(wbgt,tresh)    { 
-                                               if ( tresh === undefined) {tresh = 28.5 };
-                                               var risk =(wbgt/tresh)*100;
-                                               return(risk);        
-                                              }
 
 
 /**
@@ -1076,6 +873,90 @@ function mrt_globe(t, tg, wind, diam_globe,emis_globe)
          return Math.pow((Math.pow(tg + 273.15, 4) + ((1.1 * Math.pow(10,8) * Math.pow(wind,0.6)) /(emis_globe*Math.pow(diam_globe,0.4))) * (tg - t)), 0.25)- 273.15;
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Psycrometrics related functions.
+
+
+
+
+/**
+ * Purpose: to calculate the convective h the heat tranfer coefficient for flow around a sphere. tk (Kelvin) 
+ * and air pressure in millibar(hPA).
+ * Reference; BSL, page 23.;
+ * @param {number} t, speed,pair,speedmin,diam_globe;
+ * @return {number}
+ */
+                             
+function h_sphere_in_air(tk,speed,pair,speedmin,diam_globe)
+    {
+       if( diam_globe === undefined ) {diam_globe=0.05;};
+       if( speedmin === undefined ) {speedmin=0.13;};
+       if( pair === undefined ) {pair=1013.25;};
+       var Rair = 8314.34 / 28.97;
+       var Pr = 1003.5 / (1003.5 + 1.25 * Rair);
+       var thermal_con = (1003.5 + 1.25 * 8314.34 / 28.97) * viscosity(tk);
+       var density = (pair * 100) / (Rair * tk);  // kg/m3;
+       if  (speed < speedmin ) {speed = speedmin};
+       var Re = (speed * density * diam_globe)/ viscosity(tk);
+       var Nu = 2 + 0.6 * Math.pow(Re,0.5) * Math.pow(Pr, 0.3333);
+       return (Nu * thermal_con)/ diam_globe; // W/(m2 K);
+   }
+
+
+ /**
+ * Purpose: to calculate the convective heat tranfer coefficient for heat flow around a cylinder tk in degK
+ * and air pressure in millibar(hPa).
+ * Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;
+ * @param {number} t, speed,pair,speedmin,diam_globe;
+ * @return {number}
+ */ 
+    
+function h_cylinder_in_air(tk,speed,pair,speedmin,diam_wick){
+   
+   if( diam_wick === undefined ) { diam_wick=0.007;};
+   if( speedmin === undefined )  { speedmin=0.13;};
+   if( pair === undefined )      { pair=1010;};
+           
+   var m_air = 28.97;
+   var r_gas = 8314.34;
+   var r_air = r_gas / m_air;
+   var cp = 1003.5; // heat capaticy at constant pressure of dry air
+   var Pr = cp / (cp + (1.25 * r_air));
+  
+  // Calculate the thermal conductivity of air, W/(m K)
+  
+  var thermal_con = (cp + 1.25 * r_gas / m_air) * viscosity(tk);
+                                   
+  // Density of the air
+  
+  var density = (pair * 100) / (r_air * tk);
+  
+  if (speed < speedmin) {speed = speedmin};
+  
+  // Reynolds number
+  
+  var Re = speed * density * diam_wick / viscosity(tk);
+  
+  //  Nusselt number
+  
+  var Nu = 0.281 * Math.pow(Re,0.6) * Math.pow(Pr, 0.44);
+  
+  // Convective heat transfer coefficient in W/(m2 K) for a long cylinder in cross flow
+  var h_cylinder_in_air = Nu * thermal_con / diam_wick ; 
+  
+  return(h_cylinder_in_air);
+}
+
+
+
+/**
+ * Given air temperature (Celsius) and dewpoint(Celsius) gives relative huidity .
+ *
+ * @param {number} t,td
+ * @return {number}
+ * @customfunction
+ */
 
 
                              
@@ -1158,88 +1039,6 @@ function diffusivity(tk, pair) {
   var diffusivity = 0.000364 * Math.pow((tk / Tcrit12),2.334) * pcrit13 * tcrit512 * Mmix / (pair / 1013.25) * 0.0001;
  return(diffusivity);
 }
-
-
-/**
- * Purpose: to calculate the convective h the heat tranfer coefficient for flow around a sphere. tk (Kelvin) 
- * and air pressure in millibar(hPA).
- * Reference; BSL, page 23.;
- * @param {number} t, speed,pair,speedmin,diam_globe;
- * @return {number}
- */
-                             
-function h_sphere_in_air(tk,speed,pair,speedmin,diam_globe)
-    {
-       if( diam_globe === undefined ) {diam_globe=0.05;};
-       if( speedmin === undefined ) {speedmin=0.13;};
-       if( pair === undefined ) {pair=1013.25;};
-       var Rair = 8314.34 / 28.97;
-       var Pr = 1003.5 / (1003.5 + 1.25 * Rair);
-       var thermal_con = (1003.5 + 1.25 * 8314.34 / 28.97) * viscosity(tk);
-       var density = (pair * 100) / (Rair * tk);  // kg/m3;
-       if  (speed < speedmin ) {speed = speedmin};
-       var Re = (speed * density * diam_globe)/ viscosity(tk);
-       var Nu = 2 + 0.6 * Math.pow(Re,0.5) * Math.pow(Pr, 0.3333);
-       return (Nu * thermal_con)/ diam_globe; // W/(m2 K);
-   }
-
-
- /**
- * Purpose: to calculate the convective heat tranfer coefficient for heat flow around a cylinder tk in degK
- * and air pressure in millibar(hPa).
- * Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;
- * @param {number} t, speed,pair,speedmin,diam_globe;
- * @return {number}
- */ 
-    
-function h_cylinder_in_air(tk,speed,pair,speedmin,diam_wick){
-   
-   if( diam_wick === undefined ) { diam_wick=0.007;};
-   if( speedmin === undefined )  { speedmin=0.13;};
-   if( pair === undefined )      { pair=1010;};
-           
-   var m_air = 28.97;
-   var r_gas = 8314.34;
-   var r_air = r_gas / m_air;
-   var cp = 1003.5; // heat capaticy at constant pressure of dry air
-   var Pr = cp / (cp + (1.25 * r_air));
-  
-  // Calculate the thermal conductivity of air, W/(m K)
-  
-  var thermal_con = (cp + 1.25 * r_gas / m_air) * viscosity(tk);
-                                   
-  // Density of the air
-  
-  var density = (pair * 100) / (r_air * tk);
-  
-  if (speed < speedmin) {speed = speedmin};
-  
-  // Reynolds number
-  
-  var Re = speed * density * diam_wick / viscosity(tk);
-  
-  //  Nusselt number
-  
-  var Nu = 0.281 * Math.pow(Re,0.6) * Math.pow(Pr, 0.44);
-  
-  // Convective heat transfer coefficient in W/(m2 K) for a long cylinder in cross flow
-  var h_cylinder_in_air = Nu * thermal_con / diam_wick ; 
-  
-  return(h_cylinder_in_air);
-}
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Psycrometrics related functions.
-
-/**
- * Given air temperature (Celsius) and dewpoint(Celsius) gives relative huidity .
- *
- * @param {number} t,td
- * @return {number}
- * @customfunction
- */
 
 function fRH(t,td)
 			{
@@ -1379,18 +1178,6 @@ function es(t)
   var es = Math.exp(es_air)*0.01;
   
   return es;
-}
-
-/**
- * Given air temperature (Celsius) calculates Saturated Vapor Pressure (Torr) at Temperature T  (C) .
- * @param {number} T
- * @return {number}
- */
-	
-  
-function vpaTorr(t) {
-    
-                     return Math.exp(18.6686 - 4030.183 / (t + 235.0));
 }
 
 
@@ -3188,42 +2975,213 @@ function fits_index(t,rh)
 }
 
 
+/**
+ * lost_productivity is a function to estimate population heat exposure and impacts on working people
+ * @param {number} wbgt,tresh
+ * @return {number}
+ * Estimating population heat exposure and impacts on working people in conjunction with climate change
+ * Tord Kjellstrom  & Chris Freyberg & Bruno Lemke & Matthias Otto & David Briggs
+ * Int J Biometeorol (2018) 62:291-306 DOI 10.1007/s00484-017-1407-0
+*/
+
+function lost_productivity(wbgt,tresh) {  
+                                        if( tresh === undefined ) { tresh = 33.5;};
+                                        return(0.5*(1+ erf((wbgt-tresh)/(3.75*Math.sqrt(2))))*100)
+}
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb dry temperature (WBDT). 
+ * Given body mass index  by using antropometric features. 
+ * @param {number} h,w
+ * @return {number}
+ * @customfunction
+ */
+
+function BMW(h,w) 
+         {return(w/(Math.pow((h/100),2)));} 
+
+/**
+ * Given body surface area by using antropometric features height and weigth. 
+ * @param {number} h,w
+ * @return {number}
+ * @customfunction
+ */
+
+
+function BSA(h,w) 
+         { return( Math.pow(h/100,0.725)*(0.20247*(Math.pow(w,0.425)))); }    
+
+  
+/**
+ * Given met rate level by using clothing iso level and BSA.
+ * @param {number} BSA, isolevel
+ * @return {number}
+ * @customfunction
+ */
+
+
+function met_rate(BSA, isolevel) {
+  
+   if ( isolevel === undefined) {isolevel = 1 };
+  
+  return(BSA*(isolevel*50));
+}
+
+
+
+/**
+ * Given met and clo level gives acclimated threshold of risk by using wbgt index. 
+ * @param {number} met, clolevel
+ * @return {number}
+ * @customfunction
+ */
+
+function rel_acclimatized(met,clolevel) {
+  
+     if ( clolevel === undefined) {isolevel = 1 };
+  
+     return(56.7-(11.5*Math.LN10(met))-clolevel);
+}
+
+
+/**
+ * Given met and clo level gives unacclimated threshold of risk by using wbgt index. 
+ * @param {number} met,clolevel
+ * @return {number}
+ * @customfunction
+ */
+
+function ral_unacclimatized(met,clolevel) {
+  
+     if ( clolevel === undefined) {isolevel = 1 };
+  
+     return(59.9-(14.1*Math.LN10(met))-clolevel);
+}
+
+
+
+          
+          
+/**
+ * Given t air temperature (Celsius), rh relative humidity (%) and tg globometric temperature gives  heat risk level by using WBGT index. 
+ * @param {number} t,rh,tg,tresh
+ * @return {number}
+ * @customfunction
+ */
+
+function heat_risk_text_level(wbgt,tresh)  { 
+                                               if ( tresh === undefined) {tresh = 28.5 };
+                                               var risk =wbgt/tresh;
+                                               var level_list=["NON SIGNIFICATIVO","BASSO","MODERATO","ALTO"];  
+                                               var class;
+                                               if    ( risk <= 0.8)        {  class = 1;} 
+                                                     else if (risk <= 1)   {  class = 2;} 
+                                                     else if (risk <= 1.2) {  class = 3;} 
+                                                     else                  {  class = 4};
+                                              
+                                               return(level_list[class]);           
+                                              }
+
+/**
+ * Given t air temperature (Celsius), rh relative humidity (%) and tg globometric temperature gives  heat risk level by using WBGT index. 
+ * @param {number} t,rh,tg,tresh
+ * @return {number}
+ * @customfunction
+ */
+
+function heat_risk_text_level_eng(wbgt,tresh)  { 
+                                               if ( tresh === undefined) {tresh = 28.5 };
+                                               var risk =wbgt/tresh;
+                                               var level_list=["NOT SIGNIFICANT","LOW","MODERATE","HIGH"];  
+                                               var class;
+                                               if    ( risk <= 0.8)        {  class = 1;} 
+                                                     else if (risk <= 1)   {  class = 2;} 
+                                                     else if (risk <= 1.2) {  class = 3;} 
+                                                     else                  {  class = 4};
+                                              
+                                               return(level_list[class]);           
+                                              }
+
+/**
+ * Given WBGT index and threshold for risk return color code of risk. 
+ * https://www.rapidtables.com/convert/color/hex-to-rgb.html
+ * RISCHIO = 80% NESSUN RISCHIO (GREEN) rgb(0,255,0)
+ * 80% < RISCHIO = 100% ATTENZIONE (YELLOW) rgb(255,255,0)
+ * 100% < RISCHIO = 120% ALLARME (ORANGE) rgb(255,165,0)
+ * RISCHIO > 120% EMERGENZA (RED) rgb(255,0,0)
+ * @param {number} wbgt,tresh
+ * @return {text}
+ * @customfunction
+ */
+        
+  
+
+function heat_risk_color_level(wbgt,tresh)  { 
+                                               if ( tresh === undefined) {tresh = 28.5 };
+                                               var risk =wbgt/tresh;
+                                               var colorcode_list=["green","yellow","orange","red"]; 
+                                                  var class;
+                                               if    ( risk <= 0.8)        {  class = 1;} 
+                                                     else if (risk <= 1)   {  class = 2;} 
+                                                     else if (risk <= 1.2) {  class = 3;} 
+                                                     else                  {  class = 4};
+                                               return(colorcode_list[class]);           
+                                              }
+
+/**
+ *  Given WBGT index and threshold for heat risk return the color code relative to risk in hex format. 
+ *  @param {number} wbgt,tresh
+ *  RISCHIO = 80% NESSUN RISCHIO (GREEN) rgb(0,255,0)
+ *  80% < RISCHIO = 100% ATTENZIONE (YELLOW) rgb(255,255,0)
+ *  100% < RISCHIO = 120% ALLARME (ORANGE) rgb(255,165,0)
+ *  RISCHIO > 120% EMERGENZA (RED) rgb(255,0,0)
+ *  @return {text}
+ *  @customfunction
+ */
+
+function heat_risk_hexrgb_level(wbgt,tresh) { 
+                                               if ( tresh === undefined) {tresh = 28.5 };
+                                               var risk= wbgt/tresh;
+                                               var colorcode_hex=["#00ff00","#ffff00","#ffa500","#ff0000"];
+                                               var class;
+                                   
+                                               if    ( risk <= 0.8)        {  class = 1;} 
+                                                     else if (risk <= 1)   {  class = 2;} 
+                                                     else if (risk <= 1.2) {  class = 3;} 
+                                                     else                  {  class = 4};
+
+
+                                               return(colorcode_hex[class]);           
+                                              }
+
+/**
+ *  Given WBGT index and threshold for risk return risk value. 
+ *  @param {number} wbgt,tresh
+ *  @return {number}
+ *  @customfunction
+ */
+
+function heat_risk_index_level(wbgt,tresh)    { 
+                                               if ( tresh === undefined) {tresh = 28.5 };
+                                               var risk =(wbgt/tresh)*100;
+                                               return(risk);        
+                                              }
+/**
+ * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-Bulb Dry Temperature (WBDT). 
  * @param {number} t,rh 
  * @return {number}
  * @customfunction
  */
 
-function wbdt(t,rh) 
+function wbdt(t,rh,pair) 
          {
+          if ( pair === undefined) { pair==1010};	 
           var wbdt;
-          var tw = wetbulb(t,rh,1013.25);
-          wbdt = 0.4*tw+0.6*t;
+          var tw = natural_wetbulb(t,rh,0,0,pair);
+	  wbdt = 0.4*tw+0.6*t;
           return wbdt;
 }
 
 
-
-/**
- * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature (WBGT) index indoor. 
- * @param {number} t,rh 
- * @return {number}
- * @customfunction
- */
-
-function wbgt_outdoor(t,rh,wind,solar,press,topo) 
-         {
-          var wbgt;
-          if ( wind === undefined) {wind=0.1};
-          
-	  var pair=pheight(press,topo);
-          var tw = wetbulb(t,rh,pair);
-	  var tg = Tglob_sphere(t,rh,wind,solar,pair,0.05,0.97,0.8,0);
-          wbgt = 0.7*tw+0.2*tg+0.1*t;
-          return wbgt;
-}
 
 /**
  * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-bulb globe temperature (WBGT) index indoor. Bernard Integration for wind. 
@@ -3244,7 +3202,7 @@ function wbgt_indoor(t,rh,wind,pair,elev)
           var pair=pheight(pair,elev);
           var tw = natural_wetbulb(t,rh,0,0,pair);
 	      wbgt= 0.67*tw+0.33*t-0.048 *Math.log(wind)*(t-tw);
-          /*if ( wind < 1.1) { wbgt= 0.04*t + 0.96*tw};*/
+          if ( wind < 1.1) { wbgt= 0.04*t + 0.96*tw};
           return wbgt;
 }
 
@@ -3257,11 +3215,12 @@ function wbgt_indoor(t,rh,wind,pair,elev)
  * @customfunction
  */
 
-function mdi_index(t,rh)    
+function mdi_index(t,rh,pair)    
          {
+	  if ( pair === undefined) {pair=1010};
           var mdi;
-          var tw = wetbulb(t,rh,1013.25);
-          mdi = 0.7 * tw + 0.3 * t;
+          var tw = natural_wetbulb(t,rh,0,0,pair);
+	  mdi = 0.7 * tw + 0.3 * t;
           return mdi; 
 }
 
@@ -3269,16 +3228,18 @@ function mdi_index(t,rh)
 
 
 /**
- * Given t air temperature (degC), rh relative humidity (%)  gives the thom discomfort index. 
+ * Given t air temperature (degC), rh relative humidity (%) and air pressure  (hPa) gives the thom discomfort index. 
  * @param {number} t,rh 
  * @return {number}
  */
 
 
-function thom(t,rh) 
+function thom(t,rh,pair) 
          {
           var thom;
-          var tw = wetbulb(t,rh,1013.25);
+	  if ( pair === undefined) {pair=1010};
+        
+          var tw = natural_wetbulb(t,rh,0,0,pair);
           thom = 0.4 * (t + tw) + 4.8;
           return thom;
 }
@@ -3332,6 +3293,13 @@ function windchill_cla(t,wind)
      var wcindex=windchill(t,wind);  
      if (wcindex > 0 ) {return 1;}
      else if (wcindex > -10.0) {return 2;}
+     else if (wcindex > -10.0) {return 2;}
+    
+     else if (wcindex > -10.0) {return 2;}
+	else if (wcindex > -10.0) {return 2;}
+    else if (wcindex > -10.0) {return 2;}
+    else if (wcindex > -10.0) {return 2;}
+    
      else{  
      return 6;
     }
@@ -3391,7 +3359,7 @@ function net_index(t,rh,wind)
 
 function ssi_index(t,rh)
 {  
-    var ssi = -9999;
+    var ssi = 9999;
     if (rh > 100.1 || rh < 0.0)
        {return ssi}
     else if (t > 100.0 || t < -100.0)
@@ -3404,6 +3372,9 @@ function ssi_index(t,rh)
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pressure 
+
+
+
 
 /**
  * Given press air pressure in millibar, topo is altitude in meters 
@@ -3453,6 +3424,18 @@ function poda(t,rh,p)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Conversion related functions.
+
+/**
+ * Given air temperature (Celsius) calculates Saturated Vapor Pressure (Torr) at Temperature T  (C) .
+ * @param {number} T
+ * @return {number}
+ */
+	
+  
+function vpaTorr(t) {
+    
+                     return Math.exp(18.6686 - 4030.183 / (t + 235.0));
+}
 
 
 function mbtommHG(mb)

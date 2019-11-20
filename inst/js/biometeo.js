@@ -3028,7 +3028,7 @@ function ral_unacclimatized(met) {
           
           
 /**
- * Given  WBGT and CAVs ( clothing adjustment values)  returns heat risk level in italian language by using a treshshold.
+ * Given  WBGT returns heat risk level in italian language by using a treshshold.
  * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
  * @param {number} wbgt,tresh
  * @return {number}
@@ -3039,16 +3039,16 @@ function heat_risk_text_level(wbgt,cav,tresh)  {
                                                var risk= (wbgt+cav)/tresh;
                                                var level_list=["NON SIGNIFICATIVO","BASSO","MODERATO","ALTO"];  
                                                var class;
-                                               if    ( risk <= 0.8)        {  class = 1;} 
-                                                     else if (risk <= 1)   {  class = 2;} 
-                                                     else if (risk <= 1.2) {  class = 3;} 
-                                                     else                  {  class = 4};
+                                               if    ( risk <= 0.8)        {  class = 0;} 
+                                                     else if (risk <= 1)   {  class = 1;} 
+                                                     else if (risk <= 1.2) {  class = 2;} 
+                                                     else                  {  class = 3};
                                               
                                                return(level_list[class]);           
                                               }
 
 /**
- * Given  WBGT and CAVs ( clothing adjustment values) returns heat risk level in english language by using a treshshold.
+ * Given  WBGT returns heat risk level in english language by using a treshshold.
  * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
  * @param {number} wbgt,tresh
  * @return {number}
@@ -3059,10 +3059,10 @@ function heat_risk_text_level_eng(wbgt,cav,tresh)  {
                                                var risk= (wbgt+cav)/tresh;
                                                var level_list=["NOT SIGNIFICANT","LOW","MODERATE","HIGH"];  
                                                var class;
-                                               if    ( risk <= 0.8)        {  class = 1;} 
-                                                     else if (risk <= 1)   {  class = 2;} 
-                                                     else if (risk <= 1.2) {  class = 3;} 
-                                                     else                  {  class = 4};
+                                               if    ( risk <= 0.8)        {  class = 0;} 
+                                                     else if (risk <= 1)   {  class = 1;} 
+                                                     else if (risk <= 1.2) {  class = 2;} 
+                                                     else                  {  class = 3};
                                               
                                                return(level_list[class]);           
                                               }
@@ -3085,15 +3085,15 @@ function heat_risk_color_level(wbgt,cav,tresh)    {
                                                var risk= (wbgt+cav)/tresh;
                                                var colorcode_list=["green","yellow","orange","red"]; 
                                                   var class;
-                                               if    ( risk <= 0.8)        {  class = 1;} 
-                                                     else if (risk <= 1)   {  class = 2;} 
-                                                     else if (risk <= 1.2) {  class = 3;} 
-                                                     else                  {  class = 4};
+                                               if    ( risk <= 0.8)        {  class = 0;} 
+                                                     else if (risk <= 1)   {  class = 1;} 
+                                                     else if (risk <= 1.2) {  class = 2;} 
+                                                     else                  {  class = 3};
                                                return(colorcode_list[class]);           
                                               }
 
 /**
- *  Given  WBGT and and CAVs ( clothing adjustment values)  returns heat risk level as color code in hex format. 
+ *  Given  WBGT and CAV returns heat risk level as color code in hex format. 
  *  @param {number} wbgt,tresh
  *  RISCHIO = 80% NESSUN RISCHIO (GREEN) rgb(0,255,0) level 1 
  *  80% < RISCHIO = 100% ATTENZIONE (YELLOW) rgb(255,255,0) level 2 
@@ -3108,17 +3108,17 @@ function heat_risk_hexrgb_level(wbgt,cav,tresh)    {
                                                var colorcode_hex=["#00ff00","#ffff00","#ffa500","#ff0000"];
                                                var class;
                                    
-                                               if    ( risk <= 0.8)        {  class = 1;} 
-                                                     else if (risk <= 1)   {  class = 2;} 
-                                                     else if (risk <= 1.2) {  class = 3;} 
-                                                     else                  {  class = 4};
+                                               if    ( risk <= 0.8)        {  class = 0;} 
+                                                     else if (risk <= 1)   {  class = 1;} 
+                                                     else if (risk <= 1.2) {  class = 2;} 
+                                                     else                  {  class = 3};
 
 
                                                return(colorcode_hex[class]);           
                                               }
 
 /**
- *  Given WBGT and CAVs ( clothing adjustment values)  returns heat risk level value. 
+ *  Given WBGT returns heat risk level value. 
  *  Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
  *  @param {number} wbgt,tresh
  *  @return {number}
@@ -3126,7 +3126,7 @@ function heat_risk_hexrgb_level(wbgt,cav,tresh)    {
 
 function heat_risk_index_value(wbgt,cav,tresh)    { 
                                                if ( tresh === undefined) {tresh = 28.5};
-                                               var risk =((wbgt+cav)/tresh)*100;
+                                               var risk =((wbgt+cav)/tresh);
                                                return(risk);        
                                               }
 /**
@@ -3304,7 +3304,7 @@ function windchill(t,wind)
 function wc_watt2mq (t, wind)
 			{
 			 if (wind < 0.4) ( wind=0.4);
-	         var Watts = (12.1452 + 11.6222*Math.sqrt(wind) - 1.16222 * wind)*(33 - t);
+	                 var Watts = (12.1452 + 11.6222*Math.sqrt(wind) - 1.16222 * wind)*(33 - t);
 			 return Watts;
 
 			}

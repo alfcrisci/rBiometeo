@@ -1,14 +1,14 @@
 #' windchill
 #'
-#' Calculates the NWS Windchill Temperature (WCT) to estimate the perceived temperature with wind in cold environemnt.Assumes no impact from the sun and having own face model.
+#' Calculates the NWS Windchill Temperature (WCT) to estimate the perceived temperature with wind in cold environemnt.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric v Windspeed in meter per second.
+#' @param numeric t Air temperature in degC.
+#' @param numeric wind Windspeed in meter per second.
 #' @return windchill index
 #' 
-#' @references New Windchill NOAA calculator \url{http://www.srh.noaa.gov/epz/?n=wxcalc_windchill}
+#' @references Windchill NOAA calculator \url{https://www.weather.gov/epz/wxcalc_windchill}
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  windchill, WCT
 #' 
 #' @export
@@ -17,12 +17,12 @@
 #'
 #'
 
-windchill=function(t,v) {
+windchill=function(t,wind) {
                          ct$assign("t", as.array(t))
-                         ct$assign("v", as.array(v))
+                         ct$assign("v", as.array(wind))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=windchill_new(t[i],v[i])};")
                          res=ct$get("res")
-                         return(ifelse(res==9999,NA,res))
+                         return(ifelse(!is.numeric(res),NA,res))
 }
 
 

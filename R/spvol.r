@@ -2,13 +2,13 @@
 #'
 #' Gets the specific volume of air/water vapor mixture [m^3/kg].
 #'
-#' @param numeric t Air temperature in Celsius Degrees (dry bulb temeprature).
-#' @param numeric hum_ratio Humidity ratio [unitless].
-#' @param numeric pa Air pressure in hPa [millibar].
+#' @param numeric t Air temperature in degC 
+#' @param numeric hum_ratio Humidity ratio 
+#' @param numeric pa Air pressure in (hPa)
 #' @return  Specific volume.
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  spvol 
 #' 
 #' @export

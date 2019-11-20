@@ -6,7 +6,7 @@
 #' @param numeric rh Air Relative humidity in percentage.
 #' @return 
 #' 
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  sharlau_index_delta 
 #' @references Scharlau, K., 1950, Einfuhrung eines Schwulemasstabes und Abgrenzung von Schwulezonen durch Isohygrothermen, Erdkunde, 4, 188 201.
 #' @export

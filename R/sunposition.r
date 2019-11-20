@@ -2,12 +2,11 @@
 #'
 #' @description Function to assess sun azimuth and elevation given the time in GMT format.
 #' 
-#' @param timenow time indicat in time format equivalent to "POSIXct" or "POSIXt" object.
-#' @param  lat numeric latitude in decimal degrees
-#' @param lon numeric  longitude in decimal degrees
-#' @references Mike Birdgeneau 
-#' \url{https://gist.github.com/mikebirdgeneau/e2dbdc8e9c45c1c2b7fc}
-#' @author  Alfonso crisci \email{a.crisci@@ibimet.cnr.it} Marco Morabito \email{m.morabito@@unifi.it} 
+#' @param timenow       Datetime indicate in time format equivalent to "POSIXct" or "POSIXt" object.
+#' @param  lat numeric  latitude in decimal degrees
+#' @param lon numeric   longitude in decimal degrees
+#' @references Mike Birdgeneau  \url{https://gist.github.com/mikebirdgeneau/e2dbdc8e9c45c1c2b7fc}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' 
 #' 
 #' @export

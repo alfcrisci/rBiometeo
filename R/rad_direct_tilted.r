@@ -2,15 +2,15 @@
 #'
 #' Computed a incident tilted radiation for a inclinated (planezen) and orientated plane (planeaz).
 #'
-#' @param jddate  Date in format DOY day of year.
-#' @param numeric az Sun azimuth in decimal degrees.
-#' @param numeric elev Sun elevation in decimal degrees.
-#' @param planezen Zenital angles of the plane.
-#' @param planeaz Azimuthal angles of the plane.
+#' @param numeric jddate        Date in format DOY day of year.
+#' @param numeric az            Sun azimuth in decimal degrees.
+#' @param numeric elev          Sun elevation in decimal degrees.
+#' @param numeric planezen      Zenital angles of the plane.
+#' @param numeric planeaz       Azimuthal angles of the plane.
 #' @return 
 #' 
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  Tilted radiation. 
 #' 
 #' @export

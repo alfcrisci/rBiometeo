@@ -2,15 +2,12 @@
 #'
 #' @description R function to assess raw  solar irradiance parameter.
 #' 
-#' @param timenow "POSIXct" or "POSIXt" object.
+#' @param  timenow "POSIXct" or "POSIXt" object.
 #' @param  lat latitude in decimal degrees.
-#' @param lat longitude in decimal degrees.
+#' @param  lat longitude in decimal degrees.
 #' @return List of solar and radiance parameters.
 #' 
-#' @references 
-#' Istituto di Biometeorologia Firenze Italy
-#' Centro Interdipartimentale di Bioloclimatologia University of Florence
-#' @author  Alfonso crisci \email{a.crisci@@ibimet.cnr.it} Marco Morabito \email{m.morabito@@unifi.it} 
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' 
 #' 
 #' 

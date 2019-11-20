@@ -2,14 +2,14 @@
 #'
 #' Calculate seven thermal classes of Universal Thermal Climate Index  UTCI index.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
+#' @param numeric  t    Air temperature in degC.
+#' @param numeric  rh   Air Relative humidity in percentage.
 #' @param numeric  wind Wind speed in meter per second.
-#' @param numeric tmrt Mean radiant temperature in Celsius degrees.
-#' @return UTCI index in Celsius degrees.
+#' @param numeric  tmrt Mean radiant temperature in degC.
+#' @return UTCI index in in degC.
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  UTCI 
 #' @references Brode P,Jendritzky G,Fiala D and Havenith G, 2011,The Universal Thermal Climate Index UTCI in Operational Use".International Journal of Biometeorology.
 #' 

@@ -2,21 +2,21 @@
 #'
 #'  Calculate Predicted Mean Vote (PMV) following ISO 7730 customizing some individual features.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @param numeric wind Windspeed in meter per second.
-#' @param numeric tr Air temperature in Celsius degrees.
-#' @param numeric M Metabolic rate of subject Watt per mq.
-#' @param numeric W Work rate of subject in Watt per mq.
-#' @param numeric clo Clothing insulation level in clo.
-#' @param numeric age Age in years.
-#' @param numeric mbody Body Mass in kg. 
-#' @param numeric ht Heigth of subject in meters.
+#' @param numeric t        Air temperature in Celsius degrees.
+#' @param numeric rh       Air Relative humidity in percentage.
+#' @param numeric wind     Windspeed in meter per second.
+#' @param numeric trad       Air temperature in Celsius degrees.
+#' @param numeric M        Metabolic rate of subject Watt per mq.
+#' @param numeric W        Work rate of subject in Watt per mq.
+#' @param numeric clo      Clothing insulation level in clo.
+#' @param numeric age      Age in years.
+#' @param numeric mbody    Body Mass in kg. 
+#' @param numeric ht       Heigth of subject in meters.
 #' @param character gender Sex of the subject. Default is "male".
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords PMV_custom 
 #' 
 #' @export
@@ -29,7 +29,7 @@ PMV_custom=function(t,rh,wind,tr,clo,age,mbody,ht,gender="male") {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))
-                         ct$assign("mtrad", as.array(tr))
+                         ct$assign("mtrad", as.array(trad))
                          ct$assign("iclo", as.array(clo))
                          ct$assign("age", as.array(age))
                          ct$assign("mbody", as.array(mbody))

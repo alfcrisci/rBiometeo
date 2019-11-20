@@ -9,7 +9,7 @@
 #' @return Mean Radiant temperature.
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @references Thorsson et al, Different methods for estimating the mean radiant temperature in an outdoor urban setting, Int. J. Climatol.27  1983   1993 (2007)
 #' @keywords  MRT 
 #' 
@@ -33,13 +33,13 @@ mrt_thorsson=function(t,tg,wind,diam) {
 #'
 #' Given air temperature , the globe Temeperature, the wind speed and diameter mean radiant temperature is done according ISO 7726 1998.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric tg Global short solar irradiance in Watt on mq.
-#' @param numeric wind Windspeed in meter per second.
-#' @param numeric diam diameter of the sphere in millimeter. Input example  50 mm.
+#' @param numeric t     Air temperature in Celsius degrees.
+#' @param numeric tg    Global short solar irradiance in Watt on mq.
+#' @param numeric wind  Windspeed in meter per second.
+#' @param numeric diam  diameter of the sphere in millimeter. Input example 50 mm.
 #' @return Mean Radiant temperature.
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  globe temperature 
 #' 
 #' @export
@@ -59,18 +59,17 @@ mrt_globe=function(t,tg,wind,diam) {
 }
 
 
-
 #' mrt_solar_proj
 #'
 #' Calculated the mean radiant temperature from the short solar irradiance with human projection factor. it assumes a uniform surround temperature of air temperature  and short wave solar radiation.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rad Global short solar irradiance in Watt on mq.
+#' @param numeric t    Air temperature in Celsius Degrees.
+#' @param numeric rad  Global short solar irradiance in Watt on mq.
 #' @param numeric frad Fraction related to direct solar beam 0 to 1.
-#' @return Mean Radiant temperature.
+#' @return Mean Radiant temperature projected
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  fMRT 
 #' 
 #' @export

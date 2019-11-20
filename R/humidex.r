@@ -6,7 +6,7 @@
 #' @param numeric rh Air Relative humidity in percentage.
 #' @return 
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  humidex, canada
 #' @references Masterson, J. et Richardson, F. A., Humidex, A Method of Quantifying Human Discomfort Due to Excessive Heat and Humidity, Downsview, Ontario, Environnement Canada, 1979, 45.
 #' @export

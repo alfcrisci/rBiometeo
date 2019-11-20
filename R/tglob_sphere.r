@@ -14,7 +14,7 @@
 #' @param numeric albedo Mean albedo of surroundings. Default is 0.4 
 #' @return 
 #' 
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @references Liljegren J, Carhart R, Lawday P, Tschopp S, Sharp R,2008, "Modeling Wet Bulb Globe Temperature using Standard Meteorological Measurements" Journal of Occupational and Environmental Hygiene 5, 645-655. 
 #' @keywords Globometric temperature.
 #' 

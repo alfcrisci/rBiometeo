@@ -7,7 +7,7 @@
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  hi_index 
 #' @references Hill et al,2004, Indices of environmental temperatures for primates in open habitats. 
 #' @export

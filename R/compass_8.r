@@ -1,12 +1,12 @@
 #' compass_8
 #'
-#' Calculate the  wind sector (8 partition)  of its provenience.  
+#' Calculate the  wind sector (8 partition)  provenience.  
 #'
 #' @param numeric  direction Directions in degrees from the North.
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  compass_8 
 #' 
 #' @export

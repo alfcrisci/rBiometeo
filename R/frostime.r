@@ -7,7 +7,7 @@
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  frostime 
 #' @references ISO 9920:2007 Ergonomics of the thermal environment -- Estimation of thermal insulation and water vapour resistance of a clothing ensemble.
 #' @export

@@ -2,12 +2,12 @@
 #'
 #' Calculates the enthalpy of air/water vapor mixture [kJ/kg]. Inputs are dry-bulb temperature [C] and humidity ratio [unitless]. 
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param hum_ratio Humidity ratio [unitless].
+#' @param numeric t Air temperature in degC.
+#' @param hum_ratio Humidity ratio.
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  enthalpy 
 #' 
 #' @export

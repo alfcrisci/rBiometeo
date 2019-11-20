@@ -3,8 +3,11 @@
 #' Calculate the Human Body Projection Area factor in function to sun elevation. 
 #'
 #' @param numeric sunelev Sun elevation in degrees.
+#'
 #' @return Projection factor
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#'
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#'
 #' @keywords  Area projection factor. 
 #' @references Jendritzky G (1990) Bioklimatische Bewertungsgrundlage der Raume am Beispiel von. 27 mesoskaligen Bioklimakarten.
 #' @export

@@ -2,14 +2,13 @@
 #'
 #' Calculate the Net effective temperature (NET) incorporating ambient temperature, wind speed, and relative humidity and is used in both hot and cold situations.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric t   Air temperature in degC.
 #' @param numeric rh Air Relative humidity in percentage.
 #' @param numeric  wind Windspeed in meter per second.
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
-#' @keywords  net_index 
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}#' @keywords  net_index 
 #' @references Cho KLA, Margaret Loughnan M, and Tapper T,2013, An Exploration of Temperature Metrics for Further Developing the Heat-Health Weather Warning System in Hong Kong.
 #' @export
 #'

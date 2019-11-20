@@ -5,7 +5,7 @@
 #' @param numeric F Temperature in Fahrenheit degrees
 #' @return Celsius degrees
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  F2C 
 #' 
 #' @export

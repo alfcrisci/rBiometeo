@@ -6,8 +6,7 @@
 #' @param v numeric V meridian component 
 #' @return 
 #'
-#' @references Istituto di Biometeorologia Firenze Italy.
-#' @author  Alfonso crisci \email{a.crisci@@ibimet.cnr.it} Marco Morabito \email{m.morabito@@unifi.it} 
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords speed wind
 #' 
 #' 

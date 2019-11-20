@@ -1,21 +1,21 @@
 #' clomax_custom
 #'
-#' Calculate maximal clothing insulation value needed for thermal comfort in moderate thermal environments based on PMV ISO 7730.
+#' Calculate the maximal clothing insulation value required to reach thermal comfort in moderate thermal environments based on PMV ISO 7730.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @param numeric wind Windspeed in meter per second.
-#' @param numeric tr Air temperature in Celsius degrees.
-#' @param numeric M Metabolic rate of subject Watt per mq.
-#' @param numeric W Work rate of subject in Watt per mq.
-#' @param numeric age Age in years.
-#' @param numeric mbody Body Mass in kg. 
-#' @param numeric ht Heigth of subject in meters.
+#' @param numeric t        Air temperature in degC.
+#' @param numeric rh       Air Relative humidity in percentage.
+#' @param numeric wind     Windspeed in meter per second.
+#' @param numeric trad     Air temperature in degC.
+#' @param numeric M        Metabolic rate of subject Watt per mq.
+#' @param numeric W        Work rate of subject in Watt per mq.
+#' @param numeric age      Age in years.
+#' @param numeric mbody    Body Mass in kg. 
+#' @param numeric ht       Heigth of subject in meters.
 #' @param character gender Sex of the subject. Default is "male" otherwise "female".
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  ocir 
 #' 
 #' @export
@@ -24,11 +24,11 @@
 #'
 #'
 
-clomax_custom=function(t,rh,wind,tr,age,mbody,ht,gender="male")  {
+clomax_custom=function(t,rh,wind,trad,age,mbody,ht,gender="male")  {
   ct$assign("t", as.array(t))
   ct$assign("rh", as.array(rh))
   ct$assign("wind", as.array(wind))
-  ct$assign("mtrad", as.array(tr))
+  ct$assign("mtrad", as.array(trad))
   ct$assign("age", as.array(age))
   ct$assign("mbody", as.array(mbody))
   ct$assign("ht", as.array(ht))

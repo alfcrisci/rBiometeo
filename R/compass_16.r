@@ -1,12 +1,12 @@
 #' compass_16
 #'
-#' Calculate thewind sector (16 partition)  of its provenience.  
+#' Calculate the wind sector (16 partition) provenience.  
 #'
 #' @param numeric  direction Directions in degrees from the North ( meteorological) .
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  compass_16 
 #' 
 #' @export

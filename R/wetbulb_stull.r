@@ -8,7 +8,7 @@
 #' @return Wet bulb temperature in Celsius degrees.
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  wetbulb 
 #' @references  Stull, R.B., 2011, Meteorology for Scientists and Engineers, 3rd Edition. 938 pages. 
 #' @export
@@ -22,5 +22,5 @@ wetbulb=function(t,rh) {
                          ct$assign("rh", as.array(rh))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=wetbulb_stull(t[i],rh[i]};")
                          res=ct$get("res")
-                         return(ifelse(res==9999,NA,res))
+                         return(ifelse(!is.numeric(res),NA,res))
 }

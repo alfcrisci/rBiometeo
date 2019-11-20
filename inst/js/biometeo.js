@@ -85,12 +85,12 @@ function degToRad(angleDeg)
 
 function arrayMinIndex (array) {
   return array.indexOf(Math.min.apply(null, array));
-};
+}
 
 
 function arrayMaxIndex (array) {
   return array.indexOf(Math.max.apply(null, array));
-};
+}
 
 
 function linspace(x0, xN, dx){
@@ -119,13 +119,13 @@ function getBaseLog(x, y) {
   * * This program is distributed in the hope that it will be useful,
   * * but WITHOUT ANY WARRANTY; without even the implied warranty of
   * * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-  * * "Applied Statistics Algorithms" (1985) vol 22 no.3 Algorithm AS66 P. Griffiths and I. D. Hill, editor 
+  * * "Applied Statistics Algorithms" (1985) vol 22 no.3 Algorithm AS66 P. Griffiths and I. D.    * *  Hill, editor 
 */
 
 
 function pnorm(z,tail) {
     
-    if( tail === undefined ) { tail = false;};
+    if( tail === undefined ) { tail = false}
     
     z=parseFloat(z);
 	
@@ -224,8 +224,8 @@ function qnorm(p) {
  */
 
 function reducewind(x,ref,fin) {  
-                                        if( ref === undefined ) { tresh = 10;};
-                                        if( fin === undefined ) { fin = 2;};
+                                        if( ref === undefined ) { tresh = 10}
+                                        if( fin === undefined ) { fin = 2}
                                         return(x*1/(Math.log(ref/0.01)/Math.log(fin/0.01)));
                                }
 
@@ -613,7 +613,8 @@ function mrt_solar_proj(t,rh,solar,sunelev,albedo,emis_sfc,fdir)
 }
 
 /**
- * Given mean radiant temperature t air temperature (degC), g Globe Temeperature in degC, wind speed in m/s and diameter in mm.
+ * Given mean radiant temperature t air temperature (degC), g Globe Temeperature in degC, wind speed in m/s 
+ * and diameter in mm.
  * @param {number} t Air temperature , tg Globe Temeperature, wind speed and diameter. 
  * @return {number}
  */
@@ -667,9 +668,13 @@ function fglob_sphere(Tglobe_prev,Tair,rh,speed,solar,zenith,pair,alb_sfc,fdir,d
                         }
 
 /**
- * Given  tg globometric temperature in degC of sphere bounded respect air temperature. 
- * @param {number} t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam
- * @return {number}
+ *  Given t air temperature (degC), rh relative humidity (%) , speed as wind speed in m/s, 
+ *  solar as global radiation in  Watt/mq, solar zenith in radians, pair Air Pressure in millibar (hPa),
+ *  alb_sfc as the mean albedo of surrounding surfaces, fdir is the ratio between diffuse and directed radiation, 
+ *  irad is 1 if the radiation is taken into account , diam is the diameter of heat globe in meters,
+ *  maxair and minair are  the range respect to air temperature where  solution was searched and prec is the precision.
+ *  @param {number} t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,diam,maxair,minair,prec
+ *  @return {number} 
  */
 
 function tglob_sphere(t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam,maxair,minair,prec){
@@ -683,7 +688,7 @@ function tglob_sphere(t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam,maxair,mina
                          if( prec === undefined )     { prec = 0.01;}; 
   
                          if(solar > 15 &&  zenith > 1.54) {zenith = 1.54;}; 
-	                 if(solar > 900 &&  zenith > 1.52) {zenith = 1.52;}; 
+	                       if(solar > 900 &&  zenith > 1.52) {zenith = 1.52;}; 
                    
   
                          var Tair = t + 273.15;
@@ -697,7 +702,7 @@ function tglob_sphere(t,rh,speed,solar,zenith,pair,alb_sfc,fdir,diam,maxair,mina
 
 
 /**
- * Given a air temperature t (Celsius degree), globe temperature (degC), wind speed in m per second and diam of globe in meters compute the mean radiant temperature (Celsius degrees) ;
+ * Given a air temperature t (Celsius degree), globe temperature (degC), wind speed in m/s and diam of globe in meters compute the mean radiant temperature (Celsius degrees) ;
  * @param {number} t, tg, wind, diam_glob
  * @return {number}
  */
@@ -714,7 +719,7 @@ function mrt_globe(t, tg, wind, diam_globe,emis_globe)
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Psycrometrics related functions.
 
 
@@ -816,7 +821,18 @@ function fnatural_wetbulb(Twb_prev,Tair,rh,wspeed,solar,zenith,pair,alb_sfc,fdir
                                
                            return(Math.abs(dT));
                          }
-                                  
+   
+   /**
+ *  Given t air temperature (degC), rh relative humidity (%) , wspeed as wind speed in m/s, 
+ *  solar as global radiation in  Watt/mq, solar zenith in radians, pair Air Pressure in millibar (hPa),
+ *  alb_sfc as the mean albedo of surrounding surfaces, fdir is the ratio between diffuse and directed radiation, 
+ *  irad is 1 if the radiation is taken into account , diam is the diameter of heat globe in meters,
+ *  maxair and minair are  the range respect to air temperature where  solution was searched and prec is the precision 
+ *  gives natural wetbulb temperature. 
+ *  @param {number} t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,diam,maxair,minair,prec
+ *  @return {number} 
+ */
+ 
 function natural_wetbulb(t,rh,wspeed,solar,zenith,pair,alb_sfc,fdir,irad,maxair,minair,prec){
                         
                          if( zenith === undefined )    { zenith = 0.0000000001;};
@@ -845,8 +861,8 @@ function natural_wetbulb(t,rh,wspeed,solar,zenith,pair,alb_sfc,fdir,irad,maxair,
 
 
 /**
- * Purpose: to calculate the convective h the heat tranfer coefficient for flow around a sphere. tk (Kelvin) 
- * and air pressure in millibar(hPA).
+ * Purpose: to calculate the convective h the heat tranfer coefficient for flow around a sphere. tk (Kelvin), 
+ * speed as wind speed in m/s, pair air pressure in millibar(hPa) , the minimal wind speed and diameter of the globe.
  * Reference; BSL, page 23.;
  * @param {number} t, speed,pair,speedmin,diam_globe;
  * @return {number}
@@ -872,7 +888,7 @@ function h_sphere_in_air(tk,speed,pair,speedmin,diam_globe)
  * Purpose: to calculate the convective heat tranfer coefficient for heat flow around a cylinder tk in degK
  * and air pressure in millibar(hPa).
  * Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;
- * @param {number} t, speed,pair,speedmin,diam_globe;
+ * @param {number} t, speed,pair,speedmin,diam_globe
  * @return {number}
  */ 
     
@@ -912,13 +928,9 @@ function h_cylinder_in_air(tk,speed,pair,speedmin,diam_wick){
   return(h_cylinder_in_air);
 }
 
-
-
-
-
                              
 /**
- * Given a air temperature tk (kelvin) calculate the heat of evaporation.
+ * Given a air temperature tk (degK) calculate the heat of evaporation.
  * Purpose: to calculate the convective heat tranfer coefficient for flow around a sphere.; t in K
  * Reference : Bird, Stewart, && Lightfoot (BSL), page 409.;
 
@@ -933,7 +945,7 @@ function h_evap(tk){
 
 
 /**
- * Given a air emissivity by using temperature in kelvin and relative umidity ( number)
+ * Given a air emissivity by using temperature in degK and relative umidity ( number)
  * Purpose: to calculate the convective heat tranfer coefficient for flow around a sphere.; t in K
  * Reference; Oke (2nd edition), page 373.;
  * @param {number} tk,rh
@@ -979,9 +991,9 @@ function viscosity(tk)
 
 
 /**
- * Given a air temperature tk (Kelvin) and air pressure in millibar (hPa) compute the heat diffusivity in air.
+ * Given a air temperature tk (degK) and air pressure in millibar (hPa) compute the heat diffusivity in air.
  * Reference; BSL, page 23.;
- * @param {number} t
+ * @param {number} tk, pairt
  * @return {number}
  */
 
@@ -999,7 +1011,7 @@ function diffusivity(tk, pair) {
 
 
 /**
- * Given a air temperature t (degC) and td dew-point  (degC) compute the relative humidity.
+ * Given a air temperature t (degC) and td dewpoint  (degC) compute the relative humidity
  * Reference; BSL, page 23.;
  * @param {number} t, td
  * @return {number}
@@ -1036,12 +1048,11 @@ function pvsIce(T)
 
 
 /**
- * Given air temperature T (Celsius)  function gives Saturation Vapor Pressure. Dimension of outcomes in Pascal (kPa)
+ * Given air temperature T (deC)  function gives Saturation Vapor Pressure. Dimension of outcomes in kiloPascal (kPa)
  * Saturation Vapor Pressure formula for range 273..678 Deg. K. 
  * Equation (30) in Section 8.1 "The Saturation-Pressure Equation (Basic Equation),Erlangen, Germany, September 1997.
  * @param {number} T
  * @return {number}
- * @customfunction
  */
 
 function pvsWater(T) 
@@ -1074,7 +1085,6 @@ function pvsWater(T)
  *
  * @param {number} t
  * @return {number}
- * @customfunction
  */
 
 function PVS(t)
@@ -1103,7 +1113,6 @@ function PVS(t)
  *
  * @param {number} t,rh
  * @return {number}
- * @customfunction
  */
 
 function deficitsat(t,rh) 
@@ -1186,8 +1195,7 @@ function dewpoint(t,rh,formula) {
  * Based on formula in the ASHRAE Handbook of Fundamentals.           
  * Inputs is water vapor pressure [hPa]. Assume aipr=1013.25 [hPa]      
  * output : function = humidity ratio                                  
- * @param {number} p
- * @param {number} pa
+ * @param {number} p,pa
  * @return {number}
  */
 
@@ -1195,8 +1203,6 @@ function dewpoint(t,rh,formula) {
 function humrat(p,pa) 
 {
 	var y;
-        pa=pa/10; // convert in hPa 
-        p=p/10;   // convert in hPa 
 	y=0.62198*p/(pa-p);
 	return (y);
 }
@@ -1204,8 +1210,7 @@ function humrat(p,pa)
 /**
  * Calculates the enthalpy of air/water vapor mixture [kJ/kg]  
  * Inputs are dry-bulb temperature [C] and humidity ratio (unitless).                                     
- * @param {number} ta
- * @param {number} hum_ratio
+ * @param {number} t,hum_ratio
  * @return {number} 
  */
 
@@ -1218,14 +1223,11 @@ function enthalpy(t, hum_ratio)
 
 /**
  * Gets the specific volume of air/water vapor mixture [m^3/kg] 
- * input: ta dry_bulb temperature [C], hum_ratio humidity ratio [unitless],pa air pressure  [hPa].                                   
- * @param {number} ta
- * @param {number} hum_ratio
- * @param {number} pa
+ * input: t dry_bulb temperature [C], hum_ratio humidity ratio [unitless],pair air pressure  [hPa].                       * @param {number} t,hum_ratio,pa
  * @return {number} 
  */
 
-function spvol(ta,hum_ratio,pa) 
+function spvol(t,hum_ratio,pa) 
 {
 	var t, y;
 	t=ta+273.16;
@@ -1240,7 +1242,6 @@ function spvol(ta,hum_ratio,pa)
  * Given a temperature t (Celsius) and return the metabolism useful for pmv_hoppe_iso function.
  * @param {number} t
  * @return {number} 
- * @customfunction
  */
 
 function metabolism(t)
@@ -1249,13 +1250,12 @@ function metabolism(t)
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
-// thermal Confort index section
+// Thermal Confort index section
 
 /**
  * Given PMV value and Metabolic energy production M (58 to 400 W/m2) return the PPD Index ISO 7730. 
- * @param {number} PMW
+ * @param {number} PMV
  * @return {number}
- * @customfunction
  */
 
 function PPD(PMV) 
@@ -1269,7 +1269,6 @@ function PPD(PMV)
  *
  * @param {number} pmv,m
  * @return {number}
- * @customfunction
  */
 
   
@@ -1282,11 +1281,9 @@ function balancePMV7730(pmv,M)
  
 /**
  * Given antropometric features ( body mass,age, height and gender) give custom basal metabolic rate/
- * request for a day Harris Benedict Equation (cal/day) 
- * kJ and divided for daily seconds Watt but already normalized for Adu.
+ * request for a day Harris Benedict Equation (cal/day) , kJ and divided for daily seconds Watt but already normalized for Adu.
  * @param {number} mbody,age,ht,gender
  * @return {number}
- * @customfunction
  */
 function HB_bmr_met(mbody,age,ht,gender) 
          { 
@@ -1310,9 +1307,8 @@ function HB_bmr_met(mbody,age,ht,gender)
 
 
 /**
- * Given a temperature t (degC), relative humidity rh (%), wind ( m/sec), mean radiant temperature mtrad ( degC) 
- * and clothing insulation (clo) 
- * gives PMV following Hoppe scheme for a customized person.
+ * Given a temperature t (degC), relative humidity rh (%), wind ( m/sec), mean radiant temperature mtrad (degC) 
+ * and clothing insulation level (clo) gives PMV following Hoppe scheme for a customized person.
  * @param {number} ta
  * @return {number} 
  */
@@ -1397,11 +1393,10 @@ function PMV_custom(t,rh,wind,mtrad,iclo,age,mbody,ht,gender)
 
 
 /**
- * Given a temperature t (Celsius), relative humidity rh (%), wind ( m/sec), mean radiant temperature tr (degC), M metabolism, W work
- * and clothing insulation (clo) gives perceived_temperature following the PMV scheme.
+ * Given a temperature t (Celsius), relative humidity rh (%), wind ( m/sec), mean radiant temperature tr (degC), 
+ * M metabolism, W work and clothing insulation level (clo) gives perceived_temperature following the PMV scheme.
  * @param {number} t,rh,wind,tr,M,W,clo
  * @return {number} 
- * @customfunction
  */
 
 function perceived_temperature(t,rh,wind,tr,M,W,clo) 
@@ -1463,9 +1458,10 @@ function perceived_temperature(t,rh,wind,tr,M,W,clo)
     
   
 /**
- * Given a temperature t (Celsius), relative humidity rh (%), wind ( m/sec), mean radiant temperature trad (degC), M metabolism (met) , W external work ( generally 0),
- * and clothing insulation (clo) gives perceived PMV (Predicted Mean Vote) for moderate thermal environements following ISO 7730.
- * @param {number} ta
+ * Given a temperature t (Celsius), relative humidity rh (%), wind ( m/sec), mean radiant temperature trad (degC),
+ * M metabolism (met) , W external work ( generally 0) and clothing insulation (clo) 
+ * gives perceived PMV (Predicted Mean Vote) for moderate thermal environements following ISO 7730.
+ * @param {number} t,rh,wind,trad,M,W,clo
  * @return {number} 
  * @customfunction
  */
@@ -1546,9 +1542,11 @@ function PMV_ISO7730(t,rh,wind,trad,M,W,clo)
 
 
  /**
- * Given a temperature t (Celsius), relative humidity rh (%), wind ( m/sec), mean radiant temperature trad (degC), M metabolism (met) , W external work ( generally 0),
+ * Given a temperature t (Celsius), relative humidity rh (%), wind ( m/sec), mean radiant temperature trad (degC
+ *  M metabolism (met) , W external work ( generally 0),
  * and clothing insulation (clo) gives perceived HSI (Heat Strain Index) or AET or Sweat rate indexes.
- * Reference Introduction to Human Factors and Ergonomics for Engineers , authors Mark R. Lehto, Steven J. Landry and Jim Buck
+ * Reference Introduction to Human Factors and Ergonomics for Engineers , 
+ * Authors Mark R. Lehto, Steven J. Landry and Jim Buck
  * @param {number} ta
  * @return {number} 
  */
@@ -1707,7 +1705,7 @@ function clomax_custom(t,rh,wind,mtrad,age,mbody,ht,gender)
  * Minimal clothing level by using ISO 7730 PMV given temperature t (degC), relative humidity rh (%), 
  * wind ( m/sec), mean radiant temperature trad (degC), M metabolism (met) , W external work (generally 0) 
  * imposing customized parameter as mbody body weight in kg, heigth in meters and gender ( "male" or "female").
- * @param {number} t,rh,wind,trad,M,W
+ * @param {number} t, rh, wind, trad, M, W
  * @return {number}
  */
 
@@ -1731,10 +1729,10 @@ function clomin_custom(t,rh,wind,mtrad,age,mbody,ht,gender)
 
 /**
  * Given Standard Effective Index  given temperature t (degC), relative humidity rh (%), 
- * wind ( m/sec), mean radiant temperature trad (degC), M metabolism (met) , W external work and patm air pressure in hPa.
+ * wind velocity (m/sec), mean radiant temperature trad (degC), M metabolism (met) 
+ * W external work in W and patm air pressure in hPa.
  * @param {number} t,td
  * @return {number}
- * @customfunction
  */
 
 
@@ -1953,8 +1951,8 @@ function pierceSET (t,rh,wind,trad,M,W,clo,patm)
 }
 
 /**
- * Given rh relative humidity (%), wind windspeed (m/s) , MA as Metabolism ( W/mq), clo as mean clothing insulation value in clo
- * and the timing in hours H  gives the optimal temperature of thermal comfort.
+ * Given rh relative humidity (%), wind windspeed (m/s) , MA as Metabolism ( W/mq), clo as mean 
+ * clothing insulation value in clo and the timing in hours H  gives the optimal temperature of thermal comfort.
  * @param {number} t,rh 
  * @return {number}
  */
@@ -2549,7 +2547,11 @@ function UTCI(ta,rh,wind,tmrt)
 }
 
 /**
- * Given air temperature (Celsius), relative humidity (%) give a heat index in Celsius degree. References:[1] http://www.wpc.ncep.noaa.gov/html/heatindex.shtml [2] https://en.wikipedia.org/wiki/Heat_index [3] http://www.srh.noaa.gov/images/ffc/pdf/ta_htindx.PDF
+ * Given air temperature (Celsius), relative humidity (%) give a heat index in Celsius degree. 
+ * References:
+ * [1] http://www.wpc.ncep.noaa.gov/html/heatindex.shtml 
+ * [2] https://en.wikipedia.org/wiki/Heat_index 
+ * [3] http://www.srh.noaa.gov/images/ffc/pdf/ta_htindx.PDF
  * 
  * @param {number} t,rh
  * @return {number}
@@ -2591,11 +2593,11 @@ function heatindex(t,rh)
 
 
 /**
- * Given air temperature (Celsius), relative humidity (%), wind velocity (m/sec), direct beam short-wavelength radiation (W/mq) and sunelev sun elevation angle (degrees) gives Steadman outdoor sun index.
+ * Given air temperature (degC), relative humidity (%), wind velocity (m/sec), direct beam short-wavelength radiation 
+ * (W/mq) and sunelev sun elevation angle (degrees) gives Steadman outdoor sun index.
  *
  * @param {number} t,rh,wind,rshort,sunelev
  * @return {number}
- * @customfunction 
  */
 
 function steadman_outdoor(t,rh,wind,solar,sunelev)
@@ -2741,7 +2743,6 @@ function utci_class7(t,rh, wind,trad)
  *
  * @param {number} t,rh 
  * @return {number}
- * @customfunction
  */
 
 
@@ -2784,7 +2785,6 @@ function sharlau_index_state(t,rh)
  *
  * @param {number} t,rh 
  * @return {number}
- * @customfunction
  */
       
 function sharlau_index_delta(t,rh) 
@@ -2813,7 +2813,6 @@ function sharlau_index_delta(t,rh)
  *
  * @param {number} t,rh 
  * @return {number}
- * @customfunction
  */
 
 function RSI_index(t,rh) 
@@ -2830,7 +2829,6 @@ function RSI_index(t,rh)
  *
  * @param {number} t,rh,wind
  * @return {number}
- * @customfunction
  */
 
 function humidex(t,rh)
@@ -2879,7 +2877,6 @@ function THI(t,rh)
  *
  * @param {number} t,rh,wind
  * @return {number}
- * @customfunction
  */
 
 function THI_kliber(t,rh) 
@@ -2891,18 +2888,16 @@ function THI_kliber(t,rh)
 
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%)  gives  Oxford index (WD).
- *
+ * Given t air temperature (Celsius), rh relative humidity (%), wind velocity in m/s and pair air pessure in hPa  gives    * Oxford index (WD).
  * @param {number} t,rh 
  * @return {number}
- * @customfunction
  */
 
 function oxford_index(t,rh,wind,pair)  
          {
           var ox;
           if ( pair === undefined) {pair=1010};
-	  if ( wind === undefined) {wind=0.13};
+	       if ( wind === undefined) {wind=0.13};
         
           var tw = natural_wetbulb(t,rh,wind,0,0,pair);
           
@@ -2911,7 +2906,8 @@ function oxford_index(t,rh,wind,pair)
 }
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%)and gives  Discomfort index (DI). 
+ * Given t air temperature (Celsius), rh relative humidity (%), wind velocity in m/s and pair air pessure in hPa  
+ * gives  Discomfort index (DI). 
  * @param {number} t,rh 
  * @return {number}
  */
@@ -2929,8 +2925,9 @@ function discomfort_index(t,rh,wind,pair)
 
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%)  gives Fighter index of thermal stress (FITS). 
- * @param {number} t,rh 
+ * Given t air temperature (Celsius), rh relative humidity (%), wind velocity in m/s and pair air pessure in hPa  gives
+ * Fighter index of thermal stress (FITS). 
+ * @param {number} t,rh,wind,pair 
  * @return {number}
  */
 
@@ -2994,13 +2991,14 @@ function met_rate(BSA, isolevel) {
   
    if ( isolevel === undefined) {isolevel = 1 };
   
-  return(BSA*(isolevel*50));
+   return(BSA*(isolevel*50));
 }
 
 
 
 /**
  * Given met gives acclimated threshold of risk by using wbgt index. 
+ * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature)  * index, ISO FDIS 7243 (2016)
  * @param {number} met
  * @return {number}
  */
@@ -3014,6 +3012,7 @@ function rel_acclimatized(met) {
 
 /**
  * Given met gives unacclimated threshold of risk by using wbgt index. 
+ * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature)  * index, ISO FDIS 7243 (2016)
  * @param {number} met
  * @return {number}
  */
@@ -3049,7 +3048,7 @@ function heat_risk_text_level(wbgt,cav,tresh)  {
 
 /**
  * Given  WBGT returns heat risk level in english language by using a treshshold.
- * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
+ * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature)  * index, ISO FDIS 7243 (2016)
  * @param {number} wbgt,tresh
  * @return {number}
  */
@@ -3119,8 +3118,9 @@ function heat_risk_hexrgb_level(wbgt,cav,tresh)    {
 
 /**
  *  Given WBGT returns heat risk level value. 
- *  Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
- *  @param {number} wbgt,tresh
+ *  Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT 
+ *  (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
+ *  @param {number} wbgt,cav,tresh
  *  @return {number}
  */
 
@@ -3131,17 +3131,16 @@ function heat_risk_index_value(wbgt,cav,tresh)    {
                                               }
 /**
  * Given t air temperature (Celsius), rh relative humidity (%)  gives  Wet-Bulb Dry Temperature (WBDT). 
- * @param {number} t,rh 
+ * @param {number} t, rh 
  * @return {number}
- * @customfunction
  */
 
-function wbdt(t,rh,pair) 
+function wbdt(t, rh, pair) 
          {
           if ( pair === undefined) { pair==1010};	 
           var wbdt;
           var tw = natural_wetbulb(t,rh,0,0,pair);
-	  wbdt = 0.4*tw+0.6*t;
+	        wbdt = 0.4*tw+0.6*t;
           return wbdt;
 }
 
@@ -3149,42 +3148,47 @@ function wbdt(t,rh,pair)
 /**
  *  Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, 
  *  solar global radiation in  Watt/mq, tg globometric temperature gives, solar zenith in radians,  
- *  pair Air Pressure in millibar (hPa),alb_sfc mean albedo surface, fdir is the ratio between diffuse and directed radiation, 
- *  irad is 1 if the radiation is computed, diam is the diameter of heat globe, maxair and minair are the range respect to air temperature 
- *  to search solution and prec is the precision.
- * 
- *  Wet-bulb globe temperature (WBGT) index following Liljegren scheme . 
+ *  pair Air Pressure in millibar (hPa),alb_sfc mean albedo surface, fdir is the ratio between diffuse  
+ *  and directed radiation, irad is 1 if the radiation is computed, diam is the diameter of heat globe,
+ *  maxair and minair are  *  the range respect to air temperature 
+ *  to search solution and prec is the precision the function gives Wet-bulb globe temperature (WBGT)
+ *  index following the Liljegren scheme . 
  *  @param {number} t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,diam,maxair,minair,prec
- * @return {number} 
+ *  @return {number} 
  */
 
 function wbgt_sun(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,diam,maxair,minair,prec) 
-         {
+          {
           var wbgt;
           if ( pair === undefined ) {pair = 1010;};
           if ( alb_sfc === undefined ) {alb_sfc = 0.4;};
           if ( fdir === undefined ) { fdir = 0.8;}; 
           if ( irad === undefined ) {irad = 1;};
           if ( diam === undefined ) {diam=0.05;};
-	      if ( maxair === undefined ) {maxair=10;};
+	        if ( maxair === undefined ) {maxair=10;};
           if ( minair === undefined ) {minair=2;};
           if(  prec === undefined ) {prec=0.01;};
           
           var tg= tglob_sphere(t,rh,wind,solar,zenith,pair,maxair,minair,alb_sfc,fdir,diam,prec);
           var tw = natural_wetbulb(t,rh,wind,solar,zenith,pair,alb_sfc,fdir,irad,prec);
 	  	 
-          wbgt = 0.7*tw+0.2*tg+0.1*t;
+          wbgt = 0.7*tw + 0.2*tg+0.1*t;
            
-	      if ( solar === undefined  && zenith === undefined ) {wbgt = 0.7 * tw +0.3*t;};
+	        if ( solar === undefined  && zenith === undefined ) {wbgt = 0.7 * tw +0.3*t;};
           	 
           return wbgt;
 }
 
 /**
- *  Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m per second, 
- *  pair Air Pressure in millibar (hPa),alb_sfc mean albedo surface, fdir is the ratio between diffuse and directed radiation, 
- *  irad is 1 if the radiation is computed, diam is the diameter of heat globe, maxair and minair are the range respect to air temperature 
- *  to search solution and prec is the precision.
+ *  Given t air temperature (Celsius degrees), rh relative humidity (%) , wind speed in m/s, 
+ *  pair Air Pressure in millibar (hPa),alb_sfc mean albedo surface, fdir is the ratio between 
+ *  diffuse and directed radiation, 
+ *  irad is 1 if the radiation is computed, diam is the diameter of heat globe, maxair and  
+ *  minair are the range, respect to air temperature, where solution was searched.
+ *  and prec is the precision.
+ *  @param {number} t, rh, wind, pair, alb_sfc, fdir, diam, prec
+ *  @return {number}
+
  */
 
 function wbgt_shade(t,rh,wind,pair,alb_sfc,fdir,diam,prec) 
@@ -3201,8 +3205,9 @@ function wbgt_shade(t,rh,wind,pair,alb_sfc,fdir,diam,prec)
 }
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature gives  Wet-bulb globe temperature  index (WBGT). 
- * @param {number} t,rh,tg
+ * Given t air temperature (Celsius), rh relative humidity (%) and Tg globometric temperature  
+ * gives  Wet-bulb globe temperature  index (WBGT). 
+ * @param {number} t, rh, tg
  * @return {number}
  */
 
@@ -3215,12 +3220,14 @@ function wbgt_stull(t,rh,tg)
            }
 
 /**
- * Given t air temperature (degC), rh relative humidity (%) , wind in m/s and pair air pressure (hPa) and elevation in meters gives   gives  Wet-bulb globe temperature (WBGT) index indoor. Bernard Integration for wind. 
- * @param {number} t,rh,wind,pair,elev
- * Bernard TE, Pourmoghani M (1999)  "Prediction of Workplace Wet Bulb Global Temperature."  Applied Occupational and Environmental Hygiene 14: 126-134
- * Ramsey JD, Bernard TE (2000) Heat Stress in R Harris (ed) Patty's Industrial Hygiene and Toxicology vol 2 New York: John Wiley & Sons 
- * @return {number} t,rh,wind,pair,elev
- * @customfunction
+ * Given t air temperature (degC), rh relative humidity (%) , wind in m/s and pair air pressure  (hPa) 
+ * and elevation in meters gives   gives  Wet-bulb globe temperature (WBGT) index indoor.  * Bernard Integration for wind.  * Refernce: Bernard TE, Pourmoghani M (1999)  "Prediction of Workplace Wet Bulb Global Temperature" in    
+ * Applied Occupational and Environmental Hygiene 14: 126-134
+ * Ramsey JD, Bernard TE (2000) Heat Stress in R Harris (ed) Patty's Industrial Hygiene and Toxicology
+ * vol 2 New York:John Wiley & Sons 
+ * @param {number} t, rh, wind, pair, elev
+ * @return {number} wbgt
+
  */
 
 function wbgt_indoor(t,rh,wind,pair,elev) 
@@ -3232,7 +3239,7 @@ function wbgt_indoor(t,rh,wind,pair,elev)
           var wbgt;
           var pair=pheight(pair,elev);
           var tw = natural_wetbulb(t,rh,wind,0,0,pair);
-	      wbgt= 0.67*tw+0.33*t-0.048 *Math.log(wind)*(t-tw);
+	        wbgt= 0.67*tw+0.33*t-0.048 *Math.log(wind)*(t-tw);
           if ( wind < 1.1) { wbgt= 0.04*t + 0.96*tw};
           return wbgt;
 }
@@ -3240,10 +3247,10 @@ function wbgt_indoor(t,rh,wind,pair,elev)
 
 
 /**
- * Given t air temperature (degC), rh relative humidity (%) , wind in m/s and pair air pressure (hPa) gives gives Modified discomfort index (MDI). 
- * @param {number} t,rh 
+ * Given t air temperature (degC), rh relative humidity (%) , wind in m/s and pair air pressure  (hPa) 
+ * gives Modified discomfort index (MDI). 
+ * @param {number} t,rh,wind,pair
  * @return {number}
- * @customfunction
  */
 
 function mdi_index(t,rh,wind,pair)    
@@ -3260,7 +3267,7 @@ function mdi_index(t,rh,wind,pair)
 
 
 /**
- * Given t air temperature (degC), rh relative humidity (%) , wind in m/s and pair air pressure (hPa) gives the thom discomfort index. 
+ * Given t air temperature (degC), rh relative humidity (%) , wind in m/s and pair air pressure  * (hPa) gives the thom discomfort index. 
  * @param {number} t,rh,pair,wind
  * @return {number}
  */
@@ -3269,7 +3276,7 @@ function mdi_index(t,rh,wind,pair)
 function thom(t,rh,pair,wind) 
          {
           var thom;
-	      if ( pair === undefined) {pair=1010};
+	        if ( pair === undefined) {pair=1010};
           if ( wind === undefined) {wind=0.13};
           var tw = natural_wetbulb(t,rh,wind,0,0,pair);
           thom = 0.4 * (t + tw) + 4.8;
@@ -3284,17 +3291,17 @@ function thom(t,rh,pair,wind)
  * @return {number}
  */
 
-function windchill(t,wind) 
+function windchill(t, wind) 
         { if (wind === undefined ) ( wind=1.3);
           if (wind < 1.3) ( wind = 1.3);
-	      wind=(3.6)*wind;
-	      var twc = 13.12 + 0.6215 * t-11.37 * Math.pow(wind,0.16) +0.3965 * t* Math.pow(wind,0.16);
-	      return(twc);
+	        wind=(3.6)*wind;
+	        var twc = 13.12 + 0.6215 * t-11.37 * Math.pow(wind,0.16) +0.3965 * t* Math.pow(wind,0.16);
+	       return(twc);
         }
 
 
 /**
- * Given Ambient Air Temperature t (< +10 Celsius) and relative air velocity wind ( 0.4 to 18 m/s)
+ * Given Ambient Air Temperature t (<+10 degC) and relative air velocity wind (0.4 to 18 m/s)
  * give a windchill index - ISO11079 in watt on mq. 
  * Reference: http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
  * @param {number} t,wind
@@ -3313,7 +3320,7 @@ function wc_watt2mq (t, wind)
 
 /**
  * Given a temperature t (degC ) and wind ( m/sec) frost time following Wind chill class .
- * @param {number} t,wind
+ * @param {number} t, wind
  * @return {number} 
  */
 
@@ -3354,12 +3361,13 @@ return OneDec(ft*60);
 }
 
 /**
- * Given air temperature (degC), relative humidity (%) and wind (m/s) velocity give Net effective Index  in degC.
-@param {number} t,rh
+ * Given air temperature (degC), relative humidity (%) and wind (m/s) velocity give Net  
+ * effective Index  in degC.
+ * @param {number} t,rh
  * @return {number}
  */
 
-function net_index(t,rh,wind)
+function net_index(t, rh, wind)
 {
     var net = 9999;
     if (rh > 100.1 || rh < 0.0)
@@ -3396,10 +3404,8 @@ function ssi_index(t,rh)
 }
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 // Pressure 
-
-
 
 
 /**
@@ -3447,12 +3453,10 @@ function poda(t,rh,p)
   return poda;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Conversion related functions.
 
 /**
- * Given air temperature (Celsius) calculates Saturated Vapor Pressure (Torr) at Temperature T  (C) .
- * @param {number} T
+ * Given air temperature (degC) calculates Saturated Vapor Pressure (Torr) at Temperature T  (C) .
+ * @param {number} t
  * @return {number}
  */
 	
@@ -3462,6 +3466,10 @@ function vpaTorr(t) {
                      return Math.exp(18.6686 - 4030.183 / (t + 235.0));
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// Conversion related functions.
+
+
 
 function mbtommHG(mb)
 			{
@@ -3469,8 +3477,6 @@ function mbtommHG(mb)
 				mmHG = 0.750062*mb;
 				return mmHG;
 			}
-
-
 
 
 function torr2p(vp,vpunits)
@@ -3653,4 +3659,4 @@ function kmh2fts(kmh)
 }
   
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////

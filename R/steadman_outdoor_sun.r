@@ -2,7 +2,7 @@
 #'
 #' Computes Steadman's apparent temperature under sunny outdoor conditions.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
+#' @param numeric t Air temperature in degC.
 #' @param numeric rh Air Relative humidity in percentage.
 #' @param numeric  wind Wind speed in meter per second.
 #' @param rshort Global short radiation in Watt per mq.
@@ -10,7 +10,7 @@
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  steadman, Apparent temperature, Sunny
 #' 
 #' @export

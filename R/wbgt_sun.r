@@ -13,7 +13,7 @@
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  wbgt_outdoor
 #' 
 #' @export
@@ -22,14 +22,11 @@
 #'
 #'
 
-wbgt_outdoor=function(t,rh,wind,solar,press=NULL,topo=NULL) {
+wbgt_outdoor=function(t,rh,wind,solar,press=1010,topo=0) {
   ct$assign("t", as.array(t))
   ct$assign("rh", as.array(rh))
   ct$assign("wind", as.array(wind))
   ct$assign("solar", as.array(solar))
-  if (is.null(press)){press=1013.25}
-  if (is.null(topo)){topo=0}
-  
   ct$assign("press", as.array(press))
   ct$assign("elev", as.array(topo))
   

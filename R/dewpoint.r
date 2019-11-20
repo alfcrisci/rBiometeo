@@ -1,14 +1,15 @@
 #' dewpoint
 #'
-#' Computes the dewpoint temperature in Celsius degree following different schemes.
+#' Computes the dewpoint temperature in Celsius degree following different schemes defined by formula of  saturation pressure 
+#' ("NOAA","Sonntag","Paroscientific").
 #'
 #' @param numeric t Air temperature in Celsius degrees.
 #' @param numeric rh Air Relative humidity in percentage.
-#' @param character formula Type of formula used for saturation pressure : "NOAA","Sonntag","Paroscientific". Default is "NOAA".
+#' @param character formula  Default is "NOAA".
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  dewpoint 
 #' 
 #' @export

@@ -7,11 +7,10 @@
 #' @param numeric wind Air wind wind velocity in meter per second. Default is 0.1.
 #' @param numeric press Air Pressure at sea level in hPa. Default is 1013.25 hPa.
 #' @param numeric topo Elevation in meters on sea level. Default is 0.
-
 #' @return 
 #'
 #'
-#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  wbgt_indoor 
 #' 
 #' @export

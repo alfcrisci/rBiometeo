@@ -1463,7 +1463,6 @@ function perceived_temperature(t,rh,wind,tr,M,W,clo)
  * gives perceived PMV (Predicted Mean Vote) for moderate thermal environements following ISO 7730.
  * @param {number} t,rh,wind,trad,M,W,clo
  * @return {number} 
- * @customfunction
  */
 
 function PMV_ISO7730(t,rh,wind,trad,M,W,clo) 
@@ -2208,7 +2207,6 @@ function IREQ(t,rh,wind,trad,M,W,clo,param,p,w)
  * Reference: http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.html
  * @param {number} t,rh,wind,trad,M,W,clo,p,w
  * @return {number}
- * @customfunction
  */
 
  function recovery_time(t,rh,wind,trad,M,W,clo,p,w) 
@@ -2547,7 +2545,7 @@ function UTCI(ta,rh,wind,tmrt)
 }
 
 /**
- * Given air temperature (Celsius), relative humidity (%) give a heat index in Celsius degree. 
+ * Given air temperature (degC), relative humidity (%) give a heat index in degC
  * References:
  * [1] http://www.wpc.ncep.noaa.gov/html/heatindex.shtml 
  * [2] https://en.wikipedia.org/wiki/Heat_index 
@@ -2555,7 +2553,6 @@ function UTCI(ta,rh,wind,tmrt)
  * 
  * @param {number} t,rh
  * @return {number}
- * @customfunction
  */
 
 function heatindex(t,rh)
@@ -2593,8 +2590,9 @@ function heatindex(t,rh)
 
 
 /**
- * Given air temperature (degC), relative humidity (%), wind velocity (m/sec), direct beam short-wavelength radiation 
- * (W/mq) and sunelev sun elevation angle (degrees) gives Steadman outdoor sun index.
+ * Given air temperature (degC), relative humidity (%), wind velocity (m/sec), direct
+ * beam short-wavelength radiation (W/mq) and sunelev sun elevation angle (degrees)
+ * gives Steadman outdoor sun index.
  *
  * @param {number} t,rh,wind,rshort,sunelev
  * @return {number}
@@ -2615,11 +2613,11 @@ function steadman_outdoor(t,rh,wind,solar,sunelev)
 }
 
 /**
- * Given air temperature (Celsius), rh relative humidity (%), wind velocity (m/sec)  gives Steadman outdoor shade index.
+ * Given air temperature (Celsius), rh relative humidity (%), wind velocity (m/sec)
+ * gives Steadman outdoor shade index.
  *
- * @param {number} t,rh,wind
+ * @param {number} t, rh,wind
  * @return {number}
- * @customfunction
  */
 
 function steadman_outdoor_shade(t,rh,wind)
@@ -2647,9 +2645,8 @@ function steadman_outdoor_shade(t,rh,wind)
 /**
  * Given air temperature (Celsius), relative humidity (%)  gives Steadman indoor index.
  *
- * @param {number} t,rh 
+ * @param {number} t, rh 
  * @return {number}
- * @customfunction
  */
 
 function steadman_indoor(t,rh)
@@ -2825,9 +2822,9 @@ function RSI_index(t,rh)
 
 
 /**
- * Given air temperature (Celsius), relative humidity (%), wind velocity (m/sec) give humidex index.
+ * Given air temperature (degC), relative humidity (%), wind velocity (m/sec) give humidex index.
  *
- * @param {number} t,rh,wind
+ * @param {number} t,rh
  * @return {number}
  */
 
@@ -2856,11 +2853,11 @@ function humidex(t,rh)
 
 
 /**
- * Given air temperature (Celsius), relative humidity (%)  gives Temperature Humidity Index discomfort index. Giles (1990)
+ * Given air temperature (degC), relative humidity (%)  gives Temperature Humidity
+ * Index discomfort index. Giles (1990)
  *
- * @param {number} t,rh,wind
+ * @param {number} t,rh
  * @return {number}
- * @customfunction
  */
 
 function THI(t,rh) 
@@ -2872,10 +2869,12 @@ function THI(t,rh)
 
 
 /**
- * Given air temperature (Celsius), relative humidity (%)  gives Temperature Humidity Index discomfort index. kliber (1964) Kliber H. H., 1964. Environmental physiology and shelter engineering. LXVII. 
- * Thermal effects of various temperature-humidity combinations on Holstein cattle as measured by physiological responses. Res. Bull. Missouri Agric. Exp. Station: 862.
- *
- * @param {number} t,rh,wind
+ * Given air temperature (degC), relative humidity (%)  gives Temperature Humidity
+ * Index discomfort index. kliber (1964) Kliber H. H., 1964. Environmental physiology
+ * and shelter engineering. LXVII. 
+ * Thermal effects of various temperature-humidity combinations on Holstein cattle 
+ * as measured by physiological responses. Res. Bull. Missouri Agric. Exp. Station: 862
+ * @param {number} t,rh
  * @return {number}
  */
 
@@ -2889,7 +2888,7 @@ function THI_kliber(t,rh)
 
 /**
  * Given t air temperature (Celsius), rh relative humidity (%), wind velocity in m/s and pair air pessure in hPa  gives    * Oxford index (WD).
- * @param {number} t,rh 
+ * @param {number} t,rh,wind,pair
  * @return {number}
  */
 
@@ -2906,9 +2905,9 @@ function oxford_index(t,rh,wind,pair)
 }
 
 /**
- * Given t air temperature (Celsius), rh relative humidity (%), wind velocity in m/s and pair air pessure in hPa  
- * gives  Discomfort index (DI). 
- * @param {number} t,rh 
+ * Given t air temperature (Celsius), rh relative humidity (%), wind velocity 
+ * in m/s and pair air pessure in hPa  gives  Discomfort index (DI). 
+ * @param {number} t,rh,wind,pair
  * @return {number}
  */
 
@@ -2916,8 +2915,7 @@ function discomfort_index(t,rh,wind,pair)
          {
           var disc;
           if ( pair === undefined) {pair=1010};
-	  if ( wind === undefined) {wind=0.13};
-        
+	        if ( wind === undefined) {wind=0.13};
           var tw = natural_wetbulb(t,rh,wind,0,0,pair);
           disc = 0.5*tw+0.5*t;
           return disc;
@@ -2927,16 +2925,16 @@ function discomfort_index(t,rh,wind,pair)
 /**
  * Given t air temperature (Celsius), rh relative humidity (%), wind velocity in m/s and pair air pessure in hPa  gives
  * Fighter index of thermal stress (FITS). 
- * @param {number} t,rh,wind,pair 
+ * @param {number} t, rh, wind, pair 
  * @return {number}
  */
 
 function fits_index(t,rh,wind,pair) 
          {
           var fits; 
-	  if ( pair === undefined) {pair=1010};
-	  if ( wind === undefined) {wind=0.13};
-        
+	        if ( pair === undefined) {pair=1010};
+	        if ( wind === undefined) {wind=0.13};
+	        
           var tw = natural_wetbulb(t,rh,wind,0,0,pair);
 	
           fits = 0.83*tw+0.35*t+5.08
@@ -2962,7 +2960,6 @@ function lost_productivity(wbgt,tresh) {
  * Given body mass index  by using antropometric features. 
  * @param {number} h,w
  * @return {number}
- * @customfunction
  */
 
 function BMW(h,w) 
@@ -2972,7 +2969,6 @@ function BMW(h,w)
  * Given body surface area by using antropometric features height and weigth. 
  * @param {number} h,w
  * @return {number}
- * @customfunction
  */
 
 
@@ -3409,53 +3405,53 @@ function ssi_index(t,rh)
 
 
 /**
- * Given press air pressure in millibar, topo is altitude in meters 
+ * Given press air pressure in millibar, elev is altitude in meters 
  * and mean temperature of the air column calculate the local value of pressure
  * @param {number} press,topo,temp
  * @return {number}
  */
 
-function p_local(press,topo,temp)
+function p_local(press,elev,temp)
 
 {    var T0;
      if ( temp === undefined) { temp= 15.0};
      var temp=temp+273.15;        // Formula isometrica di Laplace
      var L=-0.0065;               // temperature lapse rate L = -0.0065 K/m
      var R_cost=287.05 ;          // gas constant for dry air, J/(kg*degK) = 287.05
-     var T0=temp-(L/2)*topo;      // sea level standard temperature T0 = 288.15 K
-     var p_local= press*Math.exp(-topo*9.81/(R_cost*T0));
+     var T0=temp-(L/2)*elev;      // sea level standard temperature T0 = 288.15 K
+     var p_local= press*Math.exp(-elev*9.81/(R_cost*T0));
      return p_local; 
  
  }
 
 
-function pheight(press,topo)
+function pheight(press,elev)
 
 {
-  var pressalt;
-  pressalt= press * Math.pow(1-(2.25577*(0.00001)*topo),5.25588);
+  var pressalt= press * Math.pow(1-(2.25577*(0.00001)*elev),5.25588);
   return(pressalt);
 }
 
 /**
- * Given t air temperature, rh relative humidity (%), p local air pressure give partial pressure of oxygen.
+ * Given t air temperature, rh relative humidity (%), p local air pressure gives
+ * partial pressure of oxygen.
  *
- * @param {number} t,rh,g
+ * @param {number} t,rh,pair
  * @return {number}
  */
 
-function poda(t,rh,p)
+function poda(t,rh,pair)
  {
   
   var poda;
   var  vpa = (rh / 100) * 6.105 * Math.pow(2.718281828, ( 17.27*t / ( 237.7 + t ) ));
-  poda = 80.51 * p / (t + 273.15) * (1.0 - vpa / p);
+  poda = 80.51 * pair / (t + 273.15) * (1.0 - vpa / pair);
   return poda;
 }
 
 
 /**
- * Given air temperature (degC) calculates Saturated Vapor Pressure (Torr) at Temperature T  (C) .
+ * Given air temperature (degC) calculates Saturated Vapor Pressure (Torr)
  * @param {number} t
  * @return {number}
  */
@@ -3659,4 +3655,4 @@ function kmh2fts(kmh)
 }
   
 
-////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@
 #' Temperature, Dewpoint Temperature and Enhancement Factors in the Range -100 to 100 degC;
 #' 
 #'
-#' @param numeric t Air temperature in Celsius degrees.
+#' @param t numeric Air temperature in Celsius degrees.
 #' @return Saturation Vapor Pressure in hPa.
 #'
 #'

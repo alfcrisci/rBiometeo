@@ -4,12 +4,12 @@
 \alias{diffusivity}
 \title{diffusivity}
 \usage{
-diffusivity(t, Pair)
+diffusivity(tk, pair)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{tk}{numeric Air temperature in degK.}
 
-\item{numeric}{Pair Air pressure in Millibar [hPa]}
+\item{pair}{numeric Air pressure in hPa.}
 }
 \value{
 
@@ -18,6 +18,6 @@ diffusivity(t, Pair)
 Calculate air diffusivity.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{diffusivity}

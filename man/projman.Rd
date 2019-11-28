@@ -7,7 +7,7 @@
 projman(sunelev)
 }
 \arguments{
-\item{numeric}{sunelev Sun elevation in degrees.}
+\item{sunelev}{numeric Sun elevation in degrees.}
 }
 \value{
 Projection factor
@@ -19,7 +19,7 @@ Calculate the Human Body Projection Area factor in function to sun elevation.
 Jendritzky G (1990) Bioklimatische Bewertungsgrundlage der Raume am Beispiel von. 27 mesoskaligen Bioklimakarten.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{Area}
 \keyword{factor.}

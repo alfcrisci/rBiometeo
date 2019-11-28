@@ -1,19 +1,19 @@
 #' clomin_7730
 #'
-#' Calculate minimal clothing insulation value needed for thermal comfort in moderate thermal environments based on PMV ISO 7730.
+#' Calculate minimal clothing insulation value required to reach thermal comfort in moderate thermal environments ( -0.5 < PMV <0.5) based on PMV ISO 7730.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @param numeric wind Wind speed in meter per second.
-#' @param numeric tr Mean radiant temperature in Celsius degrees.
-#' @param numeric M Metabolic rate of subject in Watt per mq.
-#' @param numeric W Mechanical work of subject in Watt per mq. Generally 0.
+#' @param t numeric    Air temperature in degC.
+#' @param rh numeric   Air Relative humidity in percentage.
+#' @param wind numeric Wind speed in meters per second.
+#' @param tr numeric   Mean radiant temperature in degC.
+#' @param M numeric    Metabolic rate of subject in W/mq.
+#' @param W numeric    Mechanical work of subject in W/mq. Generally 0.
 #' @return 
 #'
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  clothing mimimal
-#' 
+#' @keywords  mimimal clothing insulation required 
+#'  
 #' @export
 #'
 #'

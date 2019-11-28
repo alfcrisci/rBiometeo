@@ -7,15 +7,15 @@
 ta_comfort(rh, wind, M, iclo, H)
 }
 \arguments{
-\item{M}{Metabolic rate of the subject in Watt per mq.}
+\item{rh}{numeric    Relative humidity in percentage.}
 
-\item{iclo}{Clothing level of subject in clo unit.}
+\item{wind}{numeric  Wind speed in meter per second.}
 
-\item{H}{Timimg in hours.}
+\item{M}{numeric     Metabolic rate of the subject in Watt/mq.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{iclo}{numeric Clothing level of subject in clo unit.}
 
-\item{numeric}{wind Wind speed in meter per second.}
+\item{H}{numeric    Timimg in hours.}
 }
 \value{
 
@@ -23,10 +23,7 @@ ta_comfort(rh, wind, M, iclo, H)
 \description{
 Calculate the temperature of thermal comfort requireed given other parameters and timing in hours.
 }
-\references{
-Huizenga
-}
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{ta_comfort}

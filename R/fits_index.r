@@ -2,10 +2,10 @@
 #'
 #' Calculate Fighter Index of Thermal Stress FITS
 #'
-#' @param numeric t Air temperature in degC.
-#' @param numeric rh Air Relative humidity (%).
-#' @param numeric wind Wind speed in meters per second.
-#' @param numeric pair Air pressure in hPa
+#' @param t numeric Air temperature in degC.
+#' @param rh numeric Relative humidity in percentage (%).
+#' @param wind numeric Windspeed in meters per second.
+#' @param pair numeric Air pressure in hPa.
 #' @return 
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

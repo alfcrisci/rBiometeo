@@ -7,7 +7,7 @@
 knots2fts(knots)
 }
 \arguments{
-\item{numeric}{knots Speed in knot per second.}
+\item{knots}{numeric  Speed in knot per second.}
 }
 \value{
 
@@ -16,6 +16,6 @@ knots2fts(knots)
 Conversion from knot per second to feet per second.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{knots2fts}

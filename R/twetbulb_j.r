@@ -2,8 +2,9 @@
 #'
 #' Estimating wet bulb temperature following  empirical equation given by Jeevananda, 1976.
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric p Air pressure in millibar [hPa].
+#' @param numeric t Air temperature in degC.
+#' @param numeric rh Air Relative humidity in percentage (%).
+#' @param numeric pair Air Pressure in hPa. Default is 1010.
 #' @return wet bulb temperature
 #'
 #'
@@ -16,9 +17,9 @@
 #'
 #'
 
-twetbulb_j=function(t,p) {
+twetbulb_j=function(t,pair) {
                          ct$assign("t", as.array(t))
-                         ct$assign("p", as.array(p))
+                         ct$assign("p", as.array(pair))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=twetbulb_j(t[i],p[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))

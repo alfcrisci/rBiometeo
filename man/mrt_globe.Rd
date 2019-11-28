@@ -7,22 +7,22 @@
 mrt_globe(t, tg, wind, diam)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric air temperature in degC.}
 
-\item{numeric}{tg Global short solar irradiance in Watt on mq.}
+\item{tg}{numeric global short solar irradiance in Watt on mq.}
 
-\item{numeric}{wind Windspeed in meter per second.}
+\item{wind}{numeric windspeed in meter per second.}
 
-\item{numeric}{diam diameter of the sphere in millimeter. Input example  50 mm.}
+\item{diam}{numeric diameter of the sphere in millimeters. Input example 50 mm.}
 }
 \value{
-Mean Radiant temperature.
+Mean Radiant temperature in degC.
 }
 \description{
 Given air temperature , the globe Temeperature, the wind speed and diameter mean radiant temperature is done according ISO 7726 1998.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{globe}
 \keyword{temperature}

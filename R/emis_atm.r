@@ -2,12 +2,12 @@
 #'
 #' Calculate air emissivity.
 #'
-#' @param numeric tk Air temperature in degK
-#' @param numeric rh Air Relative humidity (%)
+#' @param tk numeric Air temperature in degK.
+#' @param rh numeric Relative humidity (%).
 #' @return 
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  emis_atm 
 #' 
 #' @export

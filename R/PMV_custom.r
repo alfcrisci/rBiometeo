@@ -2,17 +2,17 @@
 #'
 #'  Calculate Predicted Mean Vote (PMV) following ISO 7730 customizing some individual features.
 #'
-#' @param numeric t        Air temperature in Celsius degrees.
-#' @param numeric rh       Air Relative humidity in percentage.
-#' @param numeric wind     Windspeed in meter per second.
-#' @param numeric trad       Air temperature in Celsius degrees.
-#' @param numeric M        Metabolic rate of subject Watt per mq.
-#' @param numeric W        Work rate of subject in Watt per mq.
-#' @param numeric clo      Clothing insulation level in clo.
-#' @param numeric age      Age in years.
-#' @param numeric mbody    Body Mass in kg. 
-#' @param numeric ht       Heigth of subject in meters.
-#' @param character gender Sex of the subject. Default is "male".
+#' @param t numeric    Air temperature in degC.
+#' @param rh numeric   Relative humidity in percentage.
+#' @param wind numeric Windspeed in meter per second.
+#' @param tr numeric Mean radiant temperature in degC.
+#' @param M  numeric    Metabolic work in Watt per mq of the subject.
+#' @param W   numeric  Mechanical work rate in Watt per mq of the subject.
+#' @param clo numeric  Available basic clothing insulation in clo.
+#' @param age numeric Age in years.
+#' @param mbody numeric     Body Mass in kg. 
+#' @param ht numeric       Heigth of subject in meters.
+#' @param gender character Sex of the subject. Default is "male".
 #' @return 
 #'
 #'
@@ -25,7 +25,7 @@
 #'
 #'
 
-PMV_custom=function(t,rh,wind,tr,clo,age,mbody,ht,gender="male") {
+PMV_custom=function(t,rh,wind,trad,clo,age,mbody,ht,gender="male") {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))

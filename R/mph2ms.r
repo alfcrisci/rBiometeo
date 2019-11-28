@@ -2,7 +2,7 @@
 #'
 #' Conversion miles per hour in meter per second.
 #'
-#' @param numeric  mph Speed in miles on hours.
+#' @param mph numeric  Speed miles per hour.
 #' @return 
 #'
 #'

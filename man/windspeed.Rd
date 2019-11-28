@@ -7,9 +7,9 @@
 windspeed(u, v)
 }
 \arguments{
-\item{u}{numeric U zonal component}
+\item{u}{numeric U zonal component (m/s),}
 
-\item{v}{numeric V meridian component}
+\item{v}{numeric V meridian component (m/s),}
 }
 \value{
 
@@ -17,11 +17,9 @@ windspeed(u, v)
 \description{
 Calculate meteorological wind speed.
 }
-\references{
-Istituto di Biometeorologia Firenze Italy.
-}
 \author{
-Alfonso crisci \email{a.crisci@ibimet.cnr.it} Marco Morabito \email{m.morabito@unifi.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
+\keyword{Scaler}
 \keyword{speed}
 \keyword{wind}

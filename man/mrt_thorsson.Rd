@@ -7,16 +7,16 @@
 mrt_thorsson(t, tg, wind, diam)
 }
 \arguments{
-\item{numeric}{t air temperature in Celsius degrees.}
+\item{t}{numeric air temperature in degC.}
 
-\item{numeric}{tg global short solar irradiance in Watt on mq.}
+\item{tg}{numeric global short solar irradiance in Watt on mq.}
 
-\item{numeric}{wind windspeed in meter per second.}
+\item{wind}{numeric windspeed in meter per second.}
 
-\item{numeric}{diam diameter of the sphere in millimeter. Input example  50 mm.}
+\item{diam}{numeric diameter of the sphere in millimeter. Input example 50 mm.}
 }
 \value{
-Mean Radiant temperature.
+Mean Radiant temperature in degC.
 }
 \description{
 Calculated the mean radiant temperature from the solar radiation.  Modified based on direct and diffuse ratio. Assumes a uniform surround temperature of Ta && short wave solar radiation only;
@@ -25,6 +25,6 @@ Calculated the mean radiant temperature from the solar radiation.  Modified base
 Thorsson et al, Different methods for estimating the mean radiant temperature in an outdoor urban setting, Int. J. Climatol.27  1983   1993 (2007)
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{MRT}

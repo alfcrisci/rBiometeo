@@ -7,9 +7,9 @@
 hi_index(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric Relative humidity in percentage(%).}
 }
 \value{
 
@@ -21,6 +21,6 @@ Given air temperature (Celsius), relative humidity  gives a heat stress index in
 Hill et al,2004, Indices of environmental temperatures for primates in open habitats.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{hi_index}

@@ -7,7 +7,7 @@
 mph2ms(mph)
 }
 \arguments{
-\item{numeric}{mph Speed in miles on hours.}
+\item{mph}{numeric  Speed miles per hour.}
 }
 \value{
 
@@ -16,6 +16,6 @@ mph2ms(mph)
 Conversion miles per hour in meter per second.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{mph2ms}

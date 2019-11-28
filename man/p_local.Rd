@@ -4,22 +4,22 @@
 \alias{p_local}
 \title{p_local}
 \usage{
-p_local(press, topo, temp)
+p_local(press = 1010, elev, temp)
 }
 \arguments{
-\item{numeric}{press Air local pressure in hPa [millibar].}
+\item{press}{numeric Air sea level pressure in hPa.}
 
-\item{numeric}{topo Altitude or Elevation in meters.}
+\item{elev}{numeric Altitude or Elevation in meters.}
 
-\item{numeric}{t  Mean Air temperature in Celsius degrees.}
+\item{t}{numeric Mean Air temperature in degC.}
 }
 \value{
 
 }
 \description{
-DESCRIPTION
+Estimate local value of air pressure in hPa.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{p_local}

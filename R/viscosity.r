@@ -2,7 +2,7 @@
 #'
 #' Calculates  the viscosity of air [kg/(m s)] given air temperature in Kelvin degrees.
 #'
-#' @param numeric tk Air temperature in degK.
+#' @param tk numeric Air temperature in degK.
 #' @return viscosity
 #'
 #'
@@ -15,7 +15,7 @@
 #'
 #'
 
-viscosity=function(t) {
+viscosity=function(tk) {
                          ct$assign("t", as.array(tk))
                          ct$eval("var res=[]; for(var i=0, len=Tair.length; i < len; i++){ res[i]=viscosity(t[i])};")
                          res=ct$get("res")

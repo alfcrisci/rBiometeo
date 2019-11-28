@@ -1,11 +1,11 @@
 #' wetbulb_stull
 #'
-#'  Compute natural wetbulb temperature by using Stull empirical formulation
+#' Compute natural wetbulb temperature by using Stull empirical formulation
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @param numeric press  Air pressure in hPa or millibar.
-#' @return Wet bulb temperature in Celsius degrees.
+#' @param t numeric      Air temperature in degC.
+#' @param rh numeric     Relative humidity in percentage ( %).
+#' @param press numeric  Air pressure in hPa .
+#' @return Wet bulb temperature in degC
 #'
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

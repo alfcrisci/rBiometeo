@@ -7,17 +7,17 @@
 enthalpy(t, hum_ratio)
 }
 \arguments{
-\item{hum_ratio}{Humidity ratio [unitless].}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{hum_ratio}{numeric Humidity ratio.}
 }
 \value{
 
 }
 \description{
-Calculates the enthalpy of air/water vapor mixture [kJ/kg]. Inputs are dry-bulb temperature [C] and humidity ratio [unitless].
+Calculates the enthalpy of air/water vapor mixture [kJ/kg]. Inputs are dry-bulb temperature [degC] and humidity ratio [unitless].
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{enthalpy}

@@ -7,10 +7,9 @@
 p_atm_z(z, p_sl = 1013.25)
 }
 \arguments{
-\item{z}{numeric: elevation/altitude (m)}
+\item{z}{numeric elevation/altitude (m).}
 
-\item{p_sl}{numeric: pressure at sea level, per weather report (hPa), 
-default 101235 Pa}
+\item{p_sl}{numeric pressure at sea level, per weather report (hPa),Default 101235 Pa.}
 }
 \value{
 numeric pressure (Pa)
@@ -20,4 +19,7 @@ Calculate local air ressure as function of elevation/altitude in meters and sea-
 }
 \references{
 2005 ASHRAE Handbook - Fundamentals (SI) ch.6 (3)
+}
+\author{
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }

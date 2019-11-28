@@ -2,7 +2,7 @@
 #'
 #' Conversion kilometer per hour to mile per hour.
 #'
-#' @param numeric  kmh Speed in Kilometer per hours.
+#' @param kmh numeric  Speed in Kilometer per hours.
 #' @return 
 #'
 #'

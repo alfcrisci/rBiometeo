@@ -7,15 +7,15 @@
 steadman_outdoor_sun(t, rh, wind, rshort, sunelev)
 }
 \arguments{
-\item{rshort}{Global short radiation in Watt per mq.}
+\item{t}{numeric       Air temperature in degC.}
 
-\item{sunelev}{Sun elevation in degrees.}
+\item{rh}{numeric      Relative humidity in percentage (%).}
 
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{wind}{numeric    Wind speed in meters per second.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rshort}{numeric  Global short radiation in Watt/mq.}
 
-\item{numeric}{wind Wind speed in meter per second.}
+\item{sunelev}{numeric Sun elevation in degrees.}
 }
 \value{
 
@@ -24,7 +24,7 @@ steadman_outdoor_sun(t, rh, wind, rshort, sunelev)
 Computes Steadman's apparent temperature under sunny outdoor conditions.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{Apparent}
 \keyword{Sunny}

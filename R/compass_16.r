@@ -2,7 +2,7 @@
 #'
 #' Calculate the wind sector (16 partition) provenience.  
 #'
-#' @param numeric  direction Directions in degrees from the North ( meteorological) .
+#' @param direction numeric   Directions in degrees from the North.
 #' @return 
 #'
 #'

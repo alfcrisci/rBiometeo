@@ -2,7 +2,7 @@
 #'
 #' Conversion speed meter per second in knot per second.
 #'
-#' @param numeric   ms Speed in meter per second [m/s].
+#' @param ms Speed numeric   in meters per second [m/s].
 #' @return 
 #'
 #'

@@ -4,12 +4,16 @@
 \alias{thom}
 \title{thom}
 \usage{
-thom(t, rh)
+thom(t, rh, wind = 0.2, pair = 1010)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degree.}
+\item{numeric}{t Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{numeric}{rh Air Relative humidity in percentage (%).}
+
+\item{numeric}{tg Solar Radiation Radiance in Watt/mq.}
+
+\item{numeric}{pair Air Pressure in hPa. Default is 1010.}
 }
 \value{
 Thom index
@@ -21,7 +25,7 @@ Calculate Thom discomfort index by using wet bulb temperature estimation.
 Thom, E.C. 1959 The discomfort index. Weatherwise, 12, 57,60
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{discomfort}
 \keyword{index}

@@ -1,12 +1,12 @@
 #' sun_data
 #'
-#' Calculate solar parameter for a location and a time.
+#' Calculate sun parameters for specific location and time.
 #'
-#' @param datetime  Datetime as in YYYY-MM-DDTHH:MM:SS considering local time.
-#' @param numeric lat Latitude in decimal degrees.
-#' @param numeric lon Longitude in decimal degrees.
-#' @param character parameter Six solar parameter are available by name "azimuth","zenith","solarZenith","elevation","declination","JD".
-#' @return value of parameter indicated.
+#' @param datetime character     Datetime as in YYYY-MM-DDTHH:MM:SS considering local time
+#' @param lat  numeric           Latitude in decimal degrees
+#' @param lon  numeric           Longitude in decimal degrees
+#' @param parameter character    Six solar parameter are available by name "azimuth","zenith","solarZenith","elevation","declination"or "JD"
+#' @return value of parameter indicated
 #'
 #'
 #' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

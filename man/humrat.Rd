@@ -4,12 +4,12 @@
 \alias{humrat}
 \title{humrat}
 \usage{
-humrat(p, pa)
+humrat(p, pair)
 }
 \arguments{
-\item{numeric}{p Water pressure in hPa.}
+\item{p}{numeric  Water pressure in hPa.}
 
-\item{numeric}{pa Air pressure in hPa.}
+\item{pair}{numeric Air pressure in hPa.}
 }
 \value{
 
@@ -18,6 +18,6 @@ humrat(p, pa)
 Calculates humidity ratio in vapor-air mixture.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{humrat}

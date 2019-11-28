@@ -2,11 +2,11 @@
 #'
 #' Calculate web bulb globe index for indoor environments. 
 #'
-#' @param numeric t Air temperature in Celsius Degrees.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @param numeric wind Air wind wind velocity in meter per second. Default is 0.1.
-#' @param numeric press Air Pressure at sea level in hPa. Default is 1013.25 hPa.
-#' @param numeric topo Elevation in meters on sea level. Default is 0.
+#' @param t    numeric Air temperature in degC.
+#' @param rh   numeric Relative humidity in percentage (%).
+#' @param wind numeric Mean Wind speed in meters per second.
+#' @param pair numeric Air pressure in millibar or hPa. Default 1010 hPa.
+#' @param elev numeric Elevation in meters on sea level. Default is 0.
 #' @return 
 #'
 #'
@@ -19,14 +19,12 @@
 #'
 #'
 
-wbgt_indoor=function(t,rh,wind=0.1,press=NULL,topo=NULL) {
+wbgt_indoor=function(t,rh,wind=0.1,pair=1010,elev=0) {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))
-                         if (is.null(press)){press=1013.25}
-                         if (is.null(topo)){topo=1013.25}
-                         ct$assign("press", as.array(press))
-                         ct$assign("elev", as.array(topo))
+                         ct$assign("press", as.array(pair))
+                         ct$assign("elev", as.array(elev))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=wbgt_indoor(t[i],rh[i],wind[i],press[0],elev[0])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))

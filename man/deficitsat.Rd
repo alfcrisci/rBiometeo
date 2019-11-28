@@ -7,9 +7,9 @@
 deficitsat(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric Relative humidity in percentage (%).}
 }
 \value{
 
@@ -18,7 +18,5 @@ deficitsat(t, rh)
 Computes saturation deficit in hPa. This is air dryness evaluation.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
-\keyword{deficit}
-\keyword{saturation}

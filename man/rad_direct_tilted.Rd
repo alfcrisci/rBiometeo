@@ -7,15 +7,15 @@
 rad_direct_tilted(jddate, az, elev, planezen, planeaz)
 }
 \arguments{
-\item{jddate}{Date in format DOY day of year.}
+\item{jddate}{numeric        Date in format DOY day of year.}
 
-\item{planezen}{Zenital angles of the plane.}
+\item{az}{numeric            Sun azimuth in decimal degrees.}
 
-\item{planeaz}{Azimuthal angles of the plane.}
+\item{elev}{numeric          Sun elevation in decimal degrees.}
 
-\item{numeric}{az Sun azimuth in decimal degrees.}
+\item{planezen}{numeric      Zenital angles of the plane.}
 
-\item{numeric}{elev Sun elevation in decimal degrees.}
+\item{planeaz}{numeric       Azimuthal angles of the plane.}
 }
 \value{
 
@@ -24,7 +24,7 @@ rad_direct_tilted(jddate, az, elev, planezen, planeaz)
 Computed a incident tilted radiation for a inclinated (planezen) and orientated plane (planeaz).
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{Tilted}
 \keyword{radiation.}

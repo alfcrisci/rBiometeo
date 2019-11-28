@@ -4,14 +4,14 @@
 \alias{poda}
 \title{poda}
 \usage{
-poda(t, rh, p)
+poda(t, rh, pair)
 }
 \arguments{
-\item{p}{Local air pressure in hPa or millibar.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{rh}{numeric Air Relative humidity in percentage (5).}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{pair}{numeric  Local air pressure in hPa.}
 }
 \value{
 
@@ -20,7 +20,7 @@ poda(t, rh, p)
 Calculate the partial pressure of oxygen in function of altitude.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{altitude.}
 \keyword{oxygen,}

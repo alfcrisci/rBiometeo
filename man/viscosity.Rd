@@ -4,10 +4,10 @@
 \alias{viscosity}
 \title{viscosity}
 \usage{
-viscosity(t)
+viscosity(tk)
 }
 \arguments{
-\item{numeric}{Ta Air temperature in Kelvin Degrees.}
+\item{tk}{numeric Air temperature in degK.}
 }
 \value{
 viscosity
@@ -19,6 +19,6 @@ Calculates  the viscosity of air [kg/(m s)] given air temperature in Kelvin degr
 Oke T R, Boundary Layer Climate,Routledge Atmosphere, Weather and Climate, 2th edition, p.373.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{viscosity}

@@ -2,10 +2,11 @@
 #'
 #' @description R function to assess raw  solar irradiance parameter.
 #' 
-#' @param  timenow "POSIXct" or "POSIXt" object.
-#' @param  lat latitude in decimal degrees.
-#' @param  lat longitude in decimal degrees.
-#' @return List of solar and radiance parameters.
+#' @param  timenow time "POSIXct" or "POSIXt" object.
+#' @param  lat numeric latitude in decimal degrees.
+#' @param  lon numeric longitude in decimal degrees.
+#' @param  albedo numeric albedo of surface.
+#' @return Theoretical radiation in W/mq.
 #' 
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' 
@@ -13,7 +14,7 @@
 #' 
 #' @export
 
-radtheoricR <- function(timenow,lat,long,albedo){
+radtheoricR <- function(timenow,lat,lon,albedo){
  rho=albedo
  sunpar=sunposition(timenow,lat, long)
  elev=sunpar$elevation

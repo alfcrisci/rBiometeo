@@ -1,0 +1,13 @@
+{
+    "path" : "~/alf_github/rBiometeo/R",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        },
+        {
+            "ascending" : false,
+            "columnIndex" : 4
+        }
+    ]
+}

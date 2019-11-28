@@ -2,8 +2,8 @@
 #'
 #' Given a temperature t (Celsius) and wind ( m/sec) frost time following Wind Chill Frostbite Chart.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric  wind The wind speed in meter per seconds [m/s].
+#' @param t numeric Air temperature in Celsius degrees.
+#' @param wind numeric the wind speed in meter per seconds [m/s].
 #' @return 
 #'
 #'

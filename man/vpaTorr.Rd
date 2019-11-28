@@ -4,10 +4,10 @@
 \alias{vpaTorr}
 \title{vpaTorr}
 \usage{
-vpaTorr(T)
+vpaTorr(t)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in degC.}
 }
 \value{
 
@@ -16,6 +16,6 @@ vpaTorr(T)
 Calculate water vapor pressure in torr.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{vpaTorr}

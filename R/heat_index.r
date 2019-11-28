@@ -1,14 +1,14 @@
 #' heat_index
 #'
-#' Calculate the heat index follwing the NOAA scheme.
+#' Calculate the heat index following the NOAA scheme.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @return 
+#' @param t numeric Air temperature in degC.
+#' @param rh numeric Relative humidity in percentage (%).
+#' @return heat index in degC.
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  NOAA heat index 
+#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @keywords   NOAA heat index 
 #' @references NOAA index from George Winterling based on SteadMan's work "The Assessment of Sultriness. Part I: A Temperature-Humidity Index Based on Human Physiology and Clothing Science, R. G. Steadman, Journal of Applied Meteorology, July 1979, Vol 18 No7, pp 861 873. 
 #' @export
 #'

@@ -4,28 +4,32 @@
 \alias{clomax_7730}
 \title{clomax_7730}
 \usage{
-clomax_7730(t, rh, wind, tr, M, W)
+clomax_7730(t, rh, wind, tr, M, W = 0)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric    Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric   Air Relative humidity in percentage.}
 
-\item{numeric}{wind Wind speed in meter per second.}
+\item{wind}{numeric Wind speed in meters per second.}
 
-\item{numeric}{tr Mean radiant temperature in Celsius degrees.}
+\item{tr}{numeric   Mean radiant temperature in degC.}
 
-\item{numeric}{M Metabolic rate of subject in Watt per mq.}
+\item{M}{numeric    Metabolic rate of subject in W/mq.}
 
-\item{numeric}{W Mechanical work of subject in Watt per mq. Generally 0.}
+\item{W}{numeric    Mechanical work of subject in W/mq. Generally 0.}
 }
 \value{
 
 }
 \description{
-Calculate maximal clothing insulation value needed for thermal comfort in moderate thermal environments based on PMV ISO 7730.
+Calculate maximum clothing insulation value required to reach thermal comfort in moderate thermal environments ( -0.5 < PMV <0.5) based on PMV ISO 7730.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
+\keyword{clothing}
+\keyword{insulation}
 \keyword{ocir}
+\keyword{optimal}
+\keyword{required.}

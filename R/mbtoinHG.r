@@ -2,7 +2,7 @@
 #'
 #' Conversion from Millibar [hPa] to inches HG.
 #'
-#' @param numeric   mb Air pressure in Millibar [hPa] 
+#' @param mb numeric   Air pressure in Millibar [hPa] 
 #' @return 
 #'
 #'

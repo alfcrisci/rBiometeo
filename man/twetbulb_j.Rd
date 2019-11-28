@@ -4,12 +4,14 @@
 \alias{twetbulb_j}
 \title{twetbulb_j}
 \usage{
-twetbulb_j(t, p)
+twetbulb_j(t, pair)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{numeric}{t Air temperature in degC.}
 
-\item{numeric}{p Air pressure in millibar [hPa].}
+\item{numeric}{rh Air Relative humidity in percentage (%).}
+
+\item{numeric}{pair Air Pressure in hPa. Default is 1010.}
 }
 \value{
 wet bulb temperature
@@ -18,7 +20,7 @@ wet bulb temperature
 Estimating wet bulb temperature following  empirical equation given by Jeevananda, 1976.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{bulb}
 \keyword{temperature}

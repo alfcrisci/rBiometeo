@@ -2,8 +2,8 @@
 #'
 #' Vapour pressure estimate from relative humidity.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
+#' @param t numeric Air temperature in Celsius degrees.
+#' @param rh numeric Relative humidity in percentage.
 #' @return vapour pressure in hPa.
 #'
 #'

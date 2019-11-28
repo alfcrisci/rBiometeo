@@ -7,25 +7,25 @@
 IREQ(t, rh, v, tr, M, W, Icl, p, w, param = "IREQ_neutral")
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric    Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric   Relative humidity in percentage.}
 
-\item{numeric}{v  Relative air velocity in meter per second.}
+\item{M}{numeric    Metabolic work in Watt per mq of the subject.}
 
-\item{numeric}{tr Mean radiant temperature in Celsius degree.}
+\item{W}{numeric  Mechanical work rate in Watt per mq of the subject.}
 
-\item{numeric}{M  Metabolic energy production in Watt per mq.}
+\item{p}{numeric   Air permeability of clothing ensemble lt on meters per second.}
 
-\item{numeric}{W Rate of mechanical work in Watt per mq.}
+\item{w}{numeric   Walking speed in meters per second.}
 
-\item{numeric}{Icl Available basic clothing insulation in clo.}
+\item{param}{character Parameter of IREQ ISO 11079: "IREQ_neutral","IREQ_min","ICL_neutral","ICL_min","DLE_neutral","DLE_min","ICL_ISO11079"}
 
-\item{numeric}{p  Air permeability of clothing ensemble liters on meter per second,}
+\item{wind}{numeric Windspeed in meter per second.}
 
-\item{numeric}{w  Walking speed in meter per seconds.}
+\item{trad}{numeric Mean radiant temperature in degC.}
 
-\item{character}{param  Parameter of IREQ ISO 11079: "IREQ_neutral","IREQ_min","ICL_neutral","ICL_min","DLE_neutral","DLE_min","ICL_ISO11079"}
+\item{clo}{numeric  Available basic clothing insulation in clo.}
 }
 \value{
 IREQ value
@@ -37,6 +37,6 @@ Calculation of Required Clothing Insulation IREQ.
 ISO 11079, 2007-12-15, ERGONOMICS OF THE THERMAL ENVIRONMENT - DETERMINATION AND INTERPRETATION OF COLD STRESS WHEN USING REQUIRED CLOTHING INSULATION (IREQ) AND LOCAL COOLING EFFECTS.
 }
 \author{
-Ingvar Holmer \url{http://www.eat.lth.se/fileadmin/eat/Termisk_miljoe/IREQ2009ver4_2.htm}. R adaptation Istituto di Biometeorologia Firenze Italy.  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{IREQ}

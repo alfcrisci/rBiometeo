@@ -1,20 +1,25 @@
-#' wbgt_outdoor
+#' wbgt_sun
 #'
 #' Calculate wet bulb globe temperature index for outdoor environements by using solar radiation.
 #' Pressure correction follow
 #
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @param numeric wind Air wind wind velocity in meter per second. Default is 0.1.
-#' @param numeric solar Solar Radiation Radiance in watt on square meter.
-#' @param numeric press Air Pressure in hPa. Default is 1013.25.
-#' @param numeric topo Elevation in meters on sea level. Default is 0. 
-
-#' @return 
+#' @param t numeric        Air temperature in degC.
+#' @param rh numeric       Relative humidity in percentage.
+#' @param wind numeric     Mean Wind speed in meter per second.
+#' @param solar  numeric   Global solar radiation in Watt on mq.
+#' @param zenith numeric   Zenith angle in decimal degrees.
+#' @param pair numeric     Air pressure in millibar or hPa. Default 1010 hPa.
+#' @param alb_sfc numeric  Mean albedo of surroundings. Default is 0.4.
+#' @param fdir numeric     Ratio of directed solar respect to the diffuse.Default is 0.8.
+#' @param maxair numeric   Upper bound of search range referred to air temperature in degC. Default is 10.
+#' @param minair numeric   Lower bound of search range referred to air temperature in degC. Default is 10.
+#' @param prec numeric      Precision of outcomes.Default is 0.01. 
+#' @return globe temperature in degC
+#' @return wbgt index in degC.
 #'
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  wbgt_outdoor
+#' @keywords  wbgt outdoor
 #' 
 #' @export
 #'
@@ -22,15 +27,22 @@
 #'
 #'
 
-wbgt_outdoor=function(t,rh,wind,solar,press=1010,topo=0) {
+wbgt_outdoor=function(t,rh,wind,solar,zenith=0,pair=1010,alb_sfc=0.4,fdir=0.8,maxair=10,minair=2,prec=0.01) {
+   if (length(solar) != length(t)) {solar=rep(solar,length(t));
+                                   zenith=rep(zenith,length(t));
+                                  }
+  irad=1
   ct$assign("t", as.array(t))
   ct$assign("rh", as.array(rh))
   ct$assign("wind", as.array(wind))
-  ct$assign("solar", as.array(solar))
-  ct$assign("press", as.array(press))
-  ct$assign("elev", as.array(topo))
-  
-  ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=wbgt_outdoor(t[i],rh[i],wind[i],solar[i],press[0],elev[0])};")
+  ct$assign("pair", as.array(pair))
+  ct$assign("alb_sfc", as.array(alb_sfc))
+  ct$assign("fdir", as.array(fdir))
+  ct$assign("irad", as.array(irad))
+  ct$assign("maxair", as.array(maxair))
+  ct$assign("minair", as.array(minair))
+  ct$assign("prec", as.array(prec))
+  ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++) { res[i]=wbgt_sun(t[i],rh[i],wind[i],solar[i],zenith[i],pair[0],alb_sfc[0],fdir[0],irad[0],maxair[0],minair[0],prec[0])};")
   res=ct$get("res")
-  return(ifelse(res==9999,NA,res))
+  return(ifelse(!is.numeric(res),NA,res))
 }

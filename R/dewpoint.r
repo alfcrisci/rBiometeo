@@ -1,11 +1,11 @@
 #' dewpoint
 #'
-#' Computes the dewpoint temperature in Celsius degree following different schemes defined by formula of  saturation pressure 
+#' Computes the dewpoint temperature in degC   following different computational schemes defined by formula of saturation pressure estimation
 #' ("NOAA","Sonntag","Paroscientific").
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @param character formula  Default is "NOAA".
+#' @param t numeric Air temperature in degC.
+#' @param rh numeric Air Relative humidity in percentage (%).
+#' @param formula character  Default is "NOAA". 
 #' @return 
 #'
 #'
@@ -21,6 +21,7 @@
 dewpoint=function(t,rh,formula="NOAA") {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
+                         if ( length(formula)==1) {formula=rep(formula,length(t))}
                          ct$assign("formula", as.array(formula))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=dewpoint(t[i],rh[i],formula[0])};")
                          res=ct$get("res")

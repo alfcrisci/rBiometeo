@@ -4,18 +4,18 @@
 \alias{wbgt_indoor}
 \title{wbgt_indoor}
 \usage{
-wbgt_indoor(t, rh, wind = 0.1, press = NULL, topo = NULL)
+wbgt_indoor(t, rh, wind = 0.1, pair = 1010, elev = 0)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric Relative humidity in percentage (%).}
 
-\item{numeric}{wind Air wind wind velocity in meter per second. Default is 0.1.}
+\item{wind}{numeric Mean Wind speed in meters per second.}
 
-\item{numeric}{press Air Pressure at sea level in hPa. Default is 1013.25 hPa.}
+\item{pair}{numeric Air pressure in millibar or hPa. Default 1010 hPa.}
 
-\item{numeric}{topo Elevation in meters on sea level. Default is 0.}
+\item{elev}{numeric Elevation in meters on sea level. Default is 0.}
 }
 \value{
 
@@ -24,6 +24,6 @@ wbgt_indoor(t, rh, wind = 0.1, press = NULL, topo = NULL)
 Calculate web bulb globe index for indoor environments.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{wbgt_indoor}

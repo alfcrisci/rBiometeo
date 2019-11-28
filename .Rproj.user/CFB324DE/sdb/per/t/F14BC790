@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' utci_class7\n#'\n#' Calculate seven thermal classes of Universal Thermal Climate Index  UTCI index.\n#'\n#' @param numeric t Air temperature in Celsius degrees.\n#' @param numeric rh Air Relative humidity in percentage.\n#' @param numeric  wind Wind speed in meter per second.\n#' @param numeric tmrt Mean radiant temperature in Celsius degrees.\n#' @return UTCI index in Celsius degrees.\n#'\n#'\n#' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \\email{a.crisci@@ibimet.cnr.it}\n#' @keywords  UTCI \n#' @references Bröde P,Jendritzky G,Fiala D and Havenith G, 2011,The Universal Thermal Climate Index UTCI in Operational Use\".International Journal of Biometeorology.\n#' @export\n#'\n#'\n#'\n#'\n\nutci_class7=function(t,rh,wind,tmrt) {\n\n                         utci_index=UTCI(t,rh,wind,tmrt);\n                         res=ifelse(is.na(utci_index),\n                                    NA,\n                                    as.numeric(cut(utci_index, c(-100,-40,-26.99,-12.99,0.01,16.01,32.01,100),right=T,label=c(1:7)))\n                                    )\n                         return(res)\n}\n",
+    "created" : 1505136245798.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "722312773",
+    "id" : "F14BC790",
+    "lastKnownWriteTime" : 1505136290,
+    "last_content_update" : 1505136290364,
+    "path" : "~/alf_github/rBiometeo/R/utci_class7.r",
+    "project_path" : "R/utci_class7.r",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

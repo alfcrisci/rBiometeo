@@ -2,7 +2,7 @@
 #'
 #' Broad range formula to estimate saturation vapor pressure.
 #'
-#' @param numeric t Air temperature in degC
+#' @param t numeric Air temperature in degC
 #' @return Saturaion vapor pressure (hPa)
 #'
 #'

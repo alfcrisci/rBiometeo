@@ -2,7 +2,7 @@
 #'
 #' Conversion speed in  miles per hour to knots per second. 
 #'
-#' @param numeric mph Speed in miles per hour.
+#' @param mph numeric  Speed miles per hour.
 #' @return 
 #'
 #'

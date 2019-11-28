@@ -2,8 +2,8 @@
 #'
 #' Convert pressure in torr in other unit.
 #'
-#' @param numeric vp pressure in torr.
-#' @param character vpunits Unit available are : "atm","bar","Pa","mbar" (default),"dyne/cm2" and "psi".
+#' @param vp numeric pressure in torr.
+#' @param vpunits character  Units available are : "atm","bar","Pa","mbar" (default),"dyne/cm2" and "psi".
 #' @return 
 #'
 #'

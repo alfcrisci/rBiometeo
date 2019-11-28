@@ -7,9 +7,9 @@
 torr2p(vp, vpunits = "mbar")
 }
 \arguments{
-\item{numeric}{vp pressure in torr.}
+\item{vp}{numeric pressure in torr.}
 
-\item{character}{vpunits Unit available are : "atm","bar","Pa","mbar" (default),"dyne/cm2" and "psi".}
+\item{vpunits}{character  Units available are : "atm","bar","Pa","mbar" (default),"dyne/cm2" and "psi".}
 }
 \value{
 
@@ -18,6 +18,6 @@ torr2p(vp, vpunits = "mbar")
 Convert pressure in torr in other unit.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{torr2p}

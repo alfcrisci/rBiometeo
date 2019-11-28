@@ -2,17 +2,16 @@
 #'
 #' Calculate the temperature of thermal comfort requireed given other parameters and timing in hours.
 #'
-#' @param numeric rh Air Relative humidity in percentage.
-#' @param numeric  wind Wind speed in meter per second.
-#' @param M Metabolic rate of the subject in Watt per mq.
-#' @param iclo Clothing level of subject in clo unit.
-#' @param H Timimg in hours.
+#' @param rh numeric    Relative humidity in percentage.
+#' @param wind numeric  Wind speed in meter per second.
+#' @param M numeric     Metabolic rate of the subject in Watt/mq.
+#' @param iclo numeric Clothing level of subject in clo unit.
+#' @param H numeric    Timimg in hours.
 #' @return 
 #'
 #'
 #' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  ta_comfort 
-#' @references Huizenga 
 #' @export
 #'
 #'

@@ -2,7 +2,7 @@
 #'
 #' Conversion speed in  miles per hour to feet per second. 
 #'
-#' @param numeric  mph Speed mile per hour.
+#' @param mph numeric  Speed miles per hour.
 #' @return 
 #'
 #'

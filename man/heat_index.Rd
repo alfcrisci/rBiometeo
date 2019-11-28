@@ -7,21 +7,21 @@
 heat_index(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric Relative humidity in percentage (%).}
 }
 \value{
-
+heat index in degC.
 }
 \description{
-Calculate the heat index follwing the NOAA scheme.
+Calculate the heat index following the NOAA scheme.
 }
 \references{
 NOAA index from George Winterling based on SteadMan's work "The Assessment of Sultriness. Part I: A Temperature-Humidity Index Based on Human Physiology and Clothing Science, R. G. Steadman, Journal of Applied Meteorology, July 1979, Vol 18 No7, pp 861 873.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{NOAA}
 \keyword{heat}

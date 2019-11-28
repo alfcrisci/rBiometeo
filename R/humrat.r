@@ -2,8 +2,8 @@
 #'
 #' Calculates humidity ratio in vapor-air mixture.
 #'
-#' @param numeric p Water pressure in hPa.
-#' @param numeric pair Air pressure in hPa.
+#' @param p numeric  Water pressure in hPa.
+#' @param pair numeric Air pressure in hPa.
 #' @return 
 #'
 #'

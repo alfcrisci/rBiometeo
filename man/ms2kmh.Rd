@@ -7,7 +7,7 @@
 ms2kmh(ms)
 }
 \arguments{
-\item{numeric}{ms Speed in meter per second [m/s].}
+\item{ms}{Speed numeric   in meters per second [m/s].}
 }
 \value{
 
@@ -16,6 +16,6 @@ ms2kmh(ms)
 Conversion speed meter per second  in km per hours.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{ms2kmh}

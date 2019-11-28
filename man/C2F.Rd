@@ -7,15 +7,15 @@
 C2F(C)
 }
 \arguments{
-\item{numeric}{C Temperature in Celsius degrees.}
+\item{C}{numeric Temperature in degC.}
 }
 \value{
 
 }
 \description{
-Convert temperature from Celsius degree to Fahrenheit degree.
+Convert temperature from Celsius degree (degC) to Fahrenheit degree (degF).
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{temperature}

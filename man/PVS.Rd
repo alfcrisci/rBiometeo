@@ -7,10 +7,10 @@
 PVS(T)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degree.}
+\item{t}{numeric Air temperature in degC}
 }
 \value{
-Saturaion vapor pressure in hPa
+Saturaion vapor pressure (hPa)
 }
 \description{
 Broad range formula to estimate saturation vapor pressure.
@@ -19,6 +19,6 @@ Broad range formula to estimate saturation vapor pressure.
 Hardy B, 1998,"ITS-90 Formulations for Vapor Pressure, Frostpoint Temperature,Dewpoint Temperature, and Enhancement Factors in the Range 100 to +100 C".Proceedings of the Third International Symposium on Humidity & Moisture",Teddington, London, England, April 1998.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{PVS}

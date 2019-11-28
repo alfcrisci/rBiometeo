@@ -4,7 +4,7 @@
 #'
 #' @param t numeric Vector or value of air temperature in Celsius degree.
 #' @param td numeric Vector or value of dew point temperature in Celsius degree.
-#' @return res numeric  relative humidity value
+#' @return relative humidity value
 #'
 #'
 #' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

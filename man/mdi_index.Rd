@@ -4,23 +4,27 @@
 \alias{mdi_index}
 \title{mdi_index}
 \usage{
-mdi_index(t, rh)
+mdi_index(t, rh, wind = 0.2, pair = 1010)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric Relative humidity in percentage (%).}
+
+\item{wind}{numeric Windspeed in meters per second.}
+
+\item{pair}{numeric Air pressure in hPa.}
 }
 \value{
 mdi_index
 }
 \description{
-Modified discomfort index MDI
+Modified discomfort index MDI.
 }
 \references{
 Moran DS, Shitzer A, Pandolf KB , 1998, A physiological strain index to evaluate heat stress. Am J Physiol 275, R 129 34.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{mdi_index}

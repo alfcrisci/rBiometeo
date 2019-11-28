@@ -4,40 +4,40 @@
 \alias{RT}
 \title{RT}
 \usage{
-RT(t, rh, v, Tr, M, W, Icl, p, w)
+RT(t, rh, wind, trad, M, W, clo, p, w)
 }
 \arguments{
-\item{numeric}{Ta Air temperature in Celsius degrees.}
+\item{t}{numeric    Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric   Relative humidity in percentage.}
 
-\item{numeric}{v Windspeed in meter per second.}
+\item{wind}{numeric Windspeed in meter per second.}
 
-\item{numeric}{tr Mean radiant temperature in Celsius degree.}
+\item{trad}{numeric Mean radiant temperature in degC.}
 
-\item{numeric}{M Metabolic work in Watt per mq of the subject.}
+\item{M}{numeric    Metabolic work in Watt per mq of the subject.}
 
-\item{numeric}{W Mechanical work rate in Watt per mq of the subject.}
+\item{W}{numeric  Mechanical work rate in Watt per mq of the subject.}
 
-\item{numeric}{Icl Available basic clothing insulation in clo.}
+\item{clo}{numeric  Available basic clothing insulation in clo.}
 
-\item{numeric}{p  Air permeability of clothing ensemble lt on meter per second.}
+\item{p}{numeric   Air permeability of clothing ensemble lt on meters per second.}
 
-\item{numeric}{w  Walking speed in meter per second.}
+\item{w}{numeric   Walking speed in meters per second.}
 }
 \value{
 RT
 }
 \description{
-Computes the value of Required Recovery Time following scheme adopted in ISO 11079.Valid under 10 Celsius degree.
+Computes the value of Required Recovery Time following scheme adopted in ISO 11079. Valid under 10 Celsius degree.
 }
 \references{
 ISO 11079, 2007-12-15, ERGONOMICS OF THE THERMAL ENVIRONMENT - DETERMINATION AND INTERPRETATION OF COLD STRESS WHEN USING REQUIRED CLOTHING INSULATION (IREQ) AND LOCAL COOLING EFFECTS.
 }
 \author{
-Ingvar Holmer. R adaptation Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+
+Ingvar Holmer. R adaptation Istituto di Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
-\keyword{Cold}
 \keyword{Recovery}
-\keyword{Time,}
-\keyword{environements.}
+\keyword{Time.}

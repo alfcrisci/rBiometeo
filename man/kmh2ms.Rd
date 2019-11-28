@@ -7,7 +7,7 @@
 kmh2ms(kmh)
 }
 \arguments{
-\item{numeric}{kmh Speed kilometer per hour.}
+\item{kmh}{numeric  Speed kilometer per hour.}
 }
 \value{
 
@@ -16,6 +16,6 @@ kmh2ms(kmh)
 Conversion from kilometer per hour to meter per second.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{kmh2ms}

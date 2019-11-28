@@ -7,24 +7,24 @@
 utci_class7(t, rh, wind, tmrt)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric  Air temperature in degC}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric  Air Relative humidity in percentage (%)}
 
-\item{numeric}{wind Wind speed in meter per second.}
+\item{wind}{numeric  Wind speed in meters per second}
 
-\item{numeric}{tmrt Mean radiant temperature in Celsius degrees.}
+\item{tmrt}{numeric  Mean radiant temperature in degC.}
 }
 \value{
-UTCI index in Celsius degrees.
+UTCI class.
 }
 \description{
-Calculate seven thermal classes of Universal Thermal Climate Index  UTCI index.
+Calculate 7-fold thermal classe by using value of  Universal Thermal Climate Index  UTCI index.
 }
 \references{
 Brode P,Jendritzky G,Fiala D and Havenith G, 2011,The Universal Thermal Climate Index UTCI in Operational Use".International Journal of Biometeorology.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{UTCI}

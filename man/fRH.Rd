@@ -12,13 +12,13 @@ fRH(t, td)
 \item{td}{numeric Vector or value of dew point temperature in Celsius degree.}
 }
 \value{
-res numeric  relative humidity value
+relative humidity value
 }
 \description{
 Return relative humidity from air temperature (Celsius) and Dew point (Celsius);
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{Relative}
 \keyword{humidity}

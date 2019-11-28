@@ -1,11 +1,11 @@
 #' F2C
 #'
-#' Converts temperature from Fahrenheit degree to Celsius degree.
+#' Converts temperature from Fahrenheit degree (degF)  to Celsius degree (degC).
 #'
-#' @param numeric F Temperature in Fahrenheit degrees
+#' @param F numeric Temperature in Fahrenheit degrees (degF)
 #' @return Celsius degrees
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  F2C 
 #' 
 #' @export

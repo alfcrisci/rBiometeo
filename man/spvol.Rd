@@ -4,14 +4,14 @@
 \alias{spvol}
 \title{spvol}
 \usage{
-spvol(t, hum_ratio, pa)
+spvol(t, hum_ratio, pair)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees (dry bulb temeprature).}
+\item{t}{numeric Air temperature in degC}
 
-\item{numeric}{hum_ratio Humidity ratio [unitless].}
+\item{hum_ratio}{numeric Humidity ratio}
 
-\item{numeric}{pa Air pressure in hPa [millibar].}
+\item{pair}{numeric Air pressure in (hPa)}
 }
 \value{
 Specific volume.
@@ -20,6 +20,6 @@ Specific volume.
 Gets the specific volume of air/water vapor mixture [m^3/kg].
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{spvol}

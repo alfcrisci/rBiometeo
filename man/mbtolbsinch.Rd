@@ -7,7 +7,7 @@
 mbtolbsinch(mb)
 }
 \arguments{
-\item{numeric}{mb Air pressure in Millibar [hPa].}
+\item{mb}{numeric   Air pressure in Millibar [hPa].}
 }
 \value{
 
@@ -16,6 +16,6 @@ mbtolbsinch(mb)
 Conversion from Millibar [hPa] to inches.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{mbtolbsinch}

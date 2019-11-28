@@ -4,22 +4,23 @@
 \alias{es}
 \title{es}
 \usage{
-es(ta)
+es(t)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in Celsius degrees.}
 }
 \value{
 Saturation Vapor Pressure in hPa.
 }
 \description{
-Given a temperature  Celsius value give Vapor Pressure in hPa. Hardy, R.; ITS-90 Formulations for Vapor Pressure, Frostpoint
+Given a air temperature  in degC gives Vapor Pressure in hPa. Hardy, R.; ITS-90 Formulations for Vapor Pressure, Frostpoint
 Temperature, Dewpoint Temperature and Enhancement Factors in the Range -100 to 100 degC;
 }
 \references{
 Proceedings of Third International Symposium on Humidity and Moisture. National Physical Laboratory (NPL), London, 1998, pp. 214-221 \url{http://www.thunderscientific.com/tech_info/reflibrary/its90formulas.pdf}
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
-\keyword{es}
+\keyword{air}
+\keyword{saturation}

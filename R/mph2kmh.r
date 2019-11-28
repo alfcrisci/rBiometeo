@@ -2,7 +2,7 @@
 #'
 #' Conversion speed in  miles per hour to kilometers per hour. 
 #'
-#' @param numeric  mph Speed Miles on hours.
+#' @param mph numeric  Speed miles per hour.
 #' @return 
 #'
 #'

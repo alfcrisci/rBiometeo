@@ -2,7 +2,7 @@
 #'
 #' Conversion from kilometer per hour to meter per second.
 #'
-#' @param numeric  kmh Speed kilometer per hour.
+#' @param kmh numeric  Speed kilometer per hour.
 #' @return 
 #'
 #'

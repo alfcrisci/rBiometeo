@@ -2,9 +2,9 @@
 #'
 #' Calculate the partial pressure of oxygen in function of altitude.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @param p Local air pressure in hPa or millibar.
+#' @param t numeric Air temperature in degC.
+#' @param rh numeric Air Relative humidity in percentage (5).
+#' @param pair numeric  Local air pressure in hPa.
 #' @return 
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
@@ -16,10 +16,10 @@
 #'
 #'
 
-poda=function(t,rh,p) {
+poda=function(t,rh,pair) {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
-                         ct$assign("p", as.array(p))
+                         ct$assign("p", as.array(pair))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){res[i]=poda(t[i],rh[i],p[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))

@@ -2,13 +2,12 @@
 #'
 #' Computes saturation deficit in hPa. This is air dryness evaluation.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
+#' @param t  numeric Air temperature in degC.
+#' @param rh numeric Relative humidity in percentage (%).
 #' @return 
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  deficit saturation 
+#' @author     Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' 
 #' @export
 #'

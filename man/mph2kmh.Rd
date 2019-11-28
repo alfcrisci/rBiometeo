@@ -7,7 +7,7 @@
 mph2kmh(mph)
 }
 \arguments{
-\item{numeric}{mph Speed Miles on hours.}
+\item{mph}{numeric  Speed miles per hour.}
 }
 \value{
 
@@ -16,6 +16,6 @@ mph2kmh(mph)
 Conversion speed in  miles per hour to kilometers per hour.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{mph2kmh}

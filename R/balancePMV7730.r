@@ -2,12 +2,12 @@
 #'
 #' Calculate the thermal balance of the body in W/mq.
 #'
-#' @param numeric pmv Predicted Mean Vote Fanger ISO 7730 Predicted Mean Vote. 
-#' @param numeric M Metabolism of the person.
+#' @param pmv numeric Predicted Mean Vote Fanger following ISO 7730. 
+#' @param M numeric Metabolism of the person (met).
 #' @return 
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  balancePMV7730 
 #' 
 #' @export

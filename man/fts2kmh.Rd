@@ -7,7 +7,7 @@
 fts2kmh(fts)
 }
 \arguments{
-\item{numeric}{fts Speed in feet per second.}
+\item{fts}{numeric  Speed in feets per second.}
 }
 \value{
 
@@ -16,6 +16,6 @@ fts2kmh(fts)
 Conversion speed in feet per second to kilometer per hour.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{fts2kmh}

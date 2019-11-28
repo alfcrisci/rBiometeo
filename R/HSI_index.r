@@ -3,14 +3,15 @@
 #' Computes the Heat Strain Index. HSI is the ratio of the demand for sweat evaporation to capacity of evaporation (Ereq on Emax). 
 #' This denotes also the percent of skin wettedness, which is a good predictor of warm discomfort.
 #'
-#' @param numeric t       Air temperature in Celsius degrees.
-#' @param numeric rh      Air Relative humidity.
-#' @param numeric wind    Windspeed in meter per second.
-#' @param numeric tr      Mean radiant temperature in Celsius degrees.
-#' @param numeric M       Metabolic rate of subject Watt on mq.
-#' @param numeric W       Work rate of subject Watt on mq.
-#' @param numeric clo     Clothing insulation level in clo.
-#' @param character param Index requested HSI or AET Allowable exposure time in minutes.
+
+#' @param t numeric    Air temperature in degC.
+#' @param rh numeric   Relative humidity in percentage.
+#' @param wind numeric Windspeed in meter per second.
+#' @param tr numeric Mean radiant temperature in degC.
+#' @param M numeric    Metabolic work in Watt per mq of the subject.
+#' @param W   numeric  Mechanical work rate in Watt per mq of the subject.
+#' @param clo numeric  Available basic clothing insulation in clo.
+#' @param param character Index requested HSI or AET Allowable exposure time in minutes.
 #' @return HSI index
 #' 
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

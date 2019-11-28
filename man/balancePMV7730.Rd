@@ -7,17 +7,17 @@
 balancePMV7730(pmv, M)
 }
 \arguments{
-\item{numeric}{pmv Fanger ISO 7730 Predicted Mean Vote.}
+\item{pmv}{numeric Predicted Mean Vote Fanger following ISO 7730.}
 
-\item{numeric}{M Metabolism of the person.}
+\item{M}{numeric Metabolism of the person (met).}
 }
 \value{
 
 }
 \description{
-Calculate the thermal balance of the body in W/m.
+Calculate the thermal balance of the body in W/mq.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{balancePMV7730}

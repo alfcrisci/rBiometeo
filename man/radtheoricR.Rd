@@ -4,25 +4,23 @@
 \alias{radtheoricR}
 \title{radtheoricR}
 \usage{
-radtheoricR(timenow, lat, long, albedo)
+radtheoricR(timenow, lat, lon, albedo)
 }
 \arguments{
-\item{timenow}{"POSIXct" or "POSIXt" object.}
+\item{timenow}{time "POSIXct" or "POSIXt" object.}
 
-\item{lat}{latitude in decimal degrees.}
+\item{lat}{numeric latitude in decimal degrees.}
 
-\item{lat}{longitude in decimal degrees.}
+\item{lon}{numeric longitude in decimal degrees.}
+
+\item{albedo}{numeric albedo of surface.}
 }
 \value{
-List of solar and radiance parameters.
+Theoretical radiation in W/mq.
 }
 \description{
 R function to assess raw  solar irradiance parameter.
 }
-\references{
-Istituto di Biometeorologia Firenze Italy
-Centro Interdipartimentale di Bioloclimatologia University of Florence
-}
 \author{
-Alfonso crisci \email{a.crisci@ibimet.cnr.it} Marco Morabito \email{m.morabito@unifi.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }

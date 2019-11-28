@@ -2,13 +2,12 @@
 #'
 #' Calculates Relative Strain Index.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
+#' @param t   numeric Air temperature in degC.
+#' @param rh  numeric Relative humidity in percentage.
 #' @return 
 #'
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  RSI_index 
 #' @references  Lee  DHK  &  Henschel A,1963, Evaluation  of  thermal environment  in  shelters.Rep.  TR 8,  Div.  Occup.  Health,US Dept. Health, Education and Welfare.
 #' @export 
 #'

@@ -2,7 +2,7 @@
 #'
 #' Computes the correspondent Steadman's apparent temperature class.
 #'
-#' @param numeric steadman_index Steadman index value.
+#' @param steadman_index numeric  Steadman index value.
 #' @return class of apparent temperature.
 #'
 #'

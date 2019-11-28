@@ -7,9 +7,9 @@
 RSI_index(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric Relative humidity in percentage.}
 }
 \value{
 
@@ -21,6 +21,5 @@ Calculates Relative Strain Index.
 Lee  DHK  &  Henschel A,1963, Evaluation  of  thermal environment  in  shelters.Rep.  TR 8,  Div.  Occup.  Health,US Dept. Health, Education and Welfare.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
-\keyword{RSI_index}

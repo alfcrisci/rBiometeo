@@ -7,7 +7,7 @@
 ms2fts(ms)
 }
 \arguments{
-\item{numeric}{ms Speed in meter per second [m/s].}
+\item{ms}{Speed numeric   in meters per second [m/s].}
 }
 \value{
 
@@ -16,6 +16,6 @@ ms2fts(ms)
 Conversion speed meter per second in feet per second.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{ms2fts}

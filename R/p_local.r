@@ -1,10 +1,10 @@
 #' p_local
 #'
-#' DESCRIPTION
+#' Estimate local value of air pressure in hPa.
 #'
-#' @param numeric press Air local pressure in hPa [millibar].
-#' @param numeric elev Altitude or Elevation in meters.
-#' @param numeric t  Mean Air temperature in Celsius degrees.
+#' @param press numeric Air sea level pressure in hPa.
+#' @param elev numeric Altitude or Elevation in meters.
+#' @param t  numeric Mean Air temperature in degC.
 #' @return 
 #'
 #'
@@ -17,7 +17,7 @@
 #'
 #'
 
-p_local=function(press,elev,temp) {
+p_local=function(press=1010,elev,temp) {
                          ct$assign("press", as.array(press))
                          ct$assign("topo", as.array(elev))
                          ct$assign("temp", as.array(temp))

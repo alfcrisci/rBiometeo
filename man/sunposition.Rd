@@ -4,22 +4,21 @@
 \alias{sunposition}
 \title{sunposition}
 \usage{
-sunposition(timenow, lat, long)
+sunposition(timenow, lat, lon)
 }
 \arguments{
-\item{timenow}{time indicat in time format equivalent to "POSIXct" or "POSIXt" object.}
+\item{timenow}{datetime    Datetime indicate in time format equivalent to "POSIXct" or "POSIXt" objects.}
 
-\item{lat}{numeric latitude in decimal degrees}
+\item{lat}{numeric Latitude in decimal degrees.}
 
-\item{lon}{numeric  longitude in decimal degrees}
+\item{lon}{numeric Longitude in decimal degrees.}
 }
 \description{
 Function to assess sun azimuth and elevation given the time in GMT format.
 }
 \references{
-Mike Birdgeneau 
-\url{https://gist.github.com/mikebirdgeneau/e2dbdc8e9c45c1c2b7fc}
+Mike Birdgeneau  \url{https://gist.github.com/mikebirdgeneau/e2dbdc8e9c45c1c2b7fc}
 }
 \author{
-Alfonso crisci \email{a.crisci@ibimet.cnr.it} Marco Morabito \email{m.morabito@unifi.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }

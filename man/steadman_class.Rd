@@ -7,7 +7,7 @@
 steadman_class(steadman_index)
 }
 \arguments{
-\item{numeric}{steadman_index Steadman index value.}
+\item{steadman_index}{numeric  Steadman index value.}
 }
 \value{
 class of apparent temperature.
@@ -16,7 +16,7 @@ class of apparent temperature.
 Computes the correspondent Steadman's apparent temperature class.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{apparent}
 \keyword{class,}

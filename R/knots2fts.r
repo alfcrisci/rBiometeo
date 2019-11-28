@@ -2,7 +2,7 @@
 #'
 #' Conversion from knot per second to feet per second.
 #'
-#' @param numeric  knots Speed in knot per second.
+#' @param knots numeric  Speed in knot per second.
 #' @return 
 #'
 #'

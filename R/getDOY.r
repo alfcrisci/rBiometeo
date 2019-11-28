@@ -2,7 +2,7 @@
 #'
 #' Get julian day number of date.
 #'
-#' @param date  Date in format YYYY-MM-DD.
+#' @param date Date in format YYYY-MM-DD.
 #' @return numeric Julian day.
 #'
 #'

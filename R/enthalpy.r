@@ -1,9 +1,9 @@
 #' enthalpy
 #'
-#' Calculates the enthalpy of air/water vapor mixture [kJ/kg]. Inputs are dry-bulb temperature [C] and humidity ratio [unitless]. 
+#' Calculates the enthalpy of air/water vapor mixture [kJ/kg]. Inputs are dry-bulb temperature [degC] and humidity ratio [unitless]. 
 #'
-#' @param numeric t Air temperature in degC.
-#' @param hum_ratio Humidity ratio.
+#' @param t numeric Air temperature in degC.
+#' @param hum_ratio numeric Humidity ratio.
 #' @return 
 #'
 #'

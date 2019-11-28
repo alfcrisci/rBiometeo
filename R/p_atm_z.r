@@ -2,9 +2,8 @@
 #' 
 #' Calculate local air ressure as function of elevation/altitude in meters and sea-level pressure.
 #' 
- 
-#' @param z       numeric: elevation/altitude (m)
-#' @param p_sl    numeric: pressure at sea level, per weather report (hPa),Default 101235 Pa 
+#' @param z       numeric elevation/altitude (m).
+#' @param p_sl    numeric pressure at sea level, per weather report (hPa),Default 101235 Pa. 
 #'                         
 #' @author        Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @references    2005 ASHRAE Handbook - Fundamentals (SI) ch.6 (3)

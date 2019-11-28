@@ -7,9 +7,9 @@
 frostime(t, wind)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in Celsius degrees.}
 
-\item{numeric}{wind The wind speed in meter per seconds [m/s].}
+\item{wind}{numeric the wind speed in meter per seconds [m/s].}
 }
 \value{
 
@@ -21,6 +21,6 @@ Given a temperature t (Celsius) and wind ( m/sec) frost time following Wind Chil
 ISO 9920:2007 Ergonomics of the thermal environment -- Estimation of thermal insulation and water vapour resistance of a clothing ensemble.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{frostime}

@@ -2,7 +2,7 @@
 #'
 #' Conversion from kilometer per hour to knot per second.
 #'
-#' @param numeric  kmh Speed in kilometer per hour.
+#' @param kmh numeric  Speed in kilometer per hour.
 #' @return 
 #'
 #'

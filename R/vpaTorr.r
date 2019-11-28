@@ -2,7 +2,7 @@
 #'
 #' Calculate water vapor pressure in torr.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
+#' @param t numeric Air temperature in degC.
 #' @return 
 #'
 #'
@@ -15,7 +15,7 @@
 #'
 #'
 
-vpaTorr=function(T) {
+vpaTorr=function(t) {
                          ct$assign("T", as.array(t))
                          ct$eval("var res=[]; for(var i=0, len=T.length; i < len; i++){ res[i]=vpaTorr(T[i])};")
                          res=ct$get("res")

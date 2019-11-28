@@ -7,19 +7,19 @@
 mrt_solar_proj(t, rh, solar, sunelev, albedo, fdir, emis_sfc)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius Degrees.}
+\item{t}{numeric Air temperaturein degC.}
 
-\item{numeric}{rad Global short solar irradiance in Watt on mq.}
+\item{rad}{numeric Global short solar irradiance in Watt on mq.}
 
-\item{numeric}{frad Fraction related to direct solar beam 0 to 1.}
+\item{frad}{numeric Fraction related to direct solar beam 0 to 1.}
 }
 \value{
-Mean Radiant temperature.
+Mean Radiant temperature projected in degC.
 }
 \description{
 Calculated the mean radiant temperature from the short solar irradiance with human projection factor. it assumes a uniform surround temperature of air temperature  and short wave solar radiation.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{fMRT}

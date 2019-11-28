@@ -7,18 +7,18 @@
 THI(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric  Air temperature in Celsius degrees.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric Relative humidity in percentage.}
 }
 \value{
 
 }
 \description{
-Given air temperature (Celsius), relative humidity  gives Temperature Humidity Index discomfort. Giles (1990). Is a linearized form.
+Given air temperature (Celsius), relative humidity  gives Temperature Humidity Index discomfort. Giles (1990).
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{Humidity}
 \keyword{Index}

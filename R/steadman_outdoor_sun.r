@@ -2,11 +2,11 @@
 #'
 #' Computes Steadman's apparent temperature under sunny outdoor conditions.
 #'
-#' @param numeric t Air temperature in degC.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @param numeric  wind Wind speed in meter per second.
-#' @param rshort Global short radiation in Watt per mq.
-#' @param sunelev Sun elevation in degrees.
+#' @param t numeric       Air temperature in degC.
+#' @param rh numeric      Relative humidity in percentage (%).
+#' @param wind numeric    Wind speed in meters per second.
+#' @param rshort numeric  Global short radiation in Watt/mq.
+#' @param sunelev numeric Sun elevation in degrees.
 #' @return 
 #'
 #'

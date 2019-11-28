@@ -1,28 +1,27 @@
 #' clomax_custom
 #'
-#' Calculate the maximal clothing insulation value required to reach thermal comfort in moderate thermal environments based on PMV ISO 7730.
+#' Calculate maximum custom clothing insulation value required to reach thermal comfort in moderate thermal environments ( -0.5 < PMV < 0.5) based on PMV ISO 7730.
 #'
-#' @param numeric t        Air temperature in degC.
-#' @param numeric rh       Air Relative humidity in percentage.
-#' @param numeric wind     Windspeed in meter per second.
-#' @param numeric trad     Air temperature in degC.
-#' @param numeric M        Metabolic rate of subject Watt per mq.
-#' @param numeric W        Work rate of subject in Watt per mq.
-#' @param numeric age      Age in years.
-#' @param numeric mbody    Body Mass in kg. 
-#' @param numeric ht       Heigth of subject in meters.
-#' @param character gender Sex of the subject. Default is "male" otherwise "female".
+#' @param t numeric        Air temperature in degC.
+#' @param rh numeric       Air Relative humidity in percentage.
+#' @param wind numeric     Wind speed in meters per second.
+#' @param tr numeric       Mean radiant temperature in degC.
+#' @param M numeric        Metabolic rate of subject in W/mq.
+#' @param W numeric        Mechanical work of subject in W/mq. Generally 0.
+#' @param age   numeric    Age in years.
+#' @param mbody numeric    Body Mass in kg. 
+#' @param ht numeric       Heigth of subject in meters.
+#' @param gender character Sex of the subject. Default is "male" otherwise "female".
 #' @return 
 #'
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  ocir 
+#' @keywords  clothing insulation 
 #' 
 #' @export
 #'
 #'
-#'
-#'
+
 
 clomax_custom=function(t,rh,wind,trad,age,mbody,ht,gender="male")  {
   ct$assign("t", as.array(t))

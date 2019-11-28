@@ -2,7 +2,7 @@
 #'
 #' Logical if the year indicated is a leap year.
 #'
-#' @param numeric yr Year
+#' @param yr numeric Year.
 #' @return 
 #'
 #'

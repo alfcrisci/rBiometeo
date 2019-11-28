@@ -7,18 +7,15 @@
 winddir(u, v)
 }
 \arguments{
-\item{u}{numeric U zonal component}
+\item{u}{numeric U zonal component (m/s) .}
 
-\item{v}{numeric V meridian component}
+\item{v}{numeric V meridian component (m/s).}
 }
 \description{
 Calculate meteorological wind direction from cartesian components u and v.
 }
-\references{
-Istituto di Biometeorologia Firenze Italy
-}
 \author{
-Alfonso crisci \email{a.crisci@ibimet.cnr.it} Marco Morabito \email{m.morabito@unifi.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{Meteorological}
 \keyword{Wind}

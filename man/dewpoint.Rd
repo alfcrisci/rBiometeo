@@ -7,19 +7,20 @@
 dewpoint(t, rh, formula = "NOAA")
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric Air Relative humidity in percentage (%).}
 
-\item{character}{formula Type of formula used for saturation pressure : "NOAA","Sonntag","Paroscientific". Default is "NOAA".}
+\item{formula}{character  Default is "NOAA".}
 }
 \value{
 
 }
 \description{
-Computes the dewpoint temperature in Celsius degree following different schemes.
+Computes the dewpoint temperature in degC   following different computational schemes defined by formula of saturation pressure estimation
+("NOAA","Sonntag","Paroscientific").
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{dewpoint}

@@ -4,16 +4,16 @@
 \alias{radtheoric}
 \title{radtheoric}
 \usage{
-radtheoric(jddate, elev, albedo = 0.3, param = "direct")
+radtheoric(jddate, sunelev = 75, albedo = 0.4, param = "direct")
 }
 \arguments{
-\item{jddate}{Datetime in DOY Day of year.}
+\item{jddate}{Datetime in DOY Day of year}
 
-\item{numeric}{elev Sun elevation decimal degrees.}
+\item{sunelev}{numeric Sun elevation decimal degrees}
 
-\item{numeric}{albedo Surronding albedo value. Default is 0.3.}
+\item{albedo}{numeric Surronding albedo value. Default is 0.3}
 
-\item{character}{param Theoretical parameter available for radiation "global","direct","diffuse" ( clear sky diffuse),"reflected".}
+\item{param}{character Theoretical parameter available for radiation "global","direct","diffuse" ( clear sky diffuse),"reflected".}
 }
 \value{
 Requested irradinace in KJ on mq
@@ -22,6 +22,6 @@ Requested irradinace in KJ on mq
 Computes different theoretical radiation in W/mq for a location and a time : Global, Direct Beam radiation,Diffuse Radiation, Reflected radiation based on albedo.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{radtheoric}

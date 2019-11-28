@@ -1,17 +1,17 @@
 #' utci_class
 #'
-#' Calculate ten (10) thermal class of Universal Thermal Climate Index ( UTCI) index.
+#' Calculate the (10-fold) thermal class of Universal Thermal Climate Index ( UTCI) index.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @param numeric  wind Wind speed in meter per second.
-#' @param numeric tmrt Mean radiant temperature in Celsius degrees.
-#' @return UTCI index in Celsius degrees.
+#' @param t numeric  Air temperature in degC
+#' @param rh numeric  Air Relative humidity in percentage (%)
+#' @param wind numeric  Wind speed in meters per second
+#' @param tmrt numeric  Mean radiant temperature in degC.
+#' @return UTCI class.
 #'
 #'
 #' @author  Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibimet.cnr.it}
 #' @keywords  UTCI 
-#' @references Brode P,Jendritzky G,Fiala D and Havenith G, 2011,The Universal Thermal Climate Index UTCI in Operational Use".International Journal of Biometeorology.
+#' @references Brode P, Jendritzky G , Fiala D and Havenith G , 2011, The Universal Thermal Climate Index UTCI in Operational Use".International Journal of Biometeorology.
 #' 
 #'
 #'
@@ -19,11 +19,12 @@
 #'
 
 utci_class<-function(t,rh,wind,tmrt) {
-                         utci_index=utci(t,rh,wind,tmrt);
-                         res=ifelse(is.na(utci_index),
-                                    NA,
-                                    as.numeric(cut(utci_index, c(-100,-40,-26.99,-12.99,0.01,9.01,26.01,32.01,38.01,46.01,100),right=T,label=c(1:10)))
-                                    )
-                         return(res)
+  ct$assign("t", as.array(t))
+  ct$assign("rh", as.array(rh))
+  ct$assign("wind", as.array(wind))
+  ct$assign("tmrt", as.array(tmrt))
+  ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=utci_class(t[i],rh[i],wind[i],tmrt[i])};")
+  res=ct$get("res")
+  return(ifelse(res==9999,NA,res))
 }
 

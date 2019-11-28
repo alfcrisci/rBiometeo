@@ -4,12 +4,16 @@
 \alias{fits_index}
 \title{fits_index}
 \usage{
-fits_index(t, rh)
+fits_index(t, rh, wind = 0.2, pair = 1010)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric Relative humidity in percentage (%).}
+
+\item{wind}{numeric Windspeed in meters per second.}
+
+\item{pair}{numeric Air pressure in hPa.}
 }
 \value{
 
@@ -18,10 +22,10 @@ fits_index(t, rh)
 Calculate Fighter Index of Thermal Stress FITS
 }
 \references{
-Nunneley SH, Stribley F,1979, Fighter index of thermal stress FITS  guidance for hot-weather aircraft operations.Aviat Space Environ Med 50, 639 42.
+Nunneley SH, Stribley F, 1979, Fighter index of thermal stress FITS  guidance for hot-weather aircraft operations.Aviat Space Environ Med 50, 639 42.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{,}
 \keyword{Fighter}

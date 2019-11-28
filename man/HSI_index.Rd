@@ -7,21 +7,21 @@
 HSI_index(t, rh, wind, tr, M, W, clo, param = "HSI")
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric    Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity.}
+\item{rh}{numeric   Relative humidity in percentage.}
 
-\item{numeric}{wind Windspeed in meter per second.}
+\item{wind}{numeric Windspeed in meter per second.}
 
-\item{numeric}{tr Mean radiant temperature in Celsius degrees.}
+\item{tr}{numeric Mean radiant temperature in degC.}
 
-\item{numeric}{M Metabolic rate of subject Watt on mq.}
+\item{M}{numeric    Metabolic work in Watt per mq of the subject.}
 
-\item{numeric}{W Work rate of subject Watt on mq.}
+\item{W}{numeric  Mechanical work rate in Watt per mq of the subject.}
 
-\item{numeric}{clo Clothing insulation level in clo.}
+\item{clo}{numeric  Available basic clothing insulation in clo.}
 
-\item{character}{param index requested HSI or AET Allowable exposure time in minutes.}
+\item{param}{character Index requested HSI or AET Allowable exposure time in minutes.}
 }
 \value{
 HSI index
@@ -34,6 +34,6 @@ This denotes also the percent of skin wettedness, which is a good predictor of w
 Belding et al 1955. Index for evaluating heat stress in terms of resulting physiological strain. Heat Pip Air Condit 27, 129 36.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{HSI}

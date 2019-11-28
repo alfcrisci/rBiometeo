@@ -7,7 +7,7 @@
 PPD(PMV)
 }
 \arguments{
-\item{numeric}{PMV Preadicted Mean Vote}
+\item{PMV}{numeric Predicted Mean Vote.}
 }
 \value{
 
@@ -19,6 +19,6 @@ Predicted Percentage of Dissatisfied (PPD) predicts the percentage of occupants 
 UNI EN ISO 7730.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{PPD}

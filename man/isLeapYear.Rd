@@ -7,7 +7,7 @@
 isLeapYear(yr)
 }
 \arguments{
-\item{numeric}{yr Year}
+\item{yr}{numeric Year.}
 }
 \value{
 
@@ -16,6 +16,6 @@ isLeapYear(yr)
 Logical if the year indicated is a leap year.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{isLeapYear}

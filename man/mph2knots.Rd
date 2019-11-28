@@ -7,7 +7,7 @@
 mph2knots(mph)
 }
 \arguments{
-\item{numeric}{mph Speed in miles per hour.}
+\item{mph}{numeric  Speed miles per hour.}
 }
 \value{
 
@@ -16,6 +16,6 @@ mph2knots(mph)
 Conversion speed in  miles per hour to knots per second.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{mph2knots}

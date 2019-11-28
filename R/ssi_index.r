@@ -2,9 +2,9 @@
 #'
 #' Calculate Summer Simmer index developed in Canada.
 #'
-#' @param numeric t Air temperature in Celsius degrees.
-#' @param numeric rh Air Relative humidity in percentage.
-#' @return 
+#' @param t numeric Air temperature in Celsius degrees.
+#' @param rh numeric Relative humidity in percentage.
+#' @return Summer Simmer index in degC.
 #'
 #'
 #' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

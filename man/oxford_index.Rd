@@ -4,23 +4,27 @@
 \alias{oxford_index}
 \title{oxford_index}
 \usage{
-oxford_index(t, rh)
+oxford_index(t, rh, wind = 0.2, pair = 1010)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric Relative humidity in percentage (%).}
+
+\item{wind}{numeric Windspeed in meters per second.}
+
+\item{pair}{numeric Air pressure in hPa.}
 }
 \value{
 
 }
 \description{
-Computes  the oxford index index of discomfort.
+Computes the oxford index of thermal discomfort.
 }
 \references{
 Lind AR, Hallon RF,1957, Assessment of physiologic severity of hot climate. J Appl Physiol 11, 35 40.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{oxford_index}

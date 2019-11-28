@@ -4,12 +4,12 @@
 \alias{emis_atm}
 \title{emis_atm}
 \usage{
-emis_atm(ta, rh)
+emis_atm(t, rh)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees}
+\item{rh}{numeric Relative humidity (%).}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{tk}{numeric Air temperature in degK.}
 }
 \value{
 
@@ -18,6 +18,6 @@ emis_atm(ta, rh)
 Calculate air emissivity.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{emis_atm}

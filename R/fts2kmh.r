@@ -2,7 +2,7 @@
 #'
 #' Conversion speed in feet per second to kilometer per hour.
 #'
-#' @param numeric  fts Speed in feet per second.
+#' @param fts numeric  Speed in feets per second.
 #' @return 
 #'
 #'

@@ -2,11 +2,11 @@
 #'
 #' Calculated the mean radiant temperature from the solar radiation.  Modified based on direct and diffuse ratio. Assumes a uniform surround temperature of Ta && short wave solar radiation only;
 #'
-#' @param numeric t air temperature in Celsius degrees.
-#' @param numeric tg global short solar irradiance in Watt on mq.
-#' @param numeric wind windspeed in meter per second.
-#' @param numeric diam diameter of the sphere in millimeter. Input example  50 mm.
-#' @return Mean Radiant temperature.
+#' @param t numeric air temperature in degC.
+#' @param tg numeric global short solar irradiance in Watt on mq.
+#' @param wind numeric windspeed in meter per second.
+#' @param diam numeric diameter of the sphere in millimeter. Input example 50 mm.
+#' @return Mean Radiant temperature in degC.
 #'
 #'
 #' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
@@ -33,11 +33,11 @@ mrt_thorsson=function(t,tg,wind,diam) {
 #'
 #' Given air temperature , the globe Temeperature, the wind speed and diameter mean radiant temperature is done according ISO 7726 1998.
 #'
-#' @param numeric t     Air temperature in Celsius degrees.
-#' @param numeric tg    Global short solar irradiance in Watt on mq.
-#' @param numeric wind  Windspeed in meter per second.
-#' @param numeric diam  diameter of the sphere in millimeter. Input example 50 mm.
-#' @return Mean Radiant temperature.
+#' @param t numeric air temperature in degC.
+#' @param tg numeric global short solar irradiance in Watt on mq.
+#' @param wind numeric windspeed in meter per second.
+#' @param diam numeric diameter of the sphere in millimeters. Input example 50 mm.
+#' @return Mean Radiant temperature in degC.
 #'
 #' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  globe temperature 
@@ -63,10 +63,10 @@ mrt_globe=function(t,tg,wind,diam) {
 #'
 #' Calculated the mean radiant temperature from the short solar irradiance with human projection factor. it assumes a uniform surround temperature of air temperature  and short wave solar radiation.
 #'
-#' @param numeric t    Air temperature in Celsius Degrees.
-#' @param numeric rad  Global short solar irradiance in Watt on mq.
-#' @param numeric frad Fraction related to direct solar beam 0 to 1.
-#' @return Mean Radiant temperature projected
+#' @param t    numeric Air temperaturein degC.
+#' @param rad  numeric Global short solar irradiance in Watt on mq.
+#' @param frad numeric Fraction related to direct solar beam 0 to 1.
+#' @return Mean Radiant temperature projected in degC.
 #'
 #'
 #' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

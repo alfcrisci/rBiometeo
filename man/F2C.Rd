@@ -7,15 +7,15 @@
 F2C(F)
 }
 \arguments{
-\item{numeric}{F Temperature in Fahrenheit degrees}
+\item{F}{numeric Temperature in Fahrenheit degrees (degF)}
 }
 \value{
 Celsius degrees
 }
 \description{
-Converts temperature from Fahrenheit degree to Celsius degree.
+Converts temperature from Fahrenheit degree (degF)  to Celsius degree (degC).
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{F2C}

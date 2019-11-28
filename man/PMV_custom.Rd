@@ -4,30 +4,30 @@
 \alias{PMV_custom}
 \title{PMV_custom}
 \usage{
-PMV_custom(t, rh, wind, tr, clo, age, mbody, ht, gender = "male")
+PMV_custom(t, rh, wind, trad, clo, age, mbody, ht, gender = "male")
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric    Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric   Relative humidity in percentage.}
 
-\item{numeric}{wind Windspeed in meter per second.}
+\item{wind}{numeric Windspeed in meter per second.}
 
-\item{numeric}{tr Air temperature in Celsius degrees.}
+\item{clo}{numeric  Available basic clothing insulation in clo.}
 
-\item{numeric}{M Metabolic rate of subject Watt per mq.}
+\item{age}{numeric Age in years.}
 
-\item{numeric}{W Work rate of subject in Watt per mq.}
+\item{mbody}{numeric     Body Mass in kg.}
 
-\item{numeric}{clo Clothing insulation level in clo.}
+\item{ht}{numeric       Heigth of subject in meters.}
 
-\item{numeric}{age Age in years.}
+\item{gender}{character Sex of the subject. Default is "male".}
 
-\item{numeric}{mbody Body Mass in kg.}
+\item{tr}{numeric Mean radiant temperature in degC.}
 
-\item{numeric}{ht Heigth of subject in meters.}
+\item{M}{numeric    Metabolic work in Watt per mq of the subject.}
 
-\item{character}{gender Sex of the subject. Default is "male".}
+\item{W}{numeric  Mechanical work rate in Watt per mq of the subject.}
 }
 \value{
 
@@ -36,6 +36,6 @@ PMV_custom(t, rh, wind, tr, clo, age, mbody, ht, gender = "male")
 Calculate Predicted Mean Vote (PMV) following ISO 7730 customizing some individual features.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{PMV_custom}

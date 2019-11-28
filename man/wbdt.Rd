@@ -4,20 +4,22 @@
 \alias{wbdt}
 \title{wbdt}
 \usage{
-wbdt(t, rh)
+wbdt(t, rh, pair = 1010)
 }
 \arguments{
-\item{numeric}{t Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage.}
+\item{rh}{numeric Relative humidity in percentage (%).}
+
+\item{wind}{numeric Mean Wind speed in meters per second.}
 }
 \value{
-
+Wet-bulb dry temperature in degC.
 }
 \description{
 Given t air temperature (Celsius), rh relative humidity (percentage)  gives  Wet-bulb dry temperature (WBDT).
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
 \keyword{WBDT}

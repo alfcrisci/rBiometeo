@@ -1,5 +1,6 @@
-# rBiometeo
-R package for biometeorological functions.
+# R package rBiometeo 0.2 version
+
+R package for various biometeorological functions.
 
 Install the latest version of this package by entering the following in R:
 ```R

@@ -4,14 +4,14 @@
 \alias{sunposition}
 \title{sunposition}
 \usage{
-sunposition(timenow, lat, lon)
+sunposition(timenow, lat, long)
 }
 \arguments{
 \item{timenow}{datetime    Datetime indicate in time format equivalent to "POSIXct" or "POSIXt" objects.}
 
 \item{lat}{numeric Latitude in decimal degrees.}
 
-\item{lon}{numeric Longitude in decimal degrees.}
+\item{long}{numeric Longitude in decimal degrees.}
 }
 \description{
 Function to assess sun azimuth and elevation given the time in GMT format.

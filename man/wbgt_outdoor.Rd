@@ -4,9 +4,19 @@
 \alias{wbgt_outdoor}
 \title{wbgt_sun}
 \usage{
-wbgt_outdoor(t, rh, wind, solar, zenith = 0, pair = 1010,
-  alb_sfc = 0.4, fdir = 0.8, maxair = 10, minair = 2,
-  prec = 0.01)
+wbgt_outdoor(
+  t,
+  rh,
+  wind,
+  solar,
+  zenith = 0,
+  pair = 1010,
+  alb_sfc = 0.4,
+  fdir = 0.8,
+  maxair = 10,
+  minair = 2,
+  prec = 0.01
+)
 }
 \arguments{
 \item{t}{numeric        Air temperature in degC.}

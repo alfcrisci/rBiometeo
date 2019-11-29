@@ -27,7 +27,7 @@ PMV_custom=function(t,rh,wind,tr,clo,age,mbody,ht,gender="male") {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))
-                         ct$assign("mtrad", as.array(trad))
+                         ct$assign("mtrad", as.array(tr))
                          ct$assign("iclo", as.array(clo))
                          ct$assign("age", as.array(age))
                          ct$assign("mbody", as.array(mbody))

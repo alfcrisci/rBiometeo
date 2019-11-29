@@ -4,7 +4,7 @@
 #' 
 #' @param  timenow   datetime    Datetime indicate in time format equivalent to "POSIXct" or "POSIXt" objects.
 #' @param  lat       numeric Latitude in decimal degrees.
-#' @param  lon       numeric Longitude in decimal degrees.
+#' @param  long       numeric Longitude in decimal degrees.
 #' @references Mike Birdgeneau  \url{https://gist.github.com/mikebirdgeneau/e2dbdc8e9c45c1c2b7fc}
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' 
@@ -13,7 +13,7 @@
 
 
 
-sunposition <- function(timenow,lat, lon) {
+sunposition <- function(timenow,lat, long) {
     
     time=as.POSIXlt(timenow, "GMT")
     year=as.numeric(format(time,"%Y"))

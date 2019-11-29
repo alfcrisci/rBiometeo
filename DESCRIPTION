@@ -19,5 +19,5 @@ Imports:
     stats,
     utils,
     V8
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.1.9000
 Encoding: UTF-8

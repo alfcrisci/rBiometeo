@@ -4,9 +4,20 @@
 \alias{tglob_sphere}
 \title{tglob_sphere}
 \usage{
-tglob_sphere(t, rh, wind, solar, zenith = 0, pair = 1010,
-  alb_sfc = 0.4, fdir = 0.8, diam = 0.05, maxair = 10,
-  minair = 2, prec = 0.01)
+tglob_sphere(
+  t,
+  rh,
+  wind,
+  solar,
+  zenith = 0,
+  pair = 1010,
+  alb_sfc = 0.4,
+  fdir = 0.8,
+  diam = 0.05,
+  maxair = 10,
+  minair = 2,
+  prec = 0.01
+)
 }
 \arguments{
 \item{t}{numeric        Air temperature in degC.}

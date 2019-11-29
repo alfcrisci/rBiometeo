@@ -17,7 +17,7 @@ mrt_solar_proj(t, rh, solar, sunelev, alb_sfc, fdir, emis_sfc)
 
 \item{alb_sfc}{numeric  Mean albedo of surroundings. Default is 0.4.}
 
-\item{emis_sfc}{numeric Surface emissivity.}
+\item{emis_sfc}{fdir    Ratio between directed ad diffuse radiation.}
 }
 \value{
 Mean Radiant temperature projected in degC.

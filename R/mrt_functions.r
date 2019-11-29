@@ -69,6 +69,8 @@ mrt_globe=function(t,tg,wind,diam) {
 #' @param sunelev numeric  Sun elevation angle in decimal degrees.
 #' @param alb_sfc numeric  Mean albedo of surroundings. Default is 0.4.
 #' @param emis_sfc numeric Surface emissivity.
+#' @param emis_sfc fdir    Ratio between directed ad diffuse radiation.
+
 #' @return Mean Radiant temperature projected in degC.
 #'
 #'

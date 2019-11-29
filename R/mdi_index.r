@@ -3,7 +3,7 @@
 #' Modified discomfort index MDI.
 #'
 #' @param t numeric Air temperature in degC.
-#' @param rh numeric Relative humidity in percentage (%).
+#' @param rh numeric Relative humidity in percentage.
 #' @param wind numeric Windspeed in meters per second.
 #' @param pair numeric Air pressure in hPa.
 #' @return mdi_index 

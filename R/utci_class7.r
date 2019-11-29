@@ -3,10 +3,10 @@
 #' Calculate 7-fold thermal classe by using value of  Universal Thermal Climate Index  UTCI index.
 #'
 #' @param t numeric  Air temperature in degC
-#' @param rh numeric  Air Relative humidity in percentage (%)
+#' @param rh numeric  Air Relative humidity in percentage.
 #' @param wind numeric  Wind speed in meters per second
 #' @param tmrt numeric  Mean radiant temperature in degC.
-#' @return UTCI class.
+#' @return UTCI
 #'
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

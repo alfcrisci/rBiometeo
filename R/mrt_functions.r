@@ -63,9 +63,12 @@ mrt_globe=function(t,tg,wind,diam) {
 #'
 #' Calculated the mean radiant temperature from the short solar irradiance with human projection factor. it assumes a uniform surround temperature of air temperature  and short wave solar radiation.
 #'
-#' @param t    numeric Air temperaturein degC.
-#' @param rad  numeric Global short solar irradiance in Watt on mq.
-#' @param frad numeric Fraction related to direct solar beam 0 to 1.
+#' @param t numeric        Air temperature in degC.
+#' @param rh numeric       Relative humidity in percentage.
+#' @param solar  numeric   Global solar radiation in Watt on mq.
+#' @param sunelev numeric  Sun elevation angle in decimal degrees.
+#' @param alb_sfc numeric  Mean albedo of surroundings. Default is 0.4.
+#' @param emis_sfc numeric Surface emissivity.
 #' @return Mean Radiant temperature projected in degC.
 #'
 #'
@@ -78,12 +81,12 @@ mrt_globe=function(t,tg,wind,diam) {
 #'
 #'
 
-mrt_solar_proj=function(t,rh,solar,sunelev,albedo,fdir,emis_sfc) {
+mrt_solar_proj=function(t,rh,solar,sunelev,alb_sfc,fdir,emis_sfc) {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("solar", as.array(solar))
                          ct$assign("sunelev", as.array(sunelev))
-                         ct$assign("albedo", as.array(albedo))
+                         ct$assign("albedo", as.array(alb_sfc))
                          ct$assign("emis_sfc", as.array(emis_sfc))
                          ct$assign("fdir", as.array(fdir))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=mrt_solar_proj(t[i],rh[i],solar[i],sunelev[i],albedo[i],emis_sfc[0],fdir[0])};")

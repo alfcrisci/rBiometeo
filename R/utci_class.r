@@ -3,7 +3,7 @@
 #' Calculate the (10-fold) thermal class of Universal Thermal Climate Index ( UTCI) index.
 #'
 #' @param t numeric  Air temperature in degC
-#' @param rh numeric  Air Relative humidity in percentage (%)
+#' @param rh numeric  Air Relative humidity in percentage
 #' @param wind numeric  Wind speed in meters per second
 #' @param tmrt numeric  Mean radiant temperature in degC.
 #' @return UTCI class.

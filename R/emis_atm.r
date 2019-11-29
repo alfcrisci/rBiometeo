@@ -3,7 +3,7 @@
 #' Calculate air emissivity.
 #'
 #' @param tk numeric Air temperature in degK.
-#' @param rh numeric Relative humidity (%).
+#' @param rh numeric Relative humidity in percentage.
 #' @return 
 #'
 #'
@@ -16,8 +16,8 @@
 #'
 #'
 
-emis_atm=function(t,rh) {
-                         ct$assign("t", as.array(t))
+emis_atm=function(tk,rh) {
+                         ct$assign("t", as.array(tk))
                          ct$assign("rh", as.array(rh/100))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=emis_atm(ta[i],rh[i])};")
                          res=ct$get("res")

@@ -12,7 +12,7 @@ sharlau_index_state(t, rh)
 \item{rh}{numeric Relative humidity in percentage.}
 }
 \value{
-Sharlau State.
+sharlau_index_state
 }
 \description{
 State of comfort indicated by Sharlau Index delta.

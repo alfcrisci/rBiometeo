@@ -7,11 +7,9 @@
 twetbulb_j(t, pair)
 }
 \arguments{
-\item{numeric}{t Air temperature in degC.}
+\item{t}{numeric Air temperature in degC.}
 
-\item{numeric}{rh Air Relative humidity in percentage (%).}
-
-\item{numeric}{pair Air Pressure in hPa. Default is 1010.}
+\item{pair}{numeric Air Pressure in hPa. Default is 1010.}
 }
 \value{
 wet bulb temperature

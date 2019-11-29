@@ -3,7 +3,7 @@
 #' Given air temperature (Celsius), relative humidity  gives a heat stress index in Celsius degree for primates animals. 
 #'
 #' @param t   numeric Air temperature in degC.
-#' @param rh  numeric Relative humidity in percentage(%).
+#' @param rh  numeric Relative humidity in percentage.
 #' @return 
 #'
 #'

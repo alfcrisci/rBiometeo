@@ -9,7 +9,7 @@ utci(t, rh, wind, tr = NULL)
 \arguments{
 \item{t}{numeric Air temperature in degC.}
 
-\item{rh}{numeric Air Relative humidity (%).}
+\item{rh}{numeric Air Relative humidity.}
 
 \item{wind}{numeric Windspeed in meters per second.}
 

@@ -3,7 +3,7 @@
 #' Calculate web bulb globe index for indoor environments. 
 #'
 #' @param t    numeric Air temperature in degC.
-#' @param rh   numeric Relative humidity in percentage (%).
+#' @param rh   numeric Relative humidity in percentage .
 #' @param wind numeric Mean Wind speed in meters per second.
 #' @param pair numeric Air pressure in millibar or hPa. Default 1010 hPa.
 #' @param elev numeric Elevation in meters on sea level. Default is 0.

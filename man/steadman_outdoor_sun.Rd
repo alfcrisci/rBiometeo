@@ -9,7 +9,7 @@ steadman_outdoor_sun(t, rh, wind, rshort, sunelev)
 \arguments{
 \item{t}{numeric       Air temperature in degC.}
 
-\item{rh}{numeric      Relative humidity in percentage (%).}
+\item{rh}{numeric      Relative humidity in percentage.}
 
 \item{wind}{numeric    Wind speed in meters per second.}
 

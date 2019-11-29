@@ -9,7 +9,7 @@ net_index(t, rh, wind)
 \arguments{
 \item{t}{numeric Air temperature in degC.}
 
-\item{rh}{numeric Relative humidity in percentage (%).}
+\item{rh}{numeric Relative humidity in percentage.}
 
 \item{wind}{numeric Windspeed in meters per second.}
 }

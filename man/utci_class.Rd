@@ -9,7 +9,7 @@ utci_class(t, rh, wind, tmrt)
 \arguments{
 \item{t}{numeric  Air temperature in degC}
 
-\item{rh}{numeric  Air Relative humidity in percentage (%)}
+\item{rh}{numeric  Air Relative humidity in percentage}
 
 \item{wind}{numeric  Wind speed in meters per second}
 

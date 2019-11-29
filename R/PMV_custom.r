@@ -6,8 +6,6 @@
 #' @param rh numeric   Relative humidity in percentage.
 #' @param wind numeric Windspeed in meter per second.
 #' @param tr numeric Mean radiant temperature in degC.
-#' @param M  numeric    Metabolic work in Watt per mq of the subject.
-#' @param W   numeric  Mechanical work rate in Watt per mq of the subject.
 #' @param clo numeric  Available basic clothing insulation in clo.
 #' @param age numeric Age in years.
 #' @param mbody numeric     Body Mass in kg. 
@@ -25,7 +23,7 @@
 #'
 #'
 
-PMV_custom=function(t,rh,wind,trad,clo,age,mbody,ht,gender="male") {
+PMV_custom=function(t,rh,wind,tr,clo,age,mbody,ht,gender="male") {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))

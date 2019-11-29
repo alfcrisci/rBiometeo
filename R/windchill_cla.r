@@ -17,7 +17,7 @@
 #'
 #'
 
-windchill=function(t,wind) {
+windchill_cla=function(t,wind) {
                          ct$assign("t", as.array(t))
                          ct$assign("v", as.array(wind))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=windchill_new(t[i],v[i])};")

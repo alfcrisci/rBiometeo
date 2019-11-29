@@ -3,7 +3,7 @@
 #' Computes saturation deficit in hPa. This is air dryness evaluation.
 #'
 #' @param t  numeric Air temperature in degC.
-#' @param rh numeric Relative humidity in percentage (%).
+#' @param rh numeric Relative humidity in percentage.
 #' @return 
 #'
 #'

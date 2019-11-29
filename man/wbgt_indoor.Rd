@@ -9,7 +9,7 @@ wbgt_indoor(t, rh, wind = 0.1, pair = 1010, elev = 0)
 \arguments{
 \item{t}{numeric Air temperature in degC.}
 
-\item{rh}{numeric Relative humidity in percentage (%).}
+\item{rh}{numeric Relative humidity in percentage .}
 
 \item{wind}{numeric Mean Wind speed in meters per second.}
 

@@ -3,18 +3,13 @@
 #' Calculate Temperature Humidity Index following Kliber equantions. Adopted by Sardinia ARPA.
 #'
 #' @param t numeric  Air temperature in Celsius degrees.
-#' @param rh numeric Relative humidity in percentage (%).
-#' @return 
-#'
-#'
+#' @param rh numeric  Relative humidity in percentage.
+#' @return thi index
 #' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  THI_kliber 
 #' 
 #' @export
 #'
-#'
-#'
-#'
+
 
 THI_kliber=function(t,rh) {
                          ct$assign("t", as.array(t))

@@ -4,7 +4,7 @@
 \alias{clomin_custom}
 \title{clomin_custom}
 \usage{
-clomin_custom(t, rh, wind, trad, age, mbody, ht, gender = "male")
+clomin_custom(t, rh, wind, tr, age, mbody, ht, gender = "male")
 }
 \arguments{
 \item{t}{numeric        Air temperature in degC.}
@@ -13,6 +13,8 @@ clomin_custom(t, rh, wind, trad, age, mbody, ht, gender = "male")
 
 \item{wind}{numeric     Wind speed in meters per second.}
 
+\item{tr}{numeric       Mean radiant temperature in degC.}
+
 \item{age}{numeric    Age in years.}
 
 \item{mbody}{numeric    Body Mass in kg.}
@@ -20,15 +22,9 @@ clomin_custom(t, rh, wind, trad, age, mbody, ht, gender = "male")
 \item{ht}{numeric       Heigth of subject in meters.}
 
 \item{gender}{character Sex of the subject. Default is "male" otherwise "female".}
-
-\item{tr}{numeric       Mean radiant temperature in degC.}
-
-\item{M}{numeric        Metabolic rate of subject in W/mq.}
-
-\item{W}{numeric        Mechanical work of subject in W/mq. Generally 0.}
 }
 \value{
-
+clomin_custom
 }
 \description{
 Calculate minimal custom clothing insulation value required to reach thermal comfort in moderate thermal environments ( -0.5 < PMV <0.5) based on PMV ISO 7730.

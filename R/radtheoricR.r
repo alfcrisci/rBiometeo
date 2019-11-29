@@ -16,7 +16,7 @@
 
 radtheoricR <- function(timenow,lat,lon,albedo){
  rho=albedo
- sunpar=sunposition(timenow,lat, long)
+ sunpar=sunposition(timenow,lat, lon)
  elev=sunpar$elevation
  timeday=as.POSIXlt(timenow, "GMT")
  nday=format(timeday,"%j")

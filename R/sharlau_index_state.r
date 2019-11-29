@@ -4,7 +4,7 @@
 #'
 #' @param t numeric Air temperature in Celsius degrees.
 #' @param rh numeric Relative humidity in percentage.
-#' @return Sharlau State.
+#' @return sharlau_index_state
 #'
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

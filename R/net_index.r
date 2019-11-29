@@ -3,7 +3,7 @@
 #' Calculate the Net Effective Temperature (NET) incorporating ambient temperature in degC , wind speed (m/s), and relative humidity (%). It is used in  hot and cold situations.
 #'
 #' @param t numeric Air temperature in degC.
-#' @param rh numeric Relative humidity in percentage (%).
+#' @param rh numeric Relative humidity in percentage.
 #' @param wind numeric Windspeed in meters per second.
 #' @return 
 #'

@@ -9,10 +9,10 @@ THI_kliber(t, rh)
 \arguments{
 \item{t}{numeric  Air temperature in Celsius degrees.}
 
-\item{rh}{numeric Relative humidity in percentage (%).}
+\item{rh}{numeric  Relative humidity in percentage.}
 }
 \value{
-
+thi index
 }
 \description{
 Calculate Temperature Humidity Index following Kliber equantions. Adopted by Sardinia ARPA.
@@ -20,4 +20,3 @@ Calculate Temperature Humidity Index following Kliber equantions. Adopted by Sar
 \author{
 Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
-\keyword{THI_kliber}

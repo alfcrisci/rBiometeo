@@ -9,7 +9,7 @@ steadman_indoor(t, rh)
 \arguments{
 \item{t}{numeric Air temperature in Celsius degrees.}
 
-\item{rh}{numeric  Relative humidity in percentage (%).}
+\item{rh}{numeric  Relative humidity in percentage.}
 }
 \value{
 steadman_indoor

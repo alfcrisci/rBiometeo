@@ -4,13 +4,12 @@
 #' ("NOAA","Sonntag","Paroscientific").
 #'
 #' @param t numeric Air temperature in degC.
-#' @param rh numeric Air Relative humidity in percentage (%).
+#' @param rh numeric Air Relative humidity in percentage.
 #' @param formula character  Default is "NOAA". 
 #' @return 
 #'
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  dewpoint 
 #' 
 #' @export
 #'

@@ -6,6 +6,7 @@
 #' @param lat  numeric           Latitude in decimal degrees
 #' @param lon  numeric           Longitude in decimal degrees
 #' @param parameter character    Six solar parameter are available by name "azimuth","zenith","solarZenith","elevation","declination"or "JD"
+#' @param tz character           time zone.
 #' @return value of parameter indicated
 #'
 #'

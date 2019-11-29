@@ -9,17 +9,17 @@ discomfort_index(t, rh, wind = 0.2, pair = 1010)
 \arguments{
 \item{t}{numeric Air temperature in degC.}
 
-\item{rh}{numeric Relative humidity in percentage (%).}
+\item{rh}{numeric Relative humidity in percentage.}
 
 \item{wind}{numeric Windspeed in meters per second.}
 
 \item{pair}{numeric Air pressure in hPa.}
 }
 \value{
-
+discomfort_index
 }
 \description{
-Given t air temperature (degC), rh relative humidity (%) , wind speed in meters per second and air pressure ( hPa) gives  Discomfort index (DI).
+Given t air temperature (degC), rh relative humidity , wind speed in meters per second and air pressure ( hPa) gives  Discomfort index (DI).
 }
 \references{
 Thom, E.C., 1959, The discomfort index. Weatherwise, 12, 57 60.
@@ -27,4 +27,3 @@ Thom, E.C., 1959, The discomfort index. Weatherwise, 12, 57 60.
 \author{
 Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
-\keyword{discomfort_index}

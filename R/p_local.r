@@ -17,10 +17,10 @@
 #'
 #'
 
-p_local=function(press=1010,elev,temp) {
+p_local=function(press=1010,elev,t) {
                          ct$assign("press", as.array(press))
                          ct$assign("topo", as.array(elev))
-                         ct$assign("temp", as.array(temp))
+                         ct$assign("temp", as.array(t))
                          ct$eval("var res=[]; for(var i=0, len=press.length; i < len; i++){ res[i]=p_local(press[i],topo[i],temp[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))

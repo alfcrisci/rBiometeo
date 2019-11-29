@@ -2,8 +2,8 @@
 #'
 #' Broad range formula to estimate saturation vapor pressure.
 #'
-#' @param t numeric Air temperature in degC
-#' @return Saturaion vapor pressure (hPa)
+#' @param t numeric Air temperature in degC.
+#' @return Saturaion vapor pressure (hPa).
 #'
 #'
 #' @author     Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
@@ -15,8 +15,8 @@
 #'
 #'
 
-PVS=function(T) {
-                         ct$assign("T", as.array(T))
+PVS=function(t) {
+                         ct$assign("T", as.array(t))
                          ct$eval("var res=[]; for(var i=0, len=T.length; i < len; i++){ rel[i]=PVS(T[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))

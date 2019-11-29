@@ -2,17 +2,13 @@
 #'
 #' Calculate Thom discomfort index by using wet bulb temperature estimation.
 #'
-#' @param numeric t Air temperature in degC.
-#' @param numeric rh Air Relative humidity in percentage (%).
-#' @param numeric tg Solar Radiation Radiance in Watt/mq.
-#' @param numeric pair Air Pressure in hPa. Default is 1010.
-#' @return Thom index
-#'
-#'
+#' @param t numeric Air temperature in degC.
+#' @param rh numeric Relative humidity in percentage.
+#' @param wind numeric Wind speed iq.
+#' @param pair numeric Air Pressure in hPa. Default is 1010.
+#' @return thom
 #' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  thom, sultryness,  discomfort index
 #' @references Thom, E.C. 1959 The discomfort index. Weatherwise, 12, 57,60
-#' 
 #' @export
 #'
 #'

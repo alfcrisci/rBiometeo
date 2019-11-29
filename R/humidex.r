@@ -3,7 +3,7 @@
 #' Computes canadian Humidex index.
 #'
 #' @param t  numeric  Air temperature in degC.
-#' @param rh  numeric Relative humidity in percentage (%).
+#' @param rh  numeric Relative humidity in percentage.
 #' @return humidex in degC.
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

@@ -4,7 +4,7 @@
 \alias{PMV_custom}
 \title{PMV_custom}
 \usage{
-PMV_custom(t, rh, wind, trad, clo, age, mbody, ht, gender = "male")
+PMV_custom(t, rh, wind, tr, clo, age, mbody, ht, gender = "male")
 }
 \arguments{
 \item{t}{numeric    Air temperature in degC.}
@@ -12,6 +12,8 @@ PMV_custom(t, rh, wind, trad, clo, age, mbody, ht, gender = "male")
 \item{rh}{numeric   Relative humidity in percentage.}
 
 \item{wind}{numeric Windspeed in meter per second.}
+
+\item{tr}{numeric Mean radiant temperature in degC.}
 
 \item{clo}{numeric  Available basic clothing insulation in clo.}
 
@@ -22,12 +24,6 @@ PMV_custom(t, rh, wind, trad, clo, age, mbody, ht, gender = "male")
 \item{ht}{numeric       Heigth of subject in meters.}
 
 \item{gender}{character Sex of the subject. Default is "male".}
-
-\item{tr}{numeric Mean radiant temperature in degC.}
-
-\item{M}{numeric    Metabolic work in Watt per mq of the subject.}
-
-\item{W}{numeric  Mechanical work rate in Watt per mq of the subject.}
 }
 \value{
 

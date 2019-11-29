@@ -9,7 +9,7 @@ humidex(t, rh)
 \arguments{
 \item{t}{numeric  Air temperature in degC.}
 
-\item{rh}{numeric Relative humidity in percentage (%).}
+\item{rh}{numeric Relative humidity in percentage.}
 }
 \value{
 humidex in degC.

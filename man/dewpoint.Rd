@@ -9,7 +9,7 @@ dewpoint(t, rh, formula = "NOAA")
 \arguments{
 \item{t}{numeric Air temperature in degC.}
 
-\item{rh}{numeric Air Relative humidity in percentage (%).}
+\item{rh}{numeric Air Relative humidity in percentage.}
 
 \item{formula}{character  Default is "NOAA".}
 }
@@ -23,4 +23,3 @@ Computes the dewpoint temperature in degC   following different computational sc
 \author{
 Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }
-\keyword{dewpoint}

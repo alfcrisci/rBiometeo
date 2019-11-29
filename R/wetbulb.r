@@ -13,22 +13,20 @@
 #' @param maxair numeric   Upper bound of search range referred to air temperature in degC. Default is 10.
 #' @param minair numeric   Lower bound of search range referred to air temperature in degC. Default is 10.
 #' @param prec numeric      Precision of outcomes.Default is 0.01. 
-#' @return wet-bulb temperature in degC.
+#' @return 
 #'
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords  wetbulb 
 #' @export
 #'
-#'
-#'
-#'
+
 wetbulb=function(t,rh,wind,solar=0,zenith=0,pair,alb_sfc=0.4,fdir=0.8,maxair=10,minair=2,prec=0.01) {
                          if (is.null(press)) {press=1010}
                          if (length(solar) != length(t)) {solar=rep(solar,length(t));
                                                           zenith=rep(zenith,length(t));
                                                        }
-
+                         irad=1
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))

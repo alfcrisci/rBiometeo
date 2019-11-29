@@ -1,16 +1,13 @@
 #' discomfort_index
 #'
-#' Given t air temperature (degC), rh relative humidity (%) , wind speed in meters per second and air pressure ( hPa) gives  Discomfort index (DI).
+#' Given t air temperature (degC), rh relative humidity , wind speed in meters per second and air pressure ( hPa) gives  Discomfort index (DI).
 #'
 #' @param t numeric Air temperature in degC.
-#' @param rh numeric Relative humidity in percentage (%).
+#' @param rh numeric Relative humidity in percentage.
 #' @param wind numeric Windspeed in meters per second.
 #' @param pair numeric Air pressure in hPa.
-#' @return 
-#'
-#'
+#' @return discomfort_index
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  discomfort_index 
 #' @references Thom, E.C., 1959, The discomfort index. Weatherwise, 12, 57 60.
 #' @export
 #'

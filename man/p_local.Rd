@@ -4,7 +4,7 @@
 \alias{p_local}
 \title{p_local}
 \usage{
-p_local(press = 1010, elev, temp)
+p_local(press = 1010, elev, t)
 }
 \arguments{
 \item{press}{numeric Air sea level pressure in hPa.}

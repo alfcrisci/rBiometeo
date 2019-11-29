@@ -3,7 +3,7 @@
 #' Calculate Universal Thermal Climate Index ( UTCI) in degC.
 #'
 #' @param t  numeric Air temperature in degC.
-#' @param rh numeric Air Relative humidity (%).
+#' @param rh numeric Air Relative humidity.
 #' @param wind numeric Windspeed in meters per second.
 #' @param tr  numeric  Mean radiant temperature in degC.
 #' @return UTCI index n degC

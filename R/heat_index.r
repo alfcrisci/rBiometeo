@@ -3,7 +3,7 @@
 #' Calculate the heat index following the NOAA scheme.
 #'
 #' @param t numeric Air temperature in degC.
-#' @param rh numeric Relative humidity in percentage (%).
+#' @param rh numeric Relative humidity in percentage.
 #' @return heat index in degC.
 #'
 #'

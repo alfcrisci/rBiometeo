@@ -5,7 +5,7 @@
 #' @param t numeric    Air temperature in degC.
 #' @param rh numeric   Relative humidity in percentage.
 #' @param wind numeric Windspeed in meter per second.
-#' @param trad numeric Mean radiant temperature in degC.
+#' @param tr numeric Mean radiant temperature in degC.
 #' @param M numeric    Metabolic work in Watt per mq of the subject.
 #' @param W   numeric  Mechanical work rate in Watt per mq of the subject.
 #' @param clo numeric  Available basic clothing insulation in clo.
@@ -22,15 +22,15 @@
 #'
 #'
 
-IREQ=function(t,rh,v,tr,M,W,Icl,p,w,param="IREQ_neutral") {
+IREQ=function(t,rh,wind,tr,M,W,clo,p,w,param="IREQ_neutral") {
                          if ( length(param)==1) {param=rep(param,length(t))}
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
-                         ct$assign("v", as.array(v))
+                         ct$assign("v", as.array(wind))
                          ct$assign("Tr", as.array(tr))
                          ct$assign("M", as.array(M))
                          ct$assign("W", as.array(W))
-                         ct$assign("Icl", as.array(Icl))
+                         ct$assign("Icl", as.array(clo))
                          ct$assign("p", as.array(p))
                          ct$assign("w", as.array(w))
                          ct$assign("param", as.array(param))

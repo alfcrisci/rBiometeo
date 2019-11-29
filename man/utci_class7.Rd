@@ -9,14 +9,14 @@ utci_class7(t, rh, wind, tmrt)
 \arguments{
 \item{t}{numeric  Air temperature in degC}
 
-\item{rh}{numeric  Air Relative humidity in percentage (%)}
+\item{rh}{numeric  Air Relative humidity in percentage.}
 
 \item{wind}{numeric  Wind speed in meters per second}
 
 \item{tmrt}{numeric  Mean radiant temperature in degC.}
 }
 \value{
-UTCI class.
+UTCI
 }
 \description{
 Calculate 7-fold thermal classe by using value of  Universal Thermal Climate Index  UTCI index.

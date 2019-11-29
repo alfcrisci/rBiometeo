@@ -14,6 +14,8 @@ sun_data(datetime, lat, lon, parameter = "azimuth", tz = "GMT")
 \item{lon}{numeric           Longitude in decimal degrees}
 
 \item{parameter}{character    Six solar parameter are available by name "azimuth","zenith","solarZenith","elevation","declination"or "JD"}
+
+\item{tz}{character           time zone.}
 }
 \value{
 value of parameter indicated

@@ -3,7 +3,7 @@
 #' Computes the oxford index of thermal discomfort. 
 #'
 #' @param t numeric Air temperature in degC.
-#' @param rh numeric Relative humidity in percentage (%).
+#' @param rh numeric Relative humidity in percentage.
 #' @param wind numeric Windspeed in meters per second.
 #' @param pair numeric Air pressure in hPa.
 #' @return 

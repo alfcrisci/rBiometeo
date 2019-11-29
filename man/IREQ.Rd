@@ -4,28 +4,28 @@
 \alias{IREQ}
 \title{IREQ}
 \usage{
-IREQ(t, rh, v, tr, M, W, Icl, p, w, param = "IREQ_neutral")
+IREQ(t, rh, wind, tr, M, W, clo, p, w, param = "IREQ_neutral")
 }
 \arguments{
 \item{t}{numeric    Air temperature in degC.}
 
 \item{rh}{numeric   Relative humidity in percentage.}
 
+\item{wind}{numeric Windspeed in meter per second.}
+
+\item{tr}{numeric Mean radiant temperature in degC.}
+
 \item{M}{numeric    Metabolic work in Watt per mq of the subject.}
 
 \item{W}{numeric  Mechanical work rate in Watt per mq of the subject.}
+
+\item{clo}{numeric  Available basic clothing insulation in clo.}
 
 \item{p}{numeric   Air permeability of clothing ensemble lt on meters per second.}
 
 \item{w}{numeric   Walking speed in meters per second.}
 
 \item{param}{character Parameter of IREQ ISO 11079: "IREQ_neutral","IREQ_min","ICL_neutral","ICL_min","DLE_neutral","DLE_min","ICL_ISO11079"}
-
-\item{wind}{numeric Windspeed in meter per second.}
-
-\item{trad}{numeric Mean radiant temperature in degC.}
-
-\item{clo}{numeric  Available basic clothing insulation in clo.}
 }
 \value{
 IREQ value

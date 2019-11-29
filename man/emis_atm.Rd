@@ -4,12 +4,12 @@
 \alias{emis_atm}
 \title{emis_atm}
 \usage{
-emis_atm(t, rh)
+emis_atm(tk, rh)
 }
 \arguments{
-\item{rh}{numeric Relative humidity (%).}
-
 \item{tk}{numeric Air temperature in degK.}
+
+\item{rh}{numeric Relative humidity in percentage.}
 }
 \value{
 

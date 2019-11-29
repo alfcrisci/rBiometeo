@@ -9,9 +9,9 @@ wbdt(t, rh, pair = 1010)
 \arguments{
 \item{t}{numeric Air temperature in degC.}
 
-\item{rh}{numeric Relative humidity in percentage (%).}
+\item{rh}{numeric Relative humidity in percentage.}
 
-\item{wind}{numeric Mean Wind speed in meters per second.}
+\item{pair}{numeric Mean Wind speed in meters per second.}
 }
 \value{
 Wet-bulb dry temperature in degC.

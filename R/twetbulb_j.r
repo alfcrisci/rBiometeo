@@ -2,9 +2,8 @@
 #'
 #' Estimating wet bulb temperature following  empirical equation given by Jeevananda, 1976.
 #'
-#' @param numeric t Air temperature in degC.
-#' @param numeric rh Air Relative humidity in percentage (%).
-#' @param numeric pair Air Pressure in hPa. Default is 1010.
+#' @param t numeric Air temperature in degC.
+#' @param pair numeric Air Pressure in hPa. Default is 1010.
 #' @return wet bulb temperature
 #'
 #'

@@ -4,13 +4,13 @@
 \alias{PVS}
 \title{PVS}
 \usage{
-PVS(T)
+PVS(t)
 }
 \arguments{
-\item{t}{numeric Air temperature in degC}
+\item{t}{numeric Air temperature in degC.}
 }
 \value{
-Saturaion vapor pressure (hPa)
+Saturaion vapor pressure (hPa).
 }
 \description{
 Broad range formula to estimate saturation vapor pressure.

@@ -287,6 +287,7 @@ Date.prototype.getDOY = function() {
     return dayOfYear;
 };
 
+/**
 String.prototype.toDate = function(format)
 {
   var normalized      = this.replace(/[^a-zA-Z0-9]/g, '-');
@@ -313,6 +314,7 @@ String.prototype.toDate = function(format)
 
   return new Date(year,month,day,hour,minute,second);
 };
+*/
 
 function getDOY(datetime) 
 {
@@ -321,7 +323,7 @@ function getDOY(datetime)
 }
 
 function toJulian(date) 
-{ return date.valueOf() / (1000 *60*60 * 24) -0.5 + J1970; }  // è il calcolo JD corretto.
+ { return date.valueOf() / (1000 *60*60 * 24) -0.5 + J1970; }  
 
 function fromJulian(j)  
 { return new Date((j + 0.5 - J1970) * (1000 *60*60 * 24)); } 
@@ -3019,9 +3021,7 @@ function ral_unacclimatized(met) {
      return(59.9-(14.1*getBaseLog(10,met)));
 }
 
-
-
-          
+         
           
 /**
  * Given  WBGT returns heat risk level in italian language by using a treshshold.
@@ -3030,17 +3030,18 @@ function ral_unacclimatized(met) {
  * @return {number}
  */
 
+
 function heat_risk_text_level(wbgt,cav,tresh)  { 
                                                if ( tresh === undefined) {tresh = 28.5 };
                                                var risk= (wbgt+cav)/tresh;
                                                var level_list=["NON SIGNIFICATIVO","BASSO","MODERATO","ALTO"];  
-                                               var class;
-                                               if    ( risk <= 0.8)        {  class = 0;} 
-                                                     else if (risk <= 1)   {  class = 1;} 
-                                                     else if (risk <= 1.2) {  class = 2;} 
-                                                     else                  {  class = 3};
+                                               var classes;
+                                               if    ( risk <= 0.8)        {  classes = 0;} 
+                                                     else if (risk <= 1)   {  classes = 1;} 
+                                                     else if (risk <= 1.2) {  classes = 2;} 
+                                                     else                  {  classes = 3};
                                               
-                                               return(level_list[class]);           
+                                               return(level_list[classes]);           
                                               }
 
 /**
@@ -3054,13 +3055,13 @@ function heat_risk_text_level_eng(wbgt,cav,tresh)  {
                                                if ( tresh === undefined) {tresh = 28.5};
                                                var risk= (wbgt+cav)/tresh;
                                                var level_list=["NOT SIGNIFICANT","LOW","MODERATE","HIGH"];  
-                                               var class;
-                                               if    ( risk <= 0.8)        {  class = 0;} 
-                                                     else if (risk <= 1)   {  class = 1;} 
-                                                     else if (risk <= 1.2) {  class = 2;} 
-                                                     else                  {  class = 3};
+                                               var classes;
+                                               if    ( risk <= 0.8)        {  classes = 0;} 
+                                                     else if (risk <= 1)   {  classes = 1;} 
+                                                     else if (risk <= 1.2) {  classes = 2;} 
+                                                     else                  {  classes = 3};
                                               
-                                               return(level_list[class]);           
+                                               return(level_list[classes]);           
                                               }
 
 /**
@@ -3080,12 +3081,12 @@ function heat_risk_color_level(wbgt,cav,tresh)    {
                                                if ( tresh === undefined) {tresh = 28.5 };
                                                var risk= (wbgt+cav)/tresh;
                                                var colorcode_list=["green","yellow","orange","red"]; 
-                                                  var class;
-                                               if    ( risk <= 0.8)        {  class = 0;} 
-                                                     else if (risk <= 1)   {  class = 1;} 
-                                                     else if (risk <= 1.2) {  class = 2;} 
-                                                     else                  {  class = 3};
-                                               return(colorcode_list[class]);           
+                                               var classes;
+                                               if    ( risk <= 0.8)        {  classes = 0;} 
+                                                     else if (risk <= 1)   {  classes = 1;} 
+                                                     else if (risk <= 1.2) {  classes = 2;} 
+                                                     else                  {  classes = 3};
+                                               return(colorcode_list[classes]);           
                                               }
 
 /**
@@ -3102,15 +3103,14 @@ function heat_risk_hexrgb_level(wbgt,cav,tresh)    {
                                                if ( tresh === undefined) {tresh = 28.5};
                                                var risk= (wbgt+cav)/tresh;
                                                var colorcode_hex=["#00ff00","#ffff00","#ffa500","#ff0000"];
-                                               var class;
-                                   
-                                               if    ( risk <= 0.8)        {  class = 0;} 
-                                                     else if (risk <= 1)   {  class = 1;} 
-                                                     else if (risk <= 1.2) {  class = 2;} 
-                                                     else                  {  class = 3};
-
-
-                                               return(colorcode_hex[class]);           
+                                               var classes;
+                                               var classes;
+                                               if    ( risk <= 0.8)        {  classes = 0;} 
+                                                     else if (risk <= 1)   {  classes = 1;} 
+                                                     else if (risk <= 1.2) {  classes = 2;} 
+                                                     else                  {  classes = 3};
+                                               return(colorcode_hex[classes]);        
+          
                                               }
 
 /**
@@ -3656,4 +3656,3 @@ function kmh2fts(kmh)
 }
   
 
-///////////////////////////////////////////////////////////////////////////////////////

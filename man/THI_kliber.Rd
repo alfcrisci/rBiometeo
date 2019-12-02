@@ -18,5 +18,5 @@ thi index
 Calculate Temperature Humidity Index following Kliber equantions. Adopted by Sardinia ARPA.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }

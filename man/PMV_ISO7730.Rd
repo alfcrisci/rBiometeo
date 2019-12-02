@@ -22,12 +22,12 @@ PMV_ISO7730(t, rh, wind, tr, M, W, clo)
 \item{clo}{numeric  Available basic clothing insulation in clo.}
 }
 \value{
-
+Predicted Mean Vote
 }
 \description{
 Calculate Predicted Mean Vote (PMV) following ISO 7730.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia Firenze CNR Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{PMV_ISO7730}

@@ -5,12 +5,10 @@
 #' @param wbgt numeric Wetbulb globe temperature index in degC
 #' @param cav numeric Clothing adjusted value due to worker clothing ensemble
 #' @param tresh numeric treshshold for heat risk in degC ( RAL or REL)
+#' @return level risk by color name in ENG.
 #'
-#' @return 
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #'
-#' @author Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#'
-#' @keywords  
 #' @export
 #'
 #'

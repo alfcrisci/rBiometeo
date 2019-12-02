@@ -7,19 +7,18 @@
 heat_risk_hexrgb_level(wbgt, cav, tresh)
 }
 \arguments{
-\item{wbgt}{numeric Wetbulb globe temperature index in degC}
+\item{wbgt}{numeric Wetbulb globe temperature index in degC.}
 
-\item{cav}{numeric Clothing adjusted value due to worker clothing ensemble}
+\item{cav}{numeric Clothing adjusted value due to worker clothing ensemble.}
 
-\item{tresh}{numeric treshshold for heat risk in degC ( RAL or REL)}
+\item{tresh}{numeric treshshold for heat risk in degC ( RAL or REL).}
 }
 \value{
-
+hex code of color codes heat warning
 }
 \description{
 Calculate the heat risk level for worker by using color codes returning hex code.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
-\keyword{}

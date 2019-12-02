@@ -16,7 +16,7 @@ utci_class(t, rh, wind, tmrt)
 \item{tmrt}{numeric  Mean radiant temperature in degC.}
 }
 \value{
-UTCI class.
+UTCI class
 }
 \description{
 Calculate the (10-fold) thermal class of Universal Thermal Climate Index ( UTCI) index.
@@ -25,6 +25,6 @@ Calculate the (10-fold) thermal class of Universal Thermal Climate Index ( UTCI)
 Brode P, Jendritzky G , Fiala D and Havenith G , 2011, The Universal Thermal Climate Index UTCI in Operational Use".International Journal of Biometeorology.
 }
 \author{
-Istituto di Biometeorologia Firenze Italy  Alfonso Crisci \email{a.crisci@ibimet.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{UTCI}

@@ -10,12 +10,12 @@ mbtommHG(mb)
 \item{mb}{numeric   Air pressure in Millibar [hPa].}
 }
 \value{
-
+mmHG
 }
 \description{
 Conversion from Millibar [hPa] to mmHG.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{mbtommHG}

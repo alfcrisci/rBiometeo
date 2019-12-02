@@ -5,7 +5,7 @@
 #' @param F numeric Temperature in Fahrenheit degrees (degF)
 #' @return Celsius degrees
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  F2C 
 #' 
 #' @export

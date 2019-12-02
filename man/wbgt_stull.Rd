@@ -16,7 +16,7 @@ wbgt_stull(t, rh, tg, pair = 1010)
 \item{pair}{numeric Air Pressure in hPa. Default is 1010.}
 }
 \value{
-
+wbgt  in degC
 }
 \description{
 Calculate wet bulb globe temperature index for outdoor environements 
@@ -24,5 +24,5 @@ by using Stull formulation by using air temperature in degC ,relative humidity ,
 globometric temperature in degC and air pressure in hPa.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }

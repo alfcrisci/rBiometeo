@@ -18,13 +18,13 @@ steadman_outdoor_sun(t, rh, wind, rshort, sunelev)
 \item{sunelev}{numeric Sun elevation in degrees.}
 }
 \value{
-
+steadman outdoor index
 }
 \description{
 Computes Steadman's apparent temperature under sunny outdoor conditions.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{Apparent}
 \keyword{Sunny}

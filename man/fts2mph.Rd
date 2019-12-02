@@ -10,12 +10,12 @@ fts2mph(fts)
 \item{fts}{numeric  Speed in feets per second.}
 }
 \value{
-
+miles per hour
 }
 \description{
-Conversion from feet per second to mile per hour.
+Conversion from feet per second to miles per hour.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{fts2mph}

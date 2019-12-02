@@ -9,11 +9,10 @@
 #' @param rh numeric Relative humidity in percentage.
 #' @param tg numeric Solar Radiation Radiance in Watt/mq.
 #' @param pair numeric Air Pressure in hPa. Default is 1010.
-#' 
-#' @return 
+#' @return wbgt  in degC
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' 
 #' @export
 #'

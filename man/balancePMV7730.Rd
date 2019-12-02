@@ -12,12 +12,12 @@ balancePMV7730(pmv, M)
 \item{M}{numeric Metabolism of the person (met).}
 }
 \value{
-
+balancePMV7730 in W/mq
 }
 \description{
 Calculate the thermal balance of the body in W/mq.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{balancePMV7730}

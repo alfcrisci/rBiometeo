@@ -4,10 +4,10 @@
 #'
 #' @param p numeric  Water pressure in hPa.
 #' @param pair numeric Air pressure in hPa.
-#' @return 
+#' @return humidity ratio
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  humrat 
 #' 
 #' @export

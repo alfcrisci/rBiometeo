@@ -3,11 +3,11 @@
 #' Calculate the partial pressure of oxygen in function of altitude.
 #'
 #' @param t numeric Air temperature in degC.
-#' @param rh numeric Air Relative humidity in percentage (5).
-#' @param pair numeric  Local air pressure in hPa.
-#' @return 
+#' @param rh numeric Air Relative humidity in percentage.
+#' @param pair numeric Local air pressure in hPa.
+#' @return partial pressure of oxygen
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  poda, oxygen, altitude.
 #' 
 #' @export

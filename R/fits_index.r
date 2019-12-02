@@ -6,9 +6,9 @@
 #' @param rh numeric Relative humidity in percentage.
 #' @param wind numeric Windspeed in meters per second.
 #' @param pair numeric Air pressure in hPa.
-#' @return 
+#' @return fits index
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @references Nunneley SH, Stribley F, 1979, Fighter index of thermal stress FITS  guidance for hot-weather aircraft operations.Aviat Space Environ Med 50, 639 42.
 #' @export
 #'

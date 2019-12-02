@@ -12,7 +12,7 @@ deficitsat(t, rh)
 \item{rh}{numeric Relative humidity in percentage.}
 }
 \value{
-
+deficit of saturation
 }
 \description{
 Computes saturation deficit in hPa. This is air dryness evaluation.

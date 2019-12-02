@@ -3,10 +3,10 @@
 #' Conversion speed in  miles per hour to kilometers per hour. 
 #'
 #' @param mph numeric  Speed miles per hour.
-#' @return 
+#' @return kilometers per hour
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  mph2kmh 
 #' 
 #' @export

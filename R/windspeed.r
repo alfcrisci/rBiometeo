@@ -4,9 +4,9 @@
 #' 
 #' @param u numeric U zonal component (m/s), 
 #' @param v numeric V meridian component (m/s), 
-#' @return 
+#' @return wind speed (m/s)
 #'
-#' @author   Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords Scaler speed wind
 #' 
 #' 

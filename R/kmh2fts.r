@@ -1,13 +1,12 @@
 #' kmh2fts
 #'
-#' Conversion from kilometer per hour to feet per second.
+#' Conversion from kilometer per hour to feets per second.
 #'
 #' @param kmh numeric  Speed in kilometer per hour.
-#' @return 
+#' @return  feets per second
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  kmh2fts 
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' 
 #' @export
 #'

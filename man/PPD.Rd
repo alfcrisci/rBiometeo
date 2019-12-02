@@ -10,7 +10,7 @@ PPD(PMV)
 \item{PMV}{numeric Predicted Mean Vote.}
 }
 \value{
-
+Predicted Percentage of Dissatisfied
 }
 \description{
 Predicted Percentage of Dissatisfied (PPD) predicts the percentage of occupants that will be dissatisfied with the thermal conditions.
@@ -19,6 +19,6 @@ Predicted Percentage of Dissatisfied (PPD) predicts the percentage of occupants 
 UNI EN ISO 7730.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{PPD}

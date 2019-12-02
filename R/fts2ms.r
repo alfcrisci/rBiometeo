@@ -1,12 +1,12 @@
 #' fts2ms
 #'
-#' Conversion from feet per second to meter per second.
+#' Conversion from feet per second to meters per second.
 #'
 #' @param fts numeric  Speed in feets per second.
-#' @return 
+#' @return meters per second
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  fts2ms 
 #' 
 #' @export

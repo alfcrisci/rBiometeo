@@ -7,15 +7,15 @@
 knots2fts(knots)
 }
 \arguments{
-\item{knots}{numeric  Speed in knot per second.}
+\item{knots}{numeric  Speed in knots per second.}
 }
 \value{
-
+feets per second
 }
 \description{
-Conversion from knot per second to feet per second.
+Conversion from knots per second to feets per second.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{knots2fts}

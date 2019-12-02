@@ -14,7 +14,7 @@ net_index(t, rh, wind)
 \item{wind}{numeric Windspeed in meters per second.}
 }
 \value{
-
+Net Effective Temperature
 }
 \description{
 Calculate the Net Effective Temperature (NET) incorporating ambient temperature in degC , wind speed (m/s), and relative humidity (%). It is used in  hot and cold situations.
@@ -23,5 +23,5 @@ Calculate the Net Effective Temperature (NET) incorporating ambient temperature 
 Cho KLA, Margaret Loughnan M, and Tapper T, 2013, An Exploration of Temperature Metrics for Further Developing the Heat-Health Weather Warning System in Hong Kong.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}#' @keywords  net_index
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }

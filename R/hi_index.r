@@ -4,10 +4,10 @@
 #'
 #' @param t   numeric Air temperature in degC.
 #' @param rh  numeric Relative humidity in percentage.
-#' @return 
+#' @return hi_index
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  hi_index 
 #' @references Hill et al,2004, Indices of environmental temperatures for primates in open habitats. 
 #' @export

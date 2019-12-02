@@ -10,12 +10,12 @@ mph2ms(mph)
 \item{mph}{numeric  Speed miles per hour.}
 }
 \value{
-
+meters per second
 }
 \description{
-Conversion miles per hour in meter per second.
+Conversion miles per hour in meters per second.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{mph2ms}

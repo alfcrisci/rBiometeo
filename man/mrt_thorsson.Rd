@@ -16,7 +16,7 @@ mrt_thorsson(t, tg, wind, diam)
 \item{diam}{numeric diameter of the sphere in millimeter. Input example 50 mm.}
 }
 \value{
-Mean Radiant temperature in degC.
+Mean Radiant temperature in degC
 }
 \description{
 Calculated the mean radiant temperature from the solar radiation.  Modified based on direct and diffuse ratio. Assumes a uniform surround temperature of Ta && short wave solar radiation only;
@@ -25,6 +25,6 @@ Calculated the mean radiant temperature from the solar radiation.  Modified base
 Thorsson et al, Different methods for estimating the mean radiant temperature in an outdoor urban setting, Int. J. Climatol.27  1983   1993 (2007)
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{MRT}

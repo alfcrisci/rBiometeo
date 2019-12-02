@@ -10,7 +10,7 @@ degtorad(angledeg)
 \item{angledeg}{numeric Angle in decimal degrees.}
 }
 \value{
-
+Angle in radians
 }
 \description{
 Conversion angles from decimal degrees to radians.

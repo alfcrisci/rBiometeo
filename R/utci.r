@@ -8,7 +8,7 @@
 #' @param tr  numeric  Mean radiant temperature in degC.
 #' @return UTCI index n degC
 #' @references Brode P, Jendritzky G, Fiala D and Havenith G, 2011, The Universal Thermal Climate Index UTCI in Operational Use, International Journal of Biometeorology.
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author  Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  UTCI 
 #' 
 #' @export

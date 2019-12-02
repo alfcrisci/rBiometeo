@@ -11,9 +11,9 @@
 #' @param clo numeric  Available basic clothing insulation in clo.
 #' @param p  numeric   Air permeability of clothing ensemble lt on meters per second.
 #' @param w  numeric   Walking speed in meters per second.
-#' @return RT
+#' @return  Required Recovery Time
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @author  Ingvar Holmer. R adaptation Istituto di Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' @keywords Recovery Time. 
 #' @references ISO 11079, 2007-12-15, ERGONOMICS OF THE THERMAL ENVIRONMENT - DETERMINATION AND INTERPRETATION OF COLD STRESS WHEN USING REQUIRED CLOTHING INSULATION (IREQ) AND LOCAL COOLING EFFECTS.

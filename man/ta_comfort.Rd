@@ -18,12 +18,12 @@ ta_comfort(rh, wind, M, iclo, H)
 \item{H}{numeric    Timimg in hours.}
 }
 \value{
-
+comfort temperature in degC
 }
 \description{
 Calculate the temperature of thermal comfort requireed given other parameters and timing in hours.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{ta_comfort}

@@ -6,10 +6,10 @@
 #' @param rh numeric Relative humidity in percentage.
 #' @param wind numeric Windspeed in meters per second.
 #' @param pair numeric Air pressure in hPa.
-#' @return 
+#' @return oxford index
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  oxford_index 
 #' @references  Lind AR, Hallon RF,1957, Assessment of physiologic severity of hot climate. J Appl Physiol 11, 35 40.
 #' @export

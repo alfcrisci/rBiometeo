@@ -5,10 +5,10 @@
 #' @param t numeric Air temperature in degC.
 #' @param rh numeric Relative humidity in percentage.
 #' @param wind numeric Windspeed in meters per second.
-#' @return 
+#' @return Net Effective Temperature
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}#' @keywords  net_index 
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @references Cho KLA, Margaret Loughnan M, and Tapper T, 2013, An Exploration of Temperature Metrics for Further Developing the Heat-Health Weather Warning System in Hong Kong.
 #' @export
 #'

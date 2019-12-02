@@ -12,13 +12,13 @@ lost_productivity(wbgt, tresh)
 \item{tresh}{numeric treshshold for loss in degC}
 }
 \value{
-BSA index
+percentage of productivity lost
 }
 \description{
 Calculate the percentage in worker's lost productivity due to heat conditions.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{Area}
 \keyword{Body}

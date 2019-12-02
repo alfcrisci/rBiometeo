@@ -1,13 +1,13 @@
 #' ssi_index
 #'
-#' Calculate Summer Simmer index developed in Canada.
+#' Calculate Summer Simmer index developed in Canada for heat.
 #'
-#' @param t numeric Air temperature in Celsius degrees.
+#' @param t numeric Air temperature in degC.
 #' @param rh numeric Relative humidity in percentage.
-#' @return Summer Simmer index in degC.
+#' @return Summer Simmer index in degC
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  SSI
 #' 
 #' @export

@@ -1,12 +1,12 @@
 #' fts2kmh
 #'
-#' Conversion speed in feet per second to kilometer per hour.
+#' Conversion speed in feet per second to kilometers per hour.
 #'
 #' @param fts numeric  Speed in feets per second.
-#' @return 
+#' @return kilometers per hour
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author  Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  fts2kmh 
 #' 
 #' @export

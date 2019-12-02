@@ -7,19 +7,19 @@
 spvol(t, hum_ratio, pair)
 }
 \arguments{
-\item{t}{numeric Air temperature in degC}
+\item{t}{numeric Air temperature in degC.}
 
-\item{hum_ratio}{numeric Humidity ratio}
+\item{hum_ratio}{numeric Humidity ratio.}
 
-\item{pair}{numeric Air pressure in (hPa)}
+\item{pair}{numeric Air pressure in (hPa).}
 }
 \value{
-Specific volume.
+Specific volume
 }
 \description{
 Gets the specific volume of air/water vapor mixture [m^3/kg].
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{spvol}

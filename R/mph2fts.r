@@ -1,12 +1,12 @@
 #' mph2fts
 #'
-#' Conversion speed in  miles per hour to feet per second. 
+#' Conversion speed in  miles per hour to feets per second. 
 #'
 #' @param mph numeric  Speed miles per hour.
-#' @return 
+#' @return feets per second
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  mph2fts 
 #' 
 #' @export

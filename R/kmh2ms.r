@@ -1,12 +1,12 @@
 #' kmh2ms
 #'
-#' Conversion from kilometer per hour to meter per second.
+#' Conversion from kilometers per hour to meters per second.
 #'
 #' @param kmh numeric  Speed kilometer per hour.
-#' @return 
+#' @return meters per second
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  kmh2ms 
 #' 
 #' @export

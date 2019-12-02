@@ -21,6 +21,6 @@ Compute natural wetbulb temperature by using Stull empirical formulation
 Stull, R.B., 2011, Meteorology for Scientists and Engineers, 3rd Edition. 938 pages.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{wetbulb}

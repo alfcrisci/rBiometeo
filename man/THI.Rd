@@ -12,13 +12,13 @@ THI(t, rh)
 \item{rh}{numeric Relative humidity in percentage.}
 }
 \value{
-
+Temperature Humidity Index discomfort
 }
 \description{
 Given air temperature (Celsius), relative humidity  gives Temperature Humidity Index discomfort. Giles (1990).
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{Humidity}
 \keyword{Index}

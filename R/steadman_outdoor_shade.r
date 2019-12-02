@@ -6,7 +6,7 @@
 #' @param rh numeric    Relative humidity in percentage.
 #' @param wind numeric  Wind speed in meters per second.
 #' @return Apparent temperature index.
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  Steadman, outdoor, shade, apparent temperature.
 #' 
 #' @export

@@ -16,13 +16,13 @@ mrt_globe(t, tg, wind, diam)
 \item{diam}{numeric diameter of the sphere in millimeters. Input example 50 mm.}
 }
 \value{
-Mean Radiant temperature in degC.
+Mean Radiant temperature in degC
 }
 \description{
 Given air temperature , the globe Temeperature, the wind speed and diameter mean radiant temperature is done according ISO 7726 1998.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{globe}
 \keyword{temperature}

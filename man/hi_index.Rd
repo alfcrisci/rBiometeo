@@ -12,7 +12,7 @@ hi_index(t, rh)
 \item{rh}{numeric Relative humidity in percentage.}
 }
 \value{
-
+hi_index
 }
 \description{
 Given air temperature (Celsius), relative humidity  gives a heat stress index in Celsius degree for primates animals.
@@ -21,6 +21,6 @@ Given air temperature (Celsius), relative humidity  gives a heat stress index in
 Hill et al,2004, Indices of environmental temperatures for primates in open habitats.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{hi_index}

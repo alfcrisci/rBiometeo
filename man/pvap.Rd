@@ -7,7 +7,7 @@
 pvap(t, rh)
 }
 \arguments{
-\item{t}{numeric Air temperature in Celsius degrees.}
+\item{t}{numeric Air temperature in degC.}
 
 \item{rh}{numeric Relative humidity in percentage.}
 }
@@ -18,7 +18,7 @@ vapour pressure in hPa.
 Vapour pressure estimate from relative humidity.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{pressure}
 \keyword{vapour}

@@ -42,12 +42,12 @@ wetbulb(
 \item{prec}{numeric      Precision of outcomes.Default is 0.01.}
 }
 \value{
-
+natural wetbulb in degC
 }
 \description{
 This function calculate the natural wetbulb temperature.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{wetbulb}

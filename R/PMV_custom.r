@@ -8,13 +8,13 @@
 #' @param tr numeric Mean radiant temperature in degC.
 #' @param clo numeric  Available basic clothing insulation in clo.
 #' @param age numeric Age in years.
-#' @param mbody numeric     Body Mass in kg. 
-#' @param ht numeric       Heigth of subject in meters.
+#' @param mbody numeric   Body Mass in kg. 
+#' @param ht numeric Heigth of subject in meters.
 #' @param gender character Sex of the subject. Default is "male".
-#' @return 
+#' @return Predicted Mean Vote customized
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author  Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords PMV_custom 
 #' 
 #' @export

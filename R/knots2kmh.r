@@ -1,12 +1,12 @@
 #' knots2kmh
 #'
-#' Conversion from knot per second to kilometer per hour.
+#' Conversion from knot per second to kilometers per hour.
 #'
 #' @param knots numeric  Speed in knots per second.
-#' @return 
+#' @return kilometers per hour
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  knots2kmh 
 #' 
 #' @export

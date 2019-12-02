@@ -5,7 +5,7 @@
 #' @param t numeric  Air temperature in Celsius degrees.
 #' @param rh numeric  Relative humidity in percentage.
 #' @return thi index
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' 
 #' @export
 #'

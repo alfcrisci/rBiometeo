@@ -9,7 +9,7 @@
 #' @return mdi_index 
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  mdi_index 
 #' @references Moran DS, Shitzer A, Pandolf KB , 1998, A physiological strain index to evaluate heat stress. Am J Physiol 275, R 129 34.
 #'  

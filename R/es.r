@@ -8,7 +8,7 @@
 #' @return Saturation Vapor Pressure in hPa.
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  air saturation 
 #' @references Proceedings of Third International Symposium on Humidity and Moisture. National Physical Laboratory (NPL), London, 1998, pp. 214-221 \url{http://www.thunderscientific.com/tech_info/reflibrary/its90formulas.pdf}
 #' @export

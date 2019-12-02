@@ -12,7 +12,7 @@ sharlau_index_delta(t, rh)
 \item{rh}{numeric Relative humidity in percentage.}
 }
 \value{
-
+sharlau_index_delta
 }
 \description{
 Computes the critical sharlau delta.
@@ -21,6 +21,6 @@ Computes the critical sharlau delta.
 Scharlau, K., 1950, Einfuhrung eines Schwulemasstabes und Abgrenzung von Schwulezonen durch Isohygrothermen, Erdkunde, 4, 188 201.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{sharlau_index_delta}

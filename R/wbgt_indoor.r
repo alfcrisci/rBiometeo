@@ -7,10 +7,10 @@
 #' @param wind numeric Mean Wind speed in meters per second.
 #' @param pair numeric Air pressure in millibar or hPa. Default 1010 hPa.
 #' @param elev numeric Elevation in meters on sea level. Default is 0.
-#' @return 
+#' @return wbgt for indoor in degC
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  wbgt_indoor 
 #' 
 #' @export

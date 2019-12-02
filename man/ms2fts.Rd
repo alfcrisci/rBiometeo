@@ -10,10 +10,10 @@ ms2fts(ms)
 \item{ms}{Speed numeric   in meters per second [m/s].}
 }
 \value{
-
+feets per second
 }
 \description{
-Conversion speed meter per second in feet per second.
+Conversion speed meter per second in feets per second.
 }
 \author{
 Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}

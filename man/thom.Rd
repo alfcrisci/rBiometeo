@@ -16,7 +16,7 @@ thom(t, rh, wind = 0.2, pair = 1010)
 \item{pair}{numeric Air Pressure in hPa. Default is 1010.}
 }
 \value{
-thom
+thom index in degC
 }
 \description{
 Calculate Thom discomfort index by using wet bulb temperature estimation.
@@ -25,5 +25,5 @@ Calculate Thom discomfort index by using wet bulb temperature estimation.
 Thom, E.C. 1959 The discomfort index. Weatherwise, 12, 57,60
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }

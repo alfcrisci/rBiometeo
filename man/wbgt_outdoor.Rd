@@ -44,14 +44,14 @@ wbgt_outdoor(
 \value{
 globe temperature in degC
 
-wbgt index in degC.
+wbgt for outdoor/sunny conditions in degC
 }
 \description{
 Calculate wet bulb globe temperature index for outdoor environements by using solar radiation.
 Pressure correction follow
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{outdoor}
 \keyword{wbgt}

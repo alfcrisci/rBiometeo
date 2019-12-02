@@ -4,10 +4,10 @@
 #'
 #' @param pmv numeric Predicted Mean Vote Fanger following ISO 7730. 
 #' @param M numeric Metabolism of the person (met).
-#' @return 
+#' @return balancePMV7730 in W/mq
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  balancePMV7730 
 #' 
 #' @export

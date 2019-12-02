@@ -7,10 +7,10 @@
 #' @param elev numeric          Sun elevation in decimal degrees.
 #' @param planezen numeric      Zenital angles of the plane.
 #' @param planeaz numeric       Azimuthal angles of the plane.
-#' @return 
+#' @return incident tilted radiation
 #' 
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  Tilted radiation. 
 #' 
 #' @export

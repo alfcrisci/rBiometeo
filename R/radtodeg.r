@@ -3,10 +3,10 @@
 #' Conversion angles from radians of an angle in decimal degrees 
 #'
 #' @param anglerad  numeric  Angle in radiands.
-#' @return angledeg in degrees.
+#' @return angledeg in degrees
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  radtodeg 
 #' 
 #' @export

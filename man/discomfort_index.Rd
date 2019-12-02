@@ -25,5 +25,5 @@ Given t air temperature (degC), rh relative humidity , wind speed in meters per 
 Thom, E.C., 1959, The discomfort index. Weatherwise, 12, 57 60.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }

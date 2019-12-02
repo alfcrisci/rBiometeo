@@ -19,7 +19,7 @@ Calculate the Human Body Projection Area factor in function to sun elevation.
 Jendritzky G (1990) Bioklimatische Bewertungsgrundlage der Raume am Beispiel von. 27 mesoskaligen Bioklimakarten.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{Area}
 \keyword{factor.}

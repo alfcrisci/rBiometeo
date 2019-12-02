@@ -20,6 +20,6 @@ Wet-bulb dry temperature in degC.
 Given t air temperature (Celsius), rh relative humidity (percentage)  gives  Wet-bulb dry temperature (WBDT).
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{WBDT}

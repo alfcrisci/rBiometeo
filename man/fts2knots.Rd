@@ -10,12 +10,12 @@ fts2knots(fts)
 \item{fts}{numeric  Speed in feets per second.}
 }
 \value{
-
+knots per second
 }
 \description{
-Conversion from feet per second to knot per second.
+Conversion from feet per second to knots per second.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{fts2knots}

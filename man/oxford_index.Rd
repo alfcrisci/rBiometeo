@@ -16,7 +16,7 @@ oxford_index(t, rh, wind = 0.2, pair = 1010)
 \item{pair}{numeric Air pressure in hPa.}
 }
 \value{
-
+oxford index
 }
 \description{
 Computes the oxford index of thermal discomfort.
@@ -25,6 +25,6 @@ Computes the oxford index of thermal discomfort.
 Lind AR, Hallon RF,1957, Assessment of physiologic severity of hot climate. J Appl Physiol 11, 35 40.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{oxford_index}

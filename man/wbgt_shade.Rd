@@ -20,13 +20,13 @@ wbgt_shade(t, rh, wind, solar = 10, pair = 1010, elev = 0)
 \item{elev}{numeric Elevation in meters on sea level. Default is 0.}
 }
 \value{
-
+wbgt for shade conditions in degC
 }
 \description{
 Calculate wet bulb globe temperature index for outdoor shaded environements.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{shade}
 \keyword{wbgt,}

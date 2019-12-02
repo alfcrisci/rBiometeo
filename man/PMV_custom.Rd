@@ -19,19 +19,19 @@ PMV_custom(t, rh, wind, tr, clo, age, mbody, ht, gender = "male")
 
 \item{age}{numeric Age in years.}
 
-\item{mbody}{numeric     Body Mass in kg.}
+\item{mbody}{numeric   Body Mass in kg.}
 
-\item{ht}{numeric       Heigth of subject in meters.}
+\item{ht}{numeric Heigth of subject in meters.}
 
 \item{gender}{character Sex of the subject. Default is "male".}
 }
 \value{
-
+Predicted Mean Vote customized
 }
 \description{
 Calculate Predicted Mean Vote (PMV) following ISO 7730 customizing some individual features.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{PMV_custom}

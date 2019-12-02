@@ -4,10 +4,10 @@
 #'
 #' @param tk numeric Air temperature in degK.
 #' @param rh numeric Relative humidity in percentage.
-#' @return 
+#' @return air emissivity 
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  emis_atm 
 #' 
 #' @export

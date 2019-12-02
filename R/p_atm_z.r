@@ -5,7 +5,7 @@
 #' @param z       numeric elevation/altitude (m).
 #' @param p_sl    numeric pressure at sea level, per weather report (hPa),Default 101235 Pa. 
 #'                         
-#' @author        Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @references    2005 ASHRAE Handbook - Fundamentals (SI) ch.6 (3)
 #' @return        numeric pressure (Pa)
 #' @export

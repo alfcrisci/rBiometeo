@@ -12,7 +12,7 @@ frostime(t, wind)
 \item{wind}{numeric the wind speed in meter per seconds [m/s].}
 }
 \value{
-
+time of frosting
 }
 \description{
 Given a temperature t (Celsius) and wind ( m/sec) frost time following Wind Chill Frostbite Chart.
@@ -21,6 +21,6 @@ Given a temperature t (Celsius) and wind ( m/sec) frost time following Wind Chil
 ISO 9920:2007 Ergonomics of the thermal environment -- Estimation of thermal insulation and water vapour resistance of a clothing ensemble.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{frostime}

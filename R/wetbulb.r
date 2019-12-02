@@ -13,10 +13,10 @@
 #' @param maxair numeric   Upper bound of search range referred to air temperature in degC. Default is 10.
 #' @param minair numeric   Lower bound of search range referred to air temperature in degC. Default is 10.
 #' @param prec numeric      Precision of outcomes.Default is 0.01. 
-#' @return 
+#' @return natural wetbulb in degC
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author  Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  wetbulb 
 #' @export
 #'

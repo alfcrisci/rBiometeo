@@ -10,12 +10,12 @@ isLeapYear(yr)
 \item{yr}{numeric Year.}
 }
 \value{
-
+boolean [0 - 1] indicate if year is leap
 }
 \description{
 Logical if the year indicated is a leap year.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{isLeapYear}

@@ -3,10 +3,10 @@
 #' Calculates  the viscosity of air [kg/(m s)] given air temperature in Kelvin degrees.
 #'
 #' @param tk numeric Air temperature in degK.
-#' @return viscosity
+#' @return air viscosity
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author  Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  viscosity 
 #' @references Oke T R, Boundary Layer Climate,Routledge Atmosphere, Weather and Climate, 2th edition, p.373.
 #' @export

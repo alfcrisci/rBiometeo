@@ -12,12 +12,12 @@ enthalpy(t, hum_ratio)
 \item{hum_ratio}{numeric Humidity ratio.}
 }
 \value{
-
+enthalpy
 }
 \description{
 Calculates the enthalpy of air/water vapor mixture [kJ/kg]. Inputs are dry-bulb temperature [degC] and humidity ratio [unitless].
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{enthalpy}

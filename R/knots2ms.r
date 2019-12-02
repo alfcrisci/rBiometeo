@@ -1,12 +1,12 @@
 #' knots2ms
 #'
-#' Conversion from feet per second to meter per second.
+#' Conversion from feet per second to meters per second.
 #'
 #' @param knots numeric  Speed in knots per second.
-#' @return 
+#' @return meters per second
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  knots2ms 
 #' 
 #' @export

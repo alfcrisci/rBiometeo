@@ -10,12 +10,11 @@ compass_8(direction)
 \item{direction}{numeric   Directions in degrees from the North.}
 }
 \value{
-
+sector character
 }
 \description{
 Calculate the  wind sector (8 partition)  provenience.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
-\keyword{compass_8}

@@ -4,10 +4,10 @@
 #'
 #' @param vp numeric pressure in torr.
 #' @param vpunits character  Units available are : "atm","bar","Pa","mbar" (default),"dyne/cm2" and "psi".
-#' @return 
+#' @return pressure fro torr
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  torr2p 
 #' 
 #' @export

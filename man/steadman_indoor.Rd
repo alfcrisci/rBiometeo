@@ -12,13 +12,13 @@ steadman_indoor(t, rh)
 \item{rh}{numeric  Relative humidity in percentage.}
 }
 \value{
-steadman_indoor
+steadman indoor index
 }
 \description{
 Computes Steadman's apparent temperature for indoor conditions where air movements are negligible.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{apparent}
 \keyword{steadman,}

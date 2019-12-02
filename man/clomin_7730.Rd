@@ -20,15 +20,11 @@ clomin_7730(t, rh, wind, tr, M, W)
 \item{W}{numeric    Mechanical work of subject in W/mq. Generally 0.}
 }
 \value{
-
+mimimal clothing insulation required
 }
 \description{
 Calculate minimal clothing insulation value required to reach thermal comfort in moderate thermal environments ( -0.5 < PMV <0.5) based on PMV ISO 7730.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
-\keyword{clothing}
-\keyword{insulation}
-\keyword{mimimal}
-\keyword{required}

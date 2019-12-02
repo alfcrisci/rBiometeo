@@ -287,7 +287,7 @@ Date.prototype.getDOY = function() {
     return dayOfYear;
 };
 
-/**
+
 String.prototype.toDate = function(format)
 {
   var normalized      = this.replace(/[^a-zA-Z0-9]/g, '-');
@@ -314,7 +314,7 @@ String.prototype.toDate = function(format)
 
   return new Date(year,month,day,hour,minute,second);
 };
-*/
+
 
 function getDOY(datetime) 
 {

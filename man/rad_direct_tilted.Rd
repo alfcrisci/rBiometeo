@@ -18,13 +18,13 @@ rad_direct_tilted(jddate, az, elev, planezen, planeaz)
 \item{planeaz}{numeric       Azimuthal angles of the plane.}
 }
 \value{
-
+incident tilted radiation
 }
 \description{
 Computed a incident tilted radiation for a inclinated (planezen) and orientated plane (planeaz).
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{Tilted}
 \keyword{radiation.}

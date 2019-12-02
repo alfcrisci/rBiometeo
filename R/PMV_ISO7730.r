@@ -9,10 +9,10 @@
 #' @param M numeric    Metabolic work in Watt per mq of the subject.
 #' @param W   numeric  Mechanical work rate in Watt per mq of the subject.
 #' @param clo numeric  Available basic clothing insulation in clo.
-#' @return 
+#' @return Predicted Mean Vote
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze CNR Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords PMV_ISO7730 
 #' 
 #' @export

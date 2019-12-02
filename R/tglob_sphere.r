@@ -18,7 +18,7 @@
 #' @param prec numeric      Precision of outcomes.Default is 0.01  
 #' @return globe temperature in degC
 #' 
-#' @author     Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @references Liljegren J, Carhart R, Lawday P, Tschopp S, Sharp R,2008, "Modeling Wet Bulb Globe Temperature using Standard Meteorological Measurements" Journal of Occupational and Environmental Hygiene 5, 645-655. 
 #' @keywords   Globometric temperature.
 #' 

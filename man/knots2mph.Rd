@@ -10,12 +10,12 @@ knots2mph(knots)
 \item{knots}{numeric  Speed in knots per second.}
 }
 \value{
-
+miles per hour
 }
 \description{
-Conversion from knot per second to mile per hour.
+Conversion from knots per second to miles per hour.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{knots2mph}

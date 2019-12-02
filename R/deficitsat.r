@@ -4,10 +4,10 @@
 #'
 #' @param t  numeric Air temperature in degC.
 #' @param rh numeric Relative humidity in percentage.
-#' @return 
+#' @return deficit of saturation
 #'
 #'
-#' @author     Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
 #' 
 #' @export
 #'

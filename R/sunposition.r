@@ -5,8 +5,9 @@
 #' @param  timenow   datetime    Datetime indicate in time format equivalent to "POSIXct" or "POSIXt" objects.
 #' @param  lat       numeric Latitude in decimal degrees.
 #' @param  long       numeric Longitude in decimal degrees.
+#' @return of  list containing sun position
 #' @references Mike Birdgeneau  \url{https://gist.github.com/mikebirdgeneau/e2dbdc8e9c45c1c2b7fc}
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' 
 #' 
 #' @export

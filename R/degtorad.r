@@ -3,7 +3,7 @@
 #' Conversion angles from decimal degrees to radians.
 #'
 #' @param angledeg numeric Angle in decimal degrees.
-#' @return 
+#' @return Angle in radians
 #'
 #'
 #' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

@@ -34,6 +34,6 @@ This denotes also the percent of skin wettedness, which is a good predictor of w
 Belding et al 1955. Index for evaluating heat stress in terms of resulting physiological strain. Heat Pip Air Condit 27, 129 36.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{HSI}

@@ -3,10 +3,10 @@
 #' Predicted Percentage of Dissatisfied (PPD) predicts the percentage of occupants that will be dissatisfied with the thermal conditions. 
 #'
 #' @param PMV numeric Predicted Mean Vote.
-#' @return 
+#' @return Predicted Percentage of Dissatisfied
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  PPD 
 #' @references UNI EN ISO 7730.
 #' @export

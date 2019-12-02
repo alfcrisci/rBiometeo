@@ -12,12 +12,12 @@ emis_atm(tk, rh)
 \item{rh}{numeric Relative humidity in percentage.}
 }
 \value{
-
+air emissivity
 }
 \description{
 Calculate air emissivity.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{emis_atm}

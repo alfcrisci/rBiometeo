@@ -1,9 +1,9 @@
 #' ms2fts
 #'
-#' Conversion speed meter per second in feet per second.
+#' Conversion speed meter per second in feets per second.
 #'
 #' @param ms Speed numeric   in meters per second [m/s].
-#' @return 
+#' @return feets per second
 #'
 #'
 #' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}

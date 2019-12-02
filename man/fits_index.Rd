@@ -16,7 +16,7 @@ fits_index(t, rh, wind = 0.2, pair = 1010)
 \item{pair}{numeric Air pressure in hPa.}
 }
 \value{
-
+fits index
 }
 \description{
 Calculate Fighter Index of Thermal Stress FITS.
@@ -25,5 +25,5 @@ Calculate Fighter Index of Thermal Stress FITS.
 Nunneley SH, Stribley F, 1979, Fighter index of thermal stress FITS  guidance for hot-weather aircraft operations.Aviat Space Environ Med 50, 639 42.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }

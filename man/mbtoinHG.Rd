@@ -10,12 +10,12 @@ mbtoinHG(mb)
 \item{mb}{numeric   Air pressure in Millibar [hPa]}
 }
 \value{
-
+inches HG
 }
 \description{
 Conversion from Millibar [hPa] to inches HG.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{mbtoinHG}

@@ -18,12 +18,12 @@ wbgt_indoor(t, rh, wind = 0.1, pair = 1010, elev = 0)
 \item{elev}{numeric Elevation in meters on sea level. Default is 0.}
 }
 \value{
-
+wbgt for indoor in degC
 }
 \description{
 Calculate web bulb globe index for indoor environments.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{wbgt_indoor}

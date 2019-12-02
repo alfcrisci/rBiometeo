@@ -11,11 +11,14 @@ winddir(u, v)
 
 \item{v}{numeric V meridian component (m/s).}
 }
+\value{
+wind direction provenience
+}
 \description{
 Calculate meteorological wind direction from cartesian components u and v.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{Meteorological}
 \keyword{Wind}

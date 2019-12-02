@@ -21,7 +21,7 @@ Calculates the NWS Windchill Temperature (WCT) to estimate the perceived tempera
 Windchill NOAA calculator \url{https://www.weather.gov/epz/wxcalc_windchill}
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{degC.}
 \keyword{in}

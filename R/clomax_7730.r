@@ -8,11 +8,10 @@
 #' @param tr numeric   Mean radiant temperature in degC.
 #' @param M numeric    Metabolic rate of subject in W/mq.
 #' @param W numeric    Mechanical work of subject in W/mq. Generally 0.
-#' @return 
+#' @return maximum  clothing insulation 
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  ocir optimal clothing insulation required.
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' 
 #' @export
 #'

@@ -14,12 +14,12 @@ dewpoint(t, rh, formula = "NOAA")
 \item{formula}{character  Default is "NOAA".}
 }
 \value{
-
+dewpoint
 }
 \description{
 Computes the dewpoint temperature in degC   following different computational schemes defined by formula of saturation pressure estimation
 ("NOAA","Sonntag","Paroscientific").
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }

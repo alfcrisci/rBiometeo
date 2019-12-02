@@ -3,13 +3,12 @@
 #' Give the name of day in italian languages.
 #'
 #' @param date Date in YYYY-MM-DD format.
-#' @return 
+#' @return italian name of day.
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  italian name of day. 
-#' 
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @export
+#' 
 #'
 #'
 #'

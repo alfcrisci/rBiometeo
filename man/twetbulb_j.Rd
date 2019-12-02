@@ -18,7 +18,7 @@ wet bulb temperature
 Estimating wet bulb temperature following  empirical equation given by Jeevananda, 1976.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{bulb}
 \keyword{temperature}

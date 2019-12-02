@@ -10,12 +10,12 @@ radtodeg(anglerad)
 \item{anglerad}{numeric  Angle in radiands.}
 }
 \value{
-angledeg in degrees.
+angledeg in degrees
 }
 \description{
 Conversion angles from radians of an angle in decimal degrees
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{radtodeg}

@@ -1,12 +1,12 @@
 #' ms2kmh
 #'
-#' Conversion speed meter per second  in km per hours.
+#' Conversion speed meter per second  in kilometers per hour.
 #'
 #' @param ms Speed numeric   in meters per second [m/s].
-#' @return 
+#' @return kilometers per hour
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  ms2kmh 
 #' 
 #' @export

@@ -4,10 +4,10 @@
 #'
 #' @param t numeric Air temperature in degC.
 #' @param hum_ratio numeric Humidity ratio.
-#' @return 
+#' @return enthalpy
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  enthalpy 
 #' 
 #' @export

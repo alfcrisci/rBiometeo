@@ -10,12 +10,12 @@ knots2kmh(knots)
 \item{knots}{numeric  Speed in knots per second.}
 }
 \value{
-
+kilometers per hour
 }
 \description{
-Conversion from knot per second to kilometer per hour.
+Conversion from knot per second to kilometers per hour.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{knots2kmh}

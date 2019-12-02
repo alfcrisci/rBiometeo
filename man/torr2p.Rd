@@ -12,12 +12,12 @@ torr2p(vp, vpunits = "mbar")
 \item{vpunits}{character  Units available are : "atm","bar","Pa","mbar" (default),"dyne/cm2" and "psi".}
 }
 \value{
-
+pressure fro torr
 }
 \description{
 Convert pressure in torr in other unit.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{torr2p}

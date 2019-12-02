@@ -5,10 +5,10 @@
 #' @param press numeric Air sea level pressure in hPa.
 #' @param elev numeric Altitude or Elevation in meters.
 #' @param t  numeric Mean Air temperature in degC.
-#' @return 
+#' @return local air pressure
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  p_local 
 #' 
 #' @export

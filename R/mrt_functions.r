@@ -6,10 +6,10 @@
 #' @param tg numeric global short solar irradiance in Watt on mq.
 #' @param wind numeric windspeed in meter per second.
 #' @param diam numeric diameter of the sphere in millimeter. Input example 50 mm.
-#' @return Mean Radiant temperature in degC.
+#' @return Mean Radiant temperature in degC
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @references Thorsson et al, Different methods for estimating the mean radiant temperature in an outdoor urban setting, Int. J. Climatol.27  1983   1993 (2007)
 #' @keywords  MRT 
 #' 
@@ -37,9 +37,8 @@ mrt_thorsson=function(t,tg,wind,diam) {
 #' @param tg numeric global short solar irradiance in Watt on mq.
 #' @param wind numeric windspeed in meter per second.
 #' @param diam numeric diameter of the sphere in millimeters. Input example 50 mm.
-#' @return Mean Radiant temperature in degC.
-#'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @return Mean Radiant temperature in degC
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  globe temperature 
 #' 
 #' @export
@@ -69,12 +68,11 @@ mrt_globe=function(t,tg,wind,diam) {
 #' @param sunelev numeric  Sun elevation angle in decimal degrees.
 #' @param alb_sfc numeric  Mean albedo of surroundings. Default is 0.4.
 #' @param emis_sfc numeric Surface emissivity.
-#' @param emis_sfc fdir    Ratio between directed ad diffuse radiation.
-
+#' @param fdir numeric    Ratio between directed ad diffuse radiation.
 #' @return Mean Radiant temperature projected in degC.
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  fMRT 
 #' 
 #' @export

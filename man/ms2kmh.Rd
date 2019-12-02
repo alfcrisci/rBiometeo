@@ -10,12 +10,12 @@ ms2kmh(ms)
 \item{ms}{Speed numeric   in meters per second [m/s].}
 }
 \value{
-
+kilometers per hour
 }
 \description{
-Conversion speed meter per second  in km per hours.
+Conversion speed meter per second  in kilometers per hour.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{ms2kmh}

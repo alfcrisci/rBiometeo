@@ -26,7 +26,7 @@ RT(t, rh, wind, trad, M, W, clo, p, w)
 \item{w}{numeric   Walking speed in meters per second.}
 }
 \value{
-RT
+Required Recovery Time
 }
 \description{
 Computes the value of Required Recovery Time following scheme adopted in ISO 11079. Valid under 10 Celsius degree.
@@ -35,7 +35,7 @@ Computes the value of Required Recovery Time following scheme adopted in ISO 110
 ISO 11079, 2007-12-15, ERGONOMICS OF THE THERMAL ENVIRONMENT - DETERMINATION AND INTERPRETATION OF COLD STRESS WHEN USING REQUIRED CLOTHING INSULATION (IREQ) AND LOCAL COOLING EFFECTS.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 
 Ingvar Holmer. R adaptation Istituto di Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
 }

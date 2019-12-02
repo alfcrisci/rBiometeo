@@ -13,8 +13,8 @@
 #' @return clomax_custom
 #'
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  clothing insulation 
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @keywords  maximal clothing insulation 
 #' 
 #' @export
 #'

@@ -7,10 +7,10 @@
 #' @param wind numeric    Wind speed in meters per second.
 #' @param rshort numeric  Global short radiation in Watt/mq.
 #' @param sunelev numeric Sun elevation in degrees.
-#' @return 
+#' @return steadman outdoor index
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  steadman, Apparent temperature, Sunny
 #' 
 #' @export

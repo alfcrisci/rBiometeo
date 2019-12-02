@@ -3,10 +3,10 @@
 #' Logical if the year indicated is a leap year.
 #'
 #' @param yr numeric Year.
-#' @return 
+#' @return boolean [0 - 1] indicate if year is leap 
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  isLeapYear 
 #' 
 #' @export

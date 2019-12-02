@@ -14,12 +14,12 @@ p_local(press = 1010, elev, t)
 \item{t}{numeric Mean Air temperature in degC.}
 }
 \value{
-
+local air pressure
 }
 \description{
 Estimate local value of air pressure in hPa.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{p_local}

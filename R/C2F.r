@@ -3,10 +3,9 @@
 #' Convert temperature from Celsius degree (degC) to Fahrenheit degree (degF).
 #'
 #' @param C numeric Temperature in degC.
-#' @return 
+#' @return temperature ind degK
 #' 
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  temperature 
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' 
 #' @export
 #'

@@ -7,7 +7,7 @@
 #' @param wind numeric Windspeed in meters per second.
 #' @param pair numeric Air pressure in hPa.
 #' @return discomfort_index
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @references Thom, E.C., 1959, The discomfort index. Weatherwise, 12, 57 60.
 #' @export
 #'

@@ -17,7 +17,9 @@ mrt_solar_proj(t, rh, solar, sunelev, alb_sfc, fdir, emis_sfc)
 
 \item{alb_sfc}{numeric  Mean albedo of surroundings. Default is 0.4.}
 
-\item{emis_sfc}{fdir    Ratio between directed ad diffuse radiation.}
+\item{fdir}{numeric    Ratio between directed ad diffuse radiation.}
+
+\item{emis_sfc}{numeric Surface emissivity.}
 }
 \value{
 Mean Radiant temperature projected in degC.
@@ -26,6 +28,6 @@ Mean Radiant temperature projected in degC.
 Calculated the mean radiant temperature from the short solar irradiance with human projection factor. it assumes a uniform surround temperature of air temperature  and short wave solar radiation.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{fMRT}

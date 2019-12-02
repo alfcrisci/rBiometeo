@@ -10,12 +10,11 @@ C2F(C)
 \item{C}{numeric Temperature in degC.}
 }
 \value{
-
+temperature ind degK
 }
 \description{
 Convert temperature from Celsius degree (degC) to Fahrenheit degree (degF).
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
-\keyword{temperature}

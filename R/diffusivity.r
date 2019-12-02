@@ -4,11 +4,10 @@
 #'
 #' @param tk   numeric Air temperature in degK.
 #' @param pair numeric Air pressure in hPa. 
-#' @return 
+#' @return diffusivity 
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
-#' @keywords  diffusivity 
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' 
 #' @export
 #'

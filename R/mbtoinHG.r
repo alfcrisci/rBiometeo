@@ -3,10 +3,10 @@
 #' Conversion from Millibar [hPa] to inches HG.
 #'
 #' @param mb numeric   Air pressure in Millibar [hPa] 
-#' @return 
+#' @return inches HG
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  mbtoinHG 
 #' 
 #' @export

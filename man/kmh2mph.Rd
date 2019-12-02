@@ -10,12 +10,12 @@ kmh2mph(kmh)
 \item{kmh}{numeric  Speed in Kilometer per hours.}
 }
 \value{
-
+miles per hour
 }
 \description{
-Conversion kilometer per hour to mile per hour.
+Conversion kilometer per hour to miles per hour.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{kmh2mph}

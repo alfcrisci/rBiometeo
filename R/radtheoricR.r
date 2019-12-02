@@ -6,9 +6,9 @@
 #' @param  lat numeric latitude in decimal degrees.
 #' @param  lon numeric longitude in decimal degrees.
 #' @param  albedo numeric albedo of surface.
-#' @return Theoretical radiation in W/mq.
+#' @return Theoretical radiation in W/mq
 #' 
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' 
 #' 
 #' 

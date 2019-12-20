@@ -3043,7 +3043,26 @@ function heat_risk_text_level(wbgt,cav,tresh)  {
                                               
                                                return(level_list[classes]);           
                                               }
+/**
+ * Given  WBGT returns heat risk level in four classes.
+ * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature) index,ISO FDIS 7243 (2016)
+ * @param {number} wbgt,tresh
+ * @return {number}
+ */
 
+
+function heat_risk_level(wbgt,cav,tresh)  { 
+                                               if ( tresh === undefined) {tresh = 28.5 };
+                                               var risk= (wbgt+cav)/tresh;
+                                               var level_list=["NON SIGNIFICATIVO","BASSO","MODERATO","ALTO"];  
+                                               var classes;
+                                               if    ( risk <= 0.8)        {  classes = 0;} 
+                                                     else if (risk <= 1)   {  classes = 1;} 
+                                                     else if (risk <= 1.2) {  classes = 2;} 
+                                                     else                  {  classes = 3};
+                                              
+                                               return(classes);           
+                                              }
 /**
  * Given  WBGT returns heat risk level in english language by using a treshshold.
  * Reference Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature)  * index, ISO FDIS 7243 (2016)

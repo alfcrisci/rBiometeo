@@ -16,7 +16,7 @@
 #'
 #'
 
-lost_productivity=function(wbgt,tresh) {
+lost_productivity=function(wbgt,tresh=33.5) {
   ct$assign("wbgt", as.array(wbgt))
   ct$assign("tresh", as.array(tresh))
   ct$eval("var res=[]; for(var i=0, len=wbgt.length; i < len; i++){ res[i]=lost_productivity(wbgt[i],tresh[0])};")

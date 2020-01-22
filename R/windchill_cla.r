@@ -22,7 +22,7 @@ windchill_cla=function(t,wind) {
                          ct$assign("v", as.array(wind))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=windchill_cla(t[i],v[i])};")
                          res=ct$get("res")
-                         return(ifelse(!is.numeric(res),NA,res))
+                         return(res)
 }
 
 

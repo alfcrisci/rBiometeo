@@ -1532,7 +1532,7 @@ function PMV_ISO7730(t,rh,wind,trad,M,W,clo)
     // heat loss by radiation  R
     hl5 = 3.96 * fcl * (Math.pow(xn, 4) - Math.pow(tra / 100, 4));
     // heat loss by convection C
-    hl6 = fcl * hc * (tcl - ta);
+    hl6 = fcl * hc * (tcl - t);
 
     ts = 0.303 * Math.exp(-0.036 * M) + 0.028;
   

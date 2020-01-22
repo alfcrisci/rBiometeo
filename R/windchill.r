@@ -19,10 +19,10 @@
 
 windchill=function(t,wind) {
                          ct$assign("t", as.array(t))
-                         ct$assign("v", as.array(wind))
-                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=windchill(t[i],v[i])};")
+                         ct$assign("wind", as.array(wind))
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=windchill(t[i],wind[i])};")
                          res=ct$get("res")
-                         return(ifelse(!is.numeric(res),NA,res))
+                         return(res)
 }
 
 

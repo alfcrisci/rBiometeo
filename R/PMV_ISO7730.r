@@ -31,6 +31,6 @@ PMV_ISO7730=function(t,rh,wind,tr,M,W,clo) {
                          ct$assign("clo", as.array(clo))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=PMV_ISO7730(t[i],rh[i],wind[i],tr[i],M[i],W[0],clo[0])};")
                          res=ct$get("res")
-                         return(ifelse(res==9999,NA,res))
+                         return(res)
 }
 

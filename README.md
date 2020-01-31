@@ -1,4 +1,4 @@
-# R package rBiometeo 0.2 version
+# R package rBiometeo 0.21 version
 
 R package for various biometeorological functions.
 

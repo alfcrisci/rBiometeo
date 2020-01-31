@@ -2543,7 +2543,7 @@ function UTCI(ta,rh,wind,tmrt)
 
                   if (  ta < -50.0 || ta > 60.0 ) {total=9999};
                   if ( (tmrt < ta-30.0) || (tmrt > ta+70.0 )) {total=9999};
-                  if (  rh <= 0.0 || rh >= 100.0 ) {total=9999};
+                  if (  rh < 0.0 || rh > 100.0 ) {total=9999};
                   return TwoDec(total);
 }
 

@@ -1,7 +1,7 @@
 Package: rBiometeo
 Type: Package
 Title: Biometeorological Functions in R
-Version: 0.2
+Version: 0.21
 Date: 2016-06-03
 Maintainer: Alfonso Crisci <a.crisci@ibimet.cnr.it>
 Description: R functions to estimate human thermal comfort and many

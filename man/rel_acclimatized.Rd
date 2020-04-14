@@ -7,7 +7,7 @@
 rel_acclimatized(met)
 }
 \arguments{
-\item{met}{numeric Metabolic rate in w/mq following level of ISO FDIS 7243.#}
+\item{met}{numeric Metabolic rate in Watt following level of ISO FDIS 7243.#}
 }
 \value{
 REL

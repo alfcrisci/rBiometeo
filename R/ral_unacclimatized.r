@@ -2,7 +2,7 @@
 #'
 #' Calculate treshshold of risk realated to wbgt index for unacclimatized people.
 #'
-#' @param met numeric Metabolic rate in w/mq following level of ISO FDIS 7243.
+#' @param met numeric Metabolic rate in Watt following level of ISO FDIS 7243.
 #' @return RAL
 #'
 #' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}

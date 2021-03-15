@@ -12,7 +12,7 @@ devtools::install_github("alfcrisci/rBiometeo")
 
 ```
 
-On Ubuntu 20.04 see comments concerning liux dependency
+On Ubuntu 20.04 see comments concerning linux dependency problem
 https://github.com/ropensci/geojsonio/issues/65
 
 and 

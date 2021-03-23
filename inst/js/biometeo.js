@@ -3037,8 +3037,8 @@ function heat_risk_text_level(wbgt,cav,tresh)  {
                                                var level_list=["NON SIGNIFICATIVO","BASSO","MODERATO","ALTO"];  
                                                var classes;
                                                if    ( risk <= 0.8)        {  classes = 0;} 
-                                                     else if (risk <= 1)   {  classes = 1;} 
-                                                     else if (risk <= 1.2) {  classes = 2;} 
+                                                     else if (risk < 1)   {  classes = 1;} 
+                                                     else if (risk < 1.2) {  classes = 2;} 
                                                      else                  {  classes = 3};
                                               
                                                return(level_list[classes]);           
@@ -3057,8 +3057,8 @@ function heat_risk_level(wbgt,cav,tresh)  {
                                                var level_list=["NON SIGNIFICATIVO","BASSO","MODERATO","ALTO"];  
                                                var classes;
                                                if    ( risk <= 0.8)        {  classes = 1;} 
-                                                     else if (risk <= 1)   {  classes = 2;} 
-                                                     else if (risk <= 1.2) {  classes = 3;} 
+                                                     else if (risk < 1)   {  classes = 2;} 
+                                                     else if (risk < 1.2) {  classes = 3;} 
                                                      else                  {  classes = 4 };
                                               
                                                return(classes);           
@@ -3076,8 +3076,8 @@ function heat_risk_text_level_eng(wbgt,cav,tresh)  {
                                                var level_list=["NOT SIGNIFICANT","LOW","MODERATE","HIGH"];  
                                                var classes;
                                                if    ( risk <= 0.8)        {  classes = 0;} 
-                                                     else if (risk <= 1)   {  classes = 1;} 
-                                                     else if (risk <= 1.2) {  classes = 2;} 
+                                                     else if (risk < 1)   {  classes = 1;} 
+                                                     else if (risk < 1.2) {  classes = 2;} 
                                                      else                  {  classes = 3};
                                               
                                                return(level_list[classes]);           
@@ -3102,8 +3102,8 @@ function heat_risk_color_level(wbgt,cav,tresh)    {
                                                var colorcode_list=["green","yellow","orange","red"]; 
                                                var classes;
                                                if    ( risk <= 0.8)        {  classes = 0;} 
-                                                     else if (risk <= 1)   {  classes = 1;} 
-                                                     else if (risk <= 1.2) {  classes = 2;} 
+                                                     else if (risk < 1)   {  classes = 1;} 
+                                                     else if (risk < 1.2) {  classes = 2;} 
                                                      else                  {  classes = 3};
                                                return(colorcode_list[classes]);           
                                               }
@@ -3125,8 +3125,8 @@ function heat_risk_hexrgb_level(wbgt,cav,tresh)    {
                                                var classes;
                                                var classes;
                                                if    ( risk <= 0.8)        {  classes = 0;} 
-                                                     else if (risk <= 1)   {  classes = 1;} 
-                                                     else if (risk <= 1.2) {  classes = 2;} 
+                                                     else if (risk < 1)   {  classes = 1;} 
+                                                     else if (risk < 1.2) {  classes = 2;} 
                                                      else                  {  classes = 3};
                                                return(colorcode_hex[classes]);        
           

@@ -3056,10 +3056,10 @@ function heat_risk_level(wbgt,cav,tresh)  {
                                                var risk= (wbgt+cav)/tresh;
                                                var level_list=["NON SIGNIFICATIVO","BASSO","MODERATO","ALTO"];  
                                                var classes;
-                                               if    ( risk <= 0.8)        {  classes = 0;} 
-                                                     else if (risk <= 1)   {  classes = 1;} 
-                                                     else if (risk <= 1.2) {  classes = 2;} 
-                                                     else                  {  classes = 3};
+                                               if    ( risk <= 0.8)        {  classes = 1;} 
+                                                     else if (risk <= 1)   {  classes = 2;} 
+                                                     else if (risk <= 1.2) {  classes = 3;} 
+                                                     else                  {  classes = 4 };
                                               
                                                return(classes);           
                                               }

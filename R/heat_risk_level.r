@@ -22,5 +22,5 @@ heat_risk_level=function(wbgt,cav,tresh)  {
   ct$assign("tresh", as.array(tresh))
   ct$eval("var res=[]; for(var i=0, len=wbgt.length; i < len; i++){ res[i]=heat_risk_level(wbgt[i],cav[0],tresh[0])};")
   res=ct$get("res")
-  return(res+1)
+  return(res)
 }

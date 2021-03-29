@@ -2866,7 +2866,7 @@ function humidex(t,rh)
 function THI(t,rh) 
          {
           var thi;
-          thi = t-0.55*(1-0.01*rh)*(t-14.5);
+          thi = 0.8*t-0.55*(0.01*rh)*(t-14.4)+ 46.4;
           return thi;
 }
 

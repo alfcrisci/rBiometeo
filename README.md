@@ -1,5 +1,7 @@
 # R package rBiometeo 0.21 version
 
+[![DOI](https://zenodo.org/badge/65311485.svg)](https://zenodo.org/badge/latestdoi/65311485)
+
 R package for various biometeorological functions.
 
 Install the latest version of this package by entering the following in R:

@@ -15,12 +15,13 @@ THI(t, rh)
 Temperature Humidity Index discomfort
 }
 \description{
-Given air temperature (Celsius), relative humidity  gives Temperature Humidity Index discomfort. Giles (1990).
+Given air temperature (Celsius), relative humidity  gives Temperature Humidity Index discomfort. Giles BD, Balafoutis CH, Maheras P (1990) Too hot for comfort:
+the heatwaves in Greece in 1987 and 1988. Int J Biometeorogy 34:98–104 .
 }
 \author{
 Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
 }
 \keyword{Humidity}
 \keyword{Index}
-\keyword{THI,}
+\keyword{THI}
 \keyword{Temperature}

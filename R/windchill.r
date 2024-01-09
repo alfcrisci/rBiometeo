@@ -22,6 +22,7 @@ windchill=function(t,wind) {
                          ct$assign("wind", as.array(wind))
                          ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=windchill(t[i],wind[i])};")
                          res=ct$get("res")
+                         res[which(t>10)]=t[which(t>10)]
                          return(res)
 }
 

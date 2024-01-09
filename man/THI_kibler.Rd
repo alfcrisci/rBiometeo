@@ -15,8 +15,11 @@ THI_kliber(t, rh)
 thi index
 }
 \description{
-Calculate Temperature Humidity Index following Kliber equantions. Adopted by Sardinia ARPA.
+Calculate Temperature Humidity Index following Kibler equantions. Adopted by Sardinia ARPA.
 }
 \author{
 Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+}
+\references{
+Kibler, H.H. Thermal effects of various temperature-humidity combinations on Holstein cattle as measured by eight physiological responses. Res. Bull. 1964, 862, 1–42. 
 }

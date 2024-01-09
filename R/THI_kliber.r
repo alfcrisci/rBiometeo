@@ -14,7 +14,7 @@
 THI_kibler=function(t,rh) {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
-                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=THI_kliber(t[i],rh[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=THI_kibler(t[i],rh[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

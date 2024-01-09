@@ -2857,7 +2857,8 @@ function humidex(t,rh)
 
 /**
  * Given air temperature (degC), relative humidity (%)  gives Temperature Humidity
- * Index discomfort index. Giles (1990)
+ * Index discomfort index. Giles (1990) Giles BD, Balafoutis CH, Maheras P (1990) Too hot for comfort: the heatwaves in Greece in 1987 and 1988. Int J Biometeorol
+ * 34:98–104
  *
  * @param {number} t,rh
  * @return {number}
@@ -2873,7 +2874,7 @@ function THI(t,rh)
 
 /**
  * Given air temperature (degC), relative humidity (%)  gives Temperature Humidity
- * Index discomfort index. kliber (1964) Kliber H. H., 1964. Environmental physiology
+ * Index discomfort index. kliber (1964) Kibler H. H., 1964. Environmental physiology
  * and shelter engineering. LXVII. 
  * Thermal effects of various temperature-humidity combinations on Holstein cattle 
  * as measured by physiological responses. Res. Bull. Missouri Agric. Exp. Station: 862
@@ -2881,7 +2882,7 @@ function THI(t,rh)
  * @return {number}
  */
 
-function THI_kliber(t,rh) 
+function THI_kibler(t,rh) 
          {
           var thi;
           thi = (1.8*t-(1-0.01*rh)*(t-14.3))+32;

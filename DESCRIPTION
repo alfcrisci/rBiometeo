@@ -8,12 +8,11 @@ Description: R functions to estimate human thermal comfort and many other
     biometeorological indices used in Institute of BioEconomy in Florence.
 License: MIT + file LICENSE
 Authors@R: c(
-    person("Alfonso", "Crisci", role = c("aut", "cre"), email = "a.crisci@ibe.cnr.it"),
+    person("Alfonso", "Crisci", role = c("aut", "cre"), email = "alfonso.crisci@ibe.cnr.it"),
     person("Marco", "Morabito", role = "aut", email = "marco.morabito@ibe.cnr.it")
   )
 URL: https://github.com/alfcrisci/rBiometeo
 BugReports: https://github.com/alfcrisci/rBiometeoissues
-LazyData: true
 Imports:
     methods,
     stats,

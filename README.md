@@ -1,4 +1,4 @@
-# R package rBiometeo 0.4.1 version
+# R package rBiometeo 0.4.2 version
 
 [![DOI](https://zenodo.org/badge/65311485.svg)](https://zenodo.org/badge/latestdoi/65311485)
 

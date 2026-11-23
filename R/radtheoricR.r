@@ -19,7 +19,7 @@ radtheoricR <- function(timenow,lat,lon,albedo){
  sunpar=sunposition(timenow,lat, lon)
  elev=sunpar$elevation
  timeday=as.POSIXlt(timenow, "GMT")
- nday=format(timeday,"%j")
+ nday=as.numeric(format(timeday,"%j"))
  # Solar constant
  SC = 1.361 # kW/m2
  # ET solar radition I0 kW/m2

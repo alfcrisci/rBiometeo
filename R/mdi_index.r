@@ -1,6 +1,7 @@
 #' mdi_index
 #'
-#' Modified discomfort index MDI.
+#' Modified discomfort index MDI = 0.75 Tw + 0.38 Ta (Moran et al., 1998), with Tw the natural wet-bulb temperature.
+#' Since version 0.4 the coefficients follow Moran et al. (previously 0.7 and 0.3).
 #'
 #' @param t numeric Air temperature in degC.
 #' @param rh numeric Relative humidity in percentage.
@@ -11,7 +12,7 @@
 #'
 #' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  mdi_index 
-#' @references Moran DS, Shitzer A, Pandolf KB , 1998, A physiological strain index to evaluate heat stress. Am J Physiol 275, R 129 34.
+#' @references Moran D.S., Shapiro Y., Epstein Y., Matthew W., Pandolf K.B. (1998). A modified discomfort index (MDI) as an alternative to the wet bulb globe temperature (WBGT). In: Hodgdon J.A., Heaney J.H., Buono M.J. (eds) Environmental Ergonomics VIII, pp. 77-80.
 #'  
 #'
 #'

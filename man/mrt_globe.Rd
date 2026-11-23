@@ -4,22 +4,23 @@
 \alias{mrt_globe}
 \title{mrt_globe}
 \usage{
-mrt_globe(t, tg, wind, diam)
+mrt_globe(t, tg, wind, diam = 0.05)
 }
 \arguments{
 \item{t}{numeric air temperature in degC.}
 
-\item{tg}{numeric global short solar irradiance in Watt on mq.}
+\item{tg}{numeric globe temperature in degC.}
 
 \item{wind}{numeric windspeed in meter per second.}
 
-\item{diam}{numeric diameter of the sphere in millimeters. Input example 50 mm.}
+\item{diam}{numeric diameter of the globe in meters (e.g. 0.05 for a 50 mm globe).}
 }
 \value{
 Mean Radiant temperature in degC
 }
 \description{
-Given air temperature , the globe Temeperature, the wind speed and diameter mean radiant temperature is done according ISO 7726 1998.
+Mean radiant temperature from globe temperature according to ISO 7726 (1998), with the convective coefficient as the
+larger of forced and natural convection.
 }
 \author{
 Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}

@@ -4,7 +4,7 @@
 \alias{lost_productivity}
 \title{lost_productivity}
 \usage{
-lost_productivity(wbgt, tresh)
+lost_productivity(wbgt, tresh = 33.5)
 }
 \arguments{
 \item{wbgt}{numeric Wetbulb globe temperature index in degC}

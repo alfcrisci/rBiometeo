@@ -17,7 +17,7 @@
 
 viscosity=function(tk) {
                          ct$assign("t", as.array(tk))
-                         ct$eval("var res=[]; for(var i=0, len=Tair.length; i < len; i++){ res[i]=viscosity(t[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=viscosity(t[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

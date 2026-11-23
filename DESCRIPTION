@@ -1,22 +1,22 @@
 Package: rBiometeo
 Type: Package
 Title: Biometeorological Functions in R
-Version: 0.3
-Date: 2026-11-33
-Maintainer: Alfonso Crisci <a.crisci@ibe.cnr.it>
+Version: 0.4
+Date: 2026-11-23
 Description: R functions to estimate human thermal comfort and many other
     biometeorological indices used in Institute of BioEconomy in Florence.
-License: MIT + file LICENSE
+License: GPL (>= 3)
 Authors@R: c(
     person("Alfonso", "Crisci", role = c("aut", "cre"), email = "alfonso.crisci@ibe.cnr.it"),
-    person("Marco", "Morabito", role = "aut", email = "marco.morabito@ibe.cnr.it")
+    person("Marco", "Morabito", role = "aut", email = "marco.morabito@ibe.cnr.it"),
+    person("Alessandro", "Messeri", role = "aut")
   )
 URL: https://github.com/alfcrisci/rBiometeo
-BugReports: https://github.com/alfcrisci/rBiometeoissues
+BugReports: https://github.com/alfcrisci/rBiometeo/issues
 Imports:
     methods,
     stats,
     utils,
     V8
-RoxygenNote: 7.0.2
+RoxygenNote: 7.3.1
 Encoding: UTF-8

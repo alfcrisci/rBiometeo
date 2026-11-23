@@ -7,8 +7,8 @@
 #
 #' @param t numeric Air temperature in degC.
 #' @param rh numeric Relative humidity in percentage.
-#' @param tg numeric Solar Radiation Radiance in Watt/mq.
-#' @param pair numeric Air Pressure in hPa. Default is 1010.
+#' @param tg numeric Globe temperature in degC.
+#' @param pair numeric Air pressure in hPa. Not used (kept for compatibility): the Stull wet-bulb formula does not depend on pressure.
 #' @return wbgt  in degC
 #'
 #'
@@ -25,7 +25,7 @@ wbgt_stull=function(t,rh,tg,pair=1010) {
                                        ct$assign("rh", as.array(rh))
                                        ct$assign("tg", as.array(tg))
                                        ct$assign("press", as.array(pair))
-                                       ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=wbgt_full(t[i],rh[i],tg[i],press[0])};")
+                                       ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=wbgt_stull(t[i],rh[i],tg[i])};")
                                         res=ct$get("res")
                                        return(ifelse(res==9999,NA,res))
 }

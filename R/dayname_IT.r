@@ -16,7 +16,7 @@
 
 dayname_IT=function (date)  {
                          ct$assign("date", as.array(date))
-                         ct$eval("var res=[]; for(var i=0, len=date.length; i < len; i++){ res[i]=DAYNAME_IT(date[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=date.length; i < len; i++){ res[i]=dayname_IT(new Date(date[i]))};")
                          res=ct$get("res")
                          return(ifelse(res=="null",NA,res))
 }

@@ -28,7 +28,7 @@ HSI_index=function(t,rh,wind,tr,M,W,clo,param="HSI") {
                          ct$assign("W", as.array(W))
                          ct$assign("clo", as.array(clo))
                          ct$assign("param", as.array(param))
-                         ct$eval("var res=[]; for(var i=0, len=ta.length; i < len; i++){ res[i]=HSI_index(ta[i],rh[i],vel[i],tr[i],M[0],W[0],clo[0],param[0])};")
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=HSI_index(t[i],rh[i],vel[i],tr[i],M[0],W[0],clo[0],param[0])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

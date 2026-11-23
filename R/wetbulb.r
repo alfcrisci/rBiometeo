@@ -21,8 +21,8 @@
 #' @export
 #'
 
-wetbulb=function(t,rh,wind,solar=0,zenith=0,pair,alb_sfc=0.4,fdir=0.8,maxair=10,minair=2,prec=0.01) {
-                         if (is.null(press)) {press=1010}
+wetbulb=function(t,rh,wind,solar=0,zenith=0,pair=1010,alb_sfc=0.4,fdir=0.8,maxair=10,minair=2,prec=0.01) {
+                         if (is.null(pair)) {pair=1010}
                          if (length(solar) != length(t)) {solar=rep(solar,length(t));
                                                           zenith=rep(zenith,length(t));
                                                        }
@@ -30,6 +30,8 @@ wetbulb=function(t,rh,wind,solar=0,zenith=0,pair,alb_sfc=0.4,fdir=0.8,maxair=10,
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
                          ct$assign("wind", as.array(wind))
+                         ct$assign("solar", as.array(solar))
+                         ct$assign("zenith", as.array(zenith))
                          ct$assign("pair", as.array(pair))
                          ct$assign("alb_sfc", as.array(alb_sfc))
                          ct$assign("fdir", as.array(fdir))

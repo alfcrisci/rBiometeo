@@ -34,7 +34,7 @@ RT=function(t,rh,wind,trad,M,W,clo,p,w) {
                          ct$assign("Icl", as.array(clo))
                          ct$assign("p", as.array(p))
                          ct$assign("w", as.array(w))
-                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=RT(Ta[i],rh[i],v[i],Tr[i],M[i],W[i],Icl[i],p[i],w[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=recovery_time(t[i],rh[i],v[i],Tr[i],M[i],W[i],Icl[i],p[i],w[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

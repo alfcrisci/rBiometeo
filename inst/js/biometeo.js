@@ -932,6 +932,24 @@ function wetbulb_stull(t, rh) {
 }
 
 /**
+ * Empirical estimate of the wet-bulb temperature (degC) from air temperature and pressure only
+ * (Jeevananda, 1976): Tw = t (0.45 + 0.006 t sqrt(p / 1060)). It does not use humidity: prefer
+ * wetbulb_stull or natural_wetbulb when relative humidity is available.
+ *
+ * References:
+ *   - Jeevananda S. (1976). Empirical formula for wet-bulb temperature (as cited in rBiometeo).
+ * @param {number} t air temperature (degC)
+ * @param {number} [p=1010] air pressure (hPa)
+ * @return {number} wet-bulb temperature (degC)
+ */
+function twetbulb_j(t, p) {
+  if (p === undefined) {
+    p = 1010;
+  }
+  return TwoDec(t * (0.45 + 0.006 * t * Math.sqrt(p / 1060.0)));
+}
+
+/**
  * References:
  *   - Liljegren J.C., Carhart R.A., Lawday P., Tschopp S., Sharp R. (2008). Modeling the wet bulb globe
  *     temperature using standard meteorological measurements. J. Occup. Environ. Hyg. 5(10): 645-655.
@@ -3626,6 +3644,37 @@ function heatindex(t, rh) {
   } else {
     return TwoDec(F2C(0.5 * (tf + 61.0 + (tf - 68.0) * 1.2 + rh * 0.094)));
   }
+}
+
+/**
+ * Heat index (degC) from the Celsius form of the Rothfusz/Steadman regression, as used by Hill et al. (2004)
+ * for primates in open habitats:
+ * HI = -8.784695 + 1.61139411 t + 2.338549 rh - 0.14611605 t rh - 0.012308094 t^2 - 0.016424828 rh^2
+ *      + 0.002211732 t^2 rh + 0.00072546 t rh^2 - 0.000003582 t^2 rh^2
+ *
+ * References:
+ *   - Hill R.A., Weingrill T., Barrett L., Henzi S.P. (2004). Indices of environmental temperatures for
+ *     primates in open habitats. Primates 45: 7-13.
+ *   - Rothfusz L.P. (1990). The heat index 'equation'. NWS Southern Region Technical Attachment SR 90-23.
+ * @param {number} t  air temperature (degC)
+ * @param {number} rh relative humidity (%)
+ * @return {number} heat index (degC); 9999 for inputs out of range
+ */
+function hi_index(t, rh) {
+  if (rh > 100.1 || rh < 0.0 || t > 100.0 || t < -100.0) {
+    return 9999;
+  }
+  var hi =
+    -8.784695 +
+    1.61139411 * t +
+    2.338549 * rh -
+    0.14611605 * t * rh -
+    0.012308094 * t * t -
+    0.016424828 * rh * rh +
+    0.002211732 * t * t * rh +
+    0.00072546 * t * rh * rh -
+    0.000003582 * t * t * rh * rh;
+  return TwoDec(hi);
 }
 
 /**

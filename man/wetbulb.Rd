@@ -10,7 +10,7 @@ wetbulb(
   wind,
   solar = 0,
   zenith = 0,
-  pair,
+  pair = 1010,
   alb_sfc = 0.4,
   fdir = 0.8,
   maxair = 10,

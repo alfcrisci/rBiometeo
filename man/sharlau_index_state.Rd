@@ -4,12 +4,14 @@
 \alias{sharlau_index_state}
 \title{sharlau_index_state}
 \usage{
-sharlau_index_state(t, rh)
+sharlau_index_state(t, rh, lang = "en")
 }
 \arguments{
 \item{t}{numeric Air temperature in Celsius degrees.}
 
 \item{rh}{numeric Relative humidity in percentage.}
+
+\item{lang}{character Language: "en" (default, as in previous versions) or "it".}
 }
 \value{
 sharlau_index_state

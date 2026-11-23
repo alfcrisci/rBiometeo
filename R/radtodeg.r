@@ -17,7 +17,7 @@
 
 radtodeg=function(anglerad) {
                          ct$assign("anglerad", as.array(anglerad))
-                         ct$eval("var res=[]; for(var i=0, len=anglerad.length; i < len; i++){ res[i]=radToDeg(angleRad[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=anglerad.length; i < len; i++){ res[i]=radToDeg(anglerad[i])};")
                          res=ct$get("res")
                          return(ifelse(!is.numeric(res),NA,res))
 }

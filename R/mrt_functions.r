@@ -1,11 +1,11 @@
 #' mrt_thorsson
 #'
-#' Calculated the mean radiant temperature from the solar radiation.  Modified based on direct and diffuse ratio. Assumes a uniform surround temperature of Ta && short wave solar radiation only;
+#' Mean radiant temperature from globe temperature with the convection coefficients of Thorsson et al. (2007).
 #'
 #' @param t numeric air temperature in degC.
-#' @param tg numeric global short solar irradiance in Watt on mq.
+#' @param tg numeric globe temperature in degC.
 #' @param wind numeric windspeed in meter per second.
-#' @param diam numeric diameter of the sphere in millimeter. Input example 50 mm.
+#' @param diam numeric diameter of the globe in meters (e.g. 0.15 for the standard globe).
 #' @return Mean Radiant temperature in degC
 #'
 #'
@@ -19,7 +19,7 @@
 #'
 #'
 
-mrt_thorsson=function(t,tg,wind,diam) {
+mrt_thorsson=function(t,tg,wind,diam=0.15) {
                          ct$assign("t", as.array(t))
                          ct$assign("tg", as.array(tg))
                          ct$assign("wind", as.array(wind))
@@ -31,12 +31,13 @@ mrt_thorsson=function(t,tg,wind,diam) {
 
 #' mrt_globe
 #'
-#' Given air temperature , the globe Temeperature, the wind speed and diameter mean radiant temperature is done according ISO 7726 1998.
+#' Mean radiant temperature from globe temperature according to ISO 7726 (1998), with the convective coefficient as the
+#' larger of forced and natural convection.
 #'
 #' @param t numeric air temperature in degC.
-#' @param tg numeric global short solar irradiance in Watt on mq.
+#' @param tg numeric globe temperature in degC.
 #' @param wind numeric windspeed in meter per second.
-#' @param diam numeric diameter of the sphere in millimeters. Input example 50 mm.
+#' @param diam numeric diameter of the globe in meters (e.g. 0.05 for a 50 mm globe).
 #' @return Mean Radiant temperature in degC
 #' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
 #' @keywords  globe temperature 
@@ -47,7 +48,7 @@ mrt_thorsson=function(t,tg,wind,diam) {
 #'
 #'
 
-mrt_globe=function(t,tg,wind,diam) {
+mrt_globe=function(t,tg,wind,diam=0.05) {
                          ct$assign("t", as.array(t))
                          ct$assign("tg", as.array(tg))
                          ct$assign("wind", as.array(wind))

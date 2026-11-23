@@ -17,7 +17,7 @@
 
 PVS=function(t) {
                          ct$assign("T", as.array(t))
-                         ct$eval("var res=[]; for(var i=0, len=T.length; i < len; i++){ rel[i]=PVS(T[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=T.length; i < len; i++){ res[i]=PVS(T[i])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

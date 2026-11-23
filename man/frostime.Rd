@@ -12,13 +12,14 @@ frostime(t, wind)
 \item{wind}{numeric the wind speed in meter per seconds [m/s].}
 }
 \value{
-time of frosting
+frostbite time in minutes
 }
 \description{
-Given a temperature t (Celsius) and wind ( m/sec) frost time following Wind Chill Frostbite Chart.
+Facial frostbite time in minutes (Tikuisis & Osczevski, 2003). Wind is given in m/s and converted to km/h, the unit of the
+original equation (since version 0.4; before it was used as km/h by mistake). NA outside -60 <= t <= -10 degC.
 }
 \references{
-ISO 9920:2007 Ergonomics of the thermal environment -- Estimation of thermal insulation and water vapour resistance of a clothing ensemble.
+Tikuisis P., Osczevski R.J. (2003). Facial cooling during cold air exposure. Bull. Amer. Meteor. Soc. 84: 927-933.
 }
 \author{
 Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}

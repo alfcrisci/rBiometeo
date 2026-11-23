@@ -11,9 +11,9 @@ wbgt_stull(t, rh, tg, pair = 1010)
 
 \item{rh}{numeric Relative humidity in percentage.}
 
-\item{tg}{numeric Solar Radiation Radiance in Watt/mq.}
+\item{tg}{numeric Globe temperature in degC.}
 
-\item{pair}{numeric Air Pressure in hPa. Default is 1010.}
+\item{pair}{numeric Air pressure in hPa. Not used (kept for compatibility): the Stull wet-bulb formula does not depend on pressure.}
 }
 \value{
 wbgt  in degC

@@ -4,6 +4,7 @@
 #'
 #' @param t numeric Air temperature in Celsius degrees.
 #' @param rh numeric Relative humidity in percentage.
+#' @param lang character Language: "en" (default, as in previous versions) or "it".
 #' @return sharlau_index_state
 #'
 #'
@@ -16,10 +17,11 @@
 #'
 #'
 
-sharlau_index_state=function(t,rh) {
+sharlau_index_state=function(t,rh,lang="en") {
                          ct$assign("t", as.array(t))
                          ct$assign("rh", as.array(rh))
-                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=sharlau_index_state(t[i],rh[i])};")
+                         ct$assign("lang", as.array(lang))
+                         ct$eval("var res=[]; for(var i=0, len=t.length; i < len; i++){ res[i]=sharlau_index_state(t[i],rh[i],lang[0])};")
                          res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

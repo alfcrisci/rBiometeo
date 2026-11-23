@@ -17,7 +17,7 @@
 
 knots2fts=function(knots) {
                          ct$assign("knots", as.array(knots))
-                         ct$eval("var res=[]; for(var i=0, len=knots.length; i < len; i++){ rel[i]=knots2fts(knots[i])};")
+                         ct$eval("var res=[]; for(var i=0, len=knots.length; i < len; i++){ res[i]=knots2fts(knots[i])};")
                           res=ct$get("res")
                          return(ifelse(res==9999,NA,res))
 }

@@ -4,22 +4,22 @@
 \alias{mrt_thorsson}
 \title{mrt_thorsson}
 \usage{
-mrt_thorsson(t, tg, wind, diam)
+mrt_thorsson(t, tg, wind, diam = 0.15)
 }
 \arguments{
 \item{t}{numeric air temperature in degC.}
 
-\item{tg}{numeric global short solar irradiance in Watt on mq.}
+\item{tg}{numeric globe temperature in degC.}
 
 \item{wind}{numeric windspeed in meter per second.}
 
-\item{diam}{numeric diameter of the sphere in millimeter. Input example 50 mm.}
+\item{diam}{numeric diameter of the globe in meters (e.g. 0.15 for the standard globe).}
 }
 \value{
 Mean Radiant temperature in degC
 }
 \description{
-Calculated the mean radiant temperature from the solar radiation.  Modified based on direct and diffuse ratio. Assumes a uniform surround temperature of Ta && short wave solar radiation only;
+Mean radiant temperature from globe temperature with the convection coefficients of Thorsson et al. (2007).
 }
 \references{
 Thorsson et al, Different methods for estimating the mean radiant temperature in an outdoor urban setting, Int. J. Climatol.27  1983   1993 (2007)

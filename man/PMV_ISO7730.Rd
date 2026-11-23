@@ -28,6 +28,6 @@ Predicted Mean Vote
 Calculate Predicted Mean Vote (PMV) following ISO 7730.
 }
 \author{
-Istituto per la Bioeconomia Firenze CNR Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia Firenze CNR Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{PMV_ISO7730}

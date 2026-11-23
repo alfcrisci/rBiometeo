@@ -20,5 +20,5 @@ level risk in value
 Calculate the heat risk value for worker by using color codes returning index value.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }

@@ -7,7 +7,7 @@
 #' @param wind numeric Wind speed iq.
 #' @param pair numeric Air Pressure in hPa. Default is 1010.
 #' @return thom index in degC
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @references Thom, E.C. 1959 The discomfort index. Weatherwise, 12, 57,60
 #' @export
 #'

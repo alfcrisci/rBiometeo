@@ -23,7 +23,7 @@ Label of the class of THI_kibler (see thi_kibler_class).
 Livestock Conservation Institute (1970). Patterns of transit losses. LCI, Omaha, Nebraska.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{THI}
 \keyword{livestock}

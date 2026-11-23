@@ -18,7 +18,7 @@ wind direction provenience
 Calculate meteorological wind direction from cartesian components u and v.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{Meteorological}
 \keyword{Wind}

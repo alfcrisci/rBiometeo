@@ -61,6 +61,6 @@ Hoppe P. (1999). The physiological equivalent temperature - a universal index fo
 Tartarini F., Schiavon S. (2020). pythermalcomfort: A Python package for thermal comfort research. SoftwareX 12: 100578. doi:10.1016/j.softx.2020.100578
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{PET}

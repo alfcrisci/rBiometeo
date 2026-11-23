@@ -5,7 +5,7 @@
 #' @param t numeric  Air temperature in Celsius degrees.
 #' @param rh numeric  Relative humidity in percentage.
 #' @return thi index
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @references Kibler, H.H. Thermal effects of various temperature-humidity combinations on Holstein cattle as measured by eight physiological responses. Res. Bull. 1964, 862, 1–42. 
 #' @export
 #'

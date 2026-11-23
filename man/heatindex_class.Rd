@@ -23,7 +23,7 @@ Rothfusz L.P. (1990). The heat index 'equation'. NWS Southern Region Technical A
 US National Weather Service. Heat index. https://www.weather.gov/ama/heatindex
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{heat}
 \keyword{index}

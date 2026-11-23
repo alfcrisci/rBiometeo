@@ -7,7 +7,7 @@
 #' @param lang character Language of the labels: "it" (default) or "en".
 #' @return character label
 #' @references Livestock Conservation Institute (1970). Patterns of transit losses. LCI, Omaha, Nebraska.
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords livestock THI
 #' @export
 thi_kibler_class_text <- function(t, rh, lang = "it") {

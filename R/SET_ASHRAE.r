@@ -16,7 +16,7 @@
 #' @references Gagge A.P., Fobelets A.P., Berglund L.G. (1986). A standard predictive index of human response to the thermal environment. ASHRAE Trans. 92(2B): 709-731.
 #' @references ANSI/ASHRAE Standard 55-2023. Thermal Environmental Conditions for Human Occupancy. ASHRAE, Atlanta.
 #' @references Tartarini F., Schiavon S. (2020). pythermalcomfort: A Python package for thermal comfort research. SoftwareX 12: 100578. doi:10.1016/j.softx.2020.100578
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords SET
 #' @export
 SET_ASHRAE <- function(t, rh, wind, tmrt, met, clo, wme = 0, pair = 1013.25, position = "standing", bsa = 1.8258) {

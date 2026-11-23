@@ -21,6 +21,6 @@ Label of the PET class (see pet_class).
 Matzarakis A., Mayer H., Iziomon M.G. (1999). Applications of a universal thermal index: physiological equivalent temperature. Int. J. Biometeorol. 43: 76-84. doi:10.1007/s004840050119
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{PET}

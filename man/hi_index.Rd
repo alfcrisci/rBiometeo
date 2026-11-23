@@ -21,6 +21,6 @@ Given air temperature (Celsius), relative humidity  gives a heat stress index in
 Hill et al,2004, Indices of environmental temperatures for primates in open habitats.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{hi_index}

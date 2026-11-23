@@ -7,7 +7,7 @@
 #' @param pair numeric Local air pressure in hPa.
 #' @return partial pressure of oxygen
 #'
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords  poda, oxygen, altitude.
 #' 
 #' @export

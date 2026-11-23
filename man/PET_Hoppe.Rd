@@ -29,6 +29,6 @@ Hoppe P. (1999). The physiological equivalent temperature - a universal index fo
 VDI 3787 Part 2 (2008, rev. 2022). Environmental meteorology - Methods for the human-biometeorological evaluation of the thermal component of the climate. Beuth, Berlin.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{PET}

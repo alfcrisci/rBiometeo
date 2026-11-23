@@ -6,7 +6,7 @@
 #' @param rh numeric Relative humidity in percentage.
 #' @return class 1-4
 #' @references Scharlau K. (1950). Einfuehrung eines Schwuelemassstabes und Abgrenzung von Schwuelezonen durch Isohygrothermen. Erdkunde 4: 188-201.
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords Scharlau
 #' @export
 sharlau_class <- function(t, rh) {

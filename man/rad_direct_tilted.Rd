@@ -24,7 +24,7 @@ incident tilted radiation
 Computed a incident tilted radiation for a inclinated (planezen) and orientated plane (planeaz).
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{Tilted}
 \keyword{radiation.}

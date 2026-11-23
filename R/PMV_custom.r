@@ -14,7 +14,7 @@
 #' @return Predicted Mean Vote customized
 #'
 #'
-#' @author  Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author  Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords PMV_custom 
 #' 
 #' @export

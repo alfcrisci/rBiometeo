@@ -52,6 +52,6 @@ ANSI/ASHRAE Standard 55-2023. Thermal Environmental Conditions for Human Occupan
 Tartarini F., Schiavon S. (2020). pythermalcomfort: A Python package for thermal comfort research. SoftwareX 12: 100578. doi:10.1016/j.softx.2020.100578
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{SET}

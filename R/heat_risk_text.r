@@ -8,7 +8,7 @@
 #' @param lang character Language of the labels: "it" (default) or "en".
 #' @return character label
 #' @references ISO 7243:2017. Ergonomics of the thermal environment - Assessment of heat stress using the WBGT (wet bulb globe temperature) index.
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords WBGT
 #' @export
 heat_risk_text <- function(wbgt, cav = 0, tresh = 28.5, lang = "it") {

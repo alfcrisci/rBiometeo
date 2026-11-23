@@ -51,7 +51,7 @@ Calculate wet bulb globe temperature index for outdoor environements by using so
 Pressure correction follow
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{outdoor}
 \keyword{wbgt}

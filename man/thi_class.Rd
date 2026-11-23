@@ -23,6 +23,6 @@ Giles B.D., Balafoutis C., Maheras P. (1990). Too hot for comfort: the heatwaves
 Thom E.C. (1959). The discomfort index. Weatherwise 12(2): 57-61. doi:10.1080/00431672.1959.9926960
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{THI}

@@ -25,6 +25,6 @@ Blazejczyk K., Epstein Y., Jendritzky G., Staiger H., Tinz B. (2012). Comparison
 Li P.W., Chan S.T. (2000). Application of a weather stress index for alerting the public to stressful weather in Hong Kong. Meteorol. Appl. 7(4): 369-375. doi:10.1017/S1350482700001602
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{NET}

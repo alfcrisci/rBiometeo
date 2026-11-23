@@ -23,7 +23,7 @@ Label of the wind chill risk class of windchill_cla (Environment and Climate Cha
 Environment and Climate Change Canada. Wind chill index. https://www.canada.ca/en/environment-climate-change/services/weather-health/wind-chill-cold-weather/wind-chill-index.html
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{chill}
 \keyword{wind}

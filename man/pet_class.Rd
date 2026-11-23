@@ -19,6 +19,6 @@ Class 1-9 of thermal perception and physiological stress for a PET value (Matzar
 Matzarakis A., Mayer H., Iziomon M.G. (1999). Applications of a universal thermal index: physiological equivalent temperature. Int. J. Biometeorol. 43: 76-84. doi:10.1007/s004840050119
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{PET}

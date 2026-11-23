@@ -25,5 +25,5 @@ Calculate Thom discomfort index by using wet bulb temperature estimation.
 Thom, E.C. 1959 The discomfort index. Weatherwise, 12, 57,60
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }

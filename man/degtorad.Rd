@@ -16,6 +16,6 @@ Angle in radians
 Conversion angles from decimal degrees to radians.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{degtorad}

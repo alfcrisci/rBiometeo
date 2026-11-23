@@ -1,3 +1,8 @@
+# rBiometeo 0.4.1 (2026-11-23)
+
+* Updated author e-mail addresses to the `@cnr.it` domain (Alfonso Crisci, Marco Morabito) and added
+  the e-mail address of Alessandro Messeri.
+
 # rBiometeo 0.4 (2026-11-23)
 
 ## Licence

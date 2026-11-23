@@ -14,7 +14,7 @@
 #' @param param character Index requested HSI or AET Allowable exposure time in minutes.
 #' @return HSI index
 #' 
-#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords HSI 
 #' @references Belding et al 1955. Index for evaluating heat stress in terms of resulting physiological strain. Heat Pip Air Condit 27, 129 36.
 #' @export

@@ -8,7 +8,7 @@
 #' @param pair numeric Air pressure in hPa.
 #' @return fits index
 #'
-#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @references Nunneley SH, Stribley F, 1979, Fighter index of thermal stress FITS  guidance for hot-weather aircraft operations.Aviat Space Environ Med 50, 639 42.
 #' @export
 #'

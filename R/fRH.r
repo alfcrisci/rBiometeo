@@ -7,7 +7,7 @@
 #' @return relative humidity value
 #'
 #'
-#' @author  Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author  Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords  Relative humidity 
 #' 
 #' @export

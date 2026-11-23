@@ -8,7 +8,7 @@
 #' @param pair numeric Air pressure in hPa.
 #' @return class 1-4
 #' @references Epstein Y., Moran D.S. (2006). Thermal comfort and the heat stress indices. Ind. Health 44: 388-398. doi:10.2486/indhealth.44.388
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords discomfort index
 #' @export
 discomfort_index_class <- function(t, rh, wind = 0.13, pair = 1010) {

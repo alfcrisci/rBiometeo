@@ -23,5 +23,5 @@ Function to assess sun azimuth and elevation given the time in GMT format.
 Mike Birdgeneau  \url{https://gist.github.com/mikebirdgeneau/e2dbdc8e9c45c1c2b7fc}
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }

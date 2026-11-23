@@ -6,7 +6,7 @@
 #' @return feets per second
 #'
 #'
-#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords  ms2fts 
 #' 
 #' @export

@@ -23,7 +23,7 @@ Livestock Conservation Institute (1970). Patterns of transit losses. LCI, Omaha,
 Mader T.L., Davis M.S., Brown-Brandl T. (2006). Environmental factors influencing heat stress in feedlot cattle. J. Anim. Sci. 84: 712-719.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{THI}
 \keyword{livestock}

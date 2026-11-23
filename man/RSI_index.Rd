@@ -21,5 +21,5 @@ Calculates Relative Strain Index.
 Lee  DHK  &  Henschel A,1963, Evaluation  of  thermal environment  in  shelters.Rep.  TR 8,  Div.  Occup.  Health,US Dept. Health, Education and Welfare.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }

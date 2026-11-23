@@ -20,6 +20,6 @@ Specific volume
 Gets the specific volume of air/water vapor mixture [m^3/kg].
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{spvol}

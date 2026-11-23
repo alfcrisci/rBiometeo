@@ -27,6 +27,6 @@ Label of the reduced 7-class UTCI scale of utci_class7.
 Blazejczyk K., Jendritzky G., Broede P., Fiala D., Havenith G., Epstein Y., Psikuta A., Kampmann B. (2013). An introduction to the Universal Thermal Climate Index (UTCI). Geographia Polonica 86(1): 5-10. doi:10.7163/GPol.2013.1
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{UTCI}

@@ -10,7 +10,7 @@
 #' @return PET in degC
 #' @references Hoppe P. (1999). The physiological equivalent temperature - a universal index for the biometeorological assessment of the thermal environment. Int. J. Biometeorol. 43: 71-75. doi:10.1007/s004840050118
 #' @references VDI 3787 Part 2 (2008, rev. 2022). Environmental meteorology - Methods for the human-biometeorological evaluation of the thermal component of the climate. Beuth, Berlin.
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords PET
 #' @export
 PET_Hoppe <- function(t, rh, wind, tmrt, pair = 1013.25) {

@@ -7,7 +7,7 @@
 #' @return hi_index
 #'
 #'
-#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords  hi_index 
 #' @references Hill et al,2004, Indices of environmental temperatures for primates in open habitats. 
 #' @export

@@ -23,7 +23,7 @@ Mean radiant temperature from globe temperature according to ISO 7726 (1998), wi
 larger of forced and natural convection.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{globe}
 \keyword{temperature}

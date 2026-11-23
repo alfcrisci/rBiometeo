@@ -8,7 +8,7 @@
 #' @param lang character Language of the labels: "it" (default) or "en".
 #' @return character label
 #' @references Blazejczyk K., Epstein Y., Jendritzky G., Staiger H., Tinz B. (2012). Comparison of UTCI to selected thermal indices. Int. J. Biometeorol. 56: 515-535. doi:10.1007/s00484-011-0453-2
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords NET
 #' @export
 net_class_text <- function(t, rh, wind, lang = "it") {

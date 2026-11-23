@@ -9,7 +9,7 @@
 #' @return oxford index
 #'
 #'
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords  oxford_index 
 #' @references  Lind AR, Hallon RF,1957, Assessment of physiologic severity of hot climate. J Appl Physiol 11, 35 40.
 #' @export

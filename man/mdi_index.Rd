@@ -26,6 +26,6 @@ Since version 0.4 the coefficients follow Moran et al. (previously 0.7 and 0.3).
 Moran D.S., Shapiro Y., Epstein Y., Matthew W., Pandolf K.B. (1998). A modified discomfort index (MDI) as an alternative to the wet bulb globe temperature (WBGT). In: Hodgdon J.A., Heaney J.H., Buono M.J. (eds) Environmental Ergonomics VIII, pp. 77-80.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{mdi_index}

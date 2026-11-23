@@ -7,7 +7,7 @@
 #' @param lang character Language of the labels: "it" (default) or "en".
 #' @return character label
 #' @references Environment and Climate Change Canada. Wind chill index. https://www.canada.ca/en/environment-climate-change/services/weather-health/wind-chill-cold-weather/wind-chill-index.html
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords wind chill
 #' @export
 windchill_class_text <- function(t, wind, lang = "it") {

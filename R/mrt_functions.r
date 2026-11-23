@@ -9,7 +9,7 @@
 #' @return Mean Radiant temperature in degC
 #'
 #'
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @references Thorsson et al, Different methods for estimating the mean radiant temperature in an outdoor urban setting, Int. J. Climatol.27  1983   1993 (2007)
 #' @keywords  MRT 
 #' 
@@ -39,7 +39,7 @@ mrt_thorsson=function(t,tg,wind,diam=0.15) {
 #' @param wind numeric windspeed in meter per second.
 #' @param diam numeric diameter of the globe in meters (e.g. 0.05 for a 50 mm globe).
 #' @return Mean Radiant temperature in degC
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords  globe temperature 
 #' 
 #' @export
@@ -73,7 +73,7 @@ mrt_globe=function(t,tg,wind,diam=0.05) {
 #' @return Mean Radiant temperature projected in degC.
 #'
 #'
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords  fMRT 
 #' 
 #' @export

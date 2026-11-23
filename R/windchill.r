@@ -8,7 +8,7 @@
 #' 
 #' @references Windchill NOAA calculator \url{https://www.weather.gov/epz/wxcalc_windchill}
 #'
-#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author  Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords  windchill index in degC.
 #' 
 #' @export

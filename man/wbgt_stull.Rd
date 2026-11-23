@@ -24,5 +24,5 @@ by using Stull formulation by using air temperature in degC ,relative humidity ,
 globometric temperature in degC and air pressure in hPa.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }

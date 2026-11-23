@@ -22,6 +22,6 @@ original equation (since version 0.4; before it was used as km/h by mistake). NA
 Tikuisis P., Osczevski R.J. (2003). Facial cooling during cold air exposure. Bull. Amer. Meteor. Soc. 84: 927-933.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{frostime}

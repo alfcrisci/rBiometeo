@@ -23,6 +23,6 @@ Label of the humidex class (see humidex_class).
 Environment and Climate Change Canada. How to use the Humidex. https://www.canada.ca/en/services/environment/weather/severeweather/humidex.html
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{humidex}

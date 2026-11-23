@@ -9,7 +9,7 @@
 #' @return CET in degC
 #' @references Vernon H.M., Warner C.G. (1932). The influence of the humidity of the air on capacity for work at high temperatures. J. Hyg. 32(3): 431-462.
 #' @references Gregorczuk M., Cena K. (1967). Distribution of effective temperature over the surface of the Earth. Int. J. Biometeorol. 11: 145-149.
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords effective temperature
 #' @export
 CET <- function(t, rh, wind, tg) {

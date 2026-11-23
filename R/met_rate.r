@@ -7,7 +7,7 @@
 #'
 #' @return basal metabolic rate
 #'
-#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @references  Ergonomics of the thermal environment – Assessment of heat stress using the WBGT (wet bulb globe temperature)   index, ISO FDIS 7243 (2016)
 #' @keywords  MET
 #' @export

@@ -18,7 +18,7 @@ steadman indoor index
 Computes Steadman's apparent temperature for indoor conditions where air movements are negligible.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{apparent}
 \keyword{steadman,}

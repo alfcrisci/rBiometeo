@@ -5,7 +5,7 @@
 #' @param pet numeric PET in degC (from PET_Hoppe or PET_Walther).
 #' @return class 1-9
 #' @references Matzarakis A., Mayer H., Iziomon M.G. (1999). Applications of a universal thermal index: physiological equivalent temperature. Int. J. Biometeorol. 43: 76-84. doi:10.1007/s004840050119
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords PET
 #' @export
 pet_class <- function(pet) {

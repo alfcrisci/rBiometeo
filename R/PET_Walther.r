@@ -19,7 +19,7 @@
 #' @references Walther E., Goestchel Q. (2018). The P.E.T. comfort index: Questioning the model. Build. Environ. 137: 1-10. doi:10.1016/j.buildenv.2018.03.054
 #' @references Hoppe P. (1999). The physiological equivalent temperature - a universal index for the biometeorological assessment of the thermal environment. Int. J. Biometeorol. 43: 71-75. doi:10.1007/s004840050118
 #' @references Tartarini F., Schiavon S. (2020). pythermalcomfort: A Python package for thermal comfort research. SoftwareX 12: 100578. doi:10.1016/j.softx.2020.100578
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords PET
 #' @export
 PET_Walther <- function(t, rh, wind, tmrt, met = 80/58.2, clo = 0.9, pair = 1013.25, position = "standing", age = 35, sex = "male", weight = 75, height = 1.75, wme = 0) {

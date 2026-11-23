@@ -8,7 +8,7 @@
 #' @return Net Effective Temperature
 #'
 #'
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @references Cho KLA, Margaret Loughnan M, and Tapper T, 2013, An Exploration of Temperature Metrics for Further Developing the Heat-Health Weather Warning System in Hong Kong.
 #' @export
 #'

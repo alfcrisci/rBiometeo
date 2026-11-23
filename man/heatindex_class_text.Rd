@@ -23,7 +23,7 @@ Label of the heat index class (see heatindex_class).
 US National Weather Service. Heat index. https://www.weather.gov/ama/heatindex
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{heat}
 \keyword{index}

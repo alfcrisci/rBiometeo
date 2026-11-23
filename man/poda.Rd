@@ -20,7 +20,7 @@ partial pressure of oxygen
 Calculate the partial pressure of oxygen in function of altitude.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{altitude.}
 \keyword{oxygen,}

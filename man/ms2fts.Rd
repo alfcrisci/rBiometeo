@@ -16,6 +16,6 @@ feets per second
 Conversion speed meter per second in feets per second.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{ms2fts}

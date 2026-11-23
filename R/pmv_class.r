@@ -5,7 +5,7 @@
 #' @param pmv numeric PMV value (e.g. from PMV_ISO7730).
 #' @return class 1-7
 #' @references ISO 7730:2005. Ergonomics of the thermal environment - Analytical determination and interpretation of thermal comfort using calculation of the PMV and PPD indices and local thermal comfort criteria.
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords PMV
 #' @export
 pmv_class <- function(pmv) {

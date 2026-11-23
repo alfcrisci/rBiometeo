@@ -7,7 +7,7 @@
 #' @param  long       numeric Longitude in decimal degrees.
 #' @return of  list containing sun position
 #' @references Mike Birdgeneau  \url{https://gist.github.com/mikebirdgeneau/e2dbdc8e9c45c1c2b7fc}
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' 
 #' 
 #' @export

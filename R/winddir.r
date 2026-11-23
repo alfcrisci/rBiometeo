@@ -5,7 +5,7 @@
 #' @param u numeric U zonal component (m/s) .
 #' @param v numeric V meridian component (m/s).
 #' @return wind direction provenience
-#' @author  Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author  Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords Meteorological Wind direction 
 #' 
 #' 

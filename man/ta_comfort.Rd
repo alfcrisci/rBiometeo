@@ -24,6 +24,6 @@ comfort temperature in degC
 Calculate the temperature of thermal comfort requireed given other parameters and timing in hours.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{ta_comfort}

@@ -21,6 +21,6 @@ Class 1-4: 1 comfort, 2 slightly unpleasant, 3 unpleasant, 4 heavily unpleasant,
 Scharlau K. (1950). Einfuehrung eines Schwuelemassstabes und Abgrenzung von Schwuelezonen durch Isohygrothermen. Erdkunde 4: 188-201.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{Scharlau}

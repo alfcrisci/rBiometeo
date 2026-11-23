@@ -21,5 +21,5 @@ Calculate Temperature Humidity Index following Kliber equantions. Adopted by Sar
 Kibler, H.H. Thermal effects of various temperature-humidity combinations on Holstein cattle as measured by eight physiological responses. Res. Bull. 1964, 862, 1–42.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }

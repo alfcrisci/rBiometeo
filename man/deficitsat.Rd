@@ -18,5 +18,5 @@ deficit of saturation
 Computes saturation deficit in hPa. This is air dryness evaluation.
 }
 \author{
-Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{a.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }

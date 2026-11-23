@@ -8,7 +8,7 @@
 #' @return frostbite time in minutes
 #'
 #'
-#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author    Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @keywords  frostime 
 #' @references Tikuisis P., Osczevski R.J. (2003). Facial cooling during cold air exposure. Bull. Amer. Meteor. Soc. 84: 927-933.
 #' @export

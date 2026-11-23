@@ -18,6 +18,6 @@ enthalpy
 Calculates the enthalpy of air/water vapor mixture [kJ/kg]. Inputs are dry-bulb temperature [degC] and humidity ratio [unitless].
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{enthalpy}

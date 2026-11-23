@@ -7,7 +7,7 @@
 #' @return RSI index
 #'
 #'
-#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@ibe.cnr.it}
+#' @author Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@@cnr.it}
 #' @references  Lee  DHK  &  Henschel A,1963, Evaluation  of  thermal environment  in  shelters.Rep.  TR 8,  Div.  Occup.  Health,US Dept. Health, Education and Welfare.
 #' @export 
 #'

@@ -23,5 +23,5 @@ Calculate the Net Effective Temperature (NET) incorporating ambient temperature 
 Cho KLA, Margaret Loughnan M, and Tapper T, 2013, An Exploration of Temperature Metrics for Further Developing the Heat-Health Weather Warning System in Hong Kong.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }

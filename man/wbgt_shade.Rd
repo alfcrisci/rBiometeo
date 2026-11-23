@@ -26,7 +26,7 @@ wbgt for shade conditions in degC
 Calculate wet bulb globe temperature index for outdoor shaded environements.
 }
 \author{
-Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@ibe.cnr.it}
+Istituto per la Bioeconomia CNR Firenze Italy  Alfonso Crisci \email{alfonso.crisci@cnr.it}
 }
 \keyword{shade}
 \keyword{wbgt,}

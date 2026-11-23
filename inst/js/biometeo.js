@@ -614,7 +614,7 @@ function C2F(C) {
   if (typeof C !== "number") {
     throw TypeError("Celsius value must be a number");
   }
-  return Math.round((C * 9) / 5 + 32, 2);
+  return (C * 9) / 5 + 32; // previously Math.round(x, 2), which rounded to an integer
 }
 
 /**
@@ -627,7 +627,7 @@ function F2C(F) {
   if (typeof F !== "number") {
     throw TypeError("Value must be a number");
   }
-  return Math.round((5 / 9) * (F - 32), 3);
+  return (5 / 9) * (F - 32); // previously Math.round(x, 3), which rounded to an integer
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -701,8 +701,8 @@ function mrt_solar_proj(t, rh, solar, sunelev, albedo, emis_sfc, fdir) {
   var rdiffuse = solar - rshort;
 
   var sig = 5.67e-8;
-  emiair = emis_atm(t, rh);
-  tsk = t + 273.12;
+  emiair = emis_atm(t + 273.15, rh / 100); // emis_atm needs K and RH as a fraction (was called with degC and %)
+  tsk = t + 273.15;
   var ratio = 0.0429 * Math.sin(sunelev * rad) + 0.345 * Math.cos(sunelev * rad);
   var proj = 0.308 * Math.cos(rad * (sunelev * (0.998 - Math.pow(sunelev, 2.0) / 50000.0)));
 
@@ -712,7 +712,7 @@ function mrt_solar_proj(t, rh, solar, sunelev, albedo, emis_sfc, fdir) {
         ((1 - albedo) * rdiffuse) / (sig * emis_sfc) +
         (1 - albedo) * proj * ratio * ((rshort - rdiffuse) / (sig * emis_sfc)),
       0.25
-    ) - 273.16;
+    ) - 273.15;
 
   return temprad;
 }

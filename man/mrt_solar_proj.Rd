@@ -4,7 +4,15 @@
 \alias{mrt_solar_proj}
 \title{mrt_solar_proj}
 \usage{
-mrt_solar_proj(t, rh, solar, sunelev, alb_sfc, fdir, emis_sfc)
+mrt_solar_proj(
+  t,
+  rh,
+  solar,
+  sunelev,
+  alb_sfc = 0.3,
+  fdir = 0.8,
+  emis_sfc = 0.97
+)
 }
 \arguments{
 \item{t}{numeric        Air temperature in degC.}
@@ -15,11 +23,11 @@ mrt_solar_proj(t, rh, solar, sunelev, alb_sfc, fdir, emis_sfc)
 
 \item{sunelev}{numeric  Sun elevation angle in decimal degrees.}
 
-\item{alb_sfc}{numeric  Mean albedo of surroundings. Default is 0.4.}
+\item{alb_sfc}{numeric  Mean albedo of surroundings. Default is 0.3.}
 
-\item{fdir}{numeric    Ratio between directed ad diffuse radiation.}
+\item{fdir}{numeric    Fraction of direct radiation in the global radiation. Default is 0.8.}
 
-\item{emis_sfc}{numeric Surface emissivity.}
+\item{emis_sfc}{numeric Surface emissivity. Default is 0.97.}
 }
 \value{
 Mean Radiant temperature projected in degC.

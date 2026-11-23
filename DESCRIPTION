@@ -1,7 +1,7 @@
 Package: rBiometeo
 Type: Package
 Title: Biometeorological Functions in R
-Version: 0.4.1
+Version: 0.4.2
 Date: 2026-11-23
 Description: R functions to estimate human thermal comfort and many other
     biometeorological indices used in Institute of BioEconomy in Florence.

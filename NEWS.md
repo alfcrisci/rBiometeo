@@ -1,3 +1,11 @@
+# rBiometeo 0.4.2 (2026-11-23)
+
+* `C2F()`, `F2C()` and therefore `heat_index()`: no more rounding to integer degrees (Math.round with a
+  second argument rounds to an integer in JavaScript).
+* `mrt_solar_proj()`: the atmospheric emissivity was computed with degC and percent instead of K and a
+  fraction (results were infinite or meaningless); default values for `alb_sfc` (0.3), `fdir` (0.8) and
+  `emis_sfc` (0.97), with the albedo used as a single value like the other parameters.
+
 # rBiometeo 0.4.1 (2026-11-23)
 
 * Updated author e-mail addresses to the `@cnr.it` domain (Alfonso Crisci, Marco Morabito) and added

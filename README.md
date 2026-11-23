@@ -35,10 +35,7 @@ devtools::install_github("alfcrisci/rBiometeo")
 
 On Ubuntu 20.04 see comments concerning linux dependency problem
 https://github.com/ropensci/geojsonio/issues/65
-
-and 
-
-```bash
+ ```bash
 sudo add-apt-repository ppa:cran/v8
 sudo apt update
 sudo apt install libnode-dev
